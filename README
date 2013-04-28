@@ -1,0 +1,31 @@
+OpenEmbedded/Yocto meta layer for B2Qt on embedded Linux
+==========================================================
+
+This layer provides B2Qt on embedded Linux recipes for use with
+OpenEmbedded and Yocto.
+
+This layer depends on:
+
+URI: git://git.openembedded.org/openembedded-core
+branch: master
+revision: HEAD
+
+URI: git://git.openembedded.org/meta-openembedded
+layer: meta-oe
+branch: master
+revision: HEAD
+
+URI: git://git.yoctoproject.org/meta-ti
+branch: master
+revision: HEAD
+
+URI: git://git.yoctoproject.org/meta-fsl-arm
+branch: master
+revision: HEAD
+
+URI: git://git.yoctoproject.org/meta-fsl-arm-extra
+branch: master
+revision: HEAD
+
+Main layer maintainer: Samuli Piippo <samuli.piippo@digia.com>
+
