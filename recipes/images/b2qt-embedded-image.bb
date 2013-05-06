@@ -13,6 +13,8 @@ IMAGE_FEATURES += "\
 
 inherit core-image
 
+EXTRA_IMAGEDEPENDS_mx6 += "u-boot-script-boundary"
+
 MACHINE_EXTRA_INSTALL = ""
 
 MACHINE_EXTRA_INSTALL_mx6 += "\
