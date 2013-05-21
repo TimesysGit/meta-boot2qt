@@ -17,6 +17,10 @@ EXTRA_IMAGEDEPENDS_mx6 += "u-boot-script-boundary"
 
 MACHINE_EXTRA_INSTALL = ""
 
+MACHINE_EXTRA_INSTALL_mx5 += "\
+        amd-gpu-x11-bin-mx51 \
+        "
+
 MACHINE_EXTRA_INSTALL_mx6 += "\
         gpu-viv-bin-mx6q \
         gst-fsl-plugin \

@@ -12,6 +12,12 @@ SGX_mx6 = " \
     libgles2-mx6-dev \
     "
 
+SGX_mx5 = " \
+    libgsl-fsl-mx51-dev \
+    libegl-mx51-dev \
+    libgles2-mx51-dev \
+    "
+
 SGX_beagleboard = "\
     libgles-omap3-dev \
     "
