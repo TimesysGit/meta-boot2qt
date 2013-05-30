@@ -41,6 +41,7 @@ GSTREAMER_EXTRA_INSTALL = "\
         gst-plugins-ugly-rmdemux \
         gst-plugins-ugly-asf \
         gst-plugins-ugly-a52dec \
+        gst-ffmpeg \
         "
 
 TOOLS_EXTRA_INSTALL = "\
