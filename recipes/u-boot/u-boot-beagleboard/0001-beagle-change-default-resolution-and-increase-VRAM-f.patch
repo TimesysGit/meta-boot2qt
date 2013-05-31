@@ -1,14 +1,14 @@
-From 8c84c554583c516918ce9185bd03bc1d984bf49c Mon Sep 17 00:00:00 2001
+From 4fe2e7b7b9a83f36b409892e854aed68dbd45a0a Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@digia.com>
 Date: Thu, 23 May 2013 14:37:10 +0300
 Subject: [PATCH] beagle: change default resolution and increase VRAM for fb0
 
 ---
- include/configs/omap3_beagle.h |    5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ include/configs/omap3_beagle.h |    8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
-index 1cc46dc..6a812ba 100644
+index 1cc46dc..04862d1 100644
 --- a/include/configs/omap3_beagle.h
 +++ b/include/configs/omap3_beagle.h
 @@ -224,7 +224,7 @@
@@ -20,30 +20,39 @@ index 1cc46dc..6a812ba 100644
  	"defaultdisplay=dvi\0" \
  	"mmcdev=0\0" \
  	"mmcroot=/dev/mmcblk0p2 ro\0" \
-@@ -240,6 +240,7 @@
+@@ -240,8 +240,10 @@
  		"buddy2=${buddy2} "\
  		"camera=${camera} "\
  		"vram=${vram} " \
 +		"omapfb.vram=0:${vram} " \
  		"omapfb.mode=dvi:${dvimode} " \
  		"omapdss.def_disp=${defaultdisplay} " \
++		"consoleblank=0 " \
  		"root=${mmcroot} " \
-@@ -250,6 +251,7 @@
+ 		"rootfstype=${mmcrootfstype}\0" \
+ 	"nandargs=setenv bootargs console=${console} " \
+@@ -250,8 +252,10 @@
  		"buddy=${buddy} "\
  		"camera=${camera} "\
  		"vram=${vram} " \
 +		"omapfb.vram=0:${vram} " \
  		"omapfb.mode=dvi:${dvimode} " \
  		"omapdss.def_disp=${defaultdisplay} " \
++		"consoleblank=0 " \
  		"root=${nandroot} " \
-@@ -263,6 +265,7 @@
+ 		"rootfstype=${nandrootfstype}\0" \
+ 	"bootenv=uEnv.txt\0" \
+@@ -263,8 +267,10 @@
  		"mpurate=${mpurate} " \
  		"buddy=${buddy} "\
  		"vram=${vram} " \
 +		"omapfb.vram=0:${vram} " \
  		"omapfb.mode=dvi:${dvimode} " \
  		"omapdss.def_disp=${defaultdisplay} " \
++		"consoleblank=0 " \
  		"root=${ramroot} " \
+ 		"rootfstype=${ramrootfstype}\0" \
+ 	"loadramdisk=fatload mmc ${mmcdev} ${rdaddr} ramdisk.gz\0" \
 -- 
 1.7.10.4
 
