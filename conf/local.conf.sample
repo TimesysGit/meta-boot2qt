@@ -49,7 +49,7 @@ PARALLEL_MAKE = "-j 4"
 #
 # This sets the default machine to be qemux86 if no other machine is selected:
 MACHINE ??= "qemux86"
-MACHINE_HOSTNAME ?= "b2qt-${MACHINE}"
+MACHINE_HOSTNAME ?= "b2qt-linux-${MACHINE}"
 
 #
 # Where to place downloads
