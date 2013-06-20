@@ -1,0 +1,177 @@
+diff --git a/adb/adb.c b/adb/adb.c
+index 07bfbe5..c8f37ff 100644
+--- a/adb/adb.c
++++ b/adb/adb.c
+@@ -141,7 +141,7 @@ void  adb_trace_init(void)
+     }
+ }
+ 
+-#if !ADB_HOST
++#if !ADB_HOST && ADB_QEMU
+ /*
+  * Implements ADB tracing inside the emulator.
+  */
+@@ -282,6 +282,22 @@ static void send_close(unsigned local, unsigned remote, atransport *t)
+     send_packet(p, t);
+ }
+ 
++int property_set(const char *key, const char *value)
++{
++    return 0;
++}
++
++int property_get(const char *key, char *value, const char *fallback)
++{
++    if (fallback) {
++        strncpy(value, fallback, PROPERTY_VALUE_MAX-1);
++        return strlen(fallback);
++    } else {
++        value[0] = 0;
++        return 0;
++    }
++}
++
+ static size_t fill_connect_data(char *buf, size_t bufsize)
+ {
+ #if ADB_HOST
+@@ -1056,31 +1072,7 @@ static int should_drop_privileges() {
+ #ifndef ALLOW_ADBD_ROOT
+     return 1;
+ #else /* ALLOW_ADBD_ROOT */
+-    int secure = 0;
+-    char value[PROPERTY_VALUE_MAX];
+-
+-   /* run adbd in secure mode if ro.secure is set and
+-    ** we are not in the emulator
+-    */
+-    property_get("ro.kernel.qemu", value, "");
+-    if (strcmp(value, "1") != 0) {
+-        property_get("ro.secure", value, "1");
+-        if (strcmp(value, "1") == 0) {
+-            // don't run as root if ro.secure is set...
+-            secure = 1;
+-
+-            // ... except we allow running as root in userdebug builds if the
+-            // service.adb.root property has been set by the "adb root" command
+-            property_get("ro.debuggable", value, "");
+-            if (strcmp(value, "1") == 0) {
+-                property_get("service.adb.root", value, "");
+-                if (strcmp(value, "1") == 0) {
+-                    secure = 0;
+-                }
+-            }
+-        }
+-    }
+-    return secure;
++    return 0;
+ #endif /* ALLOW_ADBD_ROOT */
+ }
+ #endif /* !ADB_HOST */
+@@ -1543,7 +1535,9 @@ int main(int argc, char **argv)
+ #else
+     /* If adbd runs inside the emulator this will enable adb tracing via
+      * adb-debug qemud service in the emulator. */
++#if ADB_QEMU
+     adb_qemu_trace_init();
++#endif
+     if((argc > 1) && (!strcmp(argv[1],"recovery"))) {
+         adb_device_banner = "recovery";
+         recovery_mode = 1;
+diff --git a/adb/adb.h b/adb/adb.h
+index 9da8af8..ae3dd31 100644
+--- a/adb/adb.h
++++ b/adb/adb.h
+@@ -363,7 +363,7 @@ typedef enum {
+ 
+ #if ADB_TRACE
+ 
+-#if !ADB_HOST
++#if !ADB_HOST && ADB_QEMU
+ /*
+  * When running inside the emulator, guest's adbd can connect to 'adb-debug'
+  * qemud service that can display adb trace messages (on condition that emulator
+diff --git a/adb/remount_service.c b/adb/remount_service.c
+index 4cb41e7..6cfc2c6 100644
+--- a/adb/remount_service.c
++++ b/adb/remount_service.c
+@@ -77,12 +77,12 @@ static int remount_system()
+         return 0;
+     }
+ 
+-    dev = find_mount("/system");
++    dev = find_mount("/");
+ 
+     if (!dev)
+         return -1;
+ 
+-    system_ro = mount(dev, "/system", "none", MS_REMOUNT, NULL);
++    system_ro = mount(dev, "/", "none", MS_REMOUNT, NULL);
+ 
+     free(dev);
+ 
+diff --git a/adb/services.c b/adb/services.c
+index 495a083..eb895ae 100644
+--- a/adb/services.c
++++ b/adb/services.c
+@@ -33,7 +33,7 @@
+ #    include <sys/ioctl.h>
+ #  endif
+ #else
+-#  include <cutils/android_reboot.h>
++#  include <linux/reboot.h>
+ #endif
+ 
+ typedef struct stinfo stinfo;
+@@ -182,7 +182,7 @@ void reboot_service(int fd, void *arg)
+         waitpid(pid, &ret, 0);
+     }
+ 
+-    ret = android_reboot(ANDROID_RB_RESTART2, 0, (char *) arg);
++    ret = reboot(LINUX_REBOOT_CMD_RESTART2, 0, (char *) arg);
+     if (ret < 0) {
+         snprintf(buf, sizeof(buf), "reboot failed: %s\n", strerror(errno));
+         writex(fd, buf, strlen(buf));
+@@ -334,7 +334,7 @@ static int create_subprocess(const char *cmd, const char *arg0, const char *arg1
+ #if ADB_HOST
+ #define SHELL_COMMAND "/bin/sh"
+ #else
+-#define SHELL_COMMAND "/system/bin/sh"
++#define SHELL_COMMAND "/bin/sh"
+ #endif
+ 
+ #if !ADB_HOST
+diff --git a/adb/transport_local.c b/adb/transport_local.c
+index 96a24ba..51c85fc 100644
+--- a/adb/transport_local.c
++++ b/adb/transport_local.c
+@@ -186,7 +186,7 @@ static void *server_socket_thread(void * arg)
+ }
+ 
+ /* This is relevant only for ADB daemon running inside the emulator. */
+-#if !ADB_HOST
++#if !ADB_HOST && ADB_QEMU
+ /*
+  * Redefine open and write for qemu_pipe.h that contains inlined references
+  * to those routines. We will redifine them back after qemu_pipe.h inclusion.
+@@ -304,7 +304,7 @@ void local_init(int port)
+     if(HOST) {
+         func = client_socket_thread;
+     } else {
+-#if ADB_HOST
++#if ADB_HOST || !ADB_QEMU
+         func = server_socket_thread;
+ #else
+         /* For the adbd daemon in the system image we need to distinguish
+diff --git a/adb/transport_usb.c b/adb/transport_usb.c
+index ee6b637..c5e1408 100644
+--- a/adb/transport_usb.c
++++ b/adb/transport_usb.c
+@@ -18,7 +18,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#include <sysdeps.h>
++#include "sysdeps.h"
+ 
+ #define  TRACE_TAG  TRACE_TRANSPORT
+ #include "adb.h"

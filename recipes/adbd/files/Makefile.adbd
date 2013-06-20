@@ -1,0 +1,38 @@
+LOCAL_SRC_FILES := \
+	adb.c \
+	backup_service.c \
+	fdevent.c \
+	transport.c \
+	transport_local.c \
+	transport_usb.c \
+	adb_auth_client.c \
+	sockets.c \
+	services.c \
+	file_sync_service.c \
+	jdwp_service.c \
+	framebuffer_service.c \
+	remount_service.c \
+	usb_linux_client.c \
+	log_service.c \
+	utils.c
+
+LOCAL_OBJ_FILES=$(LOCAL_SRC_FILES:%.c=%.o)
+
+LIBCUTILS_SRC_FILES := \
+	../libcutils/socket_inaddr_any_server.c \
+	../libcutils/socket_local_client.c \
+	../libcutils/socket_local_server.c \
+	../libcutils/socket_loopback_client.c \
+	../libcutils/socket_loopback_server.c \
+	../libcutils/list.c
+
+LIBCUTILS_OBJ_FILES=$(LIBCUTILS_SRC_FILES:%.c=%.o)
+
+adbd: $(LOCAL_OBJ_FILES) $(LIBCUTILS_OBJ_FILES)
+	$(CC) $^ -o $@ -lcrypto -Wl,--as-needed -ldl -lpthread -lresolv
+
+../libcutils/%.o: ../libcutils/%.c
+	$(CC) -O2 -g -DADB_HOST=1 -Wall -Wno-unused-parameter -D_XOPEN_SOURCE -D_GNU_SOURCE -c $^ -o $@ -I../include/ -DHAVE_TERMIO_H -DHAVE_FORKEXEC
+
+%.o: %.c
+	$(CC) -O2 -g -DALLOW_ADBD_ROOT -DADB_QEMU=0 -DADB_HOST=0 -Wall -Wno-unused-parameter -D_XOPEN_SOURCE -D_GNU_SOURCE -c $^ -o $@ -I../include/ -DHAVE_TERMIO_H -DHAVE_FORKEXEC
