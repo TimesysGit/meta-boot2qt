@@ -45,6 +45,7 @@ GSTREAMER_EXTRA_INSTALL = "\
         "
 
 TOOLS_EXTRA_INSTALL = "\
+        adbd \
         ldd \
         "
 
@@ -60,8 +61,6 @@ IMAGE_INSTALL += "\
         freetype \
         fontconfig \
         liberation-fonts \
-        adbd \
-        kernel-module-g-ffs \
         ${GSTREAMER_EXTRA_INSTALL} \
         ${TOOLS_EXTRA_INSTALL} \
         ${MACHINE_EXTRA_INSTALL} \

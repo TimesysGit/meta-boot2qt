@@ -1,22 +1,34 @@
 #!/bin/sh
+
+DAEMON=/usr/bin/adbd
+
+VENDOR=0x18d1
+PRODUCT=0x0000
+SERIAL=$(hostname)-$(sed -e 's/://g' /sys/class/net/eth0/address)
+
 case "$1" in
 start)
-    insmod $(busybox find /lib/modules/$(uname -r) -name "g_ffs.ko") idVendor=0x18d1 idProduct=0x4e26 iSerialNumber=$(hostname)
+    insmod $(busybox find /lib/modules/$(uname -r) -name "g_ffs.ko") idVendor=${VENDOR} idProduct=${PRODUCT} iSerialNumber=${SERIAL}
     mkdir -p /dev/usb-ffs
     chmod 770 /dev/usb-ffs
     mkdir -p /dev/usb-ffs/adb
     chmod 770 /dev/usb-ffs/adb
     mount -t functionfs adb /dev/usb-ffs/adb -o uid=0,gid=0
-
-    /usr/bin/adbd &
+    start-stop-daemon --start --quiet --exec $DAEMON &
     ;;
 stop)
-    killall adbd
+    start-stop-daemon --stop --quiet --exec $DAEMON
+    sleep 1
     umount /dev/usb-ffs/adb
     rmmod g_ffs
     ;;
+restart)
+    start-stop-daemon --stop --quiet --exec $DAEMON
+    sleep 1
+    start-stop-daemon --start --quiet --exec $DAEMON &
+    ;;
 *)
-    echo "Usage: $0 {start|stop}"
+    echo "Usage: $0 {start|stop|restart}"
     exit 1
 esac
 exit 0

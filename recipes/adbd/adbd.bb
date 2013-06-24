@@ -1,24 +1,36 @@
 DESCRIPTION = "Android Debug Bridge Daemon"
 HOMEPAGE = "http://developer.android.com/tools/help/adb.html"
-SECTION = "libs"
-LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://ThirdPartyProject.prop;md5=4e5987c5919a36739dc8f76a4e35d9eb"
+SECTION = "devel"
+LICENSE = "Apache-2.0"
+LIC_FILES_CHKSUM = "file://NOTICE;md5=2ddb23e63b1f9c3c46aaa4195f819a6d"
 
+PV = "android-4.2.2_r1.2"
 PR = "r0"
-SRCREV = "android-4.2.2_r1.2"
+SRCREV = "${PV}"
 
-SRC_URI = "git://android.googlesource.com/platform/system/core;protocol=https;tag=${SRCREV} \
-           file://adbd.patch \
+RRECOMMENDS_${PN} += "kernel-module-g-ffs"
+
+SRC_URI = "git://android.googlesource.com/platform/system/core;protocol=https \
+           file://adbd.patch;striplevel=2 \
            file://Makefile.adbd \
            file://adb-init \
           "
 
-S = "${WORKDIR}/git"
+S = "${WORKDIR}/git/adb"
 
 FILES_${PN} += "${bindir}/adbd"
 
+PRODUCTID_beagleboard = "0x9018"
+PRODUCTID_mx6 = "0x0d02"
+
+do_configure() {
+	if [ -n "${PRODUCTID}" ]; then
+		sed -i -e 's/PRODUCT=.*/PRODUCT=${PRODUCTID}/' ${WORKDIR}/adb-init
+	fi
+}
+
 do_compile() {
-	make -C adb -f ${WORKDIR}/Makefile.adbd
+	make -f ${WORKDIR}/Makefile.adbd
 }
 
 do_install() {
