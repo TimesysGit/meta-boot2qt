@@ -30,6 +30,14 @@ MACHINE_EXTRA_INSTALL_beagleboard += "\
         libgles-omap3-rawdemos \
         "
 
+MACHINE_EXTRA_INSTALL_emulator = "\
+        llvm3.2 \
+        libegl-mesa \
+        libegl-gallium \
+        libgles2-mesa \
+        mount-vboxsf \
+        "
+
 GSTREAMER_EXTRA_INSTALL = "\
         gst-meta-video \
         gst-meta-audio \

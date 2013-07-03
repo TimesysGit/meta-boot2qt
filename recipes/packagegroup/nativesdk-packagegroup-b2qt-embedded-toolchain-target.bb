@@ -5,21 +5,28 @@ LICENSE = "CLOSED"
 
 PACKAGES = "${PN}"
 
-SGX_mx6 = " \
+MACHINE_EXTRA_INSTALL = ""
+
+MACHINE_EXTRA_INSTALL_mx6 = " \
     gpu-viv-bin-mx6q-dev \
     libgal-mx6 \
     libgles-mx6-dev \
     libgles2-mx6-dev \
     "
 
-SGX_mx5 = " \
+MACHINE_EXTRA_INSTALL_mx5 = " \
     libgsl-fsl-mx51-dev \
     libegl-mx51-dev \
     libgles2-mx51-dev \
     "
 
-SGX_beagleboard = "\
+MACHINE_EXTRA_INSTALL_beagleboard = "\
     libgles-omap3-dev \
+    "
+
+MACHINE_EXTRA_INSTALL_emulator = "\
+    libegl-mesa-dev \
+    libgles2-mesa-dev \
     "
 
 RDEPENDS_${PN} += "\
@@ -38,5 +45,5 @@ RDEPENDS_${PN} += "\
     icu-dev \
     libxslt-dev \
     libudev-dev \
-    ${SGX} \
+    ${MACHINE_EXTRA_INSTALL} \
     "
