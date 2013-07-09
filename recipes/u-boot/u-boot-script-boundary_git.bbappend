@@ -1,6 +1,4 @@
-
-do_mkimage_prepend () {
-    if [ ! -e board/boundary/${MACHINE} ]; then
-        cp -r board/boundary/nitrogen6x board/boundary/${MACHINE}
-    fi
-}
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+SRC_URI += " \
+        file://0001-nitrogen6x-disable-console-cursor-blinking.patch \
+        "
