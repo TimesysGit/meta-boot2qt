@@ -21,7 +21,9 @@ MACHINE_EXTRA_INSTALL_mx5 += "\
         "
 
 MACHINE_EXTRA_INSTALL_mx6 += "\
-        gpu-viv-bin-mx6q \
+        libgal-mx6 \
+        libegl-mx6 \
+        libgles2-mx6 \
         gst-fsl-plugin \
         "
 
@@ -55,6 +57,8 @@ GSTREAMER_EXTRA_INSTALL = "\
 TOOLS_EXTRA_INSTALL = "\
         adbd \
         ldd \
+        binutils \
+        binutils-symlinks \
         "
 
 IMAGE_INSTALL += "\

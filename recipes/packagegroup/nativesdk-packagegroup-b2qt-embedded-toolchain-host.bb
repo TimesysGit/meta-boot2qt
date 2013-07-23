@@ -7,7 +7,8 @@ require recipes-core/packagegroups/nativesdk-packagegroup-sdk-host.bb
 
 RDEPENDS_${PN} = "\
     mkcard-nativesdk \
-    python-modules-nativesdk \
+    python-nativesdk \
+    python-subprocess-nativesdk \
     "
 
 

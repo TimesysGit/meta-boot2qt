@@ -8,9 +8,10 @@ PACKAGES = "${PN}"
 MACHINE_EXTRA_INSTALL = ""
 
 MACHINE_EXTRA_INSTALL_mx6 = " \
-    gpu-viv-bin-mx6q-dev \
     libgal-mx6 \
-    libgles-mx6-dev \
+    libegl-mx6 \
+    libegl-mx6-dev \
+    libgles2-mx6 \
     libgles2-mx6-dev \
     "
 
