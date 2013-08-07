@@ -11,6 +11,7 @@ BBLAYERS ?= " \
   ##COREBASE##/meta-fsl-arm \
   ##COREBASE##/meta-fsl-arm-extra \
   ##COREBASE##/meta-ti \
+  ##COREBASE##/meta-raspberrypi \
   ##COREBASE##/meta-openembedded/meta-oe \
   ##COREBASE##/meta-b2qt \
   "

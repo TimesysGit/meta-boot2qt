@@ -16,6 +16,10 @@ EXTRA_IMAGEDEPENDS_mx6 += "u-boot-script-boundary"
 
 MACHINE_EXTRA_INSTALL = ""
 
+MACHINE_EXTRA_INSTALL_raspberrypi += "\
+        vc-graphics \
+        "
+
 MACHINE_EXTRA_INSTALL_mx5 += "\
         amd-gpu-x11-bin-mx51 \
         "

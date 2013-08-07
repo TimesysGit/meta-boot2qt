@@ -22,6 +22,7 @@ FILES_${PN} += "${bindir}/adbd"
 
 PRODUCTID_beagleboard = "0x9018"
 PRODUCTID_mx6 = "0x0d02"
+PRODUCTID_raspberrypi = "0xabcd"
 
 do_configure() {
 	if [ -n "${PRODUCTID}" ]; then

@@ -7,6 +7,10 @@ PACKAGES = "${PN}"
 
 MACHINE_EXTRA_INSTALL = ""
 
+MACHINE_EXTRA_INSTALL_raspberrypi = " \
+    vc-graphics-dev \
+    "
+
 MACHINE_EXTRA_INSTALL_mx6 = " \
     libgal-mx6 \
     libegl-mx6 \

@@ -62,7 +62,7 @@ MACHINE_HOSTNAME ?= "b2qt-linux-${MACHINE}"
 #
 # The default is a downloads directory under TOPDIR which is the build directory.
 #
-#DL_DIR ?= "${TOPDIR}/downloads"
+DL_DIR ?= "${TOPDIR}/../downloads"
 
 PREMIRRORS = "http://qt-rnd.it-local/yocto/"
 
