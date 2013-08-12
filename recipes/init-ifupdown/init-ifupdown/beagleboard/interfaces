@@ -17,6 +17,7 @@ iface atml0 inet dhcp
 auto eth0
 iface eth0 inet dhcp
     hostname `/bin/hostname`
+#    hwaddress ether 00:00:00:00:00:00
 iface eth1 inet dhcp
 
 # Ethernet/RNDIS gadget (g_ether)
