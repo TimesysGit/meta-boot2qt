@@ -52,6 +52,7 @@ GSTREAMER_EXTRA_INSTALL = "\
         gst-plugins-good-videofilter \
         gst-plugins-good-id3demux \
         gst-plugins-good-auparse \
+        gst-plugins-good-isomp4 \
         gst-plugins-ugly-rmdemux \
         gst-plugins-ugly-asf \
         gst-plugins-ugly-a52dec \
