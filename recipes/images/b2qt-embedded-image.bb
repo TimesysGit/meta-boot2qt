@@ -78,6 +78,8 @@ IMAGE_INSTALL += "\
         freetype \
         fontconfig \
         liberation-fonts \
+        tslib \
+        tslib-calibrate \
         ${GSTREAMER_EXTRA_INSTALL} \
         ${TOOLS_EXTRA_INSTALL} \
         ${MACHINE_EXTRA_INSTALL} \

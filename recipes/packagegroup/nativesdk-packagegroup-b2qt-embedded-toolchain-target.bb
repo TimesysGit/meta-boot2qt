@@ -50,5 +50,6 @@ RDEPENDS_${PN} += "\
     icu-dev \
     libxslt-dev \
     libudev-dev \
+    tslib-dev \
     ${MACHINE_EXTRA_INSTALL} \
     "
