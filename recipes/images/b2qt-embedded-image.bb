@@ -14,35 +14,7 @@ inherit core-image
 
 EXTRA_IMAGEDEPENDS_mx6 += "u-boot-script-boundary"
 
-MACHINE_EXTRA_INSTALL = ""
-
-MACHINE_EXTRA_INSTALL_raspberrypi += "\
-        vc-graphics \
-        "
-
-MACHINE_EXTRA_INSTALL_mx5 += "\
-        amd-gpu-x11-bin-mx51 \
-        "
-
-MACHINE_EXTRA_INSTALL_mx6 += "\
-        libgal-mx6 \
-        libegl-mx6 \
-        libgles2-mx6 \
-        gst-fsl-plugin \
-        "
-
-MACHINE_EXTRA_INSTALL_beagleboard += "\
-        libgles-omap3 \
-        libgles-omap3-rawdemos \
-        "
-
-MACHINE_EXTRA_INSTALL_emulator = "\
-        llvm3.2 \
-        libegl-mesa \
-        libegl-gallium \
-        libgles2-mesa \
-        mount-vboxsf \
-        "
+MACHINE_EXTRA_INSTALL ?= ""
 
 GSTREAMER_EXTRA_INSTALL = "\
         gst-meta-video \

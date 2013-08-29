@@ -20,13 +20,9 @@ S = "${WORKDIR}/git/adb"
 
 FILES_${PN} += "${bindir}/adbd"
 
-PRODUCTID_beagleboard = "0x9018"
-PRODUCTID_mx6 = "0x0d02"
-PRODUCTID_raspberrypi = "0xabcd"
-
 do_configure() {
-	if [ -n "${PRODUCTID}" ]; then
-		sed -i -e 's/PRODUCT=.*/PRODUCT=${PRODUCTID}/' ${WORKDIR}/adb-init
+	if [ -n "${ADB_PRODUCTID}" ]; then
+		sed -i -e 's/PRODUCT=.*/PRODUCT=${ADB_PRODUCTID}/' ${WORKDIR}/adb-init
 	fi
 }
 

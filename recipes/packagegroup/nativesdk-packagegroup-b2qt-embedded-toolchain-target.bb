@@ -5,34 +5,7 @@ LICENSE = "CLOSED"
 
 PACKAGES = "${PN}"
 
-MACHINE_EXTRA_INSTALL = ""
-
-MACHINE_EXTRA_INSTALL_raspberrypi = " \
-    vc-graphics-dev \
-    "
-
-MACHINE_EXTRA_INSTALL_mx6 = " \
-    libgal-mx6 \
-    libegl-mx6 \
-    libegl-mx6-dev \
-    libgles2-mx6 \
-    libgles2-mx6-dev \
-    "
-
-MACHINE_EXTRA_INSTALL_mx5 = " \
-    libgsl-fsl-mx51-dev \
-    libegl-mx51-dev \
-    libgles2-mx51-dev \
-    "
-
-MACHINE_EXTRA_INSTALL_beagleboard = "\
-    libgles-omap3-dev \
-    "
-
-MACHINE_EXTRA_INSTALL_emulator = "\
-    libegl-mesa-dev \
-    libgles2-mesa-dev \
-    "
+MACHINE_EXTRA_INSTALL_SDK ?= ""
 
 RDEPENDS_${PN} += "\
     task-core-standalone-sdk-target \
@@ -51,5 +24,5 @@ RDEPENDS_${PN} += "\
     libxslt-dev \
     libudev-dev \
     tslib-dev \
-    ${MACHINE_EXTRA_INSTALL} \
+    ${MACHINE_EXTRA_INSTALL_SDK} \
     "
