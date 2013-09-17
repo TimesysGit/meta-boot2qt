@@ -1,0 +1,25 @@
+From c7edbae8c34f73abb1974c0e8722f6f3c7b49f45 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@digia.com>
+Date: Tue, 17 Sep 2013 08:16:51 +0300
+Subject: [PATCH] am335x-evm: disable console cursor blinking
+
+---
+ include/configs/am335x_evm.h |    2 +
+ 1 file changed, 2 insertion(++)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index 90e35ee..f28e842 100644
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -86,6 +86,8 @@
+ 	"ip_method=none\0" \
+ 	"bootargs_defaults=setenv bootargs " \
+ 		"console=${console} " \
++		"consoleblank=0 " \
++		"vt.global_cursor_default=0 " \
+ 		"${optargs}\0" \
+ 	"mmcargs=run bootargs_defaults;" \
+ 		"setenv bootargs ${bootargs} " \
+-- 
+1.7.10.4
+
