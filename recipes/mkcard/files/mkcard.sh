@@ -32,11 +32,6 @@ echo ,,,-
 
 sleep 1
 
-
-if [ -x `which kpartx` ]; then
-	kpartx -a ${DRIVE}
-fi
-
 # handle various device names.
 # note something like fdisk -l /dev/loop0 | egrep -E '^/dev' | cut -d' ' -f1
 # won't work due to https://bugzilla.redhat.com/show_bug.cgi?id=649572
@@ -46,21 +41,10 @@ if [ ! -b ${PARTITION1} ]; then
 	PARTITION1=${DRIVE}p1
 fi
 
-DRIVE_NAME=`basename $DRIVE`
-DEV_DIR=`dirname $DRIVE`
-
-if [ ! -b ${PARTITION1} ]; then
-	PARTITION1=$DEV_DIR/mapper/${DRIVE_NAME}p1
-fi
-
 PARTITION2=${DRIVE}2
 if [ ! -b ${PARTITION2} ]; then
 	PARTITION2=${DRIVE}p2
 fi
-if [ ! -b ${PARTITION2} ]; then
-	PARTITION2=$DEV_DIR/mapper/${DRIVE_NAME}p2
-fi
-
 
 # now make partitions.
 if [ -b ${PARTITION1} ]; then
