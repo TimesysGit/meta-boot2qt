@@ -52,6 +52,7 @@ IMAGE_INSTALL += "\
         liberation-fonts \
         tslib \
         tslib-calibrate \
+        alsa-utils-amixer \
         ${GSTREAMER_EXTRA_INSTALL} \
         ${TOOLS_EXTRA_INSTALL} \
         ${MACHINE_EXTRA_INSTALL} \
