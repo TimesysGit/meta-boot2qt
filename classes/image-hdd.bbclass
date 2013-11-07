@@ -18,5 +18,21 @@ python do_hddimg() {
         bb.build.exec_func('create_hdd_image', d)
 }
 
+python build_syslinux_cfg_append () {
+    import re
+
+    try:
+        cfgfile = file(cfile, 'r+')
+    except OSError:
+        raise bb.build.funcFailed('Unable to open %s' % (cfile))
+
+    f_content = cfgfile.read()
+    f_content = re.sub('tty0', 'ttyS0,115200', f_content)
+
+    cfgfile.seek(0)
+    cfgfile.write(f_content)
+    cfgfile.close()
+}
+
 addtask hddimg after do_bootdirectdisk before do_build
 do_hddimg[nostamp] = "1"
