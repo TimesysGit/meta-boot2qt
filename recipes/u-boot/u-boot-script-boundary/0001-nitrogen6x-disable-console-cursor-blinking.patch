@@ -1,6 +1,6 @@
-From 6b894707404a1aeb3072d4b3bfc486ff9ad37ac4 Mon Sep 17 00:00:00 2001
+From d01717f74b5c8d62e93d29d03df0c49b67645d32 Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@digia.com>
-Date: Tue, 9 Jul 2013 15:31:30 +0300
+Date: Mon, 16 Dec 2013 15:42:45 +0200
 Subject: [PATCH] nitrogen6x: disable console cursor blinking
 
 ---
@@ -8,17 +8,18 @@ Subject: [PATCH] nitrogen6x: disable console cursor blinking
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/board/boundary/nitrogen6x/6x_bootscript.txt b/board/boundary/nitrogen6x/6x_bootscript.txt
-index 1d766ca..80b91ea 100644
+index 9533713..2985af2 100644
 --- a/board/boundary/nitrogen6x/6x_bootscript.txt
 +++ b/board/boundary/nitrogen6x/6x_bootscript.txt
-@@ -53,6 +53,6 @@ done
+@@ -52,7 +52,7 @@ while test "4" -ne $nextcon ; do
+ done
  
  setenv bootargs $bootargs $fbmem
+-setenv bootargs "$bootargs console=ttymxc1,115200 vmalloc=400M consoleblank=0 rootwait"
++setenv bootargs "$bootargs console=ttymxc1,115200 vmalloc=400M consoleblank=0 vt.global_cursor_default=0 rootwait"
  
--setenv bootargs $bootargs console=ttymxc1,115200 vmalloc=400M root=/dev/mmcblk0p2 rootwait consoleblank=0 ;
-+setenv bootargs $bootargs console=ttymxc1,115200 vmalloc=400M root=/dev/mmcblk0p2 rootwait consoleblank=0 vt.global_cursor_default=0 ;
- ${fs}load mmc ${disk}:1 10800000 uImage && bootm 10800000 ; echo "Error loading kernel image"
- 
+ if itest.s x$bootpart == x ; then
+ 	bootpart=1
 -- 
 1.7.10.4
 
