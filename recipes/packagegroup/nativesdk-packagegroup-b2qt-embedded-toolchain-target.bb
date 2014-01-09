@@ -44,7 +44,7 @@ RDEPENDS_${PN} += "\
     gst-plugins-base-dev \
     icu-dev \
     libxslt-dev \
-    libudev-dev \
+    udev-dev \
     tslib-dev \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     "
