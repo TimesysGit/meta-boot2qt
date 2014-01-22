@@ -61,6 +61,7 @@ TOOLS_EXTRA_INSTALL = "\
         "
 
 IMAGE_INSTALL += "\
+        kernel-modules \
         psplash \
         openssh-sftp-server \
         openssl \
