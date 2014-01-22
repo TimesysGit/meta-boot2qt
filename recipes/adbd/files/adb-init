@@ -8,7 +8,7 @@ SERIAL=$(hostname)-$(sed -e 's/://g' /sys/class/net/eth0/address)
 
 case "$1" in
 start)
-    insmod $(busybox find /lib/modules/$(uname -r) -name "g_ffs.ko") idVendor=${VENDOR} idProduct=${PRODUCT} iSerialNumber=${SERIAL}
+    modprobe g_ffs idVendor=${VENDOR} idProduct=${PRODUCT} iSerialNumber=${SERIAL}
     mkdir -p /dev/usb-ffs
     chmod 770 /dev/usb-ffs
     mkdir -p /dev/usb-ffs/adb
