@@ -46,5 +46,6 @@ RDEPENDS_${PN} += "\
     libxslt-dev \
     udev-dev \
     tslib-dev \
+    hunspell-dev \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     "
