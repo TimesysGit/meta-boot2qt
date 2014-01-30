@@ -20,7 +20,7 @@
 ##
 #############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += "file://0001-support-multitouch-screens.patch"
 
