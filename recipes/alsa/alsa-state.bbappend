@@ -20,27 +20,4 @@
 ##
 #############################################################################
 
-IMAGE_CLASSES += "image_types_sdcard"
-IMAGE_FSTYPES = "tar.gz ext3 sdcard"
-
-BOOT_SCRIPTS = "\
-        u-boot-${MACHINE}.img:u-boot.img \
-        MLO-${MACHINE}:MLO \
-        "
-SDCARD_GENERATION_COMMAND = "generate_imx_sdcard"
-UBOOT_SUFFIX = "img"
-
-PREFERRED_PROVIDER_virtual/libgl = "libgles-omap3"
-PREFERRED_VERSION_libgles-omap3 = "4.09.00.01"
-PREFERRED_VERSION_omap3-sgx-modules = "4.09.00.01"
-
-MACHINE_EXTRA_INSTALL = "\
-        libgles-omap3 \
-        libgles-omap3-rawdemos \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK = "\
-        libgles-omap3-dev \
-        "
-
-ADB_PRODUCTID = "0x9018"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"

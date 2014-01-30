@@ -1,3 +1,25 @@
+#############################################################################
+##
+## Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+##
+## This file is part of the Qt Enterprise Embedded Scripts of the Qt
+## framework.
+##
+## $QT_BEGIN_LICENSE$
+## Commercial License Usage Only
+## Licensees holding valid commercial Qt license agreements with Digia
+## with an appropriate addendum covering the Qt Enterprise Embedded Scripts,
+## may use this file in accordance with the terms contained in said license
+## agreement.
+##
+## For further information use the contact form at
+## http://qt.digia.com/contact-us.
+##
+##
+## $QT_END_LICENSE$
+##
+#############################################################################
+
 DESCRIPTION = "Helper script for OE's llvm support"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58 \

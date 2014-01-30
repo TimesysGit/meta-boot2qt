@@ -1,31 +1,54 @@
-OpenEmbedded/Yocto meta layer for B2Qt on embedded Linux
+#############################################################################
+##
+## Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+##
+## This file is part of the Qt Enterprise Embedded Scripts of the Qt
+## framework.
+##
+## $QT_BEGIN_LICENSE$
+## Commercial License Usage Only
+## Licensees holding valid commercial Qt license agreements with Digia
+## with an appropriate addendum covering the Qt Enterprise Embedded Scripts,
+## may use this file in accordance with the terms contained in said license
+## agreement.
+##
+## For further information use the contact form at
+## http://qt.digia.com/contact-us.
+##
+##
+## $QT_END_LICENSE$
+##
+#############################################################################
+
+OpenEmbedded/Yocto meta layer for Boot to Qt Software Stack
 ==========================================================
 
-This layer provides B2Qt on embedded Linux recipes for use with
+This layer provides B2Qt for embedded Linux recipes for use with
 OpenEmbedded and Yocto.
 
 This layer depends on:
 
 URI: git://git.openembedded.org/openembedded-core
-branch: master
+branch: dylan
 revision: HEAD
 
 URI: git://git.openembedded.org/meta-openembedded
 layer: meta-oe
-branch: master
+branch: dylan
 revision: HEAD
 
 URI: git://git.yoctoproject.org/meta-ti
-branch: master
+branch: dylan
 revision: HEAD
 
 URI: git://git.yoctoproject.org/meta-fsl-arm
-branch: master
+branch: dylan
 revision: HEAD
 
-URI: git://git.yoctoproject.org/meta-fsl-arm-extra
-branch: master
+URI: git://github.com/Freescale/meta-fsl-arm-extra.git
+branch: dylan
 revision: HEAD
 
-Main layer maintainer: Samuli Piippo <samuli.piippo@digia.com>
-
+URI: git://git.yoctoproject.org/meta-raspberrypi
+branch: dylan
+revision: HEAD
