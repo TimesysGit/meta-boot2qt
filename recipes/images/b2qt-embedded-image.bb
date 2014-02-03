@@ -61,6 +61,7 @@ TOOLS_EXTRA_INSTALL = "\
         "
 
 IMAGE_INSTALL += "\
+        kernel-modules \
         psplash \
         openssh-sftp-server \
         openssl \
@@ -75,6 +76,7 @@ IMAGE_INSTALL += "\
         tslib \
         tslib-calibrate \
         alsa-utils-amixer \
+        hunspell \
         ${GSTREAMER_EXTRA_INSTALL} \
         ${TOOLS_EXTRA_INSTALL} \
         ${MACHINE_EXTRA_INSTALL} \

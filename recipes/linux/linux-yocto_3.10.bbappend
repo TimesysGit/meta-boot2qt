@@ -20,16 +20,10 @@
 ##
 #############################################################################
 
-do_compile_prepend() {
-cat > ${WORKDIR}/python << EOF
-#! /bin/sh
-case "\$2" in
-        --includes) echo "-I${STAGING_INCDIR}/${PYTHON_DIR}/" ;;
-        --ldflags) echo "-Wl,-rpath-link,${STAGING_LIBDIR}/.. -Wl,-rpath,${libdir}/.. -lpthread -ldl -lutil -lm -lpython${PYTHON_BASEVERSION}" ;;
-        --exec-prefix) echo "${exec_prefix}" ;;
-        *) exit 1 ;;
-esac
-exit 0
-EOF
-        chmod +x ${WORKDIR}/python
-}
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += "\
+    file://snd_intel8x0.cfg \
+    "
+
+KMACHINE_emulator = "qemux86"
+COMPATIBLE_MACHINE_emulator = "emulator"

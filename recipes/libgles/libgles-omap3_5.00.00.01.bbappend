@@ -20,25 +20,29 @@
 ##
 #############################################################################
 
-DESCRIPTION = "Helper script for OE's llvm support"
-LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58 \
-                    file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420 \
-"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-SRC_URI = "file://llvm-config"
+BINLOCATION_omap3  = "${S}/gfx_rel_es5.x"
+BINLOCATION_beaglebone  = "${S}/gfx_rel_es8.x"
 
-ALLOW_EMPTY_${PN} = "1"
-SYSROOT_PREPROCESS_FUNCS_append_class-target = " llvm_common_sysroot_preprocess"
+PROVIDES += "virtual/libgl"
 
-llvm_common_sysroot_preprocess() {
-    install -d ${SYSROOT_DESTDIR}${bindir_crossscripts}/
-    install -m 0755 ${WORKDIR}/llvm-config ${SYSROOT_DESTDIR}${bindir_crossscripts}/
+LIBGLESWINDOWSYSTEM = "libpvrPVR2D_FLIPWSEGL.so.1"
+
+do_install_append() {
+	echo "ParamBufferSize=33554432" >> ${D}${sysconfdir}/powervr.ini
 }
 
-do_install_virtclass-native() {
-    install -d ${D}${bindir}
-    install -m 0755 ${WORKDIR}/llvm-config ${D}${bindir}
+# Inhibit warnings about files being stripped.
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+
+pkg_postinst_${PN}_append() {
+ESREV=$(echo ${BINLOCATION} | grep -Po '(\d+)(?!.*\d)' )
+echo ${ESREV} > $D${sysconfdir}/powervr-esrev
 }
 
-BBCLASSEXTEND = "native"
+RRECOMMENDS_${PN} = "omap3-sgx-modules"
+RRECOMMENDS_${PN}-blitwsegl = ""
+RRECOMMENDS_${PN}-flipwsegl = ""
+RRECOMMENDS_${PN}-frontwsegl = ""
+RRECOMMENDS_${PN}-linuxfbwsegl = ""

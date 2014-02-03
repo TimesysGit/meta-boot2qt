@@ -275,7 +275,7 @@ CONF_VERSION = "1"
 
 INHERIT += "rm_work"
 
-BBMASK = "meta-ti/recipes-misc"
+BBMASK = "meta-ti/recipes-misc|meta-raspberrypi/recipes-graphics/mesa/mesa_9.2.2.bbappend"
 ACCEPT_FSL_EULA = "1"
 LICENSE_FLAGS_WHITELIST = "commercial"
 

@@ -20,6 +20,7 @@
 ##
 #############################################################################
 
-PROVIDES += "virtual/libgl"
-
-FILES_libegl-mx6-dev += "${includedir}/KHR ${includedir}/EGL"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += " \
+        file://0001-BBB-disable-console-cursor-blinking.patch \
+        "

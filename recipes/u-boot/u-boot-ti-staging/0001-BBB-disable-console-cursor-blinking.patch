@@ -1,0 +1,25 @@
+From bde714b9bfeafe46abc1078c09f6efac0e7b6478 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@digia.com>
+Date: Wed, 22 Jan 2014 11:30:59 +0200
+Subject: [PATCH] BBB: disable console cursor blinking
+
+---
+ include/configs/am335x_evm.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index d53f17d..1b3d2a4 100644
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -59,6 +59,8 @@
+ 	"ramrootfstype=ext2\0" \
+ 	"mmcargs=setenv bootargs console=${console} " \
+ 		"${optargs} " \
++		"consoleblank=0 " \
++		"vt.global_cursor_default=0 " \
+ 		"root=${mmcroot} " \
+ 		"rootfstype=${mmcrootfstype}\0" \
+ 	"spiroot=/dev/mtdblock4 rw\0" \
+-- 
+1.8.3.2
+
