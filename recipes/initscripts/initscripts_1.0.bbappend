@@ -1,6 +1,6 @@
 #############################################################################
 ##
-## Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+## Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
 ##
 ## This file is part of the Qt Enterprise Embedded Scripts of the Qt
 ## framework.
