@@ -30,7 +30,7 @@ fi
 
 mkdir -p ${1}
 
-DIR=$(readlink -f $(dirname $0)/..)
+DIR=$(readlink -f $(dirname $0))
 BUILDDIR=$(readlink -f $1)
 
 if [ ! -d ${BUILDDIR}/poky ]; then
@@ -42,7 +42,7 @@ if [ ! -d ${BUILDDIR}/poky/meta-openembedded ]; then
 fi
 
 if [ ! -d ${BUILDDIR}/poky/meta-ti ]; then
-    git clone git://git.yoctoproject.org/meta-ti ${BUILDDIR}/poky/meta-ti -b master
+    git clone git://git.yoctoproject.org/meta-ti ${BUILDDIR}/poky/meta-ti -b dora
 fi
 
 if [ ! -d ${BUILDDIR}/poky/meta-fsl-arm ]; then
@@ -54,7 +54,7 @@ if [ ! -d ${BUILDDIR}/poky/meta-fsl-arm-extra ]; then
 fi
 
 if [ ! -d ${BUILDDIR}/poky/meta-raspberrypi ]; then
-    git clone git://git.yoctoproject.org/meta-raspberrypi ${BUILDDIR}/poky/meta-raspberrypi -b master
+    git clone git://git.yoctoproject.org/meta-raspberrypi ${BUILDDIR}/poky/meta-raspberrypi -b dora
 fi
 
 if [ ! -d ${BUILDDIR}/poky/meta-b2qt ]; then
@@ -65,10 +65,10 @@ echo
 echo "Yocto build system is ready"
 echo "next initialize the build env for your target machine, for example:"
 echo
-echo "cd ${BUILDDIR}/poky"
-echo "export TEMPLATECONF=${DIR}/conf"
+echo "cd ${BUILDDIR}"
+echo "export TEMPLATECONF=meta-b2qt/conf"
 echo "export MACHINE=raspberrypi"
-echo ". ./oe-init-build-env"
+echo ". ./poky/oe-init-build-env build-raspberrypi"
 echo
 echo "and build B2Qt image with:"
 echo
