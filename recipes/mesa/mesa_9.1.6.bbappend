@@ -21,8 +21,6 @@
 #############################################################################
 
 EGL_PLATFORMS = "fbdev"
-PACKAGECONFIG = "egl gles dri gallium gallium-llvm gallium-egl"
-GALLIUMDRIVERS_LLVM = ""
 DRIDRIVERS_remove = "swrast,radeon,r200,nouveau,i965,i915"
 DRIDRIVERS_append += "swrast"
 EXTRA_OECONF += "--with-dri-drivers="""
