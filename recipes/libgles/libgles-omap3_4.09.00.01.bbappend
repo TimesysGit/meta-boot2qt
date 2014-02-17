@@ -22,8 +22,6 @@
 
 BINLOCATION_omap3  = "${S}/gfx_rel_es5.x"
 
-PROVIDES += "virtual/libgl"
-
 LIBGLESWINDOWSYSTEM = "libpvrPVR2D_FLIPWSEGL.so.1"
 
 do_install_append() {

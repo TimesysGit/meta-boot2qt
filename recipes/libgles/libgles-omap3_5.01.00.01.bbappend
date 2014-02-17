@@ -25,8 +25,6 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 BINLOCATION_omap3  = "${S}/gfx_rel_es5.x"
 BINLOCATION_beaglebone  = "${S}/gfx_rel_es8.x"
 
-PROVIDES += "virtual/libgl"
-
 LIBGLESWINDOWSYSTEM = "libpvrPVR2D_FLIPWSEGL.so.1"
 
 # Inhibit warnings about files being stripped.
