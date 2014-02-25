@@ -1,0 +1,6 @@
+#/bin/sh
+if [ "${2}" == "up" ]; then
+    ifup ${1}
+else
+    ifdown ${1}
+fi

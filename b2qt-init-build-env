@@ -1,0 +1,76 @@
+#!/bin/sh
+#############################################################################
+##
+## Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
+##
+## This file is part of the Qt Enterprise Embedded Scripts of the Qt
+## framework.
+##
+## $QT_BEGIN_LICENSE$
+## Commercial License Usage Only
+## Licensees holding valid commercial Qt license agreements with Digia
+## with an appropriate addendum covering the Qt Enterprise Embedded Scripts,
+## may use this file in accordance with the terms contained in said license
+## agreement.
+##
+## For further information use the contact form at
+## http://qt.digia.com/contact-us.
+##
+##
+## $QT_END_LICENSE$
+##
+#############################################################################
+
+set -e
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <yocto build directory>"
+    exit 1
+fi
+
+mkdir -p ${1}
+
+DIR=$(readlink -f $(dirname $0))
+BUILDDIR=$(readlink -f $1)
+
+if [ ! -d ${BUILDDIR}/poky ]; then
+    git clone git://git.yoctoproject.org/poky ${BUILDDIR}/poky -b dora
+fi
+
+if [ ! -d ${BUILDDIR}/poky/meta-openembedded ]; then
+    git clone git://git.openembedded.org/meta-openembedded ${BUILDDIR}/poky/meta-openembedded -b dora
+fi
+
+if [ ! -d ${BUILDDIR}/poky/meta-ti ]; then
+    git clone git://git.yoctoproject.org/meta-ti ${BUILDDIR}/poky/meta-ti -b dora
+fi
+
+if [ ! -d ${BUILDDIR}/poky/meta-fsl-arm ]; then
+    git clone git://git.yoctoproject.org/meta-fsl-arm ${BUILDDIR}/poky/meta-fsl-arm -b dora
+fi
+
+if [ ! -d ${BUILDDIR}/poky/meta-fsl-arm-extra ]; then
+    git clone git://github.com/Freescale/meta-fsl-arm-extra.git ${BUILDDIR}/poky/meta-fsl-arm-extra -b dora
+fi
+
+if [ ! -d ${BUILDDIR}/poky/meta-raspberrypi ]; then
+    git clone git://git.yoctoproject.org/meta-raspberrypi ${BUILDDIR}/poky/meta-raspberrypi -b dora
+fi
+
+if [ ! -d ${BUILDDIR}/poky/meta-b2qt ]; then
+    ln -s ${DIR} ${BUILDDIR}/poky/meta-b2qt
+fi
+
+echo
+echo "Yocto build system is ready"
+echo "next initialize the build env for your target machine, for example:"
+echo
+echo "cd ${BUILDDIR}"
+echo "export TEMPLATECONF=meta-b2qt/conf"
+echo "export MACHINE=raspberrypi"
+echo ". ./poky/oe-init-build-env build-raspberrypi"
+echo
+echo "and build B2Qt image with:"
+echo
+echo "bitbake b2qt-embedded-image"
+echo
