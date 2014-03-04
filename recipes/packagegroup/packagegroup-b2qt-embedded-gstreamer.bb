@@ -20,22 +20,23 @@
 ##
 #############################################################################
 
-DESCRIPTION = "B2Qt on embedded Linux SDK image"
+DESCRIPTION = "Additional gstreamer packagegroup for B2Qt embedded Linux image"
 LICENSE = "CLOSED"
 PR = "r0"
 
-IMAGE_FEATURES += "\
-        package-management \
-        ssh-server-dropbear \
-        tools-debug \
-        debug-tweaks \
-        hwcodecs \
+inherit packagegroup
+
+RDEPENDS_${PN} = "\
+        gst-meta-video \
+        gst-meta-audio \
+        gst-plugins-good \
+        gst-plugins-base-app \
+        gst-plugins-good-videofilter \
+        gst-plugins-good-id3demux \
+        gst-plugins-good-auparse \
+        gst-plugins-good-isomp4 \
+        gst-plugins-ugly-rmdemux \
+        gst-plugins-ugly-asf \
+        gst-plugins-ugly-a52dec \
+        gst-ffmpeg \
         "
-
-inherit core-image
-
-IMAGE_INSTALL += "\
-    packagegroup-b2qt-embedded-base \
-    packagegroup-b2qt-embedded-tools \
-    packagegroup-b2qt-embedded-gstreamer \
-    "

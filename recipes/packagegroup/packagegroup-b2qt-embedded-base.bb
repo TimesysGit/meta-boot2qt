@@ -20,22 +20,29 @@
 ##
 #############################################################################
 
-DESCRIPTION = "B2Qt on embedded Linux SDK image"
+DESCRIPTION = "Packagegroup for B2Qt embedded Linux image"
 LICENSE = "CLOSED"
 PR = "r0"
 
-IMAGE_FEATURES += "\
-        package-management \
-        ssh-server-dropbear \
-        tools-debug \
-        debug-tweaks \
-        hwcodecs \
+inherit packagegroup
+
+RDEPENDS_${PN} = "\
+        kernel-modules \
+        adbd \
+        psplash \
+        openssh-sftp-server \
+        openssl \
+        libpng \
+        jpeg \
+        tiff \
+        libxslt \
+        icu \
+        freetype \
+        fontconfig \
+        liberation-fonts \
+        tslib \
+        tslib-calibrate \
+        alsa-utils-amixer \
+        hunspell \
+        ${MACHINE_EXTRA_INSTALL} \
         "
-
-inherit core-image
-
-IMAGE_INSTALL += "\
-    packagegroup-b2qt-embedded-base \
-    packagegroup-b2qt-embedded-tools \
-    packagegroup-b2qt-embedded-gstreamer \
-    "
