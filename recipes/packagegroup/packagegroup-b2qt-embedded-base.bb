@@ -44,5 +44,6 @@ RDEPENDS_${PN} = "\
         tslib-calibrate \
         alsa-utils-amixer \
         hunspell \
+        ca-certificates \
         ${MACHINE_EXTRA_INSTALL} \
         "
