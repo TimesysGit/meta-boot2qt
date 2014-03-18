@@ -47,5 +47,6 @@ RDEPENDS_${PN} += "\
     udev-dev \
     tslib-dev \
     hunspell-dev \
+    libcap-dev \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     "
