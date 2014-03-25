@@ -33,6 +33,7 @@ IMAGE_FEATURES += "\
         "
 
 inherit core-image
+inherit bootfs-image
 
 IMAGE_INSTALL += "\
     packagegroup-b2qt-embedded-base \

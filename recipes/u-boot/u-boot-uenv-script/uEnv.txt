@@ -1,0 +1,3 @@
+bootfile=zImage
+optargs=consoleblank=0 vt.global_cursor_default=0
+mmcboot=echo Booting from mmc ...; run mmcargs; bootz ${kloadaddr} - ${fdtaddr}
