@@ -48,5 +48,6 @@ RDEPENDS_${PN} += "\
     tslib-dev \
     hunspell-dev \
     libcap-dev \
+    ${@base_contains("DISTRO_FEATURES", "bluetooth", "bluez4-dev", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     "
