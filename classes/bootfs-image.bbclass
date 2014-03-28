@@ -25,7 +25,7 @@ BOOTFS_LINK_NAME = "${IMAGE_BASENAME}-boot-${MACHINE}"
 
 BOOTFS_DEPENDS ?= ""
 
-do_bootfs () {
+fakeroot do_bootfs () {
 	if [ -n ${BOOTFS_CONTENT} ]; then
 		exit 0
 	fi
