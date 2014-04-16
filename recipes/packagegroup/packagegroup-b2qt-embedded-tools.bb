@@ -20,30 +20,14 @@
 ##
 #############################################################################
 
-IMAGE_FSTYPES = "tar.gz"
+DESCRIPTION = "Additional tools packagegroup for B2Qt embedded Linux image"
+LICENSE = "CLOSED"
+PR = "r0"
 
-BOOTFS_CONTENT = "\
-    ${KERNEL_IMAGETYPE}:${KERNEL_IMAGETYPE} \
-    6x_bootscript-${MACHINE}:6x_bootscript \
-    6x_upgrade-${MACHINE}:6x_upgrade \
-    "
-BOOTFS_DEPENDS = "u-boot:do_deploy virtual/kernel:do_deploy u-boot-script-boundary:do_deploy"
+inherit packagegroup
 
-EXTRA_IMAGEDEPENDS += "u-boot-script-boundary"
-
-MACHINE_EXTRA_INSTALL = "\
-        libgal-mx6 \
-        libegl-mx6 \
-        libgles2-mx6 \
-        gst-fsl-plugin \
+RDEPENDS_${PN} = "\
+        ldd \
+        binutils \
+        binutils-symlinks \
         "
-
-MACHINE_EXTRA_INSTALL_SDK = " \
-        libgal-mx6 \
-        libegl-mx6 \
-        libegl-mx6-dev \
-        libgles2-mx6 \
-        libgles2-mx6-dev \
-        "
-
-ADB_PRODUCTID = "0x0d02"

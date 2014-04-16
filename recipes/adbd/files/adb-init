@@ -2,25 +2,27 @@
 
 DAEMON=/usr/bin/adbd
 
-VENDOR=0x18d1
-PRODUCT=0x0000
-SERIAL=$(hostname)-$(sed -e 's/://g' /sys/class/net/eth0/address)
+. /etc/default/adbd
 
 case "$1" in
 start)
-    modprobe g_ffs idVendor=${VENDOR} idProduct=${PRODUCT} iSerialNumber=${SERIAL}
-    mkdir -p /dev/usb-ffs
-    chmod 770 /dev/usb-ffs
-    mkdir -p /dev/usb-ffs/adb
-    chmod 770 /dev/usb-ffs/adb
-    mount -t functionfs adb /dev/usb-ffs/adb -o uid=0,gid=0
+    if [ "$USE_ETHERNET" = "no" ]; then
+        modprobe g_ffs idVendor=${VENDOR} idProduct=${PRODUCT} iSerialNumber=${SERIAL}
+        mkdir -p /dev/usb-ffs
+        chmod 770 /dev/usb-ffs
+        mkdir -p /dev/usb-ffs/adb
+        chmod 770 /dev/usb-ffs/adb
+        mount -t functionfs adb /dev/usb-ffs/adb -o uid=0,gid=0
+    fi
     start-stop-daemon --start --quiet --exec $DAEMON &
     ;;
 stop)
     start-stop-daemon --stop --quiet --exec $DAEMON
-    sleep 1
-    umount /dev/usb-ffs/adb
-    rmmod g_ffs
+    if [ "$USE_ETHERNET" = "no" ]; then
+        sleep 1
+        umount /dev/usb-ffs/adb
+        rmmod g_ffs
+    fi
     ;;
 restart)
     start-stop-daemon --stop --quiet --exec $DAEMON

@@ -28,7 +28,6 @@ LICENSE = "CLOSED"
 require recipes-core/packagegroups/nativesdk-packagegroup-sdk-host.bb
 
 RDEPENDS_${PN} = "\
-    mkcard-nativesdk \
     python-nativesdk \
     python-subprocess-nativesdk \
     "

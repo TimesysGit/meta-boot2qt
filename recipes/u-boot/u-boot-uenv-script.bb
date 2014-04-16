@@ -20,30 +20,30 @@
 ##
 #############################################################################
 
-IMAGE_FSTYPES = "tar.gz"
+DESCRIPTION = "U-Boot script to start up BeagleBone Black"
+LICENSE = "CLOSED"
+PR = "r0"
 
-BOOTFS_CONTENT = "\
-    ${KERNEL_IMAGETYPE}:${KERNEL_IMAGETYPE} \
-    6x_bootscript-${MACHINE}:6x_bootscript \
-    6x_upgrade-${MACHINE}:6x_upgrade \
-    "
-BOOTFS_DEPENDS = "u-boot:do_deploy virtual/kernel:do_deploy u-boot-script-boundary:do_deploy"
+COMPATIBLE_MACHINE = "(beaglebone)"
+PV = "20140225"
 
-EXTRA_IMAGEDEPENDS += "u-boot-script-boundary"
+SRC_URI = "file://uEnv.txt"
 
-MACHINE_EXTRA_INSTALL = "\
-        libgal-mx6 \
-        libegl-mx6 \
-        libgles2-mx6 \
-        gst-fsl-plugin \
-        "
+inherit deploy
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        libgal-mx6 \
-        libegl-mx6 \
-        libegl-mx6-dev \
-        libgles2-mx6 \
-        libgles2-mx6-dev \
-        "
+do_deploy () {
+    install -d ${DEPLOYDIR}
+    install ${WORKDIR}/uEnv.txt ${DEPLOYDIR}/uEnv-${MACHINE}-${PV}-${PR}.txt
 
-ADB_PRODUCTID = "0x0d02"
+    cd ${DEPLOYDIR}
+    rm -f uEnv-${MACHINE}.txt
+    ln -sf uEnv-${MACHINE}-${PV}-${PR}.txt uEnv-${MACHINE}.txt
+}
+
+addtask deploy after do_install before do_build
+
+do_compile[noexec] = "1"
+do_install[noexec] = "1"
+do_populate_sysroot[noexec] = "1"
+
+PACKAGE_ARCH = "${MACHINE_ARCH}"

@@ -1,0 +1,4 @@
+VENDOR=0x18d1
+PRODUCT=0x0000
+SERIAL=$(hostname)-$(sed -e 's/://g' /sys/class/net/eth0/address)
+USE_ETHERNET=no
