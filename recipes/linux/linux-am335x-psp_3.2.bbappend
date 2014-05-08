@@ -30,5 +30,11 @@ do_configure_append() {
 
 	echo "CONFIG_DEVTMPFS=y"                >> ${S}/.config
 
+	# Enable USB serial support
+	echo "CONFIG_USB_SERIAL=m"              >> ${S}/.config
+	echo "CONFIG_USB_SERIAL_GENERIC=y"      >> ${S}/.config
+	echo "CONFIG_USB_SERIAL_FTDI_SIO=m"     >> ${S}/.config
+	echo "CONFIG_USB_SERIAL_PL2303=m"       >> ${S}/.config
+
 	yes '' | oe_runmake oldconfig
 }
