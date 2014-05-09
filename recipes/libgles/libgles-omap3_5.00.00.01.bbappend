@@ -32,7 +32,7 @@ do_install_append() {
 }
 
 # Inhibit warnings about files being stripped.
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+INHIBIT_PACKAGE_SPLIT = "1"
 
 pkg_postinst_${PN}_append() {
 ESREV=$(echo ${BINLOCATION} | grep -Po '(\d+)(?!.*\d)' )

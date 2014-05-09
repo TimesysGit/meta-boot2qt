@@ -28,7 +28,7 @@ BINLOCATION_beaglebone  = "${S}/gfx_rel_es8.x"
 LIBGLESWINDOWSYSTEM = "libpvrPVR2D_FLIPWSEGL.so.1"
 
 # Inhibit warnings about files being stripped.
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+INHIBIT_PACKAGE_STRIP = "1"
 
 pkg_postinst_${PN}_append() {
 ESREV=$(echo ${BINLOCATION} | grep -Po '(\d+)(?!.*\d)' )
