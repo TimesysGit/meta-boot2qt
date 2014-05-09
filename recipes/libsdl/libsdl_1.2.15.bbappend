@@ -1,1 +1,1 @@
-DEPENDS_remove = "virtual/libgl"
+DEPENDS_remove = "virtual/libgl libglu"
