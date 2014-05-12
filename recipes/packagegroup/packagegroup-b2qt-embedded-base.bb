@@ -45,5 +45,6 @@ RDEPENDS_${PN} = "\
         alsa-utils-amixer \
         hunspell \
         ca-certificates \
+        linux-firmware \
         ${MACHINE_EXTRA_INSTALL} \
         "
