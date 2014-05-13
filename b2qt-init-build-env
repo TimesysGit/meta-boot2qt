@@ -34,27 +34,27 @@ DIR=$(readlink -f $(dirname $0))
 BUILDDIR=$(readlink -f $1)
 
 if [ ! -d ${BUILDDIR}/poky ]; then
-    git clone git://git.yoctoproject.org/poky ${BUILDDIR}/poky -b dora
+    git clone git://git.yoctoproject.org/poky ${BUILDDIR}/poky -b daisy
 fi
 
 if [ ! -d ${BUILDDIR}/poky/meta-openembedded ]; then
-    git clone git://git.openembedded.org/meta-openembedded ${BUILDDIR}/poky/meta-openembedded -b dora
+    git clone git://git.openembedded.org/meta-openembedded ${BUILDDIR}/poky/meta-openembedded -b daisy
 fi
 
 if [ ! -d ${BUILDDIR}/poky/meta-ti ]; then
-    git clone git://git.yoctoproject.org/meta-ti ${BUILDDIR}/poky/meta-ti -b dora
+    git clone git://git.yoctoproject.org/meta-ti ${BUILDDIR}/poky/meta-ti -b daisy
 fi
 
 if [ ! -d ${BUILDDIR}/poky/meta-fsl-arm ]; then
-    git clone git://git.yoctoproject.org/meta-fsl-arm ${BUILDDIR}/poky/meta-fsl-arm -b dora
+    git clone git://git.yoctoproject.org/meta-fsl-arm ${BUILDDIR}/poky/meta-fsl-arm -b daisy
 fi
 
 if [ ! -d ${BUILDDIR}/poky/meta-fsl-arm-extra ]; then
-    git clone git://github.com/Freescale/meta-fsl-arm-extra.git ${BUILDDIR}/poky/meta-fsl-arm-extra -b dora
+    git clone git://github.com/Freescale/meta-fsl-arm-extra.git ${BUILDDIR}/poky/meta-fsl-arm-extra -b daisy
 fi
 
 if [ ! -d ${BUILDDIR}/poky/meta-raspberrypi ]; then
-    git clone git://git.yoctoproject.org/meta-raspberrypi ${BUILDDIR}/poky/meta-raspberrypi -b dora
+    git clone git://git.yoctoproject.org/meta-raspberrypi ${BUILDDIR}/poky/meta-raspberrypi -b daisy
 fi
 
 if [ ! -d ${BUILDDIR}/poky/meta-b2qt ]; then

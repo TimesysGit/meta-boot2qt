@@ -29,26 +29,26 @@ OpenEmbedded and Yocto.
 This layer depends on:
 
 URI: git://git.openembedded.org/openembedded-core
-branch: dora
+branch: daisy
 revision: HEAD
 
 URI: git://git.openembedded.org/meta-openembedded
 layer: meta-oe
-branch: dora
+branch: daisy
 revision: HEAD
 
 URI: git://git.yoctoproject.org/meta-ti
-branch: dora
+branch: daisy
 revision: HEAD
 
 URI: git://git.yoctoproject.org/meta-fsl-arm
-branch: dora
+branch: daisy
 revision: HEAD
 
-URI: git://github.com/Freescale/meta-fsl-arm-extra.git
-branch: dora
+URI: git://github.com/Freescale/meta-fsl-arm-extra
+branch: daisy
 revision: HEAD
 
 URI: git://git.yoctoproject.org/meta-raspberrypi
-branch: dora
+branch: daisy
 revision: HEAD
