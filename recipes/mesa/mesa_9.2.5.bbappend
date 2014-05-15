@@ -20,22 +20,7 @@
 ##
 #############################################################################
 
-IMAGE_CLASSES += "image-hdd"
-IMAGE_ROOTFS_ALIGNMENT = "1048576"
-ROOTFS ?= "${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.ext3"
-IMAGE_FSTYPES = "ext3"
-
-MACHINE_EXTRA_RRECOMMENDS += "\
-        kernel-module-snd-intel8x0 \
-        "
-
-kernel_autoload_snd-intel8x0 = "snd-intel8x0"
-
-MACHINE_EXTRA_INSTALL = "\
-        mount-vboxsf \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK = "\
-        libegl-mesa-dev \
-        libgles2-mesa-dev \
-        "
+EGL_PLATFORMS = "fbdev"
+DRIDRIVERS_remove = "swrast,radeon,r200,nouveau,i965,i915"
+DRIDRIVERS_append += "swrast"
+EXTRA_OECONF += "--with-dri-drivers="""
