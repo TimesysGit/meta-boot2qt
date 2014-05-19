@@ -20,32 +20,9 @@
 ##
 #############################################################################
 
-DESCRIPTION = "Packagegroup for B2Qt embedded Linux image"
-LICENSE = "CLOSED"
-PR = "r0"
+PACKAGECONFIG += "perl"
 
-inherit packagegroup
-
-RDEPENDS_${PN} = "\
-        kernel-modules \
-        adbd \
-        psplash \
-        openssh-sftp-server \
-        openssl \
-        openssl-misc \
-        libpng \
-        jpeg \
-        tiff \
-        libxslt \
-        icu \
-        freetype \
-        fontconfig \
-        liberation-fonts \
-        tslib \
-        tslib-calibrate \
-        alsa-utils-amixer \
-        hunspell \
-        ca-certificates \
-        linux-firmware \
-        ${MACHINE_EXTRA_INSTALL} \
-        "
+do_install_append () {
+	rmdir ${D}${libdir}/ssl/certs
+	ln -s ${sysconfdir}/ssl/certs ${D}${libdir}/ssl/
+}
