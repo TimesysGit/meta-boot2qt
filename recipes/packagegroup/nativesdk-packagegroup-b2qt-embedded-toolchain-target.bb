@@ -32,6 +32,7 @@ MACHINE_EXTRA_INSTALL_SDK ?= ""
 RDEPENDS_${PN} += "\
     task-core-standalone-sdk-target \
     task-core-standalone-sdk-target-dbg \
+    base-files \
     glib-2.0-dev \
     openssl-dev \
     libpng-dev \
