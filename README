@@ -52,3 +52,7 @@ revision: HEAD
 URI: git://git.yoctoproject.org/meta-raspberrypi
 branch: daisy
 revision: HEAD
+
+URI: git://git.toradex.com/meta-toradex.git
+branch: V2.2
+revision: HEAD

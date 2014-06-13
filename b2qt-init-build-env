@@ -57,6 +57,10 @@ if [ ! -d ${BUILDDIR}/poky/meta-raspberrypi ]; then
     git clone git://git.yoctoproject.org/meta-raspberrypi ${BUILDDIR}/poky/meta-raspberrypi -b daisy
 fi
 
+if [ ! -d ${BUILDDIR}/poky/meta-toradex ]; then
+    git clone git://git.toradex.com/meta-toradex.git ${BUILDDIR}/poky/meta-toradex -b V2.2
+fi
+
 if [ ! -d ${BUILDDIR}/poky/meta-b2qt ]; then
     ln -s ${DIR} ${BUILDDIR}/poky/meta-b2qt
 fi
