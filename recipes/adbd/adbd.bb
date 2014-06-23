@@ -31,6 +31,7 @@ PR = "r0"
 SRCREV = "${PV}"
 
 RRECOMMENDS_${PN} += "kernel-module-g-ffs"
+DEPENDS = "openssl"
 
 SRC_URI = "git://android.googlesource.com/platform/system/core;protocol=https \
            file://adbd.patch;striplevel=2 \
