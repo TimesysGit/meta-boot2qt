@@ -24,5 +24,5 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "\
     file://usb-serial.cfg \
     "
-KERNEL_CONFIG_FRAGMENTS += "usb-serial.cfg"
+KERNEL_CONFIG_FRAGMENTS += "${WORKDIR}/usb-serial.cfg"
 KERNEL_DEVICETREE_b2qt = "am335x-evm.dtb am335x-evmsk.dtb am335x-bone.dtb am335x-boneblack.dtb"
