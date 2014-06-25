@@ -34,4 +34,7 @@ do_configure_prepend() {
 	echo "CONFIG_USB_SERIAL_GENERIC=y"      >> ${WORKDIR}/defconfig
 	echo "CONFIG_USB_SERIAL_FTDI_SIO=m"     >> ${WORKDIR}/defconfig
 	echo "CONFIG_USB_SERIAL_PL2303=m"       >> ${WORKDIR}/defconfig
+
+	# fix imx-vpu break on video decoding
+	echo "CONFIG_VMSPLIT_2G=y"              >> ${WORKDIR}/defconfig
 }
