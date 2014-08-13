@@ -56,7 +56,7 @@ checkout git://git.yoctoproject.org/poky                "daisy:b0ce70ffa820c8b40
 checkout git://git.openembedded.org/meta-openembedded   "daisy:a6dcf6265822ca1484d991d10a3042e04a960cdb"
 checkout git://git.yoctoproject.org/meta-ti             "daisy:5dad1bc02dd922a6c4fa4d68f6ea9ec779cf5e66"
 checkout git://git.yoctoproject.org/meta-fsl-arm        "daisy:f5bf277a5a5fba2c3b64ed7d2dbec1903d96386b"
-checkout git://github.com/Freescale/meta-fsl-arm-extra  "daisy:029f535cfbc5746288c6129babb2d7679927a183"
+checkout git://github.com/Freescale/meta-fsl-arm-extra  "daisy:6c3871ea5b0ec358e978814b5b38cef40d8dcbbc"
 checkout git://git.yoctoproject.org/meta-raspberrypi    "daisy:cc74bf6c1f9ab9beea52c4c75797f3ad51f72c55"
 checkout git://git.toradex.com/meta-toradex             "V2.2:371ea626f29a2a12294ab6ea30e36743a9e2f78f"
 
