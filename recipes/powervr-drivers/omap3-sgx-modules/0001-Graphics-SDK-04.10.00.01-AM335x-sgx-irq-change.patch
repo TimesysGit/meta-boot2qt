@@ -1,0 +1,32 @@
+From e55f63a07e5266095da89b7f94122fcba9bdef04 Mon Sep 17 00:00:00 2001
+From: Prathap M S <msprathap@ti.com>
+Date: Tue, 19 Nov 2013 16:33:24 +0530
+Subject: [PATCH 1/1] Graphics SDK 04.10.00.01 : AM335x sgx irq change
+
+This patch enables PVR_LINUX_DYNAMIC_SGX_RESOURCE_INFO for AM335x.
+This is required with 3.8 kernel onwards which uses DT.
+This will enable the path of getting sgx irq number dynamically.
+
+Signed-off-by: Prathap M S <msprathap@ti.com>
+---
+ services4/system/ti335x/syslocal.h |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/services4/system/ti335x/syslocal.h b/services4/system/ti335x/syslocal.h
+index 090b38d..222d52d 100644
+--- a/services4/system/ti335x/syslocal.h
++++ b/services4/system/ti335x/syslocal.h
+@@ -69,8 +69,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ #if !defined(LDM_PLATFORM)
+ #error "LDM_PLATFORM must be set"
+ #endif
+-//#define	PVR_LINUX_DYNAMIC_SGX_RESOURCE_INFO
+-//#include <linux/platform_device.h>
++#define	PVR_LINUX_DYNAMIC_SGX_RESOURCE_INFO
++#include <linux/platform_device.h>
+ #endif
+ 
+ #if ((defined(DEBUG) || defined(TIMING)) && \
+-- 
+1.7.9.5
+
