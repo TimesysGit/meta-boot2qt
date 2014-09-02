@@ -33,6 +33,7 @@ BBLAYERS ?= " \
   ##COREBASE##/meta-fsl-arm \
   ##COREBASE##/meta-fsl-arm-extra \
   ##COREBASE##/meta-ti \
+  ##COREBASE##/meta-beagleboard/common-bsp \
   ##COREBASE##/meta-raspberrypi \
   ##COREBASE##/meta-toradex \
   ##COREBASE##/meta-openembedded/meta-oe \
