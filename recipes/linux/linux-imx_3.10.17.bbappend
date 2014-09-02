@@ -20,27 +20,13 @@
 ##
 #############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+do_configure_prepend() {
+	# FunctionFS for adb
+	echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
 
-BINLOCATION_omap3  = "${S}/gfx_rel_es5.x"
-BINLOCATION_beaglebone  = "${S}/gfx_rel_es8.x"
-
-LIBGLESWINDOWSYSTEM = "libpvrPVR2D_FLIPWSEGL.so.1"
-
-do_install_append() {
-	echo "ParamBufferSize=33554432" >> ${D}${sysconfdir}/powervr.ini
+	# Enable USB serial support
+	echo "CONFIG_USB_SERIAL=m"              >> ${WORKDIR}/defconfig
+	echo "CONFIG_USB_SERIAL_GENERIC=y"      >> ${WORKDIR}/defconfig
+	echo "CONFIG_USB_SERIAL_FTDI_SIO=m"     >> ${WORKDIR}/defconfig
+	echo "CONFIG_USB_SERIAL_PL2303=m"       >> ${WORKDIR}/defconfig
 }
-
-# Inhibit warnings about files being stripped.
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
-
-pkg_postinst_${PN}_append() {
-ESREV=$(echo ${BINLOCATION} | grep -Po '(\d+)(?!.*\d)' )
-echo ${ESREV} > $D${sysconfdir}/powervr-esrev
-}
-
-RRECOMMENDS_${PN} = "omap3-sgx-modules"
-RRECOMMENDS_${PN}-blitwsegl = ""
-RRECOMMENDS_${PN}-flipwsegl = ""
-RRECOMMENDS_${PN}-frontwsegl = ""
-RRECOMMENDS_${PN}-linuxfbwsegl = ""

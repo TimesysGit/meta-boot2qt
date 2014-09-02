@@ -20,24 +20,21 @@
 ##
 #############################################################################
 
-BINLOCATION_omap3  = "${S}/gfx_rel_es5.x"
 
-LIBGLESWINDOWSYSTEM = "libpvrPVR2D_FLIPWSEGL.so.1"
+do_configure_prepend() {
+	# Use multitouch protocol for touchscreen that support it
+	echo "CONFIG_TOUCHSCREEN_EGALAX_SINGLE_TOUCH=n"      >> ${WORKDIR}/defconfig
+	echo "CONFIG_TOUCHSCREEN_FT5X06_SINGLE_TOUCH=n"      >> ${WORKDIR}/defconfig
 
-do_install_append() {
-	echo "ParamBufferSize=33554432" >> ${D}${sysconfdir}/powervr.ini
+	# FunctionFS for adb
+	echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
+
+	# Enable USB serial support
+	echo "CONFIG_USB_SERIAL=m"              >> ${WORKDIR}/defconfig
+	echo "CONFIG_USB_SERIAL_GENERIC=y"      >> ${WORKDIR}/defconfig
+	echo "CONFIG_USB_SERIAL_FTDI_SIO=m"     >> ${WORKDIR}/defconfig
+	echo "CONFIG_USB_SERIAL_PL2303=m"       >> ${WORKDIR}/defconfig
+
+	# fix imx-vpu break on video decoding
+	echo "CONFIG_VMSPLIT_2G=y"              >> ${WORKDIR}/defconfig
 }
-
-# Inhibit warnings about files being stripped.
-INHIBIT_PACKAGE_STRIP = "1"
-
-pkg_postinst_${PN}_append() {
-ESREV=$(echo ${BINLOCATION} | grep -Po '(\d+)(?!.*\d)' )
-echo ${ESREV} > $D${sysconfdir}/powervr-esrev
-}
-
-RRECOMMENDS_${PN} = "omap3-sgx-modules"
-RRECOMMENDS_${PN}-blitwsegl = ""
-RRECOMMENDS_${PN}-flipwsegl = ""
-RRECOMMENDS_${PN}-frontwsegl = ""
-RRECOMMENDS_${PN}-linuxfbwsegl = ""

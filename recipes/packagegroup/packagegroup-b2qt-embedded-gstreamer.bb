@@ -35,6 +35,7 @@ RDEPENDS_${PN} = "\
         gst-plugins-good-id3demux \
         gst-plugins-good-auparse \
         gst-plugins-good-isomp4 \
+        gst-plugins-good-icydemux \
         gst-plugins-ugly-rmdemux \
         gst-plugins-ugly-asf \
         gst-plugins-ugly-a52dec \

@@ -30,4 +30,6 @@ RDEPENDS_${PN} = "\
         ldd \
         binutils \
         binutils-symlinks \
+        i2c-tools \
+        u-boot-fw-utils \
         "

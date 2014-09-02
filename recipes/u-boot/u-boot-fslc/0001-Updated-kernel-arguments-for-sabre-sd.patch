@@ -1,0 +1,133 @@
+From 2288d6475ba3ab9a7fb3cd4aa0aa3a7c60dbfac6 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@digia.com>
+Date: Fri, 9 May 2014 10:23:50 +0300
+Subject: [PATCH] Updated kernel arguments for sabre sd
+
+- Enable I2C
+- detect if hdmi is used and change video arguments accordingly
+- disable blanking and cursor blinking
+
+---
+ board/freescale/mx6sabresd/mx6sabresd.c | 23 +++++++++++++++++++++++
+ include/configs/mx6sabre_common.h       | 21 +++++++++++++++++++++
+ 2 files changed, 44 insertions(+)
+
+diff --git a/board/freescale/mx6sabresd/mx6sabresd.c b/board/freescale/mx6sabresd/mx6sabresd.c
+index 12d8c56..303b774 100644
+--- a/board/freescale/mx6sabresd/mx6sabresd.c
++++ b/board/freescale/mx6sabresd/mx6sabresd.c
+@@ -12,6 +12,7 @@
+ #include <asm/arch/mx6-pins.h>
+ #include <asm/errno.h>
+ #include <asm/gpio.h>
++#include <asm/imx-common/mxc_i2c.h>
+ #include <asm/imx-common/iomux-v3.h>
+ #include <asm/imx-common/boot_mode.h>
+ #include <mmc.h>
+@@ -24,6 +25,7 @@
+ #include <ipu_pixfmt.h>
+ #include <asm/io.h>
+ #include <asm/arch/sys_proto.h>
++#include <i2c.h>
+ DECLARE_GLOBAL_DATA_PTR;
+ 
+ #define UART_PAD_CTRL  (PAD_CTL_PUS_100K_UP |			\
+@@ -40,6 +42,12 @@ DECLARE_GLOBAL_DATA_PTR;
+ #define SPI_PAD_CTRL (PAD_CTL_HYS | PAD_CTL_SPEED_MED | \
+ 		      PAD_CTL_DSE_40ohm | PAD_CTL_SRE_FAST)
+ 
++#define I2C_PAD_CTRL  (PAD_CTL_PUS_100K_UP |			\
++	PAD_CTL_SPEED_MED | PAD_CTL_DSE_40ohm | PAD_CTL_HYS |	\
++	PAD_CTL_ODE | PAD_CTL_SRE_FAST)
++
++#define I2C_PAD MUX_PAD_CTRL(I2C_PAD_CTRL)
++
+ int dram_init(void)
+ {
+ 	gd->ram_size = get_ram_size((void *)PHYS_SDRAM, PHYS_SDRAM_SIZE);
+@@ -130,6 +138,19 @@ iomux_v3_cfg_t const ecspi1_pads[] = {
+ 	MX6_PAD_KEY_ROW1__GPIO4_IO09 | MUX_PAD_CTRL(NO_PAD_CTRL),
+ };
+ 
++static struct i2c_pads_info i2c_pad_info1 = {
++	.scl = {
++		.i2c_mode = MX6_PAD_KEY_COL3__I2C2_SCL | I2C_PAD,
++		.gpio_mode = MX6_PAD_KEY_COL3__GPIO4_IO12 | I2C_PAD,
++		.gp = IMX_GPIO_NR(4, 12)
++	},
++	.sda = {
++		.i2c_mode = MX6_PAD_KEY_ROW3__I2C2_SDA | I2C_PAD,
++		.gpio_mode = MX6_PAD_KEY_ROW3__GPIO4_IO13 | I2C_PAD,
++		.gp = IMX_GPIO_NR(4, 13)
++	}
++};
++
+ static void setup_spi(void)
+ {
+ 	imx_iomux_v3_setup_multiple_pads(ecspi1_pads, ARRAY_SIZE(ecspi1_pads));
+@@ -477,6 +498,8 @@ int board_init(void)
+ 	setup_spi();
+ #endif
+ 
++	setup_i2c(1, CONFIG_SYS_I2C_SPEED, 0x7f, &i2c_pad_info1);
++
+ 	return 0;
+ }
+ 
+diff --git a/include/configs/mx6sabre_common.h b/include/configs/mx6sabre_common.h
+index 5ee7fa5..b83bf74 100644
+--- a/include/configs/mx6sabre_common.h
++++ b/include/configs/mx6sabre_common.h
+@@ -85,6 +85,13 @@
+ /* Command definition */
+ #include <config_cmd_default.h>
+ 
++/* I2C Configs */
++#define CONFIG_CMD_I2C
++#define CONFIG_SYS_I2C
++#define CONFIG_SYS_I2C_MXC
++#define CONFIG_SYS_I2C_SPEED		100000
++#define CONFIG_I2C_EDID
++
+ #define CONFIG_CMD_BMODE
+ #define CONFIG_CMD_BOOTZ
+ #define CONFIG_CMD_SETEXPR
+@@ -117,6 +124,15 @@
+ #define EMMC_ENV ""
+ #endif
+ 
++#define VIDEOARGS \
++	"videoargs=" \
++	"i2c dev 1 ; " \
++	"if i2c probe 0x50 ; then " \
++		"setenv video mxcfb0:dev=hdmi,1280x720M@60,if=RGB24 ; " \
++	"else " \
++		"setenv video mxcfb0:dev=ldb,LDB-XGA,if=RGB666 ldb=sin1 ; " \
++	"fi\0"
++
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	"script=boot.scr\0" \
+ 	"uimage=uImage\0" \
+@@ -144,7 +160,11 @@
+ 			"fi; "	\
+ 		"fi\0" \
+ 	EMMC_ENV	  \
++	VIDEOARGS \
+ 	"mmcargs=setenv bootargs console=${console},${baudrate} " \
++		"video=${video} "\
++		"consoleblank=0 " \
++		"vt.global_cursor_default=0 " \
+ 		"root=${mmcroot}\0" \
+ 	"loadbootscript=" \
+ 		"fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};\0" \
+@@ -153,6 +173,7 @@
+ 	"loaduimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${uimage}\0" \
+ 	"loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
+ 	"mmcboot=echo Booting from mmc ...; " \
++		"run videoargs; " \
+ 		"run mmcargs; " \
+ 		"if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
+ 			"if run loadfdt; then " \
+-- 
+1.8.3.2
+

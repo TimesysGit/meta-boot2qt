@@ -20,23 +20,5 @@
 ##
 #############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-BINLOCATION_omap3  = "${S}/gfx_rel_es5.x"
-BINLOCATION_beaglebone  = "${S}/gfx_rel_es8.x"
-
-LIBGLESWINDOWSYSTEM = "libpvrPVR2D_FLIPWSEGL.so.1"
-
-# Inhibit warnings about files being stripped.
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
-
-pkg_postinst_${PN}_append() {
-ESREV=$(echo ${BINLOCATION} | grep -Po '(\d+)(?!.*\d)' )
-echo ${ESREV} > $D${sysconfdir}/powervr-esrev
-}
-
-RRECOMMENDS_${PN} = "omap3-sgx-modules"
-RRECOMMENDS_${PN}-blitwsegl = ""
-RRECOMMENDS_${PN}-flipwsegl = ""
-RRECOMMENDS_${PN}-frontwsegl = ""
-RRECOMMENDS_${PN}-linuxfbwsegl = ""
+SRC_URI_remove = "file://0001-update-ca-certificates-remove-c-rehash.patch"
+DEPENDS_class-native = "coreutils-native"

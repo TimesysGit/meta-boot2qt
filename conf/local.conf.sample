@@ -275,7 +275,8 @@ CONF_VERSION = "1"
 
 INHERIT += "rm_work"
 
-BBMASK = "meta-ti/recipes-misc|meta-raspberrypi/recipes-graphics/mesa/mesa_9.2.2.bbappend"
+BBMASK = "meta-ti/recipes-misc"
+BBMASK += "|meta-toradex/recipes/images|meta-toradex/recipes-browser|meta-toradex/recipes-connectivity|meta-toradex/recipes-gnome|meta-toradex/recipes-mozilla|meta-toradex/recipes-graphics|meta-toradex/recipes-devtools/mtd|meta-toradex/recipes-core/psplash|meta-toradex/recipes-lxde|meta-toradex/recipes-multimedia/webm|meta-toradex/recipes/trdx-config|meta-toradex/recipes-core/util-linux|meta-toradex/recipes-core/systemd|meta-toradex/recipes-support|meta-toradex/recipes-core/dropbear|meta-toradex/recipes/base-files|meta-toradex/recipes-multimedia/gstreamer"
 ACCEPT_FSL_EULA = "1"
 LICENSE_FLAGS_WHITELIST = "commercial"
 

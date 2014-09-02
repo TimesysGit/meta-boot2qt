@@ -29,6 +29,12 @@ do_configure_prepend() {
 	echo "CONFIG_USB_FUNCTIONFS_RNDIS=n"    >> ${WORKDIR}/defconfig
 	echo "CONFIG_USB_FUNCTIONFS_GENERIC=y"  >> ${WORKDIR}/defconfig
 
+	# Enable USB serial support
+	echo "CONFIG_USB_SERIAL=m"              >> ${WORKDIR}/defconfig
+	echo "CONFIG_USB_SERIAL_GENERIC=y"      >> ${WORKDIR}/defconfig
+	echo "CONFIG_USB_SERIAL_FTDI_SIO=m"     >> ${WORKDIR}/defconfig
+	echo "CONFIG_USB_SERIAL_PL2303=m"       >> ${WORKDIR}/defconfig
+
 	# Remove beagleboard logo
 	if [ -e ${WORKDIR}/${LOGO_SIZE}/logo_linux_clut224.ppm ]; then
 		rm ${WORKDIR}/${LOGO_SIZE}/logo_linux_clut224.ppm
