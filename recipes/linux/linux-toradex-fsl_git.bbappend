@@ -20,6 +20,9 @@
 ##
 #############################################################################
 
+# kernel image files are not needed in the image
+RDEPENDS_kernel-base = ""
+
 config_script () {
 	# FunctionFS for adb
 	echo "CONFIG_USB_FUNCTIONFS=m"  >> ${S}/.config

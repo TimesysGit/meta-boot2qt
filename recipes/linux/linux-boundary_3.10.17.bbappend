@@ -20,6 +20,8 @@
 ##
 #############################################################################
 
+# kernel image files are not needed in the image
+RDEPENDS_kernel-base = ""
 
 do_configure_prepend() {
 	# Use multitouch protocol for touchscreen that support it
