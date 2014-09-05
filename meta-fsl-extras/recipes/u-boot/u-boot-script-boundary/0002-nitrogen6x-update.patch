@@ -11,9 +11,16 @@ diff --git a/board/boundary/nitrogen6x/6x_bootscript-yocto.txt b/board/boundary/
 index 5bc6170..4116ed4 100644
 --- a/board/boundary/nitrogen6x/6x_bootscript-yocto.txt
 +++ b/board/boundary/nitrogen6x/6x_bootscript-yocto.txt
-@@ -1,3 +1,64 @@
+@@ -1,3 +1,67 @@
 +# Boot2Qt update part begin
 +echo "Boot to Qt"
++mw.b 0x13000000 0x76 1 # v
++mw.b 0x13000001 0x75 1 # u
++mw.b 0x13000002 0x74 1 # t
++mw.b 0x13000003 0x69 1 # i
++
++fdtaddr=0x12000000
++
 +if test "x$boot2qt_update_state" = "x" ; then
 +  setenv boot2qt_update_state valid
 +  saveenv
@@ -21,10 +28,6 @@ index 5bc6170..4116ed4 100644
 +
 +# This is a workaround because environment partition is read-only.
 +if fatload mmc 1:1 0x12000000 update/state ; then
-+    mw.b 0x13000000 0x76 1 # v
-+    mw.b 0x13000001 0x75 1 # u
-+    mw.b 0x13000002 0x74 1 # t
-+
 +    if cmp.b 0x12000000 0x13000000 1 ; then
 +        echo "State: Valid"
 +        setenv boot2qt_fat_state valid
@@ -49,21 +52,21 @@ index 5bc6170..4116ed4 100644
 +
 +  # Guess dtb name
 +  dtbname="imx6";
-+  if itest.s x6S != "x\$cpu" ; then
-+    dtbname=\${dtbname}q-;
++  if itest.s x6S != "x$cpu" ; then
++    dtbname=${dtbname}q-;
 +  else
-+    dtbname=\${dtbname}s-;
++    dtbname=${dtbname}s-;
 +  fi
 +
-+  if itest.s x == "x\$board" ; then
++  if itest.s x == "x$board" ; then
 +    board=sabrelite
 +  fi
-+  dtbname=\${dtbname}\${board}.dtb;
++  dtbname=${dtbname}${board}.dtb;
 +
-+  fatload mmc 1:1 0x10800000 update/uImage
-+  fatload mmc 1:1 0x12000000 update/${dtbname}
++  fatload mmc 1:1 ${loadaddr} update/uImage
++  fatload mmc 1:1 ${fdtaddr} update/${dtbname}
 +  fatload mmc 1:1 0x13000000 update/uRamdisk
-+  bootm 0x10800000 0x13000000 0x12000000
++  bootm ${loadaddr} 0x13000000 ${fdtaddr}
 +fi
 +
 +if test "x$boot2qt_fat_state" = "xtesting" || test "x$boot2qt_update_state" = "xtesting"; then
