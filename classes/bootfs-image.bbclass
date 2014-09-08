@@ -36,7 +36,7 @@ fakeroot do_bootfs () {
 		src=`echo $item | awk -F':' '{ print $1 }'`
 		dst=`echo $item | awk -F':' '{ print $2 }'`
 
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${S}/bootfs/$dst
+		install -D -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${S}/bootfs/$dst
 	done
 
 	cd ${S}/bootfs
