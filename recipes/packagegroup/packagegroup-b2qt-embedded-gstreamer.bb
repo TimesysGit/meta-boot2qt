@@ -39,5 +39,7 @@ RDEPENDS_${PN} = "\
         gst-plugins-ugly-rmdemux \
         gst-plugins-ugly-asf \
         gst-plugins-ugly-a52dec \
+        gst-plugins-bad-mpegdemux \
+        gst-plugins-bad-faad \
         gst-ffmpeg \
         "
