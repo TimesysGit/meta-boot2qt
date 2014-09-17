@@ -23,15 +23,28 @@
 
 set -e
 
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <yocto build directory>"
-    exit 1
-fi
+usage() {
+   echo "Usage: $0 <yocto build directory> [--force]"
+}
 
-mkdir -p ${1}
+while test -n "$1"; do
+  case "$1" in
+    "--help" | "-h")
+      usage
+      exit 0
+      ;;
+    "--force" | "-f")
+      FORCE_UPDATE=1
+      ;;
+    *)
+      BUILDDIR=$1
+      ;;
+  esac
+  shift
+done
 
 DIR=$(readlink -f $(dirname $0))
-BUILDDIR=$(readlink -f $1)
+BUILDDIR=$(readlink -f $BUILDDIR)
 
 checkout() {
     REPO=$1
@@ -41,14 +54,18 @@ checkout() {
     fi
     REF=${2%%:*}
     SHA1=${2##*:}
-    if [ ! -d ${BUILDDIR}/${REPODIR} ]; then
-        mkdir ${BUILDDIR}/${REPODIR}
-        cd ${BUILDDIR}/${REPODIR}
+    mkdir -p ${BUILDDIR}/${REPODIR}
+    cd ${BUILDDIR}/${REPODIR}
+    if [ ! -d ${BUILDDIR}/${REPODIR}/.git ]; then
+        echo "Checking out ${REPODIR}"
         git init
         git remote add origin ${REPO} -f
         git checkout ${REF}
         git reset --hard ${SHA1}
-        cd -
+    elif [ -n "${FORCE_UPDATE}" ]; then
+        echo "Updating ${REPODIR}"
+        git fetch origin
+        git reset --hard ${SHA1}
     fi
 }
 
