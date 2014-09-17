@@ -24,7 +24,7 @@
 set -e
 
 usage() {
-   echo "Usage: $0 <yocto build directory> [--force]"
+   echo "Usage: $0 <yocto build directory> [--force] [--reference <other build directory>]"
 }
 
 while test -n "$1"; do
@@ -36,6 +36,10 @@ while test -n "$1"; do
     "--force" | "-f")
       FORCE_UPDATE=1
       ;;
+    "--reference" | "-r")
+      shift
+      REFDIR=$1
+      ;;
     *)
       BUILDDIR=$1
       ;;
@@ -43,8 +47,16 @@ while test -n "$1"; do
   shift
 done
 
+if [ -z "${BUILDDIR}" ]; then
+    usage
+    exit 1
+fi
+
 DIR=$(readlink -f $(dirname $0))
 BUILDDIR=$(readlink -f $BUILDDIR)
+if [ -n "${REFDIR}" ]; then
+    REFDIR=$(readlink -f ${REFDIR})
+fi
 
 checkout() {
     REPO=$1
@@ -59,6 +71,12 @@ checkout() {
     if [ ! -d ${BUILDDIR}/${REPODIR}/.git ]; then
         echo "Checking out ${REPODIR}"
         git init
+        if [ -n "${REFDIR}" ]; then
+            REPOREFDIR=${REFDIR}/${REPODIR}/.git/objects
+            if [ -d ${REPOREFDIR} ]; then
+                echo ${REPOREFDIR} > .git/objects/info/alternates
+            fi
+        fi
         git remote add origin ${REPO} -f
         git checkout ${REF}
         git reset --hard ${SHA1}
