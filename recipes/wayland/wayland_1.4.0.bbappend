@@ -20,21 +20,13 @@
 ##
 #############################################################################
 
-DESCRIPTION = "Host packages for B2Qt on embedded Linux SDK"
-PR = "r0"
-ALLOW_EMPTY_${PN} = "1"
-LICENSE = "CLOSED"
-
-require recipes-core/packagegroups/nativesdk-packagegroup-sdk-host.bb
-
-RDEPENDS_${PN} = "\
-    python-nativesdk \
-    python-subprocess-nativesdk \
-    python-compiler-nativesdk \
-    python-multiprocessing-nativesdk \
-    python-shell-nativesdk \
-    python-threading-nativesdk \
-    wayland-nativesdk \
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI_append_class-nativesdk = " file://just-scanner.patch \
+    file://disable-macro-checks-not-used-for-scanner.patch \
+    file://0001-Use-native-wayland-scanner-when-building-nativesdk-w.patch \
     "
 
+EXTRA_OECONF_class-nativesdk = "--disable-documentation --enable-scanner"
+DEPENDS_class-nativesdk = "wayland-native"
 
+BBCLASSEXTEND = "native nativesdk"

@@ -1,0 +1,27 @@
+From a9ab89496d32ab42d9f697c43cf8bb04feaeabfa Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@digia.com>
+Date: Fri, 26 Sep 2014 10:39:51 +0300
+Subject: [PATCH] Use native wayland-scanner when building nativesdk-wayland
+
+The wayland-scanner built for the nativesdk cannot be run during the build,
+so instead use the wayland-scanner from native build.
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index b938d17..84fcdf6 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -41,7 +41,7 @@ AM_CFLAGS = $(GCC_CFLAGS) -pthread
+ protocoldir = $(top_srcdir)/protocol
+ 
+ if ENABLE_SCANNER
+-wayland_scanner = $(top_builddir)/src/wayland-scanner
++wayland_scanner = wayland-scanner
+ else
+ wayland_scanner = wayland-scanner
+ endif
+-- 
+1.8.3.2
+
