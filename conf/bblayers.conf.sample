@@ -30,18 +30,18 @@ BBFILES ?= ""
 BBLAYERS ?= " \
   ##COREBASE##/meta \
   ##COREBASE##/meta-yocto \
-  ##COREBASE##/meta-fsl-arm \
-  ##COREBASE##/meta-fsl-arm-extra \
-  ##COREBASE##/meta-beagleboard/common-bsp \
-  ##COREBASE##/meta-ti \
-  ##COREBASE##/meta-raspberrypi \
-  ##COREBASE##/meta-toradex \
-  ##COREBASE##/meta-openembedded/meta-oe \
-  ##COREBASE##/meta-b2qt \
-  ##COREBASE##/meta-b2qt/meta-ti-extras \
-  ##COREBASE##/meta-b2qt/meta-fsl-extras \
-  ##COREBASE##/meta-b2qt/meta-beagleboard-extras \
-  ##COREBASE##/meta-b2qt/meta-toradex-extras \
+  ##COREBASE##/../meta-fsl-arm \
+  ##COREBASE##/../meta-fsl-arm-extra \
+  ##COREBASE##/../meta-beagleboard/common-bsp \
+  ##COREBASE##/../meta-ti \
+  ##COREBASE##/../meta-raspberrypi \
+  ##COREBASE##/../meta-toradex \
+  ##COREBASE##/../meta-openembedded/meta-oe \
+  ##COREBASE##/../meta-b2qt \
+  ##COREBASE##/../meta-b2qt/meta-ti-extras \
+  ##COREBASE##/../meta-b2qt/meta-fsl-extras \
+  ##COREBASE##/../meta-b2qt/meta-beagleboard-extras \
+  ##COREBASE##/../meta-b2qt/meta-toradex-extras \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
   ##COREBASE##/meta \

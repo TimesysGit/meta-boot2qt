@@ -24,92 +24,147 @@
 set -e
 
 usage() {
-   echo "Usage: $0 <yocto build directory> [--force] [--reference <other build directory>]"
+   echo "Usage: $(basename $0) COMMAND [ARGS]"
+   echo
+   echo "Initialize build environment:"
+   echo "  $(basename $0) init --device <name> [--reference <mirror path>]"
+   echo "Initialize local mirror:"
+   echo "  $(basename $0) mirror"
+   echo "List available devices:"
+   echo "  $(basename $0) list-devices"
 }
 
 while test -n "$1"; do
   case "$1" in
-    "--help" | "-h")
+    "help" | "--help" | "-h")
       usage
       exit 0
       ;;
-    "--force" | "-f")
-      FORCE_UPDATE=1
-      ;;
     "--reference" | "-r")
       shift
-      REFDIR=$1
+      REFERENCE=$1
+      ;;
+    "--device" | "-d")
+      shift
+      DEVICE=$1
       ;;
     *)
-      BUILDDIR=$1
+      if [ -n "$COMMAND" ]; then
+        echo "Unknown argument: $1"
+        usage
+        exit 1
+      fi
+      COMMAND=$1
       ;;
   esac
   shift
 done
 
-if [ -z "${BUILDDIR}" ]; then
+if [ -z "${COMMAND}" ]; then
     usage
     exit 1
 fi
 
 DIR=$(readlink -f $(dirname $0))
-BUILDDIR=$(readlink -f $BUILDDIR)
-if [ -n "${REFDIR}" ]; then
-    REFDIR=$(readlink -f ${REFDIR})
+if [ -n "${REFERENCE}" ]; then
+    REFERENCE="--reference $(readlink -f ${REFERENCE})"
 fi
 
-checkout() {
-    REPO=$1
-    REPODIR=${REPO##*/}
-    if [ ${REPODIR} != "poky" ]; then
-        REPODIR="poky/${REPODIR}"
-    fi
-    REF=${2%%:*}
-    SHA1=${2##*:}
-    mkdir -p ${BUILDDIR}/${REPODIR}
-    cd ${BUILDDIR}/${REPODIR}
-    if [ ! -d ${BUILDDIR}/${REPODIR}/.git ]; then
-        echo "Checking out ${REPODIR}"
-        git init
-        if [ -n "${REFDIR}" ]; then
-            REPOREFDIR=${REFDIR}/${REPODIR}/.git/objects
-            if [ -d ${REPOREFDIR} ]; then
-                echo ${REPOREFDIR} > .git/objects/info/alternates
-            fi
-        fi
-        git remote add origin ${REPO} -f
-        git checkout ${REF}
-        git reset --hard ${SHA1}
-    elif [ -n "${FORCE_UPDATE}" ]; then
-        echo "Updating ${REPODIR}"
-        git fetch origin
-        git reset --hard ${SHA1}
-    fi
+get_repo() {
+  REPO="./repo"
+  if [ -n "$(command -v repo)" ]; then
+    REPO="repo"
+  elif [ ! -x "./repo" ]; then
+    curl -s https://storage.googleapis.com/git-repo-downloads/repo > "./repo"
+    chmod +x ./repo
+  fi
 }
 
-checkout git://git.yoctoproject.org/poky                    "daisy:b2f045c400fa8bd20b319c60137b1575f967cef1"
-checkout git://git.yoctoproject.org/meta-fsl-arm            "daisy:e9bf647e10ff1e31f911d3236dbb22a1ad7ace9f"
-checkout git://github.com/Freescale/meta-fsl-arm-extra      "daisy:e041d9a118c5eecf4010bcb41bb5c554636090ab"
-checkout git://github.com/beagleboard/meta-beagleboard      "master:b5c709b2b6bd3bf236df923fa8f245a00fbb1b60"
-checkout git://git.yoctoproject.org/meta-ti                 "daisy:41457c50e21168faf04f3cdd4168954890d6cdab"
-checkout git://git.yoctoproject.org/meta-raspberrypi        "daisy:946b69299737cc2f1378c864f1b9075280db1b53"
-checkout git://git.toradex.com/meta-toradex                 "V2.2:b47dad6cf9bd5be5287dac3835ea037a2fd30cf7"
-checkout git://git.openembedded.org/meta-openembedded       "daisy:662cf409c1175450699d498085f3c894e0fe81d0"
+get_groups() {
+  case ${DEVICE} in
+    apalis-imx6)
+      GROUPS="toradex"
+    ;;
+    imx53qsb|imx6qsabresd|nitrogen6x)
+      GROUPS="fsl"
+    ;;
+    beagleboard|am335x-evm)
+      GROUPS="ti"
+    ;;
+    beaglebone)
+      GROUPS="bbb"
+    ;;
+    raspberrypi)
+      GROUPS="rpi"
+    ;;
+    emulator)
+      GROUPS="emulator"
+    ;;
+    *)
+      echo "Unknown device configuration, no matching repo group defined"
+      exit 1
+    ;;
+  esac
 
-if [ ! -d ${BUILDDIR}/poky/meta-b2qt ]; then
-    ln -s ${DIR} ${BUILDDIR}/poky/meta-b2qt
-fi
+  GROUPS="${GROUPS} default"
+}
 
-echo
-echo "Yocto build system is ready"
-echo "next initialize the build env for your target machine, for example:"
-echo
-echo "cd ${BUILDDIR}"
-echo "export TEMPLATECONF=meta-b2qt/conf"
-echo "export MACHINE=raspberrypi"
-echo ". ./poky/oe-init-build-env build-raspberrypi"
-echo
-echo "and build B2Qt image with:"
-echo
-echo "bitbake b2qt-embedded-image"
-echo
+list_devices() {
+  echo "Available device configurations:"
+  for device in $(ls $DIR/conf/distro/include/*.conf); do
+    echo "  $(basename ${device%%.*})"
+  done
+}
+
+mirror() {
+  mkdir -p .repo/manifests
+  cp ${DIR}/scripts/manifest.xml .repo/manifests/
+  MANIFEST="manifest.xml"
+  ${REPO} init -u https://gerrit.googlesource.com/git-repo -m ${MANIFEST} -g all --mirror
+  ${REPO} sync
+}
+
+init() {
+  if [ -z "${DEVICE}" ]; then
+    echo "device not defined"
+    usage
+    exit 1
+  fi
+
+  get_groups
+  mkdir -p .repo/manifests
+  cp ${DIR}/scripts/manifest*.xml .repo/manifests
+  if [ -f .repo/manifests/manifest_${DEVICE}.xml ]; then
+    MANIFEST="manifest_${DEVICE}.xml"
+  else
+    MANIFEST="manifest.xml"
+  fi
+  ${REPO} init -u https://gerrit.googlesource.com/git-repo -m ${MANIFEST} -g "${GROUPS}" ${REFERENCE}
+  ${REPO} sync
+
+  if [ ! -e "sources/meta-b2qt" ]; then
+    ln -s ${DIR} sources/meta-b2qt
+  fi
+
+  cp ${DIR}/scripts/setup_environment.sh .
+
+}
+
+get_repo
+
+case "$COMMAND" in
+  "init")
+    init
+  ;;
+  "mirror")
+    mirror
+  ;;
+  "list-devices")
+    list_devices
+  ;;
+  *)
+    echo "Unknown command"
+    usage
+    exit 1
+  ;;
+esac

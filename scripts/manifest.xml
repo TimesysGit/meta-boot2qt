@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <default sync-j="4" revision="daisy"/>
+
+  <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+  <remote fetch="git://git.openembedded.org" name="oe"/>
+  <remote fetch="git://github.com/Freescale" name="freescale"/>
+  <remote fetch="git://github.com/beagleboard" name="beagleboard"/>
+  <remote fetch="git://git.toradex.com" name="toradex"/>
+
+  <project name="poky"
+           remote="yocto"
+           revision="b2f045c400fa8bd20b319c60137b1575f967cef1"
+           path="sources/poky"/>
+  <project name="meta-openembedded"
+           remote="oe"
+           revision="662cf409c1175450699d498085f3c894e0fe81d0"
+           path="sources/meta-openembedded"/>
+
+  <project name="meta-fsl-arm"
+           remote="yocto"
+           revision="e9bf647e10ff1e31f911d3236dbb22a1ad7ace9f"
+           path="sources/meta-fsl-arm"
+           groups="notdefault,fsl,toradex"/>
+  <project name="meta-ti"
+           remote="yocto"
+           revision="41457c50e21168faf04f3cdd4168954890d6cdab"
+           path="sources/meta-ti"
+           groups="notdefault,ti,bbb"/>
+  <project name="meta-raspberrypi"
+           remote="yocto"
+           revision="946b69299737cc2f1378c864f1b9075280db1b53"
+           path="sources/meta-raspberrypi"
+           groups="notdefault,rpi"/>
+  <project name="meta-fsl-arm-extra"
+           remote="freescale"
+           revision="e041d9a118c5eecf4010bcb41bb5c554636090ab"
+           path="sources/meta-fsl-arm-extra"
+           groups="notdefault,fsl,toradex"/>
+  <project name="meta-beagleboard"
+           remote="beagleboard"
+           revision="b5c709b2b6bd3bf236df923fa8f245a00fbb1b60"
+           path="sources/meta-beagleboard"
+           groups="notdefault,bbb"/>
+  <project name="meta-toradex"
+           remote="toradex"
+           revision="b47dad6cf9bd5be5287dac3835ea037a2fd30cf7"
+           path="sources/meta-toradex"
+           groups="notdefault,toradex"/>
+
+</manifest>
+
