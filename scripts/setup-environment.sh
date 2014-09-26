@@ -55,6 +55,9 @@ if [ ! -f ${PWD}/${BUILDDIR}/conf/bblayers.conf ]; then
     imx53qsb|imx6qsabresd|nitrogen6x)
       LAYERSCONF="bblayers.conf.fsl.sample"
     ;;
+    tibidabo)
+      LAYERSCONF="bblayers.conf.tibidabo.sample"
+    ;;
     beagleboard|am335x-evm)
       LAYERSCONF="bblayers.conf.ti.sample"
     ;;

@@ -1,0 +1,17 @@
+From 020c8ffc859d03b26ae50d0b4cf008ec655e26a0 Mon Sep 17 00:00:00 2001
+From: aavit <eirik.aavitsland@theqtcompany.com>
+Date: Mon, 27 Oct 2014 12:41:32 +0100
+Subject: [PATCH] Updated kernel arguments for tibidabo
+
+
+diff --git a/recipes-bsp/bootscript/tibidabo-bootscript-sd-1.0/bootscript.source b/recipes-bsp/bootscript/tibidabo-bootscript-sd-1.0/bootscript.source
+index 1902d81..4247a08 100644
+--- a/bootscript.source
++++ b/bootscript.source
+@@ -1,5 +1,6 @@
+ setenv bootargs ${bootargs} vmalloc=400M root=/dev/mmcblk0p2 rw,rootwait consoleblank=0 video=mxcfb0:dev=hdmi,1280x720M@60,if=RGB24 video=mxcfb1:dev=lcd,CLAA-WVGA,if=RGB666 fbmem=28M,10M
+ mmc dev 0
++setenv bootargs ${bootargs} vt.global_cursor_default=0
+ for file_system in fat ext2; do
+     ${file_system}load mmc 0:1 ${loadaddr} /uImage && bootm ${loadaddr}
+ done

@@ -1,0 +1,44 @@
+#############################################################################
+##
+## Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
+##
+## This file is part of the Qt Enterprise Embedded Scripts of the Qt
+## framework.
+##
+## $QT_BEGIN_LICENSE$
+## Commercial License Usage Only
+## Licensees holding valid commercial Qt license agreements with Digia
+## with an appropriate addendum covering the Qt Enterprise Embedded Scripts,
+## may use this file in accordance with the terms contained in said license
+## agreement.
+##
+## For further information use the contact form at
+## http://qt.digia.com/contact-us.
+##
+##
+## $QT_END_LICENSE$
+##
+#############################################################################
+
+# LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+LCONF_VERSION = "6"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE', True)) + '/../..')}"
+
+BBLAYERS ?= " \
+  ${BSPDIR}/sources/poky/meta \
+  ${BSPDIR}/sources/poky/meta-yocto \
+  ${BSPDIR}/sources/meta-fsl-arm \
+  ${BSPDIR}/sources/meta-tibidabo \
+  ${BSPDIR}/sources/meta-openembedded/meta-oe \
+  ${BSPDIR}/sources/meta-b2qt \
+  ${BSPDIR}/sources/meta-b2qt/meta-fsl-extras \
+  ${BSPDIR}/sources/meta-b2qt/meta-architech-extras \
+  "
+BBLAYERS_NON_REMOVABLE ?= " \
+  ${BSPDIR}/sources/poky/meta \
+  ${BSPDIR}/sources/poky/meta-yocto \
+  "

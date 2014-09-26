@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <default sync-j="4" revision="dora"/>
+
+  <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+  <remote fetch="git://git.openembedded.org" name="oe"/>
+  <remote fetch="git://github.com/Freescale" name="freescale"/>
+  <remote fetch="https://github.com/architech-boards/" name="architech"/>
+
+  <project name="poky"
+           remote="yocto"
+           revision="84c2763fa0bf08a83caa2c5ee532b5bef2ff918b"
+           path="sources/poky"/>
+  <project name="meta-openembedded"
+           remote="oe"
+           revision="40e0f371f3eb1628655c484feac0cebf810737b4"
+           path="sources/meta-openembedded"/>
+
+  <project name="meta-fsl-arm"
+           remote="yocto"
+           revision="fb1681666fac9c096314cd01242be4613b7ff140"
+           path="sources/meta-fsl-arm"
+           groups="notdefault,architech"/>
+  <project name="meta-tibidabo"
+           remote="architech"
+           revision="06c6b09e0776507e1230aa98b5ca10d9d3968286"
+           path="sources/meta-tibidabo"
+           groups="notdefault,architech"/>
+
+</manifest>
