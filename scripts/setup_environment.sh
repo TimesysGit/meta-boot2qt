@@ -27,8 +27,8 @@ usage() {
 
 clean() {
   unset BUILDDIR
-  unset NEWBUILD
   unset TEMPLATECONF
+  unset LAYERSCONF
 }
 
 CWD=`pwd`
@@ -57,42 +57,37 @@ if [ -z "$MACHINE" ]; then
   return 1
 fi
 
-if [ ! -d ${CWD}/${BUILDDIR} ]; then
-  NEWBUILD=1
+if [ ! -f ${CWD}/${BUILDDIR}/conf/bblayers.conf ]; then
+  case ${MACHINE} in
+    apalis-imx6)
+      LAYERSCONF="bblayers.conf.toradex.sample"
+    ;;
+    imx53qsb|imx6qsabresd|nitrogen6x)
+      LAYERSCONF="bblayers.conf.fsl.sample"
+    ;;
+    beagleboard|am335x-evm)
+      LAYERSCONF="bblayers.conf.ti.sample"
+    ;;
+    beaglebone)
+      LAYERSCONF="bblayers.conf.bbb.sample"
+    ;;
+    raspberrypi)
+      LAYERSCONF="bblayers.conf.rpi.sample"
+    ;;
+    emulator)
+      LAYERSCONF="bblayers.conf.emulator.sample"
+    ;;
+    *)
+      LAYERSCONF="bblayers.conf.sample"
+      echo "Unknown MACHINE, bblayers.conf might need manual editing"
+    ;;
+  esac
+
+  mkdir -p ${CWD}/${BUILDDIR}/conf
+  cp ${CWD}/sources/meta-b2qt/conf/${LAYERSCONF} ${CWD}/${BUILDDIR}/conf/bblayers.conf
 fi
 
 export TEMPLATECONF=${CWD}/sources/meta-b2qt/conf
 cd sources/poky
 . ./oe-init-build-env ${CWD}/${BUILDDIR}
-
-if [ -n "${NEWBUILD}" ]; then
-  case ${MACHINE} in
-    apalis-imx6)
-      LAYERS="meta-raspberrypi meta-beagleboard meta-ti"
-    ;;
-    imx53qsb|imx6qsabresd|nitrogen6x)
-      LAYERS="meta-raspberrypi meta-beagleboard meta-toradex meta-ti"
-    ;;
-    beagleboard|am335x-evm)
-      LAYERS="meta-raspberrypi meta-beagleboard meta-toradex meta-fsl"
-    ;;
-    beaglebone)
-      LAYERS="meta-raspberrypi meta-toradex meta-fsl"
-    ;;
-    raspberrypi)
-      LAYERS="meta-beagleboard meta-toradex meta-ti meta-fsl"
-    ;;
-    emulator)
-      LAYERS="meta-raspberrypi meta-beagleboard meta-toradex meta-ti meta-fsl"
-    ;;
-    *)
-      echo "Unknown MACHINE, bblayer.conf might need manual editing"
-    ;;
-  esac
-
-  for layer in ${LAYERS}; do
-    sed -i -e "/${layer}/d" conf/bblayers.conf
-  done
-fi
-
 clean

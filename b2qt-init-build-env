@@ -101,8 +101,8 @@ get_groups() {
       GROUPS="emulator"
     ;;
     *)
-      echo "Unknown device configuration, no matching repo group defined"
-      exit 1
+      echo "Unknown device configuration, including all meta layers"
+      GROUPS="all"
     ;;
   esac
 
