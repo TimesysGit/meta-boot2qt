@@ -34,7 +34,7 @@ RDEPENDS_${PN} = "\
     python-multiprocessing-nativesdk \
     python-shell-nativesdk \
     python-threading-nativesdk \
-    wayland-nativesdk \
+    ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
     "
 
 
