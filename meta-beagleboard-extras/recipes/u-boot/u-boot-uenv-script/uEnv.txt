@@ -1,1 +1,6 @@
 optargs=consoleblank=0 vt.global_cursor_default=0 quiet
+# extra options to support older u-boot (2013)
+bootfile=zImage
+loadaddr=0x80200000
+loaduimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmcboot=echo Booting from mmc ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}
