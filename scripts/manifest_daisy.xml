@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <default sync-j="4" revision="daisy"/>
+
+  <remote fetch="git://git.yoctoproject.org" name="yocto"/>
+  <remote fetch="git://git.openembedded.org" name="oe"/>
+  <remote fetch="git://github.com/Freescale" name="freescale"/>
+  <remote fetch="git://github.com/beagleboard" name="beagleboard"/>
+  <remote fetch="git://git.toradex.com" name="toradex"/>
+
+  <project name="poky"
+           remote="yocto"
+           revision="daisy"
+           path="sources/poky"/>
+  <project name="meta-openembedded"
+           remote="oe"
+           revision="daisy"
+           path="sources/meta-openembedded"/>
+
+  <project name="meta-fsl-arm"
+           remote="yocto"
+           revision="daisy"
+           path="sources/meta-fsl-arm"
+           groups="notdefault,fsl,toradex"/>
+  <project name="meta-ti"
+           remote="yocto"
+           revision="daisy"
+           path="sources/meta-ti"
+           groups="notdefault,ti,bbb"/>
+  <project name="meta-raspberrypi"
+           remote="yocto"
+           revision="daisy"
+           path="sources/meta-raspberrypi"
+           groups="notdefault,rpi"/>
+  <project name="meta-fsl-arm-extra"
+           remote="freescale"
+           revision="daisy"
+           path="sources/meta-fsl-arm-extra"
+           groups="notdefault,fsl,toradex"/>
+  <project name="meta-beagleboard"
+           remote="beagleboard"
+           revision="master"
+           path="sources/meta-beagleboard"
+           groups="notdefault,bbb"/>
+  <project name="meta-toradex"
+           remote="toradex"
+           revision="V2.3"
+           path="sources/meta-toradex"
+           groups="notdefault,toradex"/>
+
+</manifest>
+
