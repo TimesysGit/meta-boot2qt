@@ -47,5 +47,9 @@ RDEPENDS_${PN} = "\
         hunspell \
         ca-certificates \
         linux-firmware \
+        ttf-devanagari \
+        ttf-opensans \
+        ttf-dejavu-common \
+        ttf-dejavu-sans \
         ${MACHINE_EXTRA_INSTALL} \
         "
