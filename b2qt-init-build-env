@@ -120,7 +120,7 @@ mirror() {
   mkdir -p .repo/manifests
   cp ${DIR}/scripts/manifest.xml .repo/manifests/
   MANIFEST="manifest.xml"
-  ${REPO} init -u https://gerrit.googlesource.com/git-repo -m ${MANIFEST} -g all --mirror
+  ${REPO} init -u .repo/repo -m ${MANIFEST} -g all --mirror
   ${REPO} sync
 }
 
@@ -139,14 +139,14 @@ init() {
   else
     MANIFEST="manifest.xml"
   fi
-  ${REPO} init -u https://gerrit.googlesource.com/git-repo -m ${MANIFEST} -g "${GROUPS}" ${REFERENCE}
+  ${REPO} init -u .repo/repo -m ${MANIFEST} -g "${GROUPS}" ${REFERENCE}
   ${REPO} sync
 
   if [ ! -e "sources/meta-b2qt" ]; then
     ln -s ${DIR} sources/meta-b2qt
   fi
 
-  cp ${DIR}/scripts/setup_environment.sh .
+  cp ${DIR}/scripts/setup-environment.sh .
 
 }
 

@@ -21,22 +21,10 @@
 ##
 #############################################################################
 
-usage() {
-  echo "source setup-environment <build-dir>"
-}
-
-clean() {
-  unset BUILDDIR
-  unset TEMPLATECONF
-  unset LAYERSCONF
-}
-
-CWD=`pwd`
-
 while test -n "$1"; do
   case "$1" in
     "--help" | "-h")
-      usage
+      echo "Usage: . $0 [build directory]"
       return 0
       ;;
     *)
@@ -46,18 +34,20 @@ while test -n "$1"; do
   shift
 done
 
-if [ -z "${BUILDDIR}" ]; then
-  usage
-  return 1
+THIS_SCRIPT="setup-environment.sh"
+if [ "$(basename $0)" = "${THIS_SCRIPT}" ]; then
+    echo "Error: This script needs to be sourced. Please run as '. $0'"
+    exit 1
 fi
+
+BUILDDIR=${BUILDDIR:-build-${MACHINE}}
 
 if [ -z "$MACHINE" ]; then
-  echo "MACHINE environment variable not defined"
-  clean
+  echo "Error: MACHINE environment variable not defined"
   return 1
 fi
 
-if [ ! -f ${CWD}/${BUILDDIR}/conf/bblayers.conf ]; then
+if [ ! -f ${PWD}/${BUILDDIR}/conf/bblayers.conf ]; then
   case ${MACHINE} in
     apalis-imx6)
       LAYERSCONF="bblayers.conf.toradex.sample"
@@ -83,11 +73,13 @@ if [ ! -f ${CWD}/${BUILDDIR}/conf/bblayers.conf ]; then
     ;;
   esac
 
-  mkdir -p ${CWD}/${BUILDDIR}/conf
-  cp ${CWD}/sources/meta-b2qt/conf/${LAYERSCONF} ${CWD}/${BUILDDIR}/conf/bblayers.conf
+  mkdir -p ${PWD}/${BUILDDIR}/conf
+  cp ${PWD}/sources/meta-b2qt/conf/${LAYERSCONF} ${PWD}/${BUILDDIR}/conf/bblayers.conf
 fi
 
-export TEMPLATECONF=${CWD}/sources/meta-b2qt/conf
-cd sources/poky
-. ./oe-init-build-env ${CWD}/${BUILDDIR}
-clean
+export TEMPLATECONF="${PWD}/sources/meta-b2qt/conf"
+. sources/poky/oe-init-build-env ${BUILDDIR}
+
+unset BUILDDIR
+unset TEMPLATECONF
+unset LAYERSCONF
