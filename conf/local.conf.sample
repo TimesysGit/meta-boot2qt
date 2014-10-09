@@ -39,12 +39,18 @@
 # These two options control how much parallelism BitBake should use. The first 
 # option determines how many tasks bitbake should run in parallel:
 #
-BB_NUMBER_THREADS = "4"
+BB_NUMBER_THREADS ?= "4"
+#
+# Default to setting automatically based on cpu count
+#BB_NUMBER_THREADS ?= "${@oe.utils.cpu_count()}"
 # 
 # The second option controls how many processes make should run in parallel when
 # running compile tasks:
 #
-PARALLEL_MAKE = "-j 4"
+PARALLEL_MAKE ?= "-j 4"
+#
+# Default to setting automatically based on cpu count
+#PARALLEL_MAKE ?= "-j ${@oe.utils.cpu_count()}"
 #
 # For a quad-core machine, BB_NUMBER_THREADS = "4", PARALLEL_MAKE = "-j 4" would
 # be appropriate for example.
@@ -64,10 +70,11 @@ PARALLEL_MAKE = "-j 4"
 # There are also the following hardware board target machines included for 
 # demonstration purposes:
 #
-#MACHINE ?= "atom-pc"
-#MACHINE ?= "beagleboard"
+#MACHINE ?= "beaglebone"
+#MACHINE ?= "genericx86"
+#MACHINE ?= "genericx86-64"
 #MACHINE ?= "mpc8315e-rdb"
-#MACHINE ?= "routerstationpro"
+#MACHINE ?= "edgerouter"
 #
 # This sets the default machine to be qemux86 if no other machine is selected:
 MACHINE ??= "qemux86"
@@ -85,9 +92,6 @@ MACHINE_HOSTNAME ?= "b2qt-linux-${MACHINE}"
 # The default is a downloads directory under TOPDIR which is the build directory.
 #
 DL_DIR ?= "${TOPDIR}/../downloads"
-
-PREMIRRORS = "http://qt-rnd.it-local/yocto/"
-
 
 #
 # Where to place shared-state files
@@ -149,9 +153,9 @@ PACKAGE_CLASSES ?= "package_ipk"
 #
 # SDK/ADT target architecture
 #
-# This variable specified the architecture to build SDK/ADT items for and means
+# This variable specifies the architecture to build SDK/ADT items for and means
 # you can build the SDK packages for architectures other than the machine you are 
-# running the build on (i.e. building i686 packages on an x86_64 host._
+# running the build on (i.e. building i686 packages on an x86_64 host).
 # Supported values are i686 and x86_64
 #SDKMACHINE ?= "i686"
 
@@ -198,23 +202,9 @@ USER_CLASSES ?= "buildstats image-mklibs"
 #
 # The build system can test booting virtual machine images under qemu (an emulator)
 # after any root filesystems are created and run tests against those images. To
-# enable this uncomment this line
-#IMAGETEST = "qemu"
-#
-# This variable controls which tests are run against virtual images if enabled
-# above. The following would enable bat, boot the test case under the sanity suite
-# and perform toolchain tests
-#TEST_SCEN = "sanity bat sanity:boot toolchain"
-#
-# Because of the QEMU booting slowness issue (see bug #646 and #618), the
-# autobuilder may suffer a timeout issue when running sanity tests. We introduce
-# the variable TEST_SERIALIZE here to reduce the time taken by the sanity tests.
-# It is set to 1 by default, which will boot the image and run cases in the same
-# image without rebooting or killing the machine instance. If it is set to 0, the
-# image will be copied and tested for each case, which will take longer but be
-# more precise.
-#TEST_SERIALIZE = "1"
-
+# enable this uncomment this line. See classes/testimage(-auto).bbclass for
+# further details.
+#TEST_IMAGE = "1"
 #
 # Interactive shell configuration
 #
@@ -268,6 +258,18 @@ BB_DISKMON_DIRS = "\
 #file://.* http://someserver.tld/share/sstate/PATH;downloadfilename=PATH \n \
 #file://.* file:///some/local/dir/sstate/PATH"
 
+
+#
+# Qemu configuration
+#
+# By default qemu will build with a builtin VNC server where graphical output can be
+# seen. The two lines below enable the SDL backend too. This assumes there is a
+# libsdl library available on your build system.
+#PACKAGECONFIG_pn-qemu-native = "sdl"
+#PACKAGECONFIG_pn-nativesdk-qemu = "sdl"
+#ASSUME_PROVIDED += "libsdl-native"
+
+
 # CONF_VERSION is increased each time build/conf/ changes incompatibly and is used to
 # track the version of this file when it was generated. This can safely be ignored if
 # this doesn't mean anything to you.
@@ -275,8 +277,6 @@ CONF_VERSION = "1"
 
 INHERIT += "rm_work"
 
-BBMASK = "meta-ti/recipes-misc"
-BBMASK += "|meta-toradex/recipes/images|meta-toradex/recipes-browser|meta-toradex/recipes-connectivity|meta-toradex/recipes-gnome|meta-toradex/recipes-mozilla|meta-toradex/recipes-graphics|meta-toradex/recipes-devtools/mtd|meta-toradex/recipes-core/psplash|meta-toradex/recipes-lxde|meta-toradex/recipes-multimedia/webm|meta-toradex/recipes/trdx-config|meta-toradex/recipes-core/util-linux|meta-toradex/recipes-core/systemd|meta-toradex/recipes-support|meta-toradex/recipes-core/dropbear|meta-toradex/recipes/base-files|meta-toradex/recipes-multimedia/gstreamer|meta-toradex/recipes-qt"
 ACCEPT_FSL_EULA = "1"
 LICENSE_FLAGS_WHITELIST = "commercial"
 
