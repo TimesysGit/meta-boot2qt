@@ -280,3 +280,4 @@ INHERIT += "rm_work"
 ACCEPT_FSL_EULA = "1"
 LICENSE_FLAGS_WHITELIST = "commercial"
 
+QT_SDK_PATH = ""

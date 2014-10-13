@@ -75,11 +75,19 @@ if [ ! -f ${PWD}/${BUILDDIR}/conf/bblayers.conf ]; then
 
   mkdir -p ${PWD}/${BUILDDIR}/conf
   cp ${PWD}/sources/meta-b2qt/conf/${LAYERSCONF} ${PWD}/${BUILDDIR}/conf/bblayers.conf
+
+  if [ ! -d ${PWD}/sources/meta-b2qt/.git ]; then
+    QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-b2qt/../../)
+  fi
 fi
 
 export TEMPLATECONF="${PWD}/sources/meta-b2qt/conf"
 . sources/poky/oe-init-build-env ${BUILDDIR}
 
+# use sources from Qt SDK if that is available
+sed -i -e "/QT_SDK_PATH/s:\"\":\"${QT_SDK_PATH}\":" conf/local.conf
+
+unset QT_SDK_PATH
 unset BUILDDIR
 unset TEMPLATECONF
 unset LAYERSCONF
