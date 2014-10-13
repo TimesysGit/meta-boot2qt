@@ -31,15 +31,23 @@ RDEPENDS_${PN} = "\
         gst-meta-audio \
         gst-plugins-good \
         gst-plugins-base-app \
+        gst-plugins-base-audiorate \
+        gst-plugins-base-videorate \
+        gst-plugins-base-encodebin \
         gst-plugins-good-videofilter \
         gst-plugins-good-id3demux \
         gst-plugins-good-auparse \
         gst-plugins-good-isomp4 \
         gst-plugins-good-icydemux \
+        gst-plugins-good-video4linux2 \
+        gst-plugins-good-multifile \
+        gst-plugins-good-videocrop \
         gst-plugins-ugly-rmdemux \
         gst-plugins-ugly-asf \
         gst-plugins-ugly-a52dec \
         gst-plugins-bad-mpegdemux \
         gst-plugins-bad-faad \
+        gst-plugins-bad-camerabin2 \
+        gst-plugins-bad-jpegformat \
         gst-ffmpeg \
         "
