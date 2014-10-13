@@ -1,6 +1,6 @@
 require recipes-graphics/libgles/libgles-omap3-no-x.inc
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:${COREBASE}/meta-ti/recipes-graphics/libgles/${PN}"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:${COREBASE}/../meta-ti/recipes-graphics/libgles/${PN}"
 
 LICENSE = "TI-TSPA"
 
