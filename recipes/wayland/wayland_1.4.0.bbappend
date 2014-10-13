@@ -27,6 +27,6 @@ SRC_URI_append_class-nativesdk = " file://just-scanner.patch \
     "
 
 EXTRA_OECONF_class-nativesdk = "--disable-documentation --enable-scanner"
-DEPENDS_class-nativesdk = "wayland-native"
+DEPENDS_class-nativesdk = "libffi-nativesdk wayland-native"
 
 BBCLASSEXTEND = "native nativesdk"
