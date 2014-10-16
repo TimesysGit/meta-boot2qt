@@ -40,12 +40,12 @@ if [ "$(basename $0)" = "${THIS_SCRIPT}" ]; then
     exit 1
 fi
 
-BUILDDIR=${BUILDDIR:-build-${MACHINE}}
-
 if [ -z "$MACHINE" ]; then
   echo "Error: MACHINE environment variable not defined"
   return 1
 fi
+
+BUILDDIR=${BUILDDIR:-build-${MACHINE}}
 
 if [ ! -f ${PWD}/${BUILDDIR}/conf/bblayers.conf ]; then
   case ${MACHINE} in
