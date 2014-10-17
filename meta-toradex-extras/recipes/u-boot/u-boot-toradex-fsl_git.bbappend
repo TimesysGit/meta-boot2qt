@@ -20,34 +20,7 @@
 ##
 #############################################################################
 
-include conf/distro/include/toradex.inc
-
-IMAGE_FSTYPES = "tar.gz"
-
-BOOTFS_CONTENT = "\
-    ${KERNEL_IMAGETYPE}:${KERNEL_IMAGETYPE} \
-    ${KERNEL_IMAGETYPE}-imx6q-apalis-eval.dtb:imx6q-apalis-eval.dtb \
-    u-boot-${MACHINE}.imx:u-boot.imx \
-    flash_mmc-${MACHINE}.img:flash_mmc.img \
-    "
-BOOTFS_DEPENDS = "u-boot:do_deploy"
-
-MACHINE_EXTRA_INSTALL = "\
-        libgal-mx6 \
-        libegl-mx6 \
-        libgles2-mx6 \
-        gst-fsl-plugin \
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += " \
+        file://0001-Update-default-args-for-apalis-imx6.patch \
         "
-
-MACHINE_EXTRA_INSTALL_SDK = " \
-        libgal-mx6 \
-        libegl-mx6 \
-        libegl-mx6-dev \
-        libgles2-mx6 \
-        libgles2-mx6-dev \
-        "
-
-ADB_PRODUCTID = "0x0000"
-
-SERIAL_CONSOLES = "115200;ttymxc0 \
-                   115200;ttymxc1"
