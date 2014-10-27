@@ -83,30 +83,30 @@ get_repo() {
 get_groups() {
   case ${DEVICE} in
     apalis-imx6)
-      GROUPS="toradex"
+      PROJECT_GROUPS="toradex"
     ;;
     imx53qsb|imx6qsabresd|nitrogen6x)
-      GROUPS="fsl"
+      PROJECT_GROUPS="fsl"
     ;;
     beagleboard|am335x-evm)
-      GROUPS="ti"
+      PROJECT_GROUPS="ti"
     ;;
     beaglebone)
-      GROUPS="bbb"
+      PROJECT_GROUPS="bbb"
     ;;
     raspberrypi)
-      GROUPS="rpi"
+      PROJECT_GROUPS="rpi"
     ;;
     emulator)
-      GROUPS="emulator"
+      PROJECT_GROUPS="emulator"
     ;;
     *)
       echo "Unknown device configuration, including all meta layers"
-      GROUPS="all"
+      PROJECT_GROUPS="all"
     ;;
   esac
 
-  GROUPS="${GROUPS} default"
+  PROJECT_GROUPS="${PROJECT_GROUPS} default"
 }
 
 list_devices() {
@@ -120,7 +120,7 @@ mirror() {
   mkdir -p .repo/manifests
   cp ${DIR}/scripts/manifest.xml .repo/manifests/
   MANIFEST="manifest.xml"
-  ${REPO} init -u .repo/repo -b default -m ${MANIFEST} -g all --mirror
+  ${REPO} init -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g all --mirror
   ${REPO} sync
 }
 
@@ -139,7 +139,7 @@ init() {
   else
     MANIFEST="manifest.xml"
   fi
-  ${REPO} init -u .repo/repo -b default -m ${MANIFEST} -g "${GROUPS}" ${REFERENCE}
+  ${REPO} init -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" ${REFERENCE}
   ${REPO} sync
 
   if [ ! -e "sources/meta-b2qt" ]; then
