@@ -24,19 +24,15 @@
 RDEPENDS_kernel-base = ""
 
 do_configure_prepend() {
-	# Use multitouch protocol for touchscreen that support it
-	echo "CONFIG_TOUCHSCREEN_EGALAX_SINGLE_TOUCH=n"      >> ${WORKDIR}/defconfig
-	echo "CONFIG_TOUCHSCREEN_FT5X06_SINGLE_TOUCH=n"      >> ${WORKDIR}/defconfig
-
-	# FunctionFS for adb
-	echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
-
-	# Enable USB serial support
-	echo "CONFIG_USB_SERIAL=m"              >> ${WORKDIR}/defconfig
-	echo "CONFIG_USB_SERIAL_GENERIC=y"      >> ${WORKDIR}/defconfig
-	echo "CONFIG_USB_SERIAL_FTDI_SIO=m"     >> ${WORKDIR}/defconfig
-	echo "CONFIG_USB_SERIAL_PL2303=m"       >> ${WORKDIR}/defconfig
-
 	# fix imx-vpu break on video decoding
 	echo "CONFIG_VMSPLIT_2G=y"              >> ${WORKDIR}/defconfig
+
+	# include H4 UART for Broadcom BT on Nitrogen6_Lite
+	echo "CONFIG_BT_HCIUART_H4=y"           >> ${WORKDIR}/defconfig
+
+	# include Broadcom WiFi for Nitrogen6_Lite
+	echo "CONFIG_BRCMFMAC=m"                >> ${WORKDIR}/defconfig
+
+	# include LEDS_GPIO for Nitrogen6_Lite
+	echo "CONFIG_LEDS_GPIO=y"               >> ${WORKDIR}/defconfig
 }
