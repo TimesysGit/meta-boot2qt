@@ -20,5 +20,7 @@
 ##
 #############################################################################
 
-# dependency to x11 only when distro features have it
-DEPENDS = "${@base_contains('DISTRO_FEATURES', 'x11', 'virtual/libx11', '', d)}"
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+SRC_URI += " \
+        file://0001-fix-glTexImage2D-API.patch \
+        "
