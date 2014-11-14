@@ -30,8 +30,7 @@ PACKAGES = "${PN}"
 MACHINE_EXTRA_INSTALL_SDK ?= ""
 
 RDEPENDS_${PN} += "\
-    task-core-standalone-sdk-target \
-    task-core-standalone-sdk-target-dbg \
+    packagegroup-core-standalone-sdk-target \
     glib-2.0-dev \
     openssl-dev \
     libpng-dev \
