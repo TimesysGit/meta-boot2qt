@@ -20,38 +20,26 @@
 ##
 #############################################################################
 
-DESCRIPTION = "QtGlesStream dummy client provides headers and a dummy library for EGL/GLES"
-SECTION = "devel"
-LICENSE = "CLOSED"
-
-SRCREV = "72b9fdd9373a383c8b94afdbeb8cfbbfcde95e6e"
-PV = "5.4.0+git${SRCREV}"
-
 PROVIDES = "virtual/libgles2 virtual/libgles3 virtual/egl"
 
-SRC_URI = "git://qt-gerrit.it.local/QtRD-15810/qtglesstream.git;protocol=ssh;branch=dev"
+SRC_URI = "file://headers \
+           file://egl.cpp \
+           file://gles2.cpp \
+          "
 
-S = "${WORKDIR}/git"
-
-ALLOW_EMPTY_${PN} = "1"
-
-do_compile() {
-	${CC} -DQGS_BUILD_CLIENT_DLL -fPIC -shared -Iheaders -o libQtGlesStreamClient.so src/client-dummy/*.cpp
-}
+FILES_${PN} = "${libdir}"
+FILES_${PN}-dev = "${includedir}/"
 
 do_install() {
 	install -m 0755 -d ${D}${includedir}/EGL
-	install -m 0755 ${WORKDIR}/git/headers/EGL/* ${D}${includedir}/EGL
+	install -m 0755 ${WORKDIR}/headers/EGL/* ${D}${includedir}/EGL
 
 	install -m 0755 -d ${D}${includedir}/GLES2
-	install -m 0755 ${WORKDIR}/git/headers/GLES2/* ${D}${includedir}/GLES2
+	install -m 0755 ${WORKDIR}/headers/GLES2/* ${D}${includedir}/GLES2
 
 	install -m 0755 -d ${D}${includedir}/GLES3
-	install -m 0755 ${WORKDIR}/git/headers/GLES3/* ${D}${includedir}/GLES3
+	install -m 0755 ${WORKDIR}/headers/GLES3/* ${D}${includedir}/GLES3
 
 	install -m 0755 -d ${D}${includedir}/KHR
-	install -m 0755 ${WORKDIR}/git/headers/KHR/* ${D}${includedir}/KHR
-
-	install -m 0755 -d ${D}${libdir}
-	install -m 0755 ${WORKDIR}/git/libQtGlesStreamClient.so ${D}${libdir}
+	install -m 0755 ${WORKDIR}/headers/KHR/* ${D}${includedir}/KHR
 }
