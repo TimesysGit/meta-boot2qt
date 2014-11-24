@@ -13,7 +13,7 @@
 ## agreement.
 ##
 ## For further information use the contact form at
-## http://qt.digia.com/contact-us.
+## http://www.qt.io/contact-us.
 ##
 ##
 ## $QT_END_LICENSE$
@@ -31,6 +31,7 @@ MACHINE_EXTRA_INSTALL_SDK ?= ""
 
 RDEPENDS_${PN} += "\
     packagegroup-core-standalone-sdk-target \
+    base-files \
     glib-2.0-dev \
     openssl-dev \
     libpng-dev \

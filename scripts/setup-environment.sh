@@ -14,7 +14,7 @@
 ## agreement.
 ##
 ## For further information use the contact form at
-## http://qt.digia.com/contact-us.
+## http://www.qt.io/contact-us.
 ##
 ##
 ## $QT_END_LICENSE$

@@ -13,7 +13,7 @@
 ## agreement.
 ##
 ## For further information use the contact form at
-## http://qt.digia.com/contact-us.
+## http://www.qt.io/contact-us.
 ##
 ##
 ## $QT_END_LICENSE$
@@ -47,5 +47,9 @@ RDEPENDS_${PN} = "\
         hunspell \
         ca-certificates \
         linux-firmware \
+        ttf-devanagari \
+        ttf-opensans \
+        ttf-dejavu-common \
+        ttf-dejavu-sans \
         ${MACHINE_EXTRA_INSTALL} \
         "
