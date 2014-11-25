@@ -29,12 +29,7 @@ require recipes-core/packagegroups/nativesdk-packagegroup-sdk-host.bb
 
 RDEPENDS_${PN} = "\
     python-nativesdk \
-    python-subprocess-nativesdk \
-    python-compiler-nativesdk \
-    python-multiprocessing-nativesdk \
-    python-shell-nativesdk \
-    python-threading-nativesdk \
+    python-modules-nativesdk \
+    python-misc-nativesdk \
     ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
     "
-
-
