@@ -21,6 +21,6 @@
 #############################################################################
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-SRC_URI_apalis-imx6 += " \
+SRC_URI_append_apalis-imx6 = " \
         file://0001-Update-default-args-for-apalis-imx6.patch \
         "
