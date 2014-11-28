@@ -115,7 +115,7 @@ get_groups() {
 list_devices() {
   echo "Available device configurations:"
   for device in $(ls $DIR/conf/distro/include/*.conf); do
-    echo "  $(basename ${device%%.*})"
+    echo "  $(basename ${device%%.conf})"
   done
 }
 
