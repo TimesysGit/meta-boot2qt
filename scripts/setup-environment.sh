@@ -91,6 +91,5 @@ export TEMPLATECONF="${PWD}/sources/meta-b2qt/conf"
 sed -i -e "/QT_SDK_PATH/s:\"\":\"${QT_SDK_PATH}\":" conf/local.conf
 
 unset QT_SDK_PATH
-unset BUILDDIR
 unset TEMPLATECONF
 unset LAYERSCONF
