@@ -1,8 +1,21 @@
 diff --git a/adb/adb.c b/adb/adb.c
-index 07bfbe5..c8f37ff 100644
+index 10a1e0d..99fca49 100644
 --- a/adb/adb.c
 +++ b/adb/adb.c
-@@ -141,7 +141,7 @@ void  adb_trace_init(void)
+@@ -35,12 +35,10 @@
+ 
+ #if !ADB_HOST
+ #include <cutils/properties.h>
+-#include <private/android_filesystem_config.h>
+ #include <sys/capability.h>
+ #include <sys/mount.h>
+ #include <sys/prctl.h>
+ #include <getopt.h>
+-#include <selinux/selinux.h>
+ #else
+ #include "usb_vendors.h"
+ #endif
+@@ -147,7 +145,7 @@ void  adb_trace_init(void)
      }
  }
  
@@ -11,7 +24,7 @@ index 07bfbe5..c8f37ff 100644
  /*
   * Implements ADB tracing inside the emulator.
   */
-@@ -282,6 +282,22 @@ static void send_close(unsigned local, unsigned remote, atransport *t)
+@@ -288,6 +286,22 @@ static void send_close(unsigned local, unsigned remote, atransport *t)
      send_packet(p, t);
  }
  
@@ -34,104 +47,176 @@ index 07bfbe5..c8f37ff 100644
  static size_t fill_connect_data(char *buf, size_t bufsize)
  {
  #if ADB_HOST
-@@ -1056,31 +1072,7 @@ static int should_drop_privileges() {
- #ifndef ALLOW_ADBD_ROOT
-     return 1;
- #else /* ALLOW_ADBD_ROOT */
--    int secure = 0;
--    char value[PROPERTY_VALUE_MAX];
--
--   /* run adbd in secure mode if ro.secure is set and
--    ** we are not in the emulator
+@@ -1344,50 +1358,11 @@ int adb_main(int is_daemon, int server_port)
+           " unchanged.\n");
+     }
+ 
+-    /* add extra groups:
+-    ** AID_ADB to access the USB driver
+-    ** AID_LOG to read system logs (adb logcat)
+-    ** AID_INPUT to diagnose input issues (getevent)
+-    ** AID_INET to diagnose network issues (netcfg, ping)
+-    ** AID_GRAPHICS to access the frame buffer
+-    ** AID_NET_BT and AID_NET_BT_ADMIN to diagnose bluetooth (hcidump)
+-    ** AID_SDCARD_R to allow reading from the SD card
+-    ** AID_SDCARD_RW to allow writing to the SD card
+-    ** AID_NET_BW_STATS to read out qtaguid statistics
 -    */
--    property_get("ro.kernel.qemu", value, "");
--    if (strcmp(value, "1") != 0) {
--        property_get("ro.secure", value, "1");
--        if (strcmp(value, "1") == 0) {
--            // don't run as root if ro.secure is set...
--            secure = 1;
+-    gid_t groups[] = { AID_ADB, AID_LOG, AID_INPUT, AID_INET, AID_GRAPHICS,
+-                       AID_NET_BT, AID_NET_BT_ADMIN, AID_SDCARD_R, AID_SDCARD_RW,
+-                       AID_NET_BW_STATS };
+-    if (setgroups(sizeof(groups)/sizeof(groups[0]), groups) != 0) {
+-        exit(1);
+-    }
 -
--            // ... except we allow running as root in userdebug builds if the
--            // service.adb.root property has been set by the "adb root" command
--            property_get("ro.debuggable", value, "");
--            if (strcmp(value, "1") == 0) {
--                property_get("service.adb.root", value, "");
--                if (strcmp(value, "1") == 0) {
--                    secure = 0;
--                }
+-    /* don't listen on a port (default 5037) if running in secure mode */
+-    /* don't run as root if we are running in secure mode */
+-    if (should_drop_privileges()) {
+-        drop_capabilities_bounding_set_if_needed();
+ 
+-        /* then switch user and group to "shell" */
+-        if (setgid(AID_SHELL) != 0) {
+-            exit(1);
+-        }
+-        if (setuid(AID_SHELL) != 0) {
+-            exit(1);
+-        }
+-
+-        D("Local port disabled\n");
+-    } else {
+-        char local_name[30];
+-        if ((root_seclabel != NULL) && (is_selinux_enabled() > 0)) {
+-            // b/12587913: fix setcon to allow const pointers
+-            if (setcon((char *)root_seclabel) < 0) {
+-                exit(1);
 -            }
 -        }
--    }
--    return secure;
-+    return 0;
- #endif /* ALLOW_ADBD_ROOT */
- }
- #endif /* !ADB_HOST */
-@@ -1543,7 +1535,9 @@ int main(int argc, char **argv)
+-        build_local_name(local_name, sizeof(local_name), server_port);
+-        if(install_listener(local_name, "*smartsocket*", NULL, 0)) {
+-            exit(1);
+-        }
++    char local_name[30];
++    build_local_name(local_name, sizeof(local_name), server_port);
++    if(install_listener(local_name, "*smartsocket*", NULL, 0)) {
++        exit(1);
+     }
+ 
+     int usb = 0;
+@@ -1408,10 +1383,9 @@ int adb_main(int is_daemon, int server_port)
+         printf("using port=%d\n", port);
+         // listen on TCP port specified by service.adb.tcp.port property
+         local_init(port);
+-    } else if (!usb) {
+-        // listen on default port
+-        local_init(DEFAULT_ADB_LOCAL_TRANSPORT_PORT);
+     }
++    // listen on default port
++    local_init(DEFAULT_ADB_LOCAL_TRANSPORT_PORT);
+ 
+     D("adb_main(): pre init_jdwp()\n");
+     init_jdwp();
+@@ -1695,7 +1669,6 @@ int main(int argc, char **argv)
  #else
      /* If adbd runs inside the emulator this will enable adb tracing via
       * adb-debug qemud service in the emulator. */
-+#if ADB_QEMU
-     adb_qemu_trace_init();
-+#endif
-     if((argc > 1) && (!strcmp(argv[1],"recovery"))) {
-         adb_device_banner = "recovery";
-         recovery_mode = 1;
-diff --git a/adb/adb.h b/adb/adb.h
-index 9da8af8..ae3dd31 100644
---- a/adb/adb.h
-+++ b/adb/adb.h
-@@ -363,7 +363,7 @@ typedef enum {
+-    adb_qemu_trace_init();
+     while(1) {
+         int c;
+         int option_index = 0;
+diff --git a/adb/adb_trace.h b/adb/adb_trace.h
+index 8a5d9f8..01c4c06 100644
+--- a/adb/adb_trace.h
++++ b/adb/adb_trace.h
+@@ -22,7 +22,7 @@
+ #endif
  
- #if ADB_TRACE
+ /* define ADB_TRACE to 1 to enable tracing support, or 0 to disable it */
+-#define  ADB_TRACE    1
++#define  ADB_TRACE    0
  
--#if !ADB_HOST
-+#if !ADB_HOST && ADB_QEMU
- /*
-  * When running inside the emulator, guest's adbd can connect to 'adb-debug'
-  * qemud service that can display adb trace messages (on condition that emulator
+ /* IMPORTANT: if you change the following list, don't
+  * forget to update the corresponding 'tags' table in
+diff --git a/adb/file_sync_service.c b/adb/file_sync_service.c
+index 7933858..3cbd0cd 100644
+--- a/adb/file_sync_service.c
++++ b/adb/file_sync_service.c
+@@ -26,7 +26,6 @@
+ 
+ #include <errno.h>
+ #include <private/android_filesystem_config.h>
+-#include <selinux/android.h>
+ #include "sysdeps.h"
+ 
+ #define TRACE_TAG  TRACE_SYNC
+@@ -73,7 +72,6 @@ static int mkdirs(char *name)
+                 *x = '/';
+                 return ret;
+             }
+-            selinux_android_restorecon(name, 0);
+         }
+         *x++ = '/';
+     }
+@@ -251,7 +249,6 @@ static int handle_send_file(int s, char *path, uid_t uid,
+     if(fd >= 0) {
+         struct utimbuf u;
+         adb_close(fd);
+-        selinux_android_restorecon(path, 0);
+         u.actime = timestamp;
+         u.modtime = timestamp;
+         utime(path, &u);
 diff --git a/adb/remount_service.c b/adb/remount_service.c
-index 4cb41e7..6cfc2c6 100644
+index 72d15a1..df64799 100644
 --- a/adb/remount_service.c
 +++ b/adb/remount_service.c
-@@ -77,12 +77,12 @@ static int remount_system()
+@@ -28,7 +28,7 @@
+ #include "adb.h"
+ 
+ 
+-static int system_ro = 1;
++static int system_ro = 0;
+ static int vendor_ro = 1;
+ 
+ /* Returns the device used to mount a directory in /proc/mounts */
+@@ -84,7 +84,7 @@ static int remount(const char* dir, int* dir_ro)
+     int fd;
+     int OFF = 0;
+ 
+-    if (dir_ro == 0) {
++    if (*dir_ro == 0) {
          return 0;
      }
  
--    dev = find_mount("/system");
-+    dev = find_mount("/");
- 
-     if (!dev)
-         return -1;
- 
--    system_ro = mount(dev, "/system", "none", MS_REMOUNT, NULL);
-+    system_ro = mount(dev, "/", "none", MS_REMOUNT, NULL);
- 
-     free(dev);
+@@ -132,7 +132,6 @@ void remount_service(int fd, void *cookie)
+     else {
+         write_string(fd, "remount failed\n");
+     }
+-
+     adb_close(fd);
+ }
  
 diff --git a/adb/services.c b/adb/services.c
-index 495a083..eb895ae 100644
+index e61371a..8d4e2b5 100644
 --- a/adb/services.c
 +++ b/adb/services.c
-@@ -33,7 +33,7 @@
+@@ -34,7 +34,7 @@
  #    include <sys/ioctl.h>
  #  endif
  #else
 -#  include <cutils/android_reboot.h>
-+#  include <linux/reboot.h>
++#  include <sys/reboot.h>
+ #  include <cutils/properties.h>
  #endif
  
- typedef struct stinfo stinfo;
-@@ -182,7 +182,7 @@ void reboot_service(int fd, void *arg)
-         waitpid(pid, &ret, 0);
+@@ -127,7 +127,7 @@ void reboot_service(int fd, void *arg)
+         goto cleanup;
      }
  
--    ret = android_reboot(ANDROID_RB_RESTART2, 0, (char *) arg);
-+    ret = reboot(LINUX_REBOOT_CMD_RESTART2, 0, (char *) arg);
+-    ret = property_set(ANDROID_RB_PROPERTY, property_val);
++    ret = reboot(RB_AUTOBOOT);
      if (ret < 0) {
-         snprintf(buf, sizeof(buf), "reboot failed: %s\n", strerror(errno));
+         snprintf(buf, sizeof(buf), "reboot failed: %d\n", ret);
          writex(fd, buf, strlen(buf));
-@@ -334,7 +334,7 @@ static int create_subprocess(const char *cmd, const char *arg0, const char *arg1
+@@ -302,7 +302,7 @@ static int create_subproc_raw(const char *cmd, const char *arg0, const char *arg
  #if ADB_HOST
  #define SHELL_COMMAND "/bin/sh"
  #else
@@ -141,10 +226,10 @@ index 495a083..eb895ae 100644
  
  #if !ADB_HOST
 diff --git a/adb/transport_local.c b/adb/transport_local.c
-index 96a24ba..51c85fc 100644
+index 948cc15..d6d0a3a 100644
 --- a/adb/transport_local.c
 +++ b/adb/transport_local.c
-@@ -186,7 +186,7 @@ static void *server_socket_thread(void * arg)
+@@ -189,7 +189,7 @@ static void *server_socket_thread(void * arg)
  }
  
  /* This is relevant only for ADB daemon running inside the emulator. */
@@ -153,7 +238,7 @@ index 96a24ba..51c85fc 100644
  /*
   * Redefine open and write for qemu_pipe.h that contains inlined references
   * to those routines. We will redifine them back after qemu_pipe.h inclusion.
-@@ -304,7 +304,7 @@ void local_init(int port)
+@@ -307,7 +307,7 @@ void local_init(int port)
      if(HOST) {
          func = client_socket_thread;
      } else {
@@ -162,16 +247,19 @@ index 96a24ba..51c85fc 100644
          func = server_socket_thread;
  #else
          /* For the adbd daemon in the system image we need to distinguish
-diff --git a/adb/transport_usb.c b/adb/transport_usb.c
-index ee6b637..c5e1408 100644
---- a/adb/transport_usb.c
-+++ b/adb/transport_usb.c
-@@ -18,7 +18,7 @@
- #include <stdlib.h>
- #include <string.h>
+diff --git a/include/cutils/properties.h b/include/cutils/properties.h
+index 798db8b..c86f312 100644
+--- a/include/cutils/properties.h
++++ b/include/cutils/properties.h
+@@ -19,8 +19,9 @@
  
--#include <sysdeps.h>
-+#include "sysdeps.h"
+ #include <sys/cdefs.h>
+ #include <stddef.h>
+-#include <sys/system_properties.h>
+-#include <stdint.h>
++
++#define PROP_NAME_MAX   32
++#define PROP_VALUE_MAX  92
  
- #define  TRACE_TAG  TRACE_TRANSPORT
- #include "adb.h"
+ #ifdef __cplusplus
+ extern "C" {
