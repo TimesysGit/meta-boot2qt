@@ -42,6 +42,7 @@ RDEPENDS_${PN} = "\
         gst-plugins-good-video4linux2 \
         gst-plugins-good-multifile \
         gst-plugins-good-videocrop \
+        gst-plugins-good-jpeg \
         gst-plugins-ugly-rmdemux \
         gst-plugins-ugly-asf \
         gst-plugins-ugly-a52dec \
