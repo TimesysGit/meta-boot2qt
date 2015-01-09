@@ -28,7 +28,7 @@ while test -n "$1"; do
       return 0
       ;;
     *)
-      BUILDDIR=$1
+      BUILDDIRECTORY=$1
     ;;
   esac
   shift
@@ -45,9 +45,9 @@ if [ -z "$MACHINE" ]; then
   return 1
 fi
 
-BUILDDIR=${BUILDDIR:-build-${MACHINE}}
+BUILDDIRECTORY=${BUILDDIRECTORY:-build-${MACHINE}}
 
-if [ ! -f ${PWD}/${BUILDDIR}/conf/bblayers.conf ]; then
+if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   case ${MACHINE} in
     apalis-imx6|colibri-vf)
       LAYERSCONF="bblayers.conf.toradex.sample"
@@ -76,8 +76,8 @@ if [ ! -f ${PWD}/${BUILDDIR}/conf/bblayers.conf ]; then
     ;;
   esac
 
-  mkdir -p ${PWD}/${BUILDDIR}/conf
-  cp ${PWD}/sources/meta-b2qt/conf/${LAYERSCONF} ${PWD}/${BUILDDIR}/conf/bblayers.conf
+  mkdir -p ${PWD}/${BUILDDIRECTORY}/conf
+  cp ${PWD}/sources/meta-b2qt/conf/${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
 
   if [ ! -d ${PWD}/sources/meta-b2qt/.git ]; then
     QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-b2qt/../../)
@@ -85,11 +85,12 @@ if [ ! -f ${PWD}/${BUILDDIR}/conf/bblayers.conf ]; then
 fi
 
 export TEMPLATECONF="${PWD}/sources/meta-b2qt/conf"
-. sources/poky/oe-init-build-env ${BUILDDIR}
+. sources/poky/oe-init-build-env ${BUILDDIRECTORY}
 
 # use sources from Qt SDK if that is available
 sed -i -e "/QT_SDK_PATH/s:\"\":\"${QT_SDK_PATH}\":" conf/local.conf
 
+unset BUILDDIRECTORY
 unset QT_SDK_PATH
 unset TEMPLATECONF
 unset LAYERSCONF
