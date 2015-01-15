@@ -82,6 +82,9 @@ get_repo() {
 
 get_groups() {
   case ${DEVICE} in
+    all)
+      PROJECT_GROUPS="all"
+    ;;
     apalis-imx6|colibri-vf)
       PROJECT_GROUPS="toradex"
     ;;
