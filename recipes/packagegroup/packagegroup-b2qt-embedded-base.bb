@@ -51,5 +51,6 @@ RDEPENDS_${PN} = "\
         ttf-opensans \
         ttf-dejavu-common \
         ttf-dejavu-sans \
+        dbus-session-init \
         ${MACHINE_EXTRA_INSTALL} \
         "

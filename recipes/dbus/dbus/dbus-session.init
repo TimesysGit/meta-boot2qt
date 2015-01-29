@@ -1,0 +1,103 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          dbus
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      1
+# Short-Description: D-Bus session message bus
+# Description:       D-Bus is a simple interprocess messaging system, used
+#                    for sending messages between applications.
+### END INIT INFO
+#
+# -*- coding: utf-8 -*-
+# Debian init.d script for D-BUS
+# Copyright © 2003 Colin Walters <walters@debian.org>
+
+# set -e
+
+# Source function library.
+. /etc/init.d/functions
+
+DAEMON=@bindir@/dbus-launch
+NAME=dbus-session
+ADDRESSFILE=/var/run/dbus/session_bus_address
+UUIDDIR=/var/lib/dbus
+DESC="session message bus"
+
+test -x $DAEMON || exit 0
+
+# Source defaults file; edit that file to configure this script.
+ENABLED=1
+PARAMS=""
+if [ -e /etc/default/dbus ]; then
+  . /etc/default/dbus
+fi
+
+if [ -e $ADDRESSFILE ]; then
+  . $ADDRESSFILE
+fi
+
+test "$ENABLED" != "0" || exit 0
+
+start_it_up()
+{
+  echo -n "Starting $DESC: "
+  $DAEMON --auto-syntax > $ADDRESSFILE
+  echo "$NAME."
+}
+
+shut_it_down()
+{
+  echo -n "Stopping $DESC: "
+  kill $DBUS_SESSION_BUS_PID
+  echo "$NAME."
+}
+
+reload_it()
+{
+  echo -n "Reloading $DESC config: "
+  dbus-send --print-reply --session --type=method_call \
+            --dest=org.freedesktop.DBus \
+            / org.freedesktop.DBus.ReloadConfig > /dev/null
+  # hopefully this is enough time for dbus to reload it's config file.
+  echo "done."
+}
+
+status_it()
+{
+    if kill -0 $DBUS_SESSION_BUS_PID 2>/dev/null; then
+        echo "$NAME (pid $DBUS_SESSION_BUS_PID) is running..."
+        return 0
+    else
+        echo "$NAME is stopped"
+    fi
+    return 3
+}
+
+case "$1" in
+  start)
+    start_it_up
+  ;;
+  stop)
+    shut_it_down
+  ;;
+  status)
+    status_it
+    exit $?
+  ;;
+  reload|force-reload)
+    reload_it
+  ;;
+  restart)
+    shut_it_down
+    sleep 1
+    start_it_up
+  ;;
+  *)
+    echo "Usage: /etc/init.d/$NAME {start|stop|status|restart|reload|force-reload}" >&2
+    exit 1
+  ;;
+esac
+
+exit 0
