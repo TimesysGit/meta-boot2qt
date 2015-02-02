@@ -21,6 +21,15 @@
 ##
 #############################################################################
 
+while test -n "$1"; do
+  case "$1" in
+    "--upload")
+      UPLOAD=1
+      ;;
+  esac
+  shift
+done
+
 echo "-------------------------------------" >> build.log
 for DIR in $(ls -d build-*); do
     (
@@ -29,7 +38,14 @@ for DIR in $(ls -d build-*); do
 
     echo "${MACHINE}:" >> ../build.log
     echo "  start: $(date)" >> ../build.log
-    bitbake b2qt-embedded-image meta-toolchain-b2qt-embedded-sdk || echo "    build failed" >> ../build.log
+    bitbake b2qt-embedded-image meta-toolchain-b2qt-embedded-sdk
+    if [ $? = 0 ]; then
+        if [ -n "${UPLOAD}" ]; then
+            ../sources/meta-b2qt/scripts/upload.sh
+        fi
+    else
+        echo "    build failed" >> ../build.log
+    fi
     echo "  end:   $(date)" >> ../build.log
     )
 done
