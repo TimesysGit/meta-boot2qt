@@ -34,7 +34,6 @@ RDEPENDS_${PN} = "\
         openssl \
         openssl-misc \
         libpng \
-        jpeg \
         tiff \
         libxslt \
         icu \
