@@ -21,7 +21,7 @@
 #############################################################################
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-SRC_URI_append_class-nativesdk = " file://just-scanner.patch \
+SRC_URI_append_class-nativesdk = " \
     file://disable-macro-checks-not-used-for-scanner.patch \
     file://0001-Use-native-wayland-scanner-when-building-nativesdk-w.patch \
     "
