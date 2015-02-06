@@ -11,31 +11,31 @@
 
   <project name="poky"
            remote="yocto"
-           revision="daisy"
+           revision="dizzy"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="daisy"
+           revision="dizzy"
            path="sources/meta-openembedded"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
-           revision="daisy"
+           revision="dizzy"
            path="sources/meta-fsl-arm"
            groups="notdefault,fsl,toradex"/>
   <project name="meta-ti"
            remote="yocto"
-           revision="daisy"
+           revision="master"
            path="sources/meta-ti"
            groups="notdefault,ti,bbb"/>
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="daisy"
+           revision="master"
            path="sources/meta-raspberrypi"
            groups="notdefault,rpi"/>
   <project name="meta-fsl-arm-extra"
            remote="freescale"
-           revision="daisy"
+           revision="dizzy"
            path="sources/meta-fsl-arm-extra"
            groups="notdefault,fsl,toradex"/>
   <project name="meta-beagleboard"
@@ -45,7 +45,7 @@
            groups="notdefault,bbb"/>
   <project name="meta-toradex"
            remote="toradex"
-           revision="V2.3"
+           revision="V2.3-next"
            path="sources/meta-toradex"
            groups="notdefault,toradex"/>
 
