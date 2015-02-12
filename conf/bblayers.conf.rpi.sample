@@ -34,6 +34,7 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/meta-raspberrypi \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
   ${BSPDIR}/sources/meta-b2qt \
+  ${BSPDIR}/sources/meta-b2qt/meta-raspberrypi-extras \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
   ${BSPDIR}/sources/poky/meta \

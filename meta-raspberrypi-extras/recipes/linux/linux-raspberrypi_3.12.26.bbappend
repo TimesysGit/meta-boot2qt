@@ -20,16 +20,8 @@
 ##
 #############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/../../../recipes/linux/linux:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:${THISDIR}/../../../recipes/linux/linux:"
 SRC_URI += "\
     file://ARM-perf-add-support-for-perf-registers-API.diff \
     file://ARM-perf-wire-up-perf_regs-and-unwind-support-for-AR.patch \
     "
-
-# kernel image files are not needed in the image
-RDEPENDS_kernel-base = ""
-
-config_script () {
-	# FunctionFS for adb
-	echo "CONFIG_USB_FUNCTIONFS=m"  >> ${S}/.config
-}

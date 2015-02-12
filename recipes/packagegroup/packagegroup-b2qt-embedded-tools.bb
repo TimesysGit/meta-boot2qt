@@ -31,4 +31,5 @@ RDEPENDS_${PN} = "\
         binutils \
         binutils-symlinks \
         i2c-tools \
+        perf \
         "
