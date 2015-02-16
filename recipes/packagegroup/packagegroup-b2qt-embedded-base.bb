@@ -51,5 +51,7 @@ RDEPENDS_${PN} = "\
         ttf-dejavu-common \
         ttf-dejavu-sans \
         dbus-session-init \
+        libmysqlclient \
+        libpq \
         ${MACHINE_EXTRA_INSTALL} \
         "

@@ -49,6 +49,8 @@ RDEPENDS_${PN} += "\
     hunspell-dev \
     libcap-dev \
     wpa-supplicant-dev \
+    libmysqlclient-dev \
+    libpq-dev \
     ${@base_contains("DISTRO_FEATURES", "bluetooth", "bluez4-dev", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     "
