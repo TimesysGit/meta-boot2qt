@@ -1,0 +1,25 @@
+From d57edef022af184015a8ccd87fa9021024513d55 Mon Sep 17 00:00:00 2001
+From: Andy Nichols <andy.nichols@theqtcompany.com>
+Date: Fri, 6 Mar 2015 10:14:13 +0100
+Subject: [PATCH] Enable Fusion 7 and 10 multi-touch controller
+
+---
+ arch/arm/boot/dts/vf-colibri-eval-v3.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/vf-colibri-eval-v3.dtsi b/arch/arm/boot/dts/vf-colibri-eval-v3.dtsi
+index 1f43dbe..9194580 100644
+--- a/arch/arm/boot/dts/vf-colibri-eval-v3.dtsi
++++ b/arch/arm/boot/dts/vf-colibri-eval-v3.dtsi
+@@ -214,7 +214,7 @@
+ 		gpios = <&gpio0 30 GPIO_ACTIVE_HIGH /* SO-DIMM 28, Pen down interrupt */
+ 			 &gpio0 23 GPIO_ACTIVE_LOW /* SO-DIMM 30, Reset interrupt */
+ 			>;
+-		status = "disabled";
++		status = "okay";
+ 	};
+ 
+ 	/* M41T0M6 real time clock on carrier board */
+-- 
+2.3.1
+

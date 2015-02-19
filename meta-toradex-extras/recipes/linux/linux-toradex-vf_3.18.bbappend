@@ -23,4 +23,11 @@
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-Allow-builds-with-GCC-4.8.patch \
+        file://0001-Enable-Fusion-7-and-10-multi-touch-controller.patch \
         "
+
+do_configure_prepend () {
+	# FunctionFS for adb
+	echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
+	echo "TOUCHSCREEN_FUSION_F0710A=y" >> ${WORKDIR}/defconfig
+}
