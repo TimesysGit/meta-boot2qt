@@ -20,20 +20,14 @@
 ##
 #############################################################################
 
-include conf/distro/include/toradex.inc
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
-BOOTFS_CONTENT = "\
-    ${KERNEL_IMAGETYPE}:${KERNEL_IMAGETYPE} \
-    ${KERNEL_IMAGETYPE}-vf500-colibri-eval-v3.dtb:vf500-colibri-eval-v3.dtb \
-    ${KERNEL_IMAGETYPE}-vf610-colibri-eval-v3.dtb:vf610-colibri-eval-v3.dtb \
-    u-boot-${MACHINE}.imx:u-boot.imx \
-    "
-BOOTFS_DEPENDS = "u-boot:do_deploy virtual/kernel:do_deploy"
-
-MACHINE_EXTRA_INSTALL = "\
-        opengldummy \
+SRC_URI += " \
+        file://0001-Enable-Fusion-7-and-10-multi-touch-controller.patch \
         "
 
-MACHINE_EXTRA_INSTALL_SDK = "\
-        opengldummy-dev \
-        "
+config_script () {
+	# FunctionFS for adb
+	echo "CONFIG_USB_FUNCTIONFS=m"  >> ${S}/.config
+	echo "TOUCHSCREEN_FUSION_F0710A=y" >> ${S}/.config
+}
