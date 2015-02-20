@@ -64,7 +64,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     beaglebone)
       LAYERSCONF="bblayers.conf.bbb.sample"
     ;;
-    raspberrypi)
+    raspberrypi|raspberrypi2)
       LAYERSCONF="bblayers.conf.rpi.sample"
     ;;
     emulator)

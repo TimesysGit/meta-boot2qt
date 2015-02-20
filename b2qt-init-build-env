@@ -100,7 +100,7 @@ get_groups() {
     beaglebone)
       PROJECT_GROUPS="bbb"
     ;;
-    raspberrypi)
+    raspberrypi|raspberrypi2)
       PROJECT_GROUPS="rpi"
     ;;
     emulator)
