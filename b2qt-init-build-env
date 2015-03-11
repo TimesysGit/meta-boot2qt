@@ -85,7 +85,7 @@ get_groups() {
     all)
       PROJECT_GROUPS="all"
     ;;
-    apalis-imx6|colibri-vf)
+    apalis-imx6|colibri-imx6|colibri-vf)
       PROJECT_GROUPS="toradex"
     ;;
     imx53qsb|imx6qsabresd|imx6dlsabresd|nitrogen6x)

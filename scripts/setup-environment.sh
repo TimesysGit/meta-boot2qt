@@ -49,7 +49,7 @@ BUILDDIRECTORY=${BUILDDIRECTORY:-build-${MACHINE}}
 
 if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   case ${MACHINE} in
-    apalis-imx6|colibri-vf)
+    apalis-imx6|colibri-imx6|colibri-vf)
       LAYERSCONF="bblayers.conf.toradex.sample"
     ;;
     imx53qsb|imx6qsabresd|imx6dlsabresd|nitrogen6x)
