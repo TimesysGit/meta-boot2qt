@@ -33,6 +33,8 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/poky/meta-yocto \
   ${BSPDIR}/sources/meta-raspberrypi \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
+  ${BSPDIR}/sources/meta-qt5 \
+  ${BSPDIR}/sources/meta-openembedded/meta-ruby \
   ${BSPDIR}/sources/meta-b2qt \
   ${BSPDIR}/sources/meta-b2qt/meta-raspberrypi-extras \
   "

@@ -7,6 +7,7 @@
   <remote fetch="git://git.openembedded.org" name="oe"/>
   <remote fetch="git://github.com/Freescale" name="freescale"/>
   <remote fetch="git://github.com/beagleboard" name="beagleboard"/>
+  <remote fetch="git://github.com/meta-qt5" name="qt5"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
 
   <project name="poky"
@@ -17,6 +18,10 @@
            remote="oe"
            revision="6413cdb66acf43059f94d0076ec9b8ad6a475b35"
            path="sources/meta-openembedded"/>
+  <project name="meta-qt5"
+           remote="qt5"
+           revision="22c431e7a1fa525c75bf1fa48c82d01955001350"
+           path="sources/meta-qt5"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
