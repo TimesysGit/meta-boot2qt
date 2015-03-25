@@ -29,10 +29,6 @@ SRC_URI += "\
 # kernel image files are not needed in the image
 RDEPENDS_kernel-base = ""
 
-LOCALVERSION = "-1.0.2_ga+yocto"
-SRCBRANCH = "boundary-imx_3.10.17_1.0.2_ga"
-SRCREV = "4ed13da788a463b1c5b6b26ecc2524d500ad1e9b"
-
 do_configure_prepend() {
 	# fix imx-vpu break on video decoding
 	echo "CONFIG_VMSPLIT_2G=y"              >> ${WORKDIR}/defconfig
