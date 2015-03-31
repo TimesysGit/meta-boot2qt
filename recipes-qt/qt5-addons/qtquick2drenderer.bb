@@ -20,26 +20,19 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
+DESCRIPTION = "Qt Quick 2D Rendender"
+LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://src/plugins/scenegraph/softwarecontext/softwarelayer.cpp;md5=d90663d6d3096fe0989549d52fec6554;beginline=1;endline=17"
+
+inherit qt5-module
+
+SRC_URI = " \
+    git://qt-gerrit.ci.local/QtRD-15810/scenegraph-raster.git;branch=${QT_BRANCH};protocol=ssh \
     "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
 
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
+SRCREV = "97c310f3a18a5aaebf8c102ceaba1f6a093faf6b"
+QT_BRANCH = "master"
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
+S = "${WORKDIR}/git"
 
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
-
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
+DEPENDS = "qtbase qtdeclarative"

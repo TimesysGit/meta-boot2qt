@@ -1,3 +1,4 @@
+#!/bin/sh
 #############################################################################
 ##
 ## Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
@@ -20,26 +21,22 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
-    "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
-
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
-
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
-
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
+case "$1" in
+start)
+    if [ -x /data/user/b2qt ]; then
+        APP="/data/user/b2qt"
+    elif [ -x /usr/bin/b2qt ]; then
+        APP="/usr/bin/b2qt"
+    else
+        APP="/usr/bin/qtlauncher --applications-root /data/user/qt"
+    fi
+    /usr/bin/appcontroller ${APP} &
+    ;;
+stop)
+    /usr/bin/appcontroller --stop
+    ;;
+*)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+esac
+exit 0

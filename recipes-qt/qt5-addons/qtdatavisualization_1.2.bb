@@ -20,26 +20,24 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
+DESCRIPTION = "Qt Data Visualization"
+LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://src/datavisualization/global/datavisualizationglobal_p.h;md5=b6f0a53c44e6ba165a7d2dbd58832be5;beginline=1;endline=17"
+
+inherit qt5-module
+
+SRC_URI = " \
+    git://qt-gerrit.it.local/QtRD-15810/qtdatavis3d.git;branch=${QT_BRANCH};protocol=ssh \
     "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
 
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
+# v1.2.0
+SRCREV = "62f90e25eec23cfac83985993f355feeac5b9f2c"
+QT_BRANCH = "master"
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
+S = "${WORKDIR}/git"
 
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
+DEPENDS += "qtbase qtdeclarative qtmultimedia"
 
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
+FILES_${PN}-qmlplugins += " \
+	${OE_QMAKE_PATH_QML}/QtDataVisualization/designer/* \
+    "

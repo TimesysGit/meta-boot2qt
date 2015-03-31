@@ -20,26 +20,12 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
-    "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
+DESCRIPTION = "B2Qt embedded Qt5 SDK toolchain"
+PR = "r0"
+LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://${QT_LICENCE};md5=7bc9c54e450006250a60e96604c186c9"
 
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
+inherit populate_sdk populate_sdk_qt5
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
-
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
-
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
+TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-qt5-toolchain-host"
+TOOLCHAIN_TARGET_TASK += "packagegroup-b2qt-embedded-qt5-toolchain-target"

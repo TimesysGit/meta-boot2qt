@@ -20,26 +20,26 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
+DESCRIPTION = "B2Qt embedded Qt5 image"
+LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://${QT_LICENCE};md5=7bc9c54e450006250a60e96604c186c9"
+PR = "r0"
+
+IMAGE_FEATURES += "\
+        package-management \
+        ssh-server-dropbear \
+        tools-debug \
+        debug-tweaks \
+        hwcodecs \
+        "
+
+inherit core-image
+inherit bootfs-image
+
+IMAGE_INSTALL += "\
+    packagegroup-b2qt-embedded-base \
+    packagegroup-b2qt-embedded-tools \
+    packagegroup-b2qt-embedded-gstreamer \
+    packagegroup-b2qt-embedded-qt5 \
+    packagegroup-b2qt-embedded-qt5-addons \
     "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
-
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
-
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
-
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"

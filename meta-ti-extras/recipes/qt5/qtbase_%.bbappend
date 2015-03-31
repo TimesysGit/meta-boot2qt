@@ -20,26 +20,14 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
-    "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
+do_configure_prepend_rpi() {
+	sed -i 's!load(qt_config)!!' ${S}/mkspecs/linux-oe-g++/qmake.conf
+	cat >> ${S}/mkspecs/linux-oe-g++/qmake.conf <<EOF
 
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
+QMAKE_LIBS_EGL          = -lEGL -lIMGegl -lsrv_um
+QMAKE_LIBS_OPENGL_ES2   = -lGLESv2 \$\${QMAKE_LIBS_EGL}
+QMAKE_LIBS_OPENVG       = -lOpenVG \$\${QMAKE_LIBS_EGL}
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
-
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
-
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
+load(qt_config)
+EOF
+}

@@ -20,26 +20,27 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
+DESCRIPTION = "Qt Virtual Keyboard"
+LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://src/virtualkeyboard/plugin.cpp;md5=9e7c3707428a49f2fd857aa1538823b6;beginline=1;endline=17"
+
+inherit qt5-module
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI = " \
+    git://qt-gerrit.it.local/QtRD-15810/qtvirtualkeyboard.git;branch=${QT_BRANCH};protocol=ssh \
     "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
 
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
+SRCREV = "fa1aae525f94e9a870d0fcc0fb1be50648b76739"
+QT_BRANCH = "master"
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
+S = "${WORKDIR}/git"
 
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
+DEPENDS = "qtbase qtdeclarative hunspell"
 
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
+EXTRA_QMAKEVARS_PRE += "CONFIG+=disable-xcb"
+
+FILES_${PN}-qmlplugins-dbg = " \
+    ${OE_QMAKE_PATH_QML}/QtQuick/Enterprise/VirtualKeyboard/Styles/.debug/* \
+    "

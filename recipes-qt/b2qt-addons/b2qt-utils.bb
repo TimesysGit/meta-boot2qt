@@ -20,26 +20,29 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
+DESCRIPTION = "Boot to Qt Utils module"
+LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://src/qconnectivity/main.cpp;md5=0b2892e6aca7d0750bbd7fe6b6b1c033;beginline=1;endline=17"
+
+inherit qt5-module
+
+SRC_URI = " \
+    git://qt-gerrit.it.local/QtRD-15810/b2qt-utils;branch=${QT_BRANCH};protocol=ssh \
     "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
 
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
+SRCREV = "7b14c47d6adbc6ab3cdfc9d10bef25029215a85f"
+QT_BRANCH = "dev"
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
+S = "${WORKDIR}/git"
 
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
+DEPENDS = "qtbase qtdeclarative wpa-supplicant"
 
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
+FILES_${PN}-examples-dbg = " \
+    /data/user/qt/.debug/* \
+    /data/user/qt/wifi-cpp/.debug/* \
+    "
+
+FILES_${PN}-examples = " \
+    /data/user/qt/wifi-cpp/wifi-cpp \
+    /data/user/qt/wifi-qml \
+    "

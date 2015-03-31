@@ -20,26 +20,23 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
-    "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
+do_configure_prepend_rpi() {
+	sed -i 's!load(qt_config)!!' ${S}/mkspecs/linux-oe-g++/qmake.conf
+	cat >> ${S}/mkspecs/linux-oe-g++/qmake.conf <<EOF
+RPI_CFLAGS              = -DLINUX=1 -DEGL_API_FB=1
 
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
+QMAKE_INCDIR_EGL        = \$\$[QT_SYSROOT]/usr/include/interface/vcos/pthreads \
+                          \$\$[QT_SYSROOT]/usr/include/interface/vmcs_host/linux
+QMAKE_INCDIR_OPENGL_ES2 = \$\${QMAKE_INCDIR_EGL}
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
+QMAKE_LIBS_EGL          = -lEGL -lGLESv2
+QMAKE_CFLAGS           += \$\$RPI_CFLAGS
+QMAKE_CXXFLAGS         += \$\$RPI_CFLAGS
 
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
+EGLFS_PLATFORM_HOOKS_SOURCES = \$\$PWD/../devices/linux-rasp-pi-g++/qeglfshooks_pi.cpp
+EGLFS_PLATFORM_HOOKS_LIBS    = -lbcm_host
 
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
+load(qt_config)
+
+EOF
+}

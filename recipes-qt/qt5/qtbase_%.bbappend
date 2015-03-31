@@ -20,26 +20,35 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
+PACKAGECONFIG_GL = "gles2"
+PACKAGECONFIG += " \
+    accessibility \
+    alsa \
+    cups \
+    fontconfig \
+    glib \
+    iconv \
+    icu \
+    linuxfb \
+    sql-sqlite \
+    tslib \
     "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
 
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
+do_configure_prepend() {
+	sed -i 's!load(qt_config)!!' ${S}/mkspecs/linux-oe-g++/qmake.conf
+	cat >> ${S}/mkspecs/linux-oe-g++/qmake.conf <<EOF
+QMAKE_PLATFORM         += boot2qt
+QT_QPA_DEFAULT_PLATFORM = eglfs
+load(qt_config)
+EOF
+}
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
+do_configure_prepend_emulator() {
+	sed -i 's!load(qt_config)!!' ${S}/mkspecs/linux-oe-g++/qmake.conf
+	cat >> ${S}/mkspecs/linux-oe-g++/qmake.conf <<EOF
+QMAKE_LIBS_EGL         = -lQtGlesStreamClient
+QMAKE_LIBS_OPENGL_ES2  = -lQtGlesStreamClient
 
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
-
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
+load(qt_config)
+EOF
+}

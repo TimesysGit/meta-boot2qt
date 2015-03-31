@@ -20,26 +20,19 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
-    "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
+do_configure_prepend_mx6() {
+	sed -i 's!load(qt_config)!!' ${S}/mkspecs/linux-oe-g++/qmake.conf
+	cat >> ${S}/mkspecs/linux-oe-g++/qmake.conf <<EOF
+IMX6_CFLAGS             = -DLINUX=1 -DEGL_API_FB=1
+QMAKE_LIBS_EGL         += -lEGL
+QMAKE_LIBS_OPENGL_ES2  += -lGLESv2 -lEGL -lGAL
+QMAKE_LIBS_OPENVG      += -lOpenVG -lEGL -lGAL
+QMAKE_CFLAGS           += \$\$IMX6_CFLAGS
+QMAKE_CXXFLAGS         += \$\$IMX6_CFLAGS
 
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
+EGLFS_PLATFORM_HOOKS_SOURCES = \$\$PWD/../devices/linux-imx6-g++/qeglfshooks_imx6.cpp
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
+load(qt_config)
 
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
-
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
+EOF
+}

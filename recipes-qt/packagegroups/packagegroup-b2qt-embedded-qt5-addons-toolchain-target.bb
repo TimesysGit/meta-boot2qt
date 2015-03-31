@@ -20,26 +20,17 @@
 ##
 #############################################################################
 
-BOOTFS_CONTENT = "\
-    bcm2835-bootfiles/*: \
-    ${KERNEL_IMAGETYPE}:kernel.img \
+DESCRIPTION = "Qt5 addons toolchain packages"
+LICENSE = "QtEnterprise"
+
+inherit packagegroup
+
+PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
+
+RDEPENDS_${PN} += " \
+    qtdatavisualization-dev \
+    qtenterprisecontrols-dev \
+    qtcharts-dev \
+    qtvirtualkeyboard-dev \
+    b2qt-utils-dev \
     "
-BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
-
-MACHINE_EXTRA_INSTALL = "\
-        userland \
-        omxplayer \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK = " \
-        userland \
-        "
-
-KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
-KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
-module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
-
-# additional memory for GPU
-GPU_MEM = "256"
-# video camera support
-VIDEO_CAMERA = "1"
