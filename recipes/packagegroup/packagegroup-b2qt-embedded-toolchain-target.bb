@@ -22,10 +22,9 @@
 
 DESCRIPTION = "Target packages for B2Qt on embedded Linux SDK"
 PR = "r0"
-ALLOW_EMPTY_${PN} = "1"
 LICENSE = "CLOSED"
 
-PACKAGES = "${PN}"
+inherit packagegroup
 
 MACHINE_EXTRA_INSTALL_SDK ?= ""
 

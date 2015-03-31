@@ -24,7 +24,9 @@ DESCRIPTION = "B2Qt on embedded Linux SDK toolchain"
 PR = "r0"
 LICENSE = "CLOSED"
 
-TOOLCHAIN_HOST_TASK = "nativesdk-packagegroup-b2qt-embedded-toolchain-host packagegroup-cross-canadian-${MACHINE}"
-TOOLCHAIN_TARGET_TASK = "nativesdk-packagegroup-b2qt-embedded-toolchain-target"
+inherit populate_sdk
 
-require recipes-core/meta/meta-toolchain.bb
+TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-toolchain-host"
+TOOLCHAIN_TARGET_TASK += "packagegroup-b2qt-embedded-toolchain-target"
+
+
