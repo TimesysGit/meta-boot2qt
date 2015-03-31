@@ -27,28 +27,12 @@ PR = "r0"
 inherit packagegroup
 
 RDEPENDS_${PN} = "\
-        gst-meta-video \
-        gst-meta-audio \
-        gst-plugins-good \
-        gst-plugins-base-app \
-        gst-plugins-base-audiorate \
-        gst-plugins-base-videorate \
-        gst-plugins-base-encodebin \
-        gst-plugins-good-videofilter \
-        gst-plugins-good-id3demux \
-        gst-plugins-good-auparse \
-        gst-plugins-good-isomp4 \
-        gst-plugins-good-icydemux \
-        gst-plugins-good-video4linux2 \
-        gst-plugins-good-multifile \
-        gst-plugins-good-videocrop \
-        gst-plugins-good-jpeg \
-        gst-plugins-ugly-rmdemux \
-        gst-plugins-ugly-asf \
-        gst-plugins-ugly-a52dec \
-        gst-plugins-bad-mpegdemux \
-        gst-plugins-bad-faad \
-        gst-plugins-bad-camerabin2 \
-        gst-plugins-bad-jpegformat \
-        gst-ffmpeg \
+        gstreamer1.0-meta-base \
+        gstreamer1.0-meta-video \
+        gstreamer1.0-meta-audio \
+        gstreamer1.0-plugins-base-meta \
+        gstreamer1.0-plugins-good-meta \
+        gstreamer1.0-plugins-ugly-meta \
+        gstreamer1.0-plugins-bad-meta \
+        gstreamer1.0-libav \
         "

@@ -20,4 +20,4 @@
 ##
 #############################################################################
 
-PACKAGECONFIG += "gstreamer010"
+PACKAGECONFIG += "${@base_contains("DISTRO_FEATURES", "gstreamer010", "gstreamer010", "gstreamer", d)}"

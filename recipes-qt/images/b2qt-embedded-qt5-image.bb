@@ -42,7 +42,8 @@ IMAGE_INSTALL += "\
     ${MACHINE_EXTRA_INSTALL_QT} \
     packagegroup-b2qt-embedded-base \
     packagegroup-b2qt-embedded-tools \
-    packagegroup-b2qt-embedded-gstreamer \
+    ${@base_contains("DISTRO_FEATURES", "gstreamer010", "packagegroup-b2qt-embedded-gstreamer010", "", d)} \
+    ${@base_contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
     packagegroup-b2qt-embedded-qt5 \
     packagegroup-b2qt-embedded-qt5-addons \
     "

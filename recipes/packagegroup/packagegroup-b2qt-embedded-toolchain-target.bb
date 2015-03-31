@@ -37,8 +37,8 @@ RDEPENDS_${PN} += "\
     dbus-dev \
     freetype-dev \
     fontconfig-dev \
-    gstreamer-dev \
-    gst-plugins-base-dev \
+    ${@base_contains("DISTRO_FEATURES", "gstreamer010", "gstreamer-dev gst-plugins-base-dev", "", d)} \
+    ${@base_contains("DISTRO_FEATURES", "gstreamer", "gstreamer1.0-dev gstreamer1.0-plugins-base-dev", "", d)} \
     icu-dev \
     libxslt-dev \
     udev-dev \
