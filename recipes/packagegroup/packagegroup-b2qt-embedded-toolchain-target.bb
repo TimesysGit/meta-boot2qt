@@ -26,8 +26,6 @@ LICENSE = "CLOSED"
 
 inherit packagegroup
 
-MACHINE_EXTRA_INSTALL_SDK ?= ""
-
 RDEPENDS_${PN} += "\
     packagegroup-core-standalone-sdk-target \
     base-files \
@@ -50,6 +48,7 @@ RDEPENDS_${PN} += "\
     wpa-supplicant-dev \
     libmysqlclient-dev \
     libpq-dev \
+    ${@base_contains("DISTRO_FEATURES", "wayland", "libwayland-egl-mx6-dev libxkbcommon-dev libgbm-dev libdrm-dev", "", d)} \
     ${@base_contains("DISTRO_FEATURES", "bluetooth", "bluez4-dev", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     "

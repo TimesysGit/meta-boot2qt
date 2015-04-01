@@ -33,5 +33,6 @@ RDEPENDS_${PN} = "\
     nativesdk-perl-modules \
     nativesdk-bison \
     nativesdk-gperf \
+    ${@base_contains("DISTRO_FEATURES", "wayland", "nativesdk-wayland", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
     "

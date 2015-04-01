@@ -53,5 +53,6 @@ RDEPENDS_${PN} = "\
         dbus-session-init \
         libmysqlclient \
         libpq \
+        ${@base_contains("DISTRO_FEATURES", "wayland", "wayland weston weston-examples", "", d)} \
         ${MACHINE_EXTRA_INSTALL} \
         "
