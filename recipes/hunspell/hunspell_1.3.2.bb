@@ -25,7 +25,7 @@ LICENSE = "LGPLv2"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/hunspell-${PV}/COPYING;md5=ed3a37b3ba6d6be3e08ab45987cf1b88"
 
 SRC_URI = "http://downloads.sourceforge.net/hunspell/hunspell-${PV}.tar.gz;name=hunspell \
-           git://gitorious.org/libreoffice/dictionaries.git;branch=libreoffice-4-3-2;name=dictionaries \
+           git://github.com/libreoffice/dictionaries.git;branch=libreoffice-4-3-2;name=dictionaries \
           "
 
 SRC_URI[hunspell.md5sum] = "3121aaf3e13e5d88dfff13fb4a5f1ab8"
