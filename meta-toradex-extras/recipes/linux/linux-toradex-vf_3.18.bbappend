@@ -26,8 +26,8 @@ SRC_URI += " \
         file://0001-Enable-Fusion-7-and-10-multi-touch-controller.patch \
         "
 
-config_script () {
+do_configure_prepend () {
 	# FunctionFS for adb
-	echo "CONFIG_USB_FUNCTIONFS=m"  >> ${S}/.config
-	echo "TOUCHSCREEN_FUSION_F0710A=y" >> ${S}/.config
+	echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
+	echo "TOUCHSCREEN_FUSION_F0710A=y" >> ${WORKDIR}/defconfig
 }
