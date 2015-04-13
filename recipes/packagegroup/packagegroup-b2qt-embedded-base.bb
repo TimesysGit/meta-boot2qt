@@ -51,5 +51,6 @@ RDEPENDS_${PN} = "\
         ttf-dejavu-common \
         ttf-dejavu-sans \
         dbus-session-init \
+        otf-noto \
         ${MACHINE_EXTRA_INSTALL} \
         "
