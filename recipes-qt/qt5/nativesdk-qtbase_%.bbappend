@@ -20,27 +20,5 @@
 ##
 #############################################################################
 
-DESCRIPTION = "Qt Virtual Keyboard"
-LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://src/virtualkeyboard/plugin.cpp;md5=9e7c3707428a49f2fd857aa1538823b6;beginline=1;endline=17"
-
-inherit qt5-module qtquickcompiler
-
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
-SRC_URI = " \
-    git://qt-gerrit.it.local/QtRD-15810/qtvirtualkeyboard.git;branch=${QT_BRANCH};protocol=ssh \
-    "
-
-SRCREV = "b5f0a28522f2fcb916966bd0da0b86f2d93d2b97"
-QT_BRANCH = "master"
-
-S = "${WORKDIR}/git"
-
-DEPENDS = "qtbase qtdeclarative hunspell"
-
-EXTRA_QMAKEVARS_PRE += "CONFIG+=disable-desktop"
-
-FILES_${PN}-qmlplugins-dbg = " \
-    ${OE_QMAKE_PATH_QML}/QtQuick/Enterprise/VirtualKeyboard/Styles/.debug/* \
-    "
+# Needed by qtxmlpatterns
+EXTRA_QTLIB = "Network Sql"

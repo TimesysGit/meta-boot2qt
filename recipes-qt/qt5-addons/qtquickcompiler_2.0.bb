@@ -20,27 +20,25 @@
 ##
 #############################################################################
 
-DESCRIPTION = "Qt Virtual Keyboard"
+DESCRIPTION = "Qt Quick Compiler"
 LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://src/virtualkeyboard/plugin.cpp;md5=9e7c3707428a49f2fd857aa1538823b6;beginline=1;endline=17"
+LIC_FILES_CHKSUM = "file://compiler/qtquickcompiler.h;md5=553f8ee8d120874969caca3193ae686c;beginline=1;endline=6"
 
-inherit qt5-module qtquickcompiler
-
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+inherit qt5-module
 
 SRC_URI = " \
-    git://qt-gerrit.it.local/QtRD-15810/qtvirtualkeyboard.git;branch=${QT_BRANCH};protocol=ssh \
+    git://qt-gerrit.ci.local/QtRD-15810/qmlcompiler.git;branch=${QT_BRANCH};protocol=ssh;name=compiler;destsuffix=git \
+    git://qt-gerrit.ci.local/QtRD-15810/qtsdk-enterprise.git;branch=${QT_BRANCH};protocol=ssh;name=sdk;destsuffix=git/compiler/license-checker \
     "
 
-SRCREV = "b5f0a28522f2fcb916966bd0da0b86f2d93d2b97"
-QT_BRANCH = "master"
+SRCREV_compiler = "60c13275dec85d8224ea5826ae5533d87c65e76e"
+QT_BRANCH_compiler = "2.0"
+
+SRCREV_sdk = "60cb1a7763b670108b17c7e1345394e424153bea"
+QT_BRANCH_sdk = "master"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "qtbase qtdeclarative hunspell"
+DEPENDS = "qtbase qtdeclarative"
 
-EXTRA_QMAKEVARS_PRE += "CONFIG+=disable-desktop"
-
-FILES_${PN}-qmlplugins-dbg = " \
-    ${OE_QMAKE_PATH_QML}/QtQuick/Enterprise/VirtualKeyboard/Styles/.debug/* \
-    "
+BBCLASSEXTEND = "native nativesdk"

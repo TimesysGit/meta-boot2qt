@@ -24,7 +24,7 @@ DESCRIPTION = "Qt Charts"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://src/charts/qchart.cpp;md5=735b3be820c0a733e328a4d2e1e430de;beginline=1;endline=17"
 
-inherit qt5-module
+inherit qt5-module qtquickcompiler
 
 SRC_URI = " \
     git://qt-gerrit.it.local/QtRD-15810/charts.git;branch=${QT_BRANCH};protocol=ssh \

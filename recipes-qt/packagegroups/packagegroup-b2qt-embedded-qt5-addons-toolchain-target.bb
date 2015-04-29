@@ -32,5 +32,6 @@ RDEPENDS_${PN} += " \
     qtenterprisecontrols-dev \
     qtcharts-dev \
     qtvirtualkeyboard-dev \
+    qtquickcompiler-dev \
     b2qt-utils-dev \
     "
