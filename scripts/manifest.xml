@@ -45,7 +45,7 @@
            groups="notdefault,bbb"/>
   <project name="meta-toradex"
            remote="toradex"
-           revision="d2a0c91d9fe0836113700daf28390588d2ddc9a8"
+           revision="834ea201b5822e1c9697be38e078321602c0124a"
            path="sources/meta-toradex"
            groups="notdefault,toradex"/>
 
