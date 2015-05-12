@@ -25,7 +25,7 @@ set -x
 set -e
 
 RELEASE=4.x
-UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto-${RELEASE}/latest
+UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}
 
 if [ ${MACHINE} = "nitrogen6x" ]; then
   scp tmp/deploy/images/nitrogen6x/b2qt-embedded-image-boot-nitrogen6x.tar.gz ${UPLOADPATH}/b2qt-embedded-image-boot-iMX6.tar.gz
