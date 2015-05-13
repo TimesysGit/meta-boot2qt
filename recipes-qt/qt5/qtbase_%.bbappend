@@ -34,20 +34,20 @@ PACKAGECONFIG += " \
     tslib \
     "
 
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+
+SRC_URI += " \
+    file://oe-device-extra.pri \
+    "
+
 do_configure_prepend() {
+	install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 	sed -i 's!load(qt_config)!!' ${S}/mkspecs/linux-oe-g++/qmake.conf
 	cat >> ${S}/mkspecs/linux-oe-g++/qmake.conf <<EOF
 QMAKE_PLATFORM         += boot2qt
 QT_QPA_DEFAULT_PLATFORM = eglfs
-load(qt_config)
-EOF
-}
 
-do_configure_prepend_emulator() {
-	sed -i 's!load(qt_config)!!' ${S}/mkspecs/linux-oe-g++/qmake.conf
-	cat >> ${S}/mkspecs/linux-oe-g++/qmake.conf <<EOF
-QMAKE_LIBS_EGL         = -lQtGlesStreamClient
-QMAKE_LIBS_OPENGL_ES2  = -lQtGlesStreamClient
+exists(../oe-device-extra.pri):include(../oe-device-extra.pri)
 
 load(qt_config)
 EOF
