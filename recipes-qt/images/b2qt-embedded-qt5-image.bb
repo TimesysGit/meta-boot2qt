@@ -36,7 +36,10 @@ IMAGE_FEATURES += "\
 inherit core-image
 inherit bootfs-image
 
+MACHINE_EXTRA_INSTALL_QT ?= ""
+
 IMAGE_INSTALL += "\
+    ${MACHINE_EXTRA_INSTALL_QT} \
     packagegroup-b2qt-embedded-base \
     packagegroup-b2qt-embedded-tools \
     packagegroup-b2qt-embedded-gstreamer \

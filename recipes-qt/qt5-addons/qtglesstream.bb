@@ -20,23 +20,39 @@
 ##
 #############################################################################
 
-PROVIDES = "virtual/libgles2 virtual/libgles3 virtual/egl"
+DESCRIPTION = "QtGlesStream"
+LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://qtglesstream.pro;md5=e95d9351d26ed899188e02d44133cae0"
 
-SRC_URI = "file://headers \
-           file://egl.cpp \
-           file://gles2.cpp \
-          "
+inherit qt5-module
 
-do_install() {
+SRC_URI = " \
+    git://qt-gerrit.it.local/QtRD-15810/qtglesstream.git;branch=${QT_BRANCH};protocol=ssh \
+    "
+
+PV = "1.0.0"
+SRCREV = "137d476b0e39eaaa6f35296b6bd962175e6ea5d6"
+QT_BRANCH = "dev"
+
+S = "${WORKDIR}/git"
+
+DEPENDS = "qtbase"
+RREPLACES_${PN} = "qtglesstream-dummy-client"
+RREPLACES_${PN}-dev = "qtglesstream-dummy-client-dev"
+
+do_install_append() {
 	install -m 0755 -d ${D}${includedir}/EGL
-	install -m 0755 ${WORKDIR}/headers/EGL/* ${D}${includedir}/EGL
+	install -m 0755 ${S}/headers/EGL/* ${D}${includedir}/EGL
 
 	install -m 0755 -d ${D}${includedir}/GLES2
-	install -m 0755 ${WORKDIR}/headers/GLES2/* ${D}${includedir}/GLES2
+	install -m 0755 ${S}/headers/GLES2/* ${D}${includedir}/GLES2
 
 	install -m 0755 -d ${D}${includedir}/GLES3
-	install -m 0755 ${WORKDIR}/headers/GLES3/* ${D}${includedir}/GLES3
+	install -m 0755 ${S}/headers/GLES3/* ${D}${includedir}/GLES3
 
 	install -m 0755 -d ${D}${includedir}/KHR
-	install -m 0755 ${WORKDIR}/headers/KHR/* ${D}${includedir}/KHR
+	install -m 0755 ${S}/headers/KHR/* ${D}${includedir}/KHR
 }
+
+# no not overwrite files from qtglesstream-dummy-client
+do_populate_sysroot[noexec] = "1"

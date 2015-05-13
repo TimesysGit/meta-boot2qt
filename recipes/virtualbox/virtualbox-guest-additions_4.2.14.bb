@@ -51,7 +51,3 @@ do_install() {
 }
 
 PKG_${PN} = "kernel-module-vbox"
-
-module_autoload_vboxsf = "vboxsf"
-module_autoload_vboxvideo = "vboxvideo"
-module_autoload_vboxguest = "vboxguest"
