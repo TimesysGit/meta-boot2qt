@@ -51,5 +51,5 @@ RDEPENDS_${PN} += " \
     qtwebchannel-dev \
     qtxmlpatterns-dev \
     qtquickcontrols-dev \
-    qtwebengine-dev \
+    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine-dev', '', d)} \
     "

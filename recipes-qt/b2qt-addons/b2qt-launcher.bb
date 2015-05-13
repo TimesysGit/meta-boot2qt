@@ -36,7 +36,8 @@ QT_BRANCH = "dev"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "qtbase qtdeclarative qtwebengine"
+DEPENDS = "qtbase qtdeclarative \
+           ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_install_append() {
 	install -m 0755 -d ${D}${sysconfdir}/init.d

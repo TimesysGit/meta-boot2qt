@@ -38,7 +38,8 @@ GITDIR_everywhere = "${DL_DIR}/qt5-everywhere-demo"
 
 S = "${WORKDIR}/git/basicsuite"
 
-DEPENDS = "qtbase qtdeclarative qtxmlpatterns qtquickcontrols qtgraphicaleffects qtsensors qtmultimedia qtwebengine"
+DEPENDS = "qtbase qtdeclarative qtxmlpatterns qtquickcontrols qtgraphicaleffects qtsensors qtmultimedia \
+           ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_install_append() {
     # we only need plugins from the demos
