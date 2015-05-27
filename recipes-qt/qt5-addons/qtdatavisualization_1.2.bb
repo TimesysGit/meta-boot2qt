@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://src/datavisualization/global/datavisualizationglobal_
 inherit qt5-module
 
 SRC_URI = " \
-    git://qt-gerrit.it.local/QtRD-15810/qtdatavis3d.git;branch=${QT_BRANCH};protocol=ssh \
+    git://qt-gerrit.ci.local/QtRD-15810/qtdatavis3d.git;branch=${QT_BRANCH};protocol=ssh \
     "
 
 # v1.2.0

@@ -29,7 +29,7 @@ inherit qt5-module qtquickcompiler
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI = " \
-    git://qt-gerrit.it.local/QtRD-15810/qtvirtualkeyboard.git;branch=${QT_BRANCH};protocol=ssh \
+    git://qt-gerrit.ci.local/QtRD-15810/qtvirtualkeyboard.git;branch=${QT_BRANCH};protocol=ssh \
     "
 
 SRCREV = "b5f0a28522f2fcb916966bd0da0b86f2d93d2b97"

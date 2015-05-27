@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://src/charts/qchart.cpp;md5=735b3be820c0a733e328a4d2e1e
 inherit qt5-module qtquickcompiler
 
 SRC_URI = " \
-    git://qt-gerrit.it.local/QtRD-15810/charts.git;branch=${QT_BRANCH};protocol=ssh \
+    git://qt-gerrit.ci.local/QtRD-15810/charts.git;branch=${QT_BRANCH};protocol=ssh \
     "
 
 SRCREV = "f818972d3617493c74d694184aa877f606e1a5a0"

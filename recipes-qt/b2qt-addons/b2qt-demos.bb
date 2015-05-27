@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://sensors/Accelbubble.qml;md5=1bf19846314f7b0fa81dc4db9
 inherit qmake5
 
 SRC_URI = " \
-    git://qt-gerrit.it.local/QtRD-15810/b2qt-demos;branch=${QT_BRANCH};protocol=ssh;name=demos \
+    git://qt-gerrit.ci.local/QtRD-15810/b2qt-demos;branch=${QT_BRANCH};protocol=ssh;name=demos \
     git://code.qt.io/qt-labs/qt5-everywhere-demo.git;protocol=git;name=everywhere;destsuffix=qt5-everywhere-demo \
     "
 QT_BRANCH = "dev"

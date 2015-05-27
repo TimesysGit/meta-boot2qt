@@ -9,7 +9,7 @@
   <remote fetch="git://github.com/beagleboard" name="beagleboard"/>
   <remote fetch="git://github.com/meta-qt5" name="qt5"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
-  <remote fetch="ssh://qt-gerrit.it.local/QtRD-15810" name="gerrit"/>
+  <remote fetch="ssh://qt-gerrit.ci.local/QtRD-15810" name="gerrit"/>
 
   <project name="poky"
            remote="yocto"

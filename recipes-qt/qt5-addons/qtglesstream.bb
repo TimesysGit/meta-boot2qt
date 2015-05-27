@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://qtglesstream.pro;md5=e95d9351d26ed899188e02d44133cae0
 inherit qt5-module
 
 SRC_URI = " \
-    git://qt-gerrit.it.local/QtRD-15810/qtglesstream.git;branch=${QT_BRANCH};protocol=ssh \
+    git://qt-gerrit.ci.local/QtRD-15810/qtglesstream.git;branch=${QT_BRANCH};protocol=ssh \
     "
 
 PV = "1.0.0"

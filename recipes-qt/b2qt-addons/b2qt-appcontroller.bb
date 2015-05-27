@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://main.cpp;md5=1fcdf6b49fbbf2bc9c831893cca1b279;beginli
 inherit qmake5
 
 SRC_URI = " \
-    git://qt-gerrit.it.local/QtRD-15810/b2qt-appcontroller;branch=${QT_BRANCH};protocol=ssh \
+    git://qt-gerrit.ci.local/QtRD-15810/b2qt-appcontroller;branch=${QT_BRANCH};protocol=ssh \
     file://appcontroller.conf \
     "
 

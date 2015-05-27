@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://src/controls/Styles/Base/DialStyle.qml;md5=caa6d9db46
 inherit qt5-module
 
 SRC_URI = " \
-    git://qt-gerrit.it.local/QtRD-15810/qtquick-extras.git;branch=${QT_BRANCH};protocol=ssh \
+    git://qt-gerrit.ci.local/QtRD-15810/qtquick-extras.git;branch=${QT_BRANCH};protocol=ssh \
     "
 
 SRCREV = "ed6f7049e06717113d5f500595c5a1f2074fb13d"
