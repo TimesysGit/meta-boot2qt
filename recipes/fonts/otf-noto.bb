@@ -11,8 +11,8 @@ inherit allarch fontcache
 
 SRC_URI = "http://www.google.com/get/noto/pkgs/NotoSansCJKSC-hinted.zip"
 
-SRC_URI[md5sum] = "fdbacee7b538c42cf1d3a6fc3dd3d106"
-SRC_URI[sha256sum] = "71d32727053c9677956b7aff7b150c3c2521072f40d334a37806a577d86fa33d"
+SRC_URI[md5sum] = "9c59b0a684b03d3220dc05c6f7d4a097"
+SRC_URI[sha256sum] = "c815b154a57877bfc3c9baa9650f22217e509bddc73f5433f640d875ae6f35e0"
 
 do_install() {
     install -m 0644 -d ${D}${datadir}/fonts/otf/noto
