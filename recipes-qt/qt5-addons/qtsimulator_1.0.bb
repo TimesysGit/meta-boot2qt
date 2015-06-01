@@ -20,7 +20,20 @@
 ##
 #############################################################################
 
-PACKAGECONFIG += "gypsy"
+DESCRIPTION = "QtSimulator"
+LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://src/simulator/version.h;md5=ba04e32af7257890758a149b0c14d11a;beginline=1;endline=17"
 
-EXTRA_QMAKEVARS_PRE_emulator += "CONFIG+=simulator"
-DEPENDS_emulator += "qtsimulator"
+inherit qt5-module
+
+SRC_URI = " \
+    git://qt-gerrit.ci.local/QtRD-15810/b2qt-qtsimulator.git;branch=${BRANCH};protocol=ssh \
+    "
+
+# v1.0.8
+SRCREV = "faf8ea5cee8a4105b97c3f2ba4a4c828f03a70ab"
+BRANCH = "master"
+
+S = "${WORKDIR}/git"
+
+DEPENDS = "qtbase"

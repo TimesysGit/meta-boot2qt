@@ -20,7 +20,30 @@
 ##
 #############################################################################
 
-PACKAGECONFIG += "gypsy"
+DESCRIPTION = "Proxy daemon for QtSimulator"
+LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://proxy.h;md5=ba04e32af7257890758a149b0c14d11a;beginline=1;endline=17"
 
-EXTRA_QMAKEVARS_PRE_emulator += "CONFIG+=simulator"
-DEPENDS_emulator += "qtsimulator"
+inherit qt5-module
+
+SRC_URI = " \
+    git://qt-gerrit.ci.local/QtRD-15810/b2qt-emulator.git;branch=${BRANCH};protocol=ssh \
+    file://emulatorproxyd.sh \
+    "
+
+SRCREV = "1d001910d45349ae2a44fa01516baaa7ff4c9eda"
+BRANCH = "master"
+
+S = "${WORKDIR}/git/src/helperlibs/proxy"
+
+DEPENDS = "qtbase qtsimulator"
+
+do_install_append() {
+	install -m 0755 -d ${D}${sysconfdir}/init.d
+	install -m 0755 ${WORKDIR}/emulatorproxyd.sh ${D}${sysconfdir}/init.d/
+}
+
+INITSCRIPT_NAME = "emulatorproxyd.sh"
+INITSCRIPT_PARAMS = "defaults 97 10"
+
+inherit update-rc.d

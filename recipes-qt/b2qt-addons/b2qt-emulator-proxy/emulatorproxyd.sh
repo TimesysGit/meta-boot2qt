@@ -1,3 +1,4 @@
+#!/bin/sh
 #############################################################################
 ##
 ## Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
@@ -20,7 +21,22 @@
 ##
 #############################################################################
 
-PACKAGECONFIG += "gypsy"
+DAEMON=/usr/bin/emulatorproxyd
 
-EXTRA_QMAKEVARS_PRE_emulator += "CONFIG+=simulator"
-DEPENDS_emulator += "qtsimulator"
+case "$1" in
+start)
+    start-stop-daemon --start --quiet --exec $DAEMON &
+    ;;
+stop)
+    start-stop-daemon --stop --quiet --exec $DAEMON
+    ;;
+restart)
+    start-stop-daemon --stop --quiet --exec $DAEMON
+    sleep 1
+    start-stop-daemon --start --quiet --exec $DAEMON &
+    ;;
+*)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+exit 0

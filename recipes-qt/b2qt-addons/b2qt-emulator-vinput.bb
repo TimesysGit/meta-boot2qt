@@ -20,7 +20,21 @@
 ##
 #############################################################################
 
-PACKAGECONFIG += "gypsy"
+DESCRIPTION = "Virtual input plugin for QtSimulator"
+LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://qvinput.h;md5=ba04e32af7257890758a149b0c14d11a;beginline=1;endline=17"
 
-EXTRA_QMAKEVARS_PRE_emulator += "CONFIG+=simulator"
-DEPENDS_emulator += "qtsimulator"
+inherit qt5-module
+
+SRC_URI = " \
+    git://qt-gerrit.ci.local/QtRD-15810/b2qt-emulator.git;branch=${BRANCH};protocol=ssh \
+    "
+
+SRCREV = "1d001910d45349ae2a44fa01516baaa7ff4c9eda"
+BRANCH = "master"
+
+EXTRA_QMAKEVARS_PRE += "CONFIG+=force_independent"
+
+S = "${WORKDIR}/git/src/helperlibs/vinput"
+
+DEPENDS = "qtbase qtsimulator"
