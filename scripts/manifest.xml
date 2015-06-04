@@ -9,38 +9,39 @@
   <remote fetch="git://github.com/beagleboard" name="beagleboard"/>
   <remote fetch="git://github.com/meta-qt5" name="qt5"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
+  <remote fetch="ssh://qt-gerrit.ci.local/QtRD-15810" name="gerrit"/>
 
   <project name="poky"
            remote="yocto"
-           revision="9fc095a439c36014c73b3a8f240afba09fe0e4d7"
+           revision="9c4ff467f66428488b1cd9798066a8cb5d6b4c3b"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="6413cdb66acf43059f94d0076ec9b8ad6a475b35"
+           revision="5b6f39ce325d490fc382d5d59c5b8b9d5fa38b38"
            path="sources/meta-openembedded"/>
-  <project name="meta-qt5"
-           remote="qt5"
-           revision="22c431e7a1fa525c75bf1fa48c82d01955001350"
+  <project name="qt5-yocto-meta"
+           remote="gerrit"
+           revision="b2qt"
            path="sources/meta-qt5"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
-           revision="4500b58848393fd0aada4894510369d0a33d4ca8"
+           revision="db1571f40c375a398a8cdbb42de4c4f272ab0cd1"
            path="sources/meta-fsl-arm"
            groups="notdefault,fsl,toradex"/>
   <project name="meta-ti"
            remote="yocto"
-           revision="7cddc2a6d92d14164916d6cf303f4bdb38f47b4a"
+           revision="6d1c337af7d43953f6d0802ffd0bf1d9d3cfb146"
            path="sources/meta-ti"
            groups="notdefault,ti,bbb"/>
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="efd760d0a2c027fe20ed190c56f416d0a47d7c41"
+           revision="b896a7da70dd7a16ba7ffd664f7747cb37e1d142"
            path="sources/meta-raspberrypi"
            groups="notdefault,rpi"/>
   <project name="meta-fsl-arm-extra"
            remote="freescale"
-           revision="b32528c10caac5e85f2b5efe0e5b95322dd68ace"
+           revision="794e46e0b0a3e7e270a2f3c217d8fe5751a6b2c6"
            path="sources/meta-fsl-arm-extra"
            groups="notdefault,fsl,toradex"/>
   <project name="meta-beagleboard"
@@ -50,7 +51,7 @@
            groups="notdefault,bbb"/>
   <project name="meta-toradex"
            remote="toradex"
-           revision="374e6d06253fffc51288f0bc8b96de0e26e6ec31"
+           revision="36c19b10b340983946f8f52ab7fa91d9aa1e53f6q"
            path="sources/meta-toradex"
            groups="notdefault,toradex"/>
 
