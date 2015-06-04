@@ -27,11 +27,8 @@ LICENSE = "CLOSED"
 inherit nativesdk packagegroup
 
 RDEPENDS_${PN} = "\
-    nativesdk-packagegroup-sdk-host \
     nativesdk-python-modules \
     nativesdk-python-misc \
-    nativesdk-perl-modules \
-    nativesdk-bison \
     nativesdk-gperf \
     ${@base_contains("DISTRO_FEATURES", "wayland", "nativesdk-wayland", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
