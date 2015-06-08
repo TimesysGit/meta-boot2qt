@@ -27,11 +27,7 @@ set -e
 RELEASE=5.5
 UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
 
-if [ ${MACHINE} = "nitrogen6x" ]; then
-  scp tmp/deploy/images/nitrogen6x/b2qt-embedded-image-boot-nitrogen6x.tar.gz ${UPLOADPATH}/b2qt-embedded-image-boot-iMX6.tar.gz
-  scp tmp/deploy/images/nitrogen6x/b2qt-embedded-image-nitrogen6x.tar.gz ${UPLOADPATH}/b2qt-embedded-image-iMX6.tar.gz
-  scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-sdk-*.sh ${UPLOADPATH}/b2qt-glibc-x86_64-arm-toolchain-iMX6.sh
-elif [ ${MACHINE} = "emulator" ]; then
+if [ ${MACHINE} = "emulator" ]; then
   cp tmp/deploy/images/emulator/b2qt-embedded-image-emulator.hdd .
   gzip b2qt-embedded-image-emulator.hdd -f
   scp b2qt-embedded-image-emulator.hdd.gz ${UPLOADPATH}/
