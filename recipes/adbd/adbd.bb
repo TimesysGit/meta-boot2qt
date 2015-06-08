@@ -31,7 +31,7 @@ PR = "r0"
 SRCREV = "${PV}"
 
 RRECOMMENDS_${PN} += "kernel-module-g-ffs"
-DEPENDS = "openssl"
+DEPENDS = "openssl libcap"
 
 SRC_URI = "git://android.googlesource.com/platform/system/core;protocol=https;branch=lollipop-release;name=core \
            file://adbd.patch \
