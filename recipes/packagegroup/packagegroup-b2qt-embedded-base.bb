@@ -51,6 +51,7 @@ RDEPENDS_${PN} = "\
         ttf-dejavu-common \
         ttf-dejavu-sans \
         dbus-session-init \
+        otf-noto \
         libmysqlclient \
         libpq \
         ${@base_contains("DISTRO_FEATURES", "wayland", "wayland weston weston-examples", "", d)} \
