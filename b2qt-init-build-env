@@ -130,20 +130,6 @@ mirror() {
   ${REPO} sync
 }
 
-patch_poky() {
-    cd sources/poky
-    found=$(git rev-list --grep="bitbake: cooker: add support for using % as a wildcard in bbappend filename" HEAD)
-    if [ -z "$found" ]; then
-        git cherry-pick 381d5920188398bc53b2454843054c8690bca243 > /dev/null
-    fi
-
-    found=$(git rev-list --grep="bitbake: cooker: Fix support for wildcards in bbappend filenames" HEAD)
-    if [ -z "$found" ]; then
-        git cherry-pick f91a3f46a1ee586e330be0868e8fbc4d2e78d361 > /dev/null
-    fi
-    cd -
-}
-
 init() {
   if [ -z "${DEVICE}" ]; then
     echo "device not defined"
@@ -153,6 +139,7 @@ init() {
 
   get_groups
   mkdir -p .repo/manifests
+  rm -f .repo/manifests/manifest*.xml
   cp ${DIR}/scripts/manifest*.xml .repo/manifests
   if [ -f .repo/manifests/manifest_${DEVICE}.xml ]; then
     MANIFEST="manifest_${DEVICE}.xml"
@@ -161,8 +148,6 @@ init() {
   fi
   ${REPO} init -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" ${REFERENCE}
   ${REPO} sync
-
-  patch_poky
 
   if [ ! -e "sources/meta-b2qt" ]; then
     ln -s ${DIR} sources/meta-b2qt

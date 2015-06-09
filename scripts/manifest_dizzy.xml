@@ -9,6 +9,7 @@
   <remote fetch="git://github.com/beagleboard" name="beagleboard"/>
   <remote fetch="git://github.com/meta-qt5" name="qt5"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
+  <remote fetch="git://github.com/architech-boards" name="architech"/>
   <remote fetch="ssh://qt-gerrit.ci.local/QtRD-15810" name="gerrit"/>
 
   <project name="poky"
@@ -28,7 +29,7 @@
            remote="yocto"
            revision="dizzy"
            path="sources/meta-fsl-arm"
-           groups="notdefault,fsl,toradex"/>
+           groups="notdefault,fsl,toradex,architech"/>
   <project name="meta-ti"
            remote="yocto"
            revision="master"
@@ -43,7 +44,7 @@
            remote="freescale"
            revision="dizzy"
            path="sources/meta-fsl-arm-extra"
-           groups="notdefault,fsl,toradex"/>
+           groups="notdefault,fsl,toradex,architech"/>
   <project name="meta-beagleboard"
            remote="beagleboard"
            revision="master"
@@ -54,6 +55,11 @@
            revision="V2.3-next"
            path="sources/meta-toradex"
            groups="notdefault,toradex"/>
+  <project name="meta-tibidabo"
+           remote="architech"
+           revision="dora"
+           path="sources/meta-tibidabo"
+           groups="notdefault,architech"/>
 
 </manifest>
 
