@@ -9,10 +9,11 @@ INHIBIT_DEFAULT_DEPS = "1"
 
 inherit allarch fontcache
 
+PV = "1.003"
 SRC_URI = "http://www.google.com/get/noto/pkgs/NotoSansCJKSC-hinted.zip"
 
-SRC_URI[md5sum] = "9c59b0a684b03d3220dc05c6f7d4a097"
-SRC_URI[sha256sum] = "c815b154a57877bfc3c9baa9650f22217e509bddc73f5433f640d875ae6f35e0"
+SRC_URI[md5sum] = "88234bce857b885e14878e90c3b39b6e"
+SRC_URI[sha256sum] = "c43825352ce901f3ae638f3f20b0ac5995529caf2f4e3ac54148bd20a567179e"
 
 do_install() {
     install -m 0644 -d ${D}${datadir}/fonts/otf/noto
