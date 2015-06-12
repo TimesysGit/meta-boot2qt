@@ -153,6 +153,10 @@ init() {
     ln -s ${DIR} sources/meta-b2qt
   fi
 
+  if [ ! -e "sources/meta-qt5" ]  && [ -e "${DIR}/../meta-qt5" ]; then
+    ln -s $(readlink -f ${DIR}/../meta-qt5) sources/meta-qt5
+  fi
+
   cp ${DIR}/scripts/setup-environment.sh .
 
 }

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 
-  <default sync-j="4" revision="daisy"/>
+  <default sync-j="4" revision="dizzy"/>
 
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
   <remote fetch="git://git.openembedded.org" name="oe"/>
   <remote fetch="git://github.com/Freescale" name="freescale"/>
   <remote fetch="git://github.com/beagleboard" name="beagleboard"/>
-  <remote fetch="git://github.com/meta-qt5" name="qt5"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/architech-boards" name="architech"/>
-  <remote fetch="ssh://qt-gerrit.ci.local/QtRD-15810" name="gerrit"/>
 
   <project name="poky"
            remote="yocto"
@@ -20,10 +18,6 @@
            remote="oe"
            revision="5b6f39ce325d490fc382d5d59c5b8b9d5fa38b38"
            path="sources/meta-openembedded"/>
-  <project name="qt5-yocto-meta"
-           remote="gerrit"
-           revision="b2qt"
-           path="sources/meta-qt5"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
