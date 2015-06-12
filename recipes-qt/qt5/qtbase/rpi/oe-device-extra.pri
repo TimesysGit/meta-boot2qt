@@ -6,5 +6,4 @@ QMAKE_LIBS_EGL          = -lEGL -lGLESv2
 QMAKE_CFLAGS           += $$RPI_CFLAGS
 QMAKE_CXXFLAGS         += $$RPI_CFLAGS
 
-EGLFS_PLATFORM_HOOKS_SOURCES = $$PWD/devices/linux-rasp-pi-g++/qeglfshooks_pi.cpp
-EGLFS_PLATFORM_HOOKS_LIBS    = -lbcm_host
+EGLFS_DEVICE_INTEGRATION = eglfs_brcm

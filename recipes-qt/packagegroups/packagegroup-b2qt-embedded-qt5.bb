@@ -28,8 +28,10 @@ inherit packagegroup
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 RDEPENDS_${PN} += " \
+    qt3d \
     qtbase \
     qtbase-fonts \
+    qtcanvas3d \
     qtconnectivity \
     qtdeclarative \
     qtdeclarative-tools \
@@ -41,8 +43,8 @@ RDEPENDS_${PN} += " \
     qtserialport \
     qtsvg \
     ${@base_contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \
+    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
     qtwebsockets \
     qtxmlpatterns \
     qtquickcontrols \
-    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
     "

@@ -32,7 +32,7 @@ SRC_URI = " \
     git://qt-gerrit.ci.local/QtRD-15810/qtvirtualkeyboard.git;branch=${QT_BRANCH};protocol=ssh \
     "
 
-SRCREV = "b5f0a28522f2fcb916966bd0da0b86f2d93d2b97"
+SRCREV = "ad517b66fc4aadb2807951f182552a1b161d9c95"
 QT_BRANCH = "master"
 
 S = "${WORKDIR}/git"

@@ -27,15 +27,15 @@ LIC_FILES_CHKSUM = "file://compiler/qtquickcompiler.h;md5=553f8ee8d120874969caca
 inherit qt5-module
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/qmlcompiler.git;branch=${QT_BRANCH};protocol=ssh;name=compiler;destsuffix=git \
-    git://qt-gerrit.ci.local/QtRD-15810/qtsdk-enterprise.git;branch=${QT_BRANCH};protocol=ssh;name=sdk;destsuffix=git/compiler/license-checker \
+    git://qt-gerrit.ci.local/QtRD-15810/qmlcompiler.git;branch=${BRANCH};protocol=ssh;name=compiler;destsuffix=git \
+    git://qt-gerrit.ci.local/QtRD-15810/qtsdk-enterprise.git;branch=${BRANCH};protocol=ssh;name=sdk;destsuffix=git/compiler/license-checker \
     "
 
-SRCREV_compiler = "60c13275dec85d8224ea5826ae5533d87c65e76e"
-QT_BRANCH_compiler = "2.0"
+SRCREV_compiler = "cc3b348065e84242d772d53b5f9dcad88b0da33e"
+BRANCH_compiler = "3.0"
 
 SRCREV_sdk = "60cb1a7763b670108b17c7e1345394e424153bea"
-QT_BRANCH_sdk = "master"
+BRANCH_sdk = "master"
 
 S = "${WORKDIR}/git"
 

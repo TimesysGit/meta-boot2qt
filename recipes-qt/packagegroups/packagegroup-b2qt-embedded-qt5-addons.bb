@@ -29,8 +29,6 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 RDEPENDS_${PN} += " \
     qtdatavisualization \
-    qtquickenterprisecontrols \
-    qtquickenterprisecontrols-fonts \
     qtcharts \
     qtvirtualkeyboard \
     b2qt-appcontroller \

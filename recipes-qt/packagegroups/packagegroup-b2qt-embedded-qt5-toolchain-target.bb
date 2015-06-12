@@ -36,6 +36,7 @@ RDEPENDS_${PN} += " \
     qt3d-dev \
     qtbase-dev \
     qtbase-staticdev \
+    qtcanvas3d \
     qtconnectivity-dev \
     qtdeclarative-dev \
     qtdeclarative-staticdev \
@@ -50,9 +51,9 @@ RDEPENDS_${PN} += " \
     qttools-dev \
     qttools-staticdev \
     ${@base_contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
+    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine-dev', '', d)} \
     qtwebsockets-dev \
     qtwebchannel-dev \
     qtxmlpatterns-dev \
     qtquickcontrols-dev \
-    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine-dev', '', d)} \
     "
