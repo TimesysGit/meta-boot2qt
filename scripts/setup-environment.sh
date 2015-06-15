@@ -79,6 +79,10 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   mkdir -p ${PWD}/${BUILDDIRECTORY}/conf
   cp ${PWD}/sources/meta-b2qt/conf/${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
 
+  if [ ! -d ${PWD}/sources/meta-qt5 ]; then
+    sed -i -e '/meta-qt5/d' ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
+  fi
+
   if [ ! -d ${PWD}/sources/meta-b2qt/.git ]; then
     QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-b2qt/../../)
   fi
