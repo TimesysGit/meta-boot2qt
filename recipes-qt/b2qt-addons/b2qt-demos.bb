@@ -27,18 +27,20 @@ LIC_FILES_CHKSUM = "file://sensors/Accelbubble.qml;md5=1bf19846314f7b0fa81dc4db9
 inherit qmake5
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/b2qt-demos;branch=${QT_BRANCH};protocol=ssh;name=demos \
+    git://qt-gerrit.ci.local/QtRD-15810/b2qt-demos;branch=${BRANCH};protocol=ssh;name=demos \
     git://code.qt.io/qt-labs/qt5-everywhere-demo.git;protocol=git;name=everywhere;destsuffix=qt5-everywhere-demo \
+    git://code.qt.io/qt/qtcanvas3d.git;branch=${QT_BRANCH};protocol=git;name=qtcanvas3d;destsuffix=qtcanvas3d \
     "
-QT_BRANCH = "dev"
-SRCREV_demos = "d6979299a7809e5b832738c4cf39bba2c9a185eb"
+BRANCH = "dev"
+QT_BRANCH = "5.5.0"
+SRCREV_demos = "dcc6470466f8237cc46ac1ac39e865ec2568d702"
 SRCREV_everywhere = "6178748a6ea34df40a8e3c9ce67137e33383bb0e"
-GITDIR_everywhere = "${DL_DIR}/qt5-everywhere-demo"
+SRCREV_qtcanvas3d = "0f5e0a235e942e5b274fca7158ac179141014c0a"
 
 
 S = "${WORKDIR}/git/basicsuite"
 
-DEPENDS = "qtbase qtdeclarative qtxmlpatterns qtquickcontrols qtgraphicaleffects qtsensors qtmultimedia \
+DEPENDS = "qtbase qtdeclarative qtxmlpatterns qtquickcontrols qtgraphicaleffects qtsensors qtmultimedia qtcanvas3d \
            ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_install_append() {
@@ -55,6 +57,18 @@ do_install_append() {
     # we can't have several top-level windows in b2qt, replace Window -> Rectangle
     sed -i '/import QtQuick.Window/c\' ${D}/data/user/qt/qt5-everywhere/qml/QtDemo/main.qml
     sed -i 's/Window /Rectangle /1' ${D}/data/user/qt/qt5-everywhere/qml/QtDemo/main.qml
+
+    cp ${WORKDIR}/qtcanvas3d/examples/canvas3d/canvas3d/threejs/planets/*.qml  ${D}/data/user/qt/canvas3d-planets
+    cp ${WORKDIR}/qtcanvas3d/examples/canvas3d/canvas3d/threejs/planets/*.js ${D}/data/user/qt/canvas3d-planets
+    cp -r ${WORKDIR}/qtcanvas3d/examples/canvas3d/canvas3d/threejs/planets/images ${D}/data/user/qt/canvas3d-planets
+    cp ${WORKDIR}/qtcanvas3d/examples/canvas3d/canvas3d/threejs/controls/ControlEventSource.qml ${D}/data/user/qt/canvas3d-planets
+    cp ${WORKDIR}/qtcanvas3d/examples/canvas3d/canvas3d/3rdparty/*.js ${D}/data/user/qt/canvas3d-planets
+
+    # get rid of qrc:/ prefixes and the custom slider
+    sed -i 's/qrc:\(\/\)\?//g' ${D}/data/user/qt/canvas3d-planets/*.qml
+    sed -i 's/qrc:\(\/\)\?//g' ${D}/data/user/qt/canvas3d-planets/*.js
+    sed -i 's/StyledSlider/Slider/g' ${D}/data/user/qt/canvas3d-planets/planets.qml
+    sed -i '39 i import QtQuick.Controls 1.2' ${D}/data/user/qt/canvas3d-planets/planets.qml
 }
 
 FILES_${PN} += " \
