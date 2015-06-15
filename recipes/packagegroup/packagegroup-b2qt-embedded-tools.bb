@@ -33,4 +33,5 @@ RDEPENDS_${PN} = "\
         i2c-tools \
         perf \
         htop \
+        ntp \
         "

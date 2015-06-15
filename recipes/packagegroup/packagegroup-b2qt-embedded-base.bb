@@ -54,6 +54,10 @@ RDEPENDS_${PN} = "\
         otf-noto \
         libmysqlclient \
         libpq \
+        tzdata \
+        tzdata-americas \
+        tzdata-asia \
+        tzdata-europe \
         ${@base_contains("DISTRO_FEATURES", "wayland", "wayland weston weston-examples", "", d)} \
         ${MACHINE_EXTRA_INSTALL} \
         "
