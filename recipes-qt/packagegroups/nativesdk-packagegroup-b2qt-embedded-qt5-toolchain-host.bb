@@ -24,12 +24,11 @@ DESCRIPTION = "Host packages for B2Qt embedded Qt5 SDK"
 LICENSE = "QtEnterprise"
 PR = "r0"
 
-inherit nativesdk packagegroup
+inherit nativesdk packagegroup qtquickcompiler
 
 RDEPENDS_${PN} += "\
     nativesdk-packagegroup-b2qt-embedded-toolchain-host \
     nativesdk-qttools \
     nativesdk-qtbase-tools \
     nativesdk-qtbase-tools-staticdev \
-    nativesdk-qtquickcompiler-tools \
     "
