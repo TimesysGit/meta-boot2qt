@@ -24,16 +24,15 @@ DESCRIPTION = "Qt Virtual Keyboard"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://src/virtualkeyboard/plugin.cpp;md5=9e7c3707428a49f2fd857aa1538823b6;beginline=1;endline=17"
 
-inherit qt5-module qtquickcompiler
-
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+inherit qt5-module qtquickcompiler sdk-sources
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/qtvirtualkeyboard.git;branch=${QT_BRANCH};protocol=ssh \
+    git://qt-gerrit.ci.local/QtRD-15810/qtvirtualkeyboard.git;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtVirtualKeyboard/1.3/Src \
     "
 
+# v1.3.0
 SRCREV = "ad517b66fc4aadb2807951f182552a1b161d9c95"
-QT_BRANCH = "master"
+BRANCH = "master"
 
 S = "${WORKDIR}/git"
 

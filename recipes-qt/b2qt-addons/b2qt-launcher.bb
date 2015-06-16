@@ -24,15 +24,15 @@ DESCRIPTION = "Boot to Qt Demo Launcher"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://src/main.cpp;md5=1fcdf6b49fbbf2bc9c831893cca1b279;beginline=1;endline=17"
 
-inherit qmake5
+inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/b2qt-launcher;branch=${QT_BRANCH};protocol=ssh \
+    git://qt-gerrit.ci.local/QtRD-15810/b2qt-launcher;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-launcher \
     file://b2qt-startup.sh \
     "
 
 SRCREV = "e824e206f28eb20bcb6f1d9064990f5e927261f4"
-QT_BRANCH = "dev"
+BRANCH = "dev"
 
 S = "${WORKDIR}/git"
 

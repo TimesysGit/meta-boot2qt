@@ -30,8 +30,12 @@ python do_fetch () {
         uris = list(src_uri);
         for url in uris:
             ud = list(bb.fetch2.decodeurl(url))
-            if ("local-uri" in ud[5]):
+            if ("sdk-uri" in ud[5]):
                 src_uri.remove(url)
+
+
+    if len(src_uri) == 0:
+        return
 
     try:
         fetcher = bb.fetch2.Fetch(src_uri, d)
@@ -52,9 +56,12 @@ python do_unpack () {
         uris = list(src_uri);
         for url in uris:
             ud = list(bb.fetch2.decodeurl(url))
-            if ("local-uri" in ud[5]):
+            if ("sdk-uri" in ud[5]):
                 unpack_local_uri(ud, d)
                 src_uri.remove(url)
+
+    if len(src_uri) == 0:
+        return
 
     try:
         fetcher = bb.fetch2.Fetch(src_uri, d)
@@ -69,8 +76,10 @@ def unpack_local_uri(ud, d):
     sdk_path = d.getVar('QT_SDK_PATH', True)
 
     destdir = os.path.join(rootdir, ud[5].get("destsuffix", "git"))
-    srcdir = os.path.join(sdk_path, ud[5].get("local-uri"))
+    srcdir = os.path.join(sdk_path, ud[5].get("sdk-uri"))
     cmd = "cp -vrf %s %s" % (srcdir, destdir)
+
+    bb.note("Unpacking SDK sources %s to %s" % (srcdir, destdir))
 
     if os.path.exists(destdir):
         bb.utils.prunedir(destdir)

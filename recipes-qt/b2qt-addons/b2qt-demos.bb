@@ -24,13 +24,14 @@ DESCRIPTION = "Boot to Qt Demos"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://sensors/Accelbubble.qml;md5=1bf19846314f7b0fa81dc4db92338713;beginline=1;endline=40"
 
-inherit qmake5
+inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/b2qt-demos;branch=${BRANCH};protocol=ssh;name=demos \
+    git://qt-gerrit.ci.local/QtRD-15810/b2qt-demos;branch=${BRANCH};protocol=ssh;name=demos;sdk-uri=5.5/Boot2Qt/sources/b2qt-demos \
     git://code.qt.io/qt-labs/qt5-everywhere-demo.git;protocol=git;name=everywhere;destsuffix=qt5-everywhere-demo \
     git://code.qt.io/qt/qtcanvas3d.git;branch=${QT_BRANCH};protocol=git;name=qtcanvas3d;destsuffix=qtcanvas3d \
     "
+
 BRANCH = "dev"
 QT_BRANCH = "5.5.0"
 SRCREV_demos = "dcc6470466f8237cc46ac1ac39e865ec2568d702"
@@ -49,8 +50,12 @@ do_install_append() {
     rm -rf ${D}/data/user/sensorexplorer
 
     cp -r ${S}/* ${D}/data/user/qt/
-    cp -r ${S}/../images ${D}/data/
-    cp -r ${S}/../videos ${D}/data/
+    if [ -d ${S}/../images ]; then
+        cp -r ${S}/../images ${D}/data/
+    fi
+    if [ -d ${S}/../videos ]; then
+        cp -r ${S}/../videos ${D}/data/
+    fi
 
     cp -r ${WORKDIR}/qt5-everywhere-demo/QtDemo/qml ${D}/data/user/qt/qt5-everywhere/
 

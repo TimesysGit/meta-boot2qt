@@ -24,14 +24,14 @@ DESCRIPTION = "Boot to Qt Utils module"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://src/qconnectivity/main.cpp;md5=0b2892e6aca7d0750bbd7fe6b6b1c033;beginline=1;endline=17"
 
-inherit qt5-module
+inherit qt5-module sdk-sources
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/b2qt-utils;branch=${QT_BRANCH};protocol=ssh \
+    git://qt-gerrit.ci.local/QtRD-15810/b2qt-utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-utils \
     "
 
 SRCREV = "7b14c47d6adbc6ab3cdfc9d10bef25029215a85f"
-QT_BRANCH = "dev"
+BRANCH = "dev"
 
 S = "${WORKDIR}/git"
 
