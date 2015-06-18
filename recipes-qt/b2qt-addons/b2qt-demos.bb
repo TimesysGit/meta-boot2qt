@@ -30,13 +30,15 @@ SRC_URI = " \
     git://qt-gerrit.ci.local/QtRD-15810/b2qt-demos;branch=${BRANCH};protocol=ssh;name=demos;sdk-uri=5.5/Boot2Qt/sources/b2qt-demos \
     git://code.qt.io/qt-labs/qt5-everywhere-demo.git;protocol=git;name=everywhere;destsuffix=qt5-everywhere-demo \
     git://code.qt.io/qt/qtcanvas3d.git;branch=${QT_BRANCH};protocol=git;name=qtcanvas3d;destsuffix=qtcanvas3d \
+    git://code.qt.io/qt/qtquickcontrols.git;branch=${QT_BRANCH};protocol=git;name=qtquickcontrols;destsuffix=qtquickcontrols \
     "
 
 BRANCH = "dev"
 QT_BRANCH = "5.5.0"
-SRCREV_demos = "dcc6470466f8237cc46ac1ac39e865ec2568d702"
+SRCREV_demos = "de50ff5dbf2f789786e25540ba0b0efc8c68e0f9"
 SRCREV_everywhere = "6178748a6ea34df40a8e3c9ce67137e33383bb0e"
-SRCREV_qtcanvas3d = "0f5e0a235e942e5b274fca7158ac179141014c0a"
+SRCREV_qtcanvas3d = "debe68a85b571b70e2fe0824e5ed40484a72c216"
+SRCREV_qtquickcontrols = "b4dc4a98d5deffbbb30f7011f6c0d3d10f430b98"
 
 
 S = "${WORKDIR}/git/basicsuite"
@@ -74,6 +76,28 @@ do_install_append() {
     sed -i 's/qrc:\(\/\)\?//g' ${D}/data/user/qt/canvas3d-planets/*.js
     sed -i 's/StyledSlider/Slider/g' ${D}/data/user/qt/canvas3d-planets/planets.qml
     sed -i '39 i import QtQuick.Controls 1.2' ${D}/data/user/qt/canvas3d-planets/planets.qml
+
+    # Qt Quick Extras
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/dashboard/qml ${D}/data/user/qt/enterprise-dashboard/
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/dashboard/images ${D}/data/user/qt/enterprise-dashboard/
+
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/gallery/qml ${D}/data/user/qt/enterprise-gallery/
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/gallery/images ${D}/data/user/qt/enterprise-gallery/
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/gallery/fonts ${D}/data/user/qt/enterprise-gallery/
+
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/flat/images ${D}/data/user/qt/enterprise-flat-controls/
+    cp ${WORKDIR}/qtquickcontrols/examples/quick/extras/flat/*.qml ${D}/data/user/qt/enterprise-flat-controls/
+
+    sed -i '/import QtQuick.Window/c\' ${D}/data/user/qt/enterprise-dashboard/qml/dashboard.qml ${D}/data/user/qt/enterprise-gallery/qml/gallery.qml
+    sed -i 's/Window /Rectangle /1' ${D}/data/user/qt/enterprise-dashboard/qml/dashboard.qml ${D}/data/user/qt/enterprise-gallery/qml/gallery.qml
+    sed -i 's/ApplicationWindow /Rectangle /1' ${D}/data/user/qt/enterprise-flat-controls/main.qml
+    sed -i '/title: "Qt Quick Extras Demo"/c\' ${D}/data/user/qt/enterprise-dashboard/qml/dashboard.qml ${D}/data/user/qt/enterprise-gallery/qml/gallery.qml
+    sed -i '/title: "Flat Example"/c\' ${D}/data/user/qt/enterprise-flat-controls/main.qml
+    sed -i 's/"Light Flat UI Demo"/"Qt Quick Controls"/1' ${D}/data/user/qt/enterprise-flat-controls/main.qml
+    sed -i '/{ name: "Exit", action: null }/c\' ${D}/data/user/qt/enterprise-flat-controls/main.qml
+
+    sed -i -e 's/qrc:/../g' ${D}/data/user/qt/enterprise-dashboard/qml/* ${D}/data/user/qt/enterprise-gallery/qml/*
+    sed -i 's/qrc:\///g' ${D}/data/user/qt/enterprise-flat-controls/Content.qml
 }
 
 FILES_${PN} += " \
