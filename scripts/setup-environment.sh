@@ -84,7 +84,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   fi
 
   if [ ! -d ${PWD}/sources/meta-b2qt/.git ]; then
-    QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-b2qt/../../)
+    QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-b2qt/../../../../)
   fi
 fi
 
