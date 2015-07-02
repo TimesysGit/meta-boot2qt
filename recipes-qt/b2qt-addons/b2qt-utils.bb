@@ -30,7 +30,7 @@ SRC_URI = " \
     git://qt-gerrit.ci.local/QtRD-15810/b2qt-utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-utils \
     "
 
-SRCREV = "7b14c47d6adbc6ab3cdfc9d10bef25029215a85f"
+SRCREV = "602034c3a71c53d050e67101e070185cbcf7ccee"
 BRANCH = "dev"
 
 S = "${WORKDIR}/git"
