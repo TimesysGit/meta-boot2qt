@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://src/qconnectivity/main.cpp;md5=0b2892e6aca7d0750bbd7f
 inherit qt5-module sdk-sources
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/b2qt-utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-utils \
+    git://codereview.qt-project.org/tqtc-boot2qt/utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-utils \
     "
 
 SRCREV = "602034c3a71c53d050e67101e070185cbcf7ccee"

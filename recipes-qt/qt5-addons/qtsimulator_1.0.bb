@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://src/simulator/version.h;md5=ba04e32af7257890758a149b0
 inherit qt5-module
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/b2qt-qtsimulator.git;branch=${BRANCH};protocol=ssh \
+    git://codereview.qt-project.org/tqtc-boot2qt/qtsimulator;branch=${BRANCH};protocol=ssh \
     "
 
 # v1.0.8

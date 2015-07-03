@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://src/charts/qchart.cpp;md5=6e3e95df24951a6ec145dc5614d
 inherit qt5-module qtquickcompiler sdk-sources
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/charts.git;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/Charts/2.0/Src \
+    git://codereview.qt-project.org/qt/tqtc-qtcharts;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/Charts/2.0/Src \
     "
 
 # v2.0.1

@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://src/virtualkeyboard/plugin.cpp;md5=9e7c3707428a49f2fd
 inherit qt5-module qtquickcompiler sdk-sources
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/qtvirtualkeyboard.git;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtVirtualKeyboard/1.3/Src \
+    git://codereview.qt-project.org/qt/tqtc-qtvirtualkeyboard;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtVirtualKeyboard/1.3/Src \
     "
 
 # v1.3.0

@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://sensors/Accelbubble.qml;md5=1bf19846314f7b0fa81dc4db9
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/b2qt-demos;branch=${BRANCH};protocol=ssh;name=demos;sdk-uri=5.5/Boot2Qt/sources/b2qt-demos \
+    git://codereview.qt-project.org/tqtc-boot2qt/demos;branch=${BRANCH};protocol=ssh;name=demos;sdk-uri=5.5/Boot2Qt/sources/b2qt-demos \
     git://code.qt.io/qt-labs/qt5-everywhere-demo.git;protocol=git;name=everywhere;destsuffix=qt5-everywhere-demo \
     git://code.qt.io/qt/qtcanvas3d.git;branch=${QT_BRANCH};protocol=git;name=qtcanvas3d;destsuffix=qtcanvas3d \
     git://code.qt.io/qt/qtquickcontrols.git;branch=${QT_BRANCH};protocol=git;name=qtquickcontrols;destsuffix=qtquickcontrols \

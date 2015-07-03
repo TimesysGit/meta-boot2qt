@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://proxy.h;md5=ba04e32af7257890758a149b0c14d11a;beginlin
 inherit qt5-module
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/b2qt-emulator.git;branch=${BRANCH};protocol=ssh \
+    git://codereview.qt-project.org/tqtc-boot2qt/emulator;branch=${BRANCH};protocol=ssh \
     file://emulatorproxyd.sh \
     "
 

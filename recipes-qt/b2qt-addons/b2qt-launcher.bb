@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://src/main.cpp;md5=1fcdf6b49fbbf2bc9c831893cca1b279;beg
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/b2qt-launcher;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-launcher \
+    git://codereview.qt-project.org/tqtc-boot2qt/launcher;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-launcher \
     file://b2qt-startup.sh \
     "
 
