@@ -38,6 +38,7 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/meta-qt5 \
   ${BSPDIR}/sources/meta-openembedded/meta-ruby \
   ${BSPDIR}/sources/meta-b2qt \
+  ${BSPDIR}/sources/meta-mingw \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
   ${BSPDIR}/sources/poky/meta \

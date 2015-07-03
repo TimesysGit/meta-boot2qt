@@ -10,6 +10,7 @@
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/architech-boards" name="architech"/>
   <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
+  <remote fetch="http://codereview.qt-project.org/yocto" name="qtyocto"/>
   <remote fetch="git://git.yoctoproject.org" name="intel"/>
   <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
   <remote fetch="git://playground.ci.local" name="playground"/>
@@ -26,6 +27,11 @@
            remote="meta-qt5"
            revision="4f208863257768b875378af1421d33f1d6cf8a05"
            path="sources/meta-qt5"/>
+
+  <project name="meta-mingw"
+           remote="qtyocto"
+           path="sources/meta-mingw"
+           revision="bf67d2df6f873cc480466ea7c0771d57942bc3e0"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
