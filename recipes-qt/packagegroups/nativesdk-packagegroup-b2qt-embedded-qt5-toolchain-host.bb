@@ -31,4 +31,6 @@ RDEPENDS_${PN} += "\
     nativesdk-qttools \
     nativesdk-qtbase-tools \
     nativesdk-qtbase-tools-staticdev \
+    nativesdk-qtdeclarative-tools \
+    nativesdk-qtdeclarative-staticdev \
     "
