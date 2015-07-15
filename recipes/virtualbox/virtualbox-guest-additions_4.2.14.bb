@@ -47,7 +47,9 @@ do_compile_prepend() {
 
 do_install() {
     install -m 0755 -d ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
-    install -m 0644 *.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
+    install -m 0644 vboxsf.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
+    install -m 0644 vboxguest.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
+    install -m 0644 vboxvideo.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
 }
 
 PKG_${PN} = "kernel-module-vbox"
