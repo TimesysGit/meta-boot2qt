@@ -20,12 +20,27 @@
 ##
 #############################################################################
 
-DESCRIPTION = "B2Qt on embedded Linux SDK toolchain"
-PR = "r0"
-LICENSE = "CLOSED"
+inherit populate_sdk
 
-inherit populate_b2qt_sdk
+DEPENDS_sdkmingw32 += "gzip-native"
 
-TOOLCHAIN_HOST_TASK = "nativesdk-packagegroup-b2qt-embedded-toolchain-host packagegroup-cross-canadian-${MACHINE}"
-TOOLCHAIN_TARGET_TASK += "packagegroup-b2qt-embedded-toolchain-target"
+POPULATE_SDK_POST_HOST_COMMAND_append_sdkmingw32 = " replace_host_symlink;"
+
+replace_host_symlink() {
+        for SOURCE in `find ${SDK_OUTPUT}/${SDKPATHNATIVE} -type l`
+        do
+                TARGET=`readlink -f "${SOURCE}"`
+                if [ -e ${TARGET} ]; then
+                        rm "${SOURCE}"
+                        cp -f "${TARGET}" "${SOURCE}"
+                fi
+        done
+}
+
+fakeroot tar_sdk_sdkmingw32() {
+        # Package it up
+        mkdir -p ${SDK_DEPLOY}
+        cd ${SDK_OUTPUT}/${SDKPATH}
+        zip -r ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.zip sysroots
+}
 

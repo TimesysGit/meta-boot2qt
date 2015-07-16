@@ -23,7 +23,7 @@
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://${QT_LICENCE};md5=7bc9c54e450006250a60e96604c186c9"
 
-inherit populate_sdk populate_sdk_qt5_base
+inherit populate_b2qt_sdk populate_sdk_qt5_base
 
 SRC_URI = " \
     file://qmake.conf \
