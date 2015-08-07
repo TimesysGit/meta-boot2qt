@@ -12,21 +12,21 @@
 
   <project name="poky"
            remote="yocto"
-           revision="9c4ff467f66428488b1cd9798066a8cb5d6b4c3b"
+           revision="08d32590411568e7bf11612ac695a6e9c6df6286"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="5b6f39ce325d490fc382d5d59c5b8b9d5fa38b38"
+           revision="10d3c8f85280a0bf867a8e4f84bcda81c290d28e"
            path="sources/meta-openembedded"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
-           revision="db1571f40c375a398a8cdbb42de4c4f272ab0cd1"
+           revision="44a5115b6ece869cfb10714423e6956128dbaef8"
            path="sources/meta-fsl-arm"
            groups="notdefault,fsl,toradex,architech"/>
   <project name="meta-ti"
            remote="yocto"
-           revision="6d1c337af7d43953f6d0802ffd0bf1d9d3cfb146"
+           revision="477f7b7f03dd7c803803101240a416e88cf49fcc"
            path="sources/meta-ti"
            groups="notdefault,ti,bbb"/>
   <project name="meta-raspberrypi"
@@ -36,7 +36,7 @@
            groups="notdefault,rpi"/>
   <project name="meta-fsl-arm-extra"
            remote="freescale"
-           revision="794e46e0b0a3e7e270a2f3c217d8fe5751a6b2c6"
+           revision="436b86e3421736216412bdbb21cd9cb08c758c75"
            path="sources/meta-fsl-arm-extra"
            groups="notdefault,fsl,toradex,architech"/>
   <project name="meta-beagleboard"
