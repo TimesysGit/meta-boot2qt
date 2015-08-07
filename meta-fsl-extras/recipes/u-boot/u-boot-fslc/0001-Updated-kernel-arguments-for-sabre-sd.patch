@@ -1,68 +1,26 @@
-From ecd64c7926b7aa25b028278666abad582e7cdea8 Mon Sep 17 00:00:00 2001
+From 15ba0d8f9e2ad8f3024734810088e4caddaaec5a Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@digia.com>
 Date: Fri, 9 May 2014 10:23:50 +0300
 Subject: [PATCH] Updated kernel arguments for sabre sd
 
-- detect if hdmi is used and change video arguments accordingly
 - disable blanking and cursor blinking
 ---
- include/configs/mx6sabre_common.h | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ include/configs/mx6sabre_common.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/include/configs/mx6sabre_common.h b/include/configs/mx6sabre_common.h
-index c81e9e9..9296b9b 100644
+index a8746a4..251b28b 100644
 --- a/include/configs/mx6sabre_common.h
 +++ b/include/configs/mx6sabre_common.h
-@@ -87,6 +87,13 @@
- /* Command definition */
- #include <config_cmd_default.h>
- 
-+/* I2C Configs */
-+#define CONFIG_CMD_I2C
-+#define CONFIG_SYS_I2C
-+#define CONFIG_SYS_I2C_MXC
-+#define CONFIG_SYS_I2C_SPEED		100000
-+#define CONFIG_I2C_EDID
-+
- #define CONFIG_CMD_BMODE
- #define CONFIG_CMD_BOOTZ
- #define CONFIG_CMD_SETEXPR
-@@ -119,6 +126,15 @@
- #define EMMC_ENV ""
- #endif
- 
-+#define VIDEOARGS \
-+	"videoargs=" \
-+	"i2c dev 1 ; " \
-+	"if i2c probe 0x50 ; then " \
-+		"setenv video mxcfb0:dev=hdmi,1280x720M@60,if=RGB24 ; " \
-+	"else " \
-+		"setenv video mxcfb0:dev=ldb,LDB-XGA,if=RGB666 ldb=sin1 ; " \
-+	"fi\0"
-+
- #define CONFIG_EXTRA_ENV_SETTINGS \
- 	"script=boot.scr\0" \
- 	"image=zImage\0" \
-@@ -146,7 +162,11 @@
- 			"fi; "	\
- 		"fi\0" \
- 	EMMC_ENV	  \
-+	VIDEOARGS \
+@@ -171,6 +171,8 @@
+ 		"done\0" \
  	"mmcargs=setenv bootargs console=${console},${baudrate} " \
-+		"video=${video} "\
+ 		"root=${mmcroot} " \
 +		"consoleblank=0 " \
 +		"vt.global_cursor_default=0 " \
- 		"root=${mmcroot}\0" \
+ 		VIDEO_ARGS "\0" \
  	"loadbootscript=" \
  		"fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};\0" \
-@@ -155,6 +175,7 @@
- 	"loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}\0" \
- 	"loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}\0" \
- 	"mmcboot=echo Booting from mmc ...; " \
-+		"run videoargs; " \
- 		"run mmcargs; " \
- 		"if test ${boot_fdt} = yes || test ${boot_fdt} = try; then " \
- 			"if run loadfdt; then " \
 -- 
 1.9.1
 
