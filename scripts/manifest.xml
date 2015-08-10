@@ -46,7 +46,7 @@
            groups="notdefault,bbb"/>
   <project name="meta-toradex"
            remote="toradex"
-           revision="36c19b10b340983946f8f52ab7fa91d9aa1e53f6"
+           revision="a76e317a2ae638ed62ccf88636aa79d0ae368d78"
            path="sources/meta-toradex"
            groups="notdefault,toradex"/>
   <project name="meta-tibidabo"
