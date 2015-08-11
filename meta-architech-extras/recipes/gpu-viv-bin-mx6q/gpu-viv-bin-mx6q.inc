@@ -28,21 +28,21 @@ SRC_URI = "${FSL_MIRROR}/${PN}-${PV}.bin;fsl-eula=true \
           "
 
 PACKAGES =+ "libclc-mx6 libclc-mx6-dev libclc-mx6-dbg \
-	libgl-mx6 libgl-mx6-dev libgl-mx6-dbg \
-	libgles-mx6 libgles-mx6-dev libgles-mx6-dbg \
-	libgles2-mx6 libgles2-mx6-dev libgles2-mx6-dbg \
-	libglslc-mx6 libglslc-mx6-dev libglslc-mx6-dbg \
-	libopencl-mx6 libopencl-mx6-dev libopencl-mx6-dbg \
-	libopenvg-mx6 libopenvg-mx6-dev libopenvg-mx6-dbg \
-	libvdk-mx6 libvdk-mx6-dev libvdk-mx6-dbg \
-	libegl-mx6 libegl-mx6-dev libegl-mx6-dbg \
-	libgal-mx6 libgal-mx6-dev libgal-mx6-dbg \
-	libvivante-mx6 libvivante-mx6-dev libvivante-mx6-dbg \
-	libvivante-dri-mx6 \
-	libvivante-dfb-mx6 \
-	libwayland-viv-mx6 libwayland-viv-mx6-dev libwayland-viv-mx6-dbg \
-	libgc-wayland-protocol-mx6 libgc-wayland-protocol-mx6-dev libgc-wayland-protocol-mx6-dbg \
-	libwayland-egl-mx6-dev \
+    libgl-mx6 libgl-mx6-dev libgl-mx6-dbg \
+    libgles-mx6 libgles-mx6-dev libgles-mx6-dbg \
+    libgles2-mx6 libgles2-mx6-dev libgles2-mx6-dbg \
+    libglslc-mx6 libglslc-mx6-dev libglslc-mx6-dbg \
+    libopencl-mx6 libopencl-mx6-dev libopencl-mx6-dbg \
+    libopenvg-mx6 libopenvg-mx6-dev libopenvg-mx6-dbg \
+    libvdk-mx6 libvdk-mx6-dev libvdk-mx6-dbg \
+    libegl-mx6 libegl-mx6-dev libegl-mx6-dbg \
+    libgal-mx6 libgal-mx6-dev libgal-mx6-dbg \
+    libvivante-mx6 libvivante-mx6-dev libvivante-mx6-dbg \
+    libvivante-dri-mx6 \
+    libvivante-dfb-mx6 \
+    libwayland-viv-mx6 libwayland-viv-mx6-dev libwayland-viv-mx6-dbg \
+    libgc-wayland-protocol-mx6 libgc-wayland-protocol-mx6-dev libgc-wayland-protocol-mx6-dbg \
+    libwayland-egl-mx6-dev \
 "
 
 # Skip package if it does not match the machine float-point type in use

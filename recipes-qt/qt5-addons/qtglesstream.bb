@@ -41,17 +41,17 @@ RREPLACES_${PN} = "qtglesstream-dummy-client"
 RREPLACES_${PN}-dev = "qtglesstream-dummy-client-dev"
 
 do_install_append() {
-	install -m 0755 -d ${D}${includedir}/EGL
-	install -m 0755 ${S}/headers/EGL/* ${D}${includedir}/EGL
+    install -m 0755 -d ${D}${includedir}/EGL
+    install -m 0755 ${S}/headers/EGL/* ${D}${includedir}/EGL
 
-	install -m 0755 -d ${D}${includedir}/GLES2
-	install -m 0755 ${S}/headers/GLES2/* ${D}${includedir}/GLES2
+    install -m 0755 -d ${D}${includedir}/GLES2
+    install -m 0755 ${S}/headers/GLES2/* ${D}${includedir}/GLES2
 
-	install -m 0755 -d ${D}${includedir}/GLES3
-	install -m 0755 ${S}/headers/GLES3/* ${D}${includedir}/GLES3
+    install -m 0755 -d ${D}${includedir}/GLES3
+    install -m 0755 ${S}/headers/GLES3/* ${D}${includedir}/GLES3
 
-	install -m 0755 -d ${D}${includedir}/KHR
-	install -m 0755 ${S}/headers/KHR/* ${D}${includedir}/KHR
+    install -m 0755 -d ${D}${includedir}/KHR
+    install -m 0755 ${S}/headers/KHR/* ${D}${includedir}/KHR
 }
 
 # no not overwrite files from qtglesstream-dummy-client

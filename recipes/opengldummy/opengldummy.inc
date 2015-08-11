@@ -28,15 +28,15 @@ SRC_URI = "file://headers \
           "
 
 do_install() {
-	install -m 0755 -d ${D}${includedir}/EGL
-	install -m 0755 ${WORKDIR}/headers/EGL/* ${D}${includedir}/EGL
+    install -m 0755 -d ${D}${includedir}/EGL
+    install -m 0755 ${WORKDIR}/headers/EGL/* ${D}${includedir}/EGL
 
-	install -m 0755 -d ${D}${includedir}/GLES2
-	install -m 0755 ${WORKDIR}/headers/GLES2/* ${D}${includedir}/GLES2
+    install -m 0755 -d ${D}${includedir}/GLES2
+    install -m 0755 ${WORKDIR}/headers/GLES2/* ${D}${includedir}/GLES2
 
-	install -m 0755 -d ${D}${includedir}/GLES3
-	install -m 0755 ${WORKDIR}/headers/GLES3/* ${D}${includedir}/GLES3
+    install -m 0755 -d ${D}${includedir}/GLES3
+    install -m 0755 ${WORKDIR}/headers/GLES3/* ${D}${includedir}/GLES3
 
-	install -m 0755 -d ${D}${includedir}/KHR
-	install -m 0755 ${WORKDIR}/headers/KHR/* ${D}${includedir}/KHR
+    install -m 0755 -d ${D}${includedir}/KHR
+    install -m 0755 ${WORKDIR}/headers/KHR/* ${D}${includedir}/KHR
 }

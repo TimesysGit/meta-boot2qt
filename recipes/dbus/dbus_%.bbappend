@@ -37,11 +37,11 @@ FILES_${PN}-session-init = " \
     "
 
 do_install_append_class-target() {
-	if ${@base_contains('DISTRO_FEATURES', 'sysvinit', 'true', 'false', d)}; then
-		install -d ${D}${sysconfdir}/init.d
-		sed 's:@bindir@:${bindir}:' < ${WORKDIR}/dbus-session.init >${WORKDIR}/dbus-session.init.sh
-		install -m 0755 ${WORKDIR}/dbus-session.init.sh ${D}${sysconfdir}/init.d/dbus-session
-	fi
-	install -d ${D}${sysconfdir}/profile.d
-	install -m 0755 ${WORKDIR}/dbus-session-address ${D}${sysconfdir}/profile.d/
+    if ${@base_contains('DISTRO_FEATURES', 'sysvinit', 'true', 'false', d)}; then
+        install -d ${D}${sysconfdir}/init.d
+        sed 's:@bindir@:${bindir}:' < ${WORKDIR}/dbus-session.init >${WORKDIR}/dbus-session.init.sh
+        install -m 0755 ${WORKDIR}/dbus-session.init.sh ${D}${sysconfdir}/init.d/dbus-session
+    fi
+    install -d ${D}${sysconfdir}/profile.d
+    install -m 0755 ${WORKDIR}/dbus-session-address ${D}${sysconfdir}/profile.d/
 }

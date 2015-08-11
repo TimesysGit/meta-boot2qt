@@ -40,8 +40,8 @@ DEPENDS = "qtbase qtdeclarative \
            ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_install_append() {
-	install -m 0755 -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${WORKDIR}/b2qt-startup.sh ${D}${sysconfdir}/init.d/
+    install -m 0755 -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${WORKDIR}/b2qt-startup.sh ${D}${sysconfdir}/init.d/
 }
 
 FILES_${PN} += "${sysdir}/init.d/b2qt-startup.h"

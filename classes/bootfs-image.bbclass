@@ -26,24 +26,24 @@ BOOTFS_LINK_NAME = "${IMAGE_BASENAME}-boot-${MACHINE}"
 BOOTFS_DEPENDS ?= ""
 
 fakeroot do_bootfs () {
-	if [ -z "${BOOTFS_CONTENT}" ]; then
-		exit 0
-	fi
+    if [ -z "${BOOTFS_CONTENT}" ]; then
+        exit 0
+    fi
 
-	mkdir -p ${S}/bootfs
+    mkdir -p ${S}/bootfs
 
-	for item in ${BOOTFS_CONTENT}; do
-		src=`echo $item | awk -F':' '{ print $1 }'`
-		dst=`echo $item | awk -F':' '{ print $2 }'`
+    for item in ${BOOTFS_CONTENT}; do
+        src=`echo $item | awk -F':' '{ print $1 }'`
+        dst=`echo $item | awk -F':' '{ print $2 }'`
 
-		install -D -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${S}/bootfs/$dst
-	done
+        install -D -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${S}/bootfs/$dst
+    done
 
-	cd ${S}/bootfs
-	rm -f ${DEPLOY_DIR_IMAGE}/${BOOTFS_NAME}.tar.gz ${DEPLOY_DIR_IMAGE}/${BOOTFS_LINK_NAME}.tar.gz
+    cd ${S}/bootfs
+    rm -f ${DEPLOY_DIR_IMAGE}/${BOOTFS_NAME}.tar.gz ${DEPLOY_DIR_IMAGE}/${BOOTFS_LINK_NAME}.tar.gz
 
-	tar czvf ${DEPLOY_DIR_IMAGE}/${BOOTFS_NAME}.tar.gz .
-	ln -s ${BOOTFS_NAME}.tar.gz ${DEPLOY_DIR_IMAGE}/${BOOTFS_LINK_NAME}.tar.gz
+    tar czvf ${DEPLOY_DIR_IMAGE}/${BOOTFS_NAME}.tar.gz .
+    ln -s ${BOOTFS_NAME}.tar.gz ${DEPLOY_DIR_IMAGE}/${BOOTFS_LINK_NAME}.tar.gz
 }
 
 addtask bootfs before do_rootfs

@@ -36,6 +36,6 @@ SRC_URI += " \
 RDEPENDS_kernel-base = ""
 
 config_script () {
-	# FunctionFS for adb
-	echo "CONFIG_USB_FUNCTIONFS=m"  >> ${S}/.config
+    # FunctionFS for adb
+    echo "CONFIG_USB_FUNCTIONFS=m"  >> ${S}/.config
 }

@@ -39,8 +39,8 @@ INITSCRIPT_NAME_${PN}-ifplugd = "busybox-ifplugd.sh"
 RRECOMMENDS_${PN} += "${PN}-ifplugd"
 
 do_install_append () {
-	install -m 0755 ${WORKDIR}/busybox-ifplugd.sh ${D}${sysconfdir}/init.d/
+    install -m 0755 ${WORKDIR}/busybox-ifplugd.sh ${D}${sysconfdir}/init.d/
 
-	install -d ${D}${sysconfdir}/ifplugd
-	install -m 0755 ${WORKDIR}/ifplugd.action ${D}${sysconfdir}/ifplugd/
+    install -d ${D}${sysconfdir}/ifplugd
+    install -m 0755 ${WORKDIR}/ifplugd.action ${D}${sysconfdir}/ifplugd/
 }

@@ -39,5 +39,5 @@ S = "${WORKDIR}/git"
 DEPENDS += "qtbase qtdeclarative qtmultimedia"
 
 FILES_${PN}-qmlplugins += " \
-	${OE_QMAKE_PATH_QML}/QtDataVisualization/designer/* \
+    ${OE_QMAKE_PATH_QML}/QtDataVisualization/designer/* \
     "

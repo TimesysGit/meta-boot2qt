@@ -39,8 +39,8 @@ S = "${WORKDIR}/git/src/helperlibs/proxy"
 DEPENDS = "qtbase qtsimulator"
 
 do_install_append() {
-	install -m 0755 -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${WORKDIR}/emulatorproxyd.sh ${D}${sysconfdir}/init.d/
+    install -m 0755 -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${WORKDIR}/emulatorproxyd.sh ${D}${sysconfdir}/init.d/
 }
 
 INITSCRIPT_NAME = "emulatorproxyd.sh"

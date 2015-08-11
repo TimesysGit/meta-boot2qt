@@ -34,15 +34,15 @@ SRC_URI[sha256sum] = "f8f6dc19612f3c84a5c857b8e5c452b8db2cf3c8c52a678b6a00e5dd58
 S = "${WORKDIR}/VirtualBox-${PV}/src/VBox/Additions/linux/sharedfolders"
 
 do_compile() {
-	${CC} mount.vboxsf.c vbsfmount.c -o mount.vboxsf
+    ${CC} mount.vboxsf.c vbsfmount.c -o mount.vboxsf
 }
 
 do_install() {
-	install -m 0755 -d ${D}${bindir}/
-	install -m 0755 mount.vboxsf ${D}${bindir}/
+    install -m 0755 -d ${D}${bindir}/
+    install -m 0755 mount.vboxsf ${D}${bindir}/
 
-	install -m 0755 -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${WORKDIR}/mount-vboxsf.sh ${D}${sysconfdir}/init.d/
+    install -m 0755 -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${WORKDIR}/mount-vboxsf.sh ${D}${sysconfdir}/init.d/
 }
 
 INITSCRIPT_NAME = "mount-vboxsf.sh"

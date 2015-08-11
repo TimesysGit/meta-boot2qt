@@ -45,24 +45,24 @@ S = "${WORKDIR}/git"
 FILES_${PN} += "${bindir}/adbd"
 
 do_configure() {
-	if [ -n "${ADB_PRODUCTID}" ]; then
-		sed -i -e 's/PRODUCT=.*/PRODUCT=${ADB_PRODUCTID}/' ${WORKDIR}/defaults
-	fi
+    if [ -n "${ADB_PRODUCTID}" ]; then
+        sed -i -e 's/PRODUCT=.*/PRODUCT=${ADB_PRODUCTID}/' ${WORKDIR}/defaults
+    fi
 }
 
 do_compile() {
-	make -f ${WORKDIR}/Makefile.adbd -C adb
+    make -f ${WORKDIR}/Makefile.adbd -C adb
 }
 
 do_install() {
-	install -m 0755 -d ${D}${bindir}/
-	install -m 0755 ${WORKDIR}/git/adb/adbd ${D}${bindir}/
+    install -m 0755 -d ${D}${bindir}/
+    install -m 0755 ${WORKDIR}/git/adb/adbd ${D}${bindir}/
 
-	install -m 0755 -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${WORKDIR}/adb-init ${D}${sysconfdir}/init.d/
+    install -m 0755 -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${WORKDIR}/adb-init ${D}${sysconfdir}/init.d/
 
-	install -m 0755 -d ${D}${sysconfdir}/default
-	install -m 0755 ${WORKDIR}/defaults ${D}${sysconfdir}/default/adbd
+    install -m 0755 -d ${D}${sysconfdir}/default
+    install -m 0755 ${WORKDIR}/defaults ${D}${sysconfdir}/default/adbd
 }
 
 INITSCRIPT_NAME = "adb-init"

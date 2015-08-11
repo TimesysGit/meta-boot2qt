@@ -42,11 +42,11 @@ RRECOMMENDS_${PN} += "${PN}-dicts"
 FILES_${PN}-dicts = "${datadir}/hunspell"
 
 do_install_append() {
-	install -m 0755 -d ${D}${datadir}/hunspell
+    install -m 0755 -d ${D}${datadir}/hunspell
 
-	install -m 0755 ${WORKDIR}/git/ar/ar.dic ${D}${datadir}/hunspell/ar_EG.dic
-	install -m 0755 ${WORKDIR}/git/ar/ar.aff ${D}${datadir}/hunspell/ar_EG.aff
+    install -m 0755 ${WORKDIR}/git/ar/ar.dic ${D}${datadir}/hunspell/ar_EG.dic
+    install -m 0755 ${WORKDIR}/git/ar/ar.aff ${D}${datadir}/hunspell/ar_EG.aff
 
-	install -m 0755 ${WORKDIR}/git/en/en_GB.dic ${D}${datadir}/hunspell
-	install -m 0755 ${WORKDIR}/git/en/en_GB.aff ${D}${datadir}/hunspell
+    install -m 0755 ${WORKDIR}/git/en/en_GB.dic ${D}${datadir}/hunspell
+    install -m 0755 ${WORKDIR}/git/en/en_GB.aff ${D}${datadir}/hunspell
 }

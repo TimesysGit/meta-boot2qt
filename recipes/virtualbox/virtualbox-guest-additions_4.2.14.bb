@@ -41,13 +41,13 @@ export KBUILD_VERBOSE="1"
 export BUILD_TARGET_ARCH="${ARCH}"
 
 do_compile_prepend() {
-	${WORKDIR}/VirtualBox-${PV}/src/VBox/Additions/linux/export_modules ${WORKDIR}/vbox.tar.gz
-	tar xf ${WORKDIR}/vbox.tar.gz -C ${WORKDIR}/vbox
+    ${WORKDIR}/VirtualBox-${PV}/src/VBox/Additions/linux/export_modules ${WORKDIR}/vbox.tar.gz
+    tar xf ${WORKDIR}/vbox.tar.gz -C ${WORKDIR}/vbox
 }
 
 do_install() {
-	install -m 0755 -d ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
-	install -m 0644 *.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
+    install -m 0755 -d ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
+    install -m 0644 *.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/vbox
 }
 
 PKG_${PN} = "kernel-module-vbox"

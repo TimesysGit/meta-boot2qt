@@ -30,19 +30,19 @@ SRC_URI += "\
 RDEPENDS_kernel-base = ""
 
 do_configure_prepend() {
-	# fix imx-vpu break on video decoding
-	echo "CONFIG_VMSPLIT_2G=y"              >> ${WORKDIR}/defconfig
+    # fix imx-vpu break on video decoding
+    echo "CONFIG_VMSPLIT_2G=y"              >> ${WORKDIR}/defconfig
 
-	# include H4 UART for Broadcom BT on Nitrogen6_Lite
-	echo "CONFIG_BT_HCIUART_H4=y"           >> ${WORKDIR}/defconfig
+    # include H4 UART for Broadcom BT on Nitrogen6_Lite
+    echo "CONFIG_BT_HCIUART_H4=y"           >> ${WORKDIR}/defconfig
 
-	# include Broadcom WiFi for Nitrogen6_Lite
-	echo "CONFIG_BRCMFMAC=m"                >> ${WORKDIR}/defconfig
+    # include Broadcom WiFi for Nitrogen6_Lite
+    echo "CONFIG_BRCMFMAC=m"                >> ${WORKDIR}/defconfig
 
-	# include LEDS_GPIO for Nitrogen6_Lite
-	echo "CONFIG_LEDS_GPIO=y"               >> ${WORKDIR}/defconfig
+    # include LEDS_GPIO for Nitrogen6_Lite
+    echo "CONFIG_LEDS_GPIO=y"               >> ${WORKDIR}/defconfig
 
-	# enable uvcvideo module
-	echo "CONFIG_MEDIA_USB_SUPPORT=y"       >> ${WORKDIR}/defconfig
-	echo "CONFIG_USB_VIDEO_CLASS=m"         >> ${WORKDIR}/defconfig
+    # enable uvcvideo module
+    echo "CONFIG_MEDIA_USB_SUPPORT=y"       >> ${WORKDIR}/defconfig
+    echo "CONFIG_USB_VIDEO_CLASS=m"         >> ${WORKDIR}/defconfig
 }

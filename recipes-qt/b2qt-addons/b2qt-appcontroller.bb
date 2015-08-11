@@ -39,13 +39,13 @@ S = "${WORKDIR}/git"
 DEPENDS = "qtbase"
 
 do_configure_append() {
-	sed -i -e '/^platform=/d' ${WORKDIR}/appcontroller.conf
-	echo platform=${MACHINE} >> ${WORKDIR}/appcontroller.conf
+    sed -i -e '/^platform=/d' ${WORKDIR}/appcontroller.conf
+    echo platform=${MACHINE} >> ${WORKDIR}/appcontroller.conf
 }
 
 do_install_append() {
-	install -m 0755 -d ${D}${sysconfdir}
-	install -m 0755 ${WORKDIR}/appcontroller.conf ${D}${sysconfdir}/
+    install -m 0755 -d ${D}${sysconfdir}
+    install -m 0755 ${WORKDIR}/appcontroller.conf ${D}${sysconfdir}/
 }
 
 FILES_${PN} += "${sysconfdir}/appcontroller.conf"

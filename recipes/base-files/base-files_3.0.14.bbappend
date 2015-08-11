@@ -26,9 +26,9 @@ SRC_URI += "\
     "
 
 do_install_append() {
-	ln -s /home/root ${D}/root
-	echo ${MACHINE_HOSTNAME} > ${D}${sysconfdir}/hostname
+    ln -s /home/root ${D}/root
+    echo ${MACHINE_HOSTNAME} > ${D}${sysconfdir}/hostname
 
-	install -m 0755 -d ${D}${sysconfdir}/modprobe.d
-	install -m 0644 ${WORKDIR}/blacklist.conf ${D}${sysconfdir}/modprobe.d
+    install -m 0755 -d ${D}${sysconfdir}/modprobe.d
+    install -m 0644 ${WORKDIR}/blacklist.conf ${D}${sysconfdir}/modprobe.d
 }
