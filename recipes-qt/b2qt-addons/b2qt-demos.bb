@@ -34,7 +34,7 @@ SRC_URI = " \
     "
 
 BRANCH = "dev"
-QT_BRANCH = "5.5.0"
+QT_BRANCH = "5.5"
 SRCREV_demos = "de50ff5dbf2f789786e25540ba0b0efc8c68e0f9"
 SRCREV_everywhere = "6178748a6ea34df40a8e3c9ce67137e33383bb0e"
 SRCREV_qtcanvas3d = "debe68a85b571b70e2fe0824e5ed40484a72c216"
