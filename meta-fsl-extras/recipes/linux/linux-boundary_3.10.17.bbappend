@@ -41,4 +41,8 @@ do_configure_prepend() {
 
 	# include LEDS_GPIO for Nitrogen6_Lite
 	echo "CONFIG_LEDS_GPIO=y"               >> ${WORKDIR}/defconfig
+
+	# enable uvcvideo module
+	echo "CONFIG_MEDIA_USB_SUPPORT=y"       >> ${WORKDIR}/defconfig
+	echo "CONFIG_USB_VIDEO_CLASS=m"         >> ${WORKDIR}/defconfig
 }
