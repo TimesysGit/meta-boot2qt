@@ -1,0 +1,35 @@
+From 878f506e43f40c2667e9e5ae82741d32fc653cac Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@theqtcompany.com>
+Date: Thu, 28 May 2015 09:06:54 +0300
+Subject: [PATCH] colibri vf: enable sdboot by default
+
+Run sdboot first and remove console message from tty1
+---
+ include/configs/colibri_vf.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/colibri_vf.h b/include/configs/colibri_vf.h
+index 06caabd..fb9fe41 100644
+--- a/include/configs/colibri_vf.h
++++ b/include/configs/colibri_vf.h
+@@ -174,7 +174,7 @@
+ 	"ubifsload ${fdt_addr_r} /boot/${soc}-colibri-${fdt_board}.dtb && " \
+ 	"bootz ${kernel_addr_r} - ${fdt_addr_r}\0" \
+ 
+-#define CONFIG_BOOTCOMMAND "run ubiboot; run sdboot; run nfsboot"
++#define CONFIG_BOOTCOMMAND "run sdboot; run ubiboot; run nfsboot"
+ 
+ #define DFU_ALT_NAND_INFO	"vf-bcb part 0,1;u-boot part 0,2;ubi part 0,4"
+ 
+@@ -187,7 +187,7 @@
+ 	"defargs=\0" \
+ 	"console=ttyLP0\0" \
+ 	"setup=setenv setupargs " \
+-		"console=tty1 console=${console}" \
++		"console=${console}" \
+ 		",${baudrate}n8 ${memargs} consoleblank=0\0" \
+ 	"setsdupdate=mmc rescan && setenv interface mmc && " \
+ 		"fatload ${interface} 0:1 ${loadaddr} flash_blk.img && " \
+-- 
+1.9.1
+

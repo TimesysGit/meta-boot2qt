@@ -105,9 +105,9 @@ typedef void*                           EGLNativeDisplayType;
 #if 1
 
 /* QtGlesStream */
-typedef unsigned int EGLNativeDisplayType;
-typedef unsigned int EGLNativeWindowType;
-typedef unsigned int EGLNativePixmapType;
+typedef intptr_t EGLNativeDisplayType;
+typedef intptr_t EGLNativeWindowType;
+typedef intptr_t EGLNativePixmapType;
 
 #else
 

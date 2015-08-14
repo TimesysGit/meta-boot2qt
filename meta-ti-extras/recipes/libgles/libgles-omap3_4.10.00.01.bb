@@ -1,6 +1,6 @@
 require recipes-graphics/libgles/libgles-omap3-no-x.inc
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:${COREBASE}/../meta-ti/recipes-graphics/libgles/${PN}"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:${COREBASE}/../meta-ti/recipes-graphics/libgles/${PN}:"
 
 LICENSE = "TI-TSPA"
 
@@ -46,3 +46,10 @@ SRC_URI[sha256sum] := "${@base_contains('TUNE_FEATURES', 'callconvention-hard', 
 S = "${WORKDIR}/Graphics_SDK_${SGXPV}"
 
 LIBGLESWINDOWSYSTEM = "libpvrPVR2D_FRONTWSEGL.so.1"
+
+do_configure_append() {
+    # PLAT_CC might not have needed arguments, so use CC instead.
+    for mak in $(find ${S} -name "*.mak" -o -name Makefile) ; do
+        sed -i -e s:\$\(PLAT_CC\):\$\(CC\):g $mak
+    done
+}

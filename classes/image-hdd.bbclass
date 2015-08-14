@@ -34,9 +34,9 @@ SYSLINUX_DEFAULT_CONSOLE = "console=ttyS0,115200"
 inherit image_types boot-directdisk
 
 create_hdd_image () {
-	cd ${DEPLOY_DIR_IMAGE}
-	rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.hdd
-	ln -s ${IMAGE_NAME}.hdddirect ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.hdd
+    cd ${DEPLOY_DIR_IMAGE}
+    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.hdd
+    ln -s ${IMAGE_NAME}.hdddirect ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.hdd
 }
 
 python do_hddimg() {

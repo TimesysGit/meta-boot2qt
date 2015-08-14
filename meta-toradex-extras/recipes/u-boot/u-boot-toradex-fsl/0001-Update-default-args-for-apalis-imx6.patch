@@ -1,4 +1,4 @@
-From 7872f8e770a202f41fbcf0372b27eb3669c433a1 Mon Sep 17 00:00:00 2001
+From 1d5baa56ff177d7858727d1c4428096781e3817c Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@digia.com>
 Date: Mon, 27 Oct 2014 14:53:25 +0200
 Subject: [PATCH] Update default args for apalis imx6
@@ -6,32 +6,36 @@ Subject: [PATCH] Update default args for apalis imx6
 Boot from sd card by default, disable kernel logs from tty1, and
 disable cursor blinking.
 ---
- include/configs/apalis-imx6.h | 15 ++++++++-------
+ include/configs/apalis_imx6.h | 15 ++++++++-------
  1 file changed, 8 insertions(+), 7 deletions(-)
 
-diff --git a/include/configs/apalis-imx6.h b/include/configs/apalis-imx6.h
-index 3fb17e2..728c5dd 100644
---- a/include/configs/apalis-imx6.h
-+++ b/include/configs/apalis-imx6.h
-@@ -205,18 +205,19 @@
+diff --git a/include/configs/apalis_imx6.h b/include/configs/apalis_imx6.h
+index 162be2e..f659384 100644
+--- a/include/configs/apalis_imx6.h
++++ b/include/configs/apalis_imx6.h
+@@ -246,14 +246,14 @@
  		"&& setenv dtbparam \" - ${fdt_addr_r}\" && true\0"
  
  #define SD_BOOTCMD						\
 -	"sdargs=ip=off root=/dev/mmcblk1p2 rw,noatime rootfstype=ext3 " \
 -		"rootwait\0" \
 +	"drive=2\0" \
- 	"sdboot=" "run setup; " \
+ 	"sdboot=run setup; " \
 -		"setenv bootargs ${defargs} ${sdargs} ${setupargs} " \
 +		"setenv bootargs ${defargs} ip=off root=/dev/mmcblk${drive}p2 " \
 +		"rw,noatime rootfstype=ext3 rootwait ${setupargs} " \
  		"${vidargs}; echo Booting from SD card in 8bit slot...; " \
--		"run sddtbload; fatload mmc 1:1 ${kernel_addr_r} " \
-+		"run sddtbload; fatload mmc ${drive}:1 ${kernel_addr_r} " \
+-		"run sddtbload; load mmc 1:1 ${kernel_addr_r} " \
++		"run sddtbload; load mmc ${drive}:1 ${kernel_addr_r} " \
  		"${boot_file} && bootm ${kernel_addr_r} ${dtbparam}\0" \
--	"sddtbload=setenv dtbparam; fatload mmc 1:1 ${fdt_addr_r} " \
-+	"sddtbload=setenv dtbparam; fatload mmc ${drive}:1 ${fdt_addr_r} " \
+-	"sddtbload=setenv dtbparam; load mmc 1:1 ${fdt_addr_r} " \
++	"sddtbload=setenv dtbparam; load mmc ${drive}:1 ${fdt_addr_r} " \
  		"${fdt_file} && setenv dtbparam \" - ${fdt_addr_r}\" && true\0"
  
+ #define USB_BOOTCMD \
+@@ -273,7 +273,8 @@
+ #define FDT_FILE "imx6q-apalis-eval_v1_0.dtb"
+ #endif
  #define CONFIG_EXTRA_ENV_SETTINGS \
 -	"bootcmd=run emmcboot ; echo ; echo emmcboot failed ; " \
 +	"bootcmd=run sdboot ; echo ; echo sdboot failed ; " \
@@ -39,15 +43,15 @@ index 3fb17e2..728c5dd 100644
  		"run nfsboot ; echo ; echo nfsboot failed ; " \
  		"usb start ;" \
  		"setenv stdout serial,vga ; setenv stdin serial,usbkbd\0" \
-@@ -229,7 +230,7 @@
- 	NFS_BOOTCMD \
- 	SD_BOOTCMD \
+@@ -292,7 +293,7 @@
+ 		"|| setenv drive 2; load ${interface} ${drive}:1 " \
+ 		"${kernel_addr_r} flash_blk.img\0" \
  	"setup=setenv setupargs fec_mac=${ethaddr} " \
 -		"consoleblank=0  no_console_suspend=1 console=tty1 " \
 +		"consoleblank=0  no_console_suspend=1 vt.global_cursor_default=0 " \
  		"console=${console},${baudrate}n8\0 " \
- 	"setupdate=setenv drive 1; fatload mmc ${drive}:1 ${kernel_addr_r} " \
- 		"flash_mmc.img || setenv drive 2; fatload mmc ${drive}:1 " \
+ 	"setupdate=run setsdupdate || run setusbupdate || run setethupdate;" \
+ 		" source ${kernel_addr_r}\0" \
 -- 
-1.8.3.2
+1.9.1
 

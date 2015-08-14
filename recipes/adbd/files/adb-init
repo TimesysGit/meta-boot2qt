@@ -4,6 +4,10 @@ DAEMON=/usr/bin/adbd
 
 . /etc/default/adbd
 
+if [ -e /var/run/dbus/session_bus_address ]; then
+  . /var/run/dbus/session_bus_address
+fi
+
 case "$1" in
 start)
     if [ "$USE_ETHERNET" = "no" ]; then

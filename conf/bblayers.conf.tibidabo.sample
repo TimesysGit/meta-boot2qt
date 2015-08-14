@@ -32,8 +32,12 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/poky/meta \
   ${BSPDIR}/sources/poky/meta-yocto \
   ${BSPDIR}/sources/meta-fsl-arm \
+  ${BSPDIR}/sources/meta-fsl-arm-extra \
   ${BSPDIR}/sources/meta-tibidabo \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
+  ${BSPDIR}/sources/meta-openembedded/meta-python \
+  ${BSPDIR}/sources/meta-openembedded/meta-networking \
+  ${BSPDIR}/sources/meta-qt5 \
   ${BSPDIR}/sources/meta-b2qt \
   ${BSPDIR}/sources/meta-b2qt/meta-fsl-extras \
   ${BSPDIR}/sources/meta-b2qt/meta-architech-extras \

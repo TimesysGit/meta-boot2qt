@@ -1,0 +1,27 @@
+From 30c67656c09f49608bbadb75e365d1d3da36cc70 Mon Sep 17 00:00:00 2001
+From: Andy Nichols <andy.nichols@theqtcompany.com>
+Date: Wed, 18 Feb 2015 14:28:14 +0100
+Subject: [PATCH] Allow builds with GCC 4.8
+
+---
+ arch/arm/kernel/asm-offsets.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/arch/arm/kernel/asm-offsets.c b/arch/arm/kernel/asm-offsets.c
+index 2d2d608..6f8e79c 100644
+--- a/arch/arm/kernel/asm-offsets.c
++++ b/arch/arm/kernel/asm-offsets.c
+@@ -49,10 +49,6 @@
+ #error Your compiler is too buggy; it is known to miscompile kernels.
+ #error    Known good compilers: 3.3, 4.x
+ #endif
+-#if GCC_VERSION >= 40800 && GCC_VERSION < 40803
+-#error Your compiler is too buggy; it is known to miscompile kernels
+-#error and result in filesystem corruption and oopses.
+-#endif
+ #endif
+ 
+ int main(void)
+-- 
+1.9.1
+

@@ -22,14 +22,14 @@
 
 DESCRIPTION = "Host packages for B2Qt on embedded Linux SDK"
 PR = "r0"
-ALLOW_EMPTY_${PN} = "1"
 LICENSE = "CLOSED"
 
-require recipes-core/packagegroups/nativesdk-packagegroup-sdk-host.bb
+inherit nativesdk packagegroup
 
 RDEPENDS_${PN} = "\
-    python-nativesdk \
-    python-modules-nativesdk \
-    python-misc-nativesdk \
+    nativesdk-python-modules \
+    nativesdk-python-misc \
+    nativesdk-gperf \
+    ${@base_contains("DISTRO_FEATURES", "wayland", "nativesdk-wayland", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
     "

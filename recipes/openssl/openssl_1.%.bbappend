@@ -23,6 +23,6 @@
 PACKAGECONFIG += "perl"
 
 do_install_append () {
-	rmdir ${D}${libdir}/ssl/certs
-	ln -s ${sysconfdir}/ssl/certs ${D}${libdir}/ssl/
+    rmdir ${D}${libdir}/ssl/certs
+    ln -s ${sysconfdir}/ssl/certs ${D}${libdir}/ssl/
 }

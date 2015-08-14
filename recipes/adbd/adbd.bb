@@ -24,45 +24,45 @@ DESCRIPTION = "Android Debug Bridge Daemon"
 HOMEPAGE = "http://developer.android.com/tools/help/adb.html"
 SECTION = "devel"
 LICENSE = "Apache-2.0"
-LIC_FILES_CHKSUM = "file://NOTICE;md5=2ddb23e63b1f9c3c46aaa4195f819a6d"
+LIC_FILES_CHKSUM = "file://adb/NOTICE;md5=2ddb23e63b1f9c3c46aaa4195f819a6d"
 
-PV = "android-4.2.2_r1.2"
+PV = "android-5.0.1_r1"
 PR = "r0"
 SRCREV = "${PV}"
 
 RRECOMMENDS_${PN} += "kernel-module-g-ffs"
-DEPENDS = "openssl"
+DEPENDS = "openssl libcap"
 
-SRC_URI = "git://android.googlesource.com/platform/system/core;protocol=https \
-           file://adbd.patch;striplevel=2 \
+SRC_URI = "git://android.googlesource.com/platform/system/core;protocol=https;branch=lollipop-release;name=core \
+           file://adbd.patch \
            file://Makefile.adbd \
            file://adb-init \
            file://defaults \
           "
 
-S = "${WORKDIR}/git/adb"
+S = "${WORKDIR}/git"
 
 FILES_${PN} += "${bindir}/adbd"
 
 do_configure() {
-	if [ -n "${ADB_PRODUCTID}" ]; then
-		sed -i -e 's/PRODUCT=.*/PRODUCT=${ADB_PRODUCTID}/' ${WORKDIR}/defaults
-	fi
+    if [ -n "${ADB_PRODUCTID}" ]; then
+        sed -i -e 's/PRODUCT=.*/PRODUCT=${ADB_PRODUCTID}/' ${WORKDIR}/defaults
+    fi
 }
 
 do_compile() {
-	make -f ${WORKDIR}/Makefile.adbd
+    make -f ${WORKDIR}/Makefile.adbd -C adb
 }
 
 do_install() {
-	install -m 0755 -d ${D}${bindir}/
-	install -m 0755 ${WORKDIR}/git/adb/adbd ${D}${bindir}/
+    install -m 0755 -d ${D}${bindir}/
+    install -m 0755 ${WORKDIR}/git/adb/adbd ${D}${bindir}/
 
-	install -m 0755 -d ${D}${sysconfdir}/init.d
-	install -m 0755 ${WORKDIR}/adb-init ${D}${sysconfdir}/init.d/
+    install -m 0755 -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${WORKDIR}/adb-init ${D}${sysconfdir}/init.d/
 
-	install -m 0755 -d ${D}${sysconfdir}/default
-	install -m 0755 ${WORKDIR}/defaults ${D}${sysconfdir}/default/adbd
+    install -m 0755 -d ${D}${sysconfdir}/default
+    install -m 0755 ${WORKDIR}/defaults ${D}${sysconfdir}/default/adbd
 }
 
 INITSCRIPT_NAME = "adb-init"

@@ -25,14 +25,20 @@ SECTION = "devel"
 LICENSE = "CLOSED"
 
 PV = "1.0.0"
+SOLIBMAJOR = "1"
+SOLIBMINOR = "0"
 
 require opengldummy.inc
 
 do_compile() {
-	${CC} -DQGS_BUILD_CLIENT_DLL -fPIC -shared -I${WORKDIR}/headers -o libQtGlesStreamClient.so ${WORKDIR}/egl.cpp ${WORKDIR}/gles2.cpp
+    ${CC} -DQGS_BUILD_CLIENT_DLL -fPIC -shared -Wl,-soname,libQtGlesStreamClient.so.${SOLIBMAJOR} \
+        -I${WORKDIR}/headers -o libQtGlesStreamClient.so.${PV} ${WORKDIR}/egl.cpp ${WORKDIR}/gles2.cpp
 }
 
 do_install_append() {
-	install -m 0755 -d ${D}${libdir}
-	install -m 0755 ${S}/libQtGlesStreamClient.so ${D}${libdir}
+    install -m 0755 -d ${D}${libdir}
+    install -m 0755 ${S}/libQtGlesStreamClient.so.${PV} ${D}${libdir}
+    ln -s libQtGlesStreamClient.so.${PV} ${D}${libdir}/libQtGlesStreamClient.so.${SOLIBMAJOR}.${SOLIBMINOR}
+    ln -s libQtGlesStreamClient.so.${PV} ${D}${libdir}/libQtGlesStreamClient.so.${SOLIBMAJOR}
+    ln -s libQtGlesStreamClient.so.${PV} ${D}${libdir}/libQtGlesStreamClient.so
 }

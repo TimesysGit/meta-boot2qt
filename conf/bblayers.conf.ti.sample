@@ -33,6 +33,10 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/poky/meta-yocto \
   ${BSPDIR}/sources/meta-ti \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
+  ${BSPDIR}/sources/meta-openembedded/meta-python \
+  ${BSPDIR}/sources/meta-openembedded/meta-networking \
+  ${BSPDIR}/sources/meta-qt5 \
+  ${BSPDIR}/sources/meta-openembedded/meta-ruby \
   ${BSPDIR}/sources/meta-b2qt \
   ${BSPDIR}/sources/meta-b2qt/meta-ti-extras \
   "
