@@ -23,3 +23,6 @@ EXTRA_OEMAKE += 'HOSTCC="${BUILD_CC} ${BUILD_CPPFLAGS}" \
                  HOSTSTRIP=true'
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
+
+# bbappend in meta-tibidabo still tries to use PRINC, set to -1 to prevent errors
+PRINC = "-1"
