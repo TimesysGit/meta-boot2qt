@@ -24,7 +24,7 @@
 set -x
 set -e
 
-RELEASE=5.5
+RELEASE=5.6
 UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
 
 if [ ${MACHINE} = "emulator" ]; then
