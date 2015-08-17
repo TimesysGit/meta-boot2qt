@@ -10,3 +10,4 @@ SRC_URI += "\
 
 INSANE_SKIP_${PN} = "installed-vs-shipped"
 KERNEL_IMAGETYPE = "zImage"
+B = "${S}"
