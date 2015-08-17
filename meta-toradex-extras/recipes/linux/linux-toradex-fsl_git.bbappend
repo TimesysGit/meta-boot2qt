@@ -33,3 +33,5 @@ config_script () {
     # FunctionFS for adb
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${S}/.config
 }
+
+B = "${S}"
