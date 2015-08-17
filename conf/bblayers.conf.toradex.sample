@@ -31,9 +31,9 @@ BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE', True)) + '/../..'
 BBLAYERS ?= " \
   ${BSPDIR}/sources/poky/meta \
   ${BSPDIR}/sources/poky/meta-yocto \
+  ${BSPDIR}/sources/meta-toradex \
   ${BSPDIR}/sources/meta-fsl-arm \
   ${BSPDIR}/sources/meta-fsl-arm-extra \
-  ${BSPDIR}/sources/meta-toradex \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
   ${BSPDIR}/sources/meta-openembedded/meta-python \
   ${BSPDIR}/sources/meta-openembedded/meta-networking \
