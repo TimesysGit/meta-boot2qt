@@ -32,6 +32,7 @@ PACKAGECONFIG += " \
     linuxfb \
     sql-sqlite \
     tslib \
+    libinput \
     "
 
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
