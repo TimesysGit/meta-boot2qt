@@ -88,7 +88,7 @@ get_groups() {
     apalis-imx6|colibri-imx6|colibri-vf)
       PROJECT_GROUPS="toradex"
     ;;
-    imx53qsb|imx6qsabresd|imx6dlsabresd|nitrogen6x)
+    imx53qsb|imx6qsabresd|imx6dlsabresd|nitrogen6x|smarc-samx6i)
       PROJECT_GROUPS="fsl"
     ;;
     tibidabo)
