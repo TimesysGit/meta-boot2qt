@@ -32,4 +32,5 @@ RDEPENDS_kernel-base = ""
 config_script () {
     # FunctionFS for adb
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${S}/.config
+    echo "CONFIG_USB_ACM=m"         >> ${S}/.config
 }
