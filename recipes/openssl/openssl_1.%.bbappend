@@ -20,6 +20,9 @@
 ##
 #############################################################################
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += "file://0001-Support-SYSROOT-in-c_rehash.patch"
+
 PACKAGECONFIG += "perl"
 
 do_install_append () {

@@ -37,12 +37,3 @@ BRANCH = "master"
 S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative qtmultimedia"
-
-PACKAGES =+ "${PN}-designer"
-DEBIAN_NOAUTONAME_${PN}-designer = "1"
-
-FILES_${PN}-designer = " \
-    ${OE_QMAKE_PATH_QML}/QtCharts/designer \
-    "
-
-RRECOMMENDS_${PN}-dev += "${PN}-designer"

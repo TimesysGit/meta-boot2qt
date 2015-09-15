@@ -48,6 +48,10 @@ while test -n "$1"; do
       shift
       DEVICE=$1
       ;;
+    "--repo-url")
+      shift
+      REPO_URL="--repo-url $1"
+      ;;
     *)
       if [ -n "$COMMAND" ]; then
         echo "Unknown argument: $1"
@@ -68,6 +72,10 @@ fi
 DIR=$(readlink -f $(dirname $0))
 if [ -n "${REFERENCE}" ]; then
     REFERENCE="--reference $(readlink -f ${REFERENCE})"
+fi
+
+if [ -z "${REPO_URL}" ]; then
+    REPO_URL="--repo-url git://github.com/theqtcompany/git-repo"
 fi
 
 get_repo() {
@@ -126,7 +134,7 @@ mirror() {
   mkdir -p .repo/manifests
   cp ${DIR}/scripts/manifest.xml .repo/manifests/
   MANIFEST="manifest.xml"
-  ${REPO} init -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g all --mirror
+  ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g all --mirror
   ${REPO} sync
 }
 
@@ -146,7 +154,7 @@ init() {
   else
     MANIFEST="manifest.xml"
   fi
-  ${REPO} init -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" ${REFERENCE}
+  ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" ${REFERENCE}
   ${REPO} sync
 
   if [ ! -e "sources/meta-b2qt" ]; then

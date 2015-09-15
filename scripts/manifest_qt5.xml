@@ -7,7 +7,7 @@
 
   <project name="meta-qt5"
            remote="playground"
-           revision="5.5"
+           revision="5.5-next"
            path="sources/meta-qt5"/>
 
 </manifest>

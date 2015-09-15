@@ -1,0 +1,96 @@
+From 9cf8fa1c4dae07a6aff194a3632bc499a813d3f8 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@theqtcompany.com>
+Date: Wed, 9 Sep 2015 13:37:28 +0300
+Subject: [PATCH] Support SYSROOT in c_rehash
+
+update-ca-certificates is ran during image creation, which in turn runs
+c_rehash. Since the symlinks in /etc/ssl/certs/ are pointing to absolute
+location, c_rehash does not find the actual files. Add support for SYSROOT
+environment variable and use it to locate the actual files during image
+creation.
+
+Upstream-status: Pending
+---
+ tools/c_rehash.in | 30 +++++++++++++++++-------------
+ 1 file changed, 17 insertions(+), 13 deletions(-)
+
+diff --git a/tools/c_rehash.in b/tools/c_rehash.in
+index 92cb503..f3d2703 100644
+--- a/tools/c_rehash.in
++++ b/tools/c_rehash.in
+@@ -7,6 +7,7 @@ my $dir;
+ my $prefix;
+ 
+ my $openssl = $ENV{OPENSSL} || "openssl";
++my $sysroot = $ENV{SYSROOT} || "";
+ my $pwd;
+ my $verbose = 0;
+ my $symlink_exists=eval {symlink("",""); 1};
+@@ -101,16 +102,17 @@ sub hash_dir {
+ 		}
+ 	}
+ 	FILE: foreach $fname (grep {/\.(pem)|(crt)|(cer)|(crl)$/} @flist) {
++		$fullname = $sysroot . readlink($fname);
+ 		# Check to see if certificates and/or CRLs present.
+-		my ($cert, $crl) = check_file($fname);
++		my ($cert, $crl) = check_file($fullname);
+ 		if(!$cert && !$crl) {
+ 			print STDERR "WARNING: $fname does not contain a certificate or CRL: skipping\n";
+ 			next;
+ 		}
+-		link_hash_cert($fname) if($cert);
+-		link_hash_cert_old($fname) if($cert);
+-		link_hash_crl($fname) if($crl);
+-		link_hash_crl_old($fname) if($crl);
++		link_hash_cert($fname, $fullname) if($cert);
++		link_hash_cert_old($fname, $fullname) if($cert);
++		link_hash_crl($fname, $fullname) if($crl);
++		link_hash_crl_old($fname, $fullname) if($crl);
+ 	}
+ }
+ 
+@@ -143,9 +145,10 @@ sub check_file {
+ 
+ sub link_hash_cert {
+ 		my $fname = $_[0];
+-		my $x509hash = $_[1] || '-subject_hash';
+-		$fname =~ s/'/'\\''/g;
+-		my ($hash, $fprint) = `"$openssl" x509 $x509hash -fingerprint -noout -in "$fname"`;
++		my $fullname = $_[1];
++		my $x509hash = $_[2] || '-subject_hash';
++		$fullname =~ s/'/'\\''/g;
++		my ($hash, $fprint) = `"$openssl" x509 $x509hash -fingerprint -noout -in "$fullname"`;
+ 		chomp $hash;
+ 		chomp $fprint;
+ 		$fprint =~ s/^.*=//;
+@@ -176,11 +179,11 @@ sub link_hash_cert {
+ }
+ 
+ sub link_hash_cert_old {
+-		link_hash_cert($_[0], '-subject_hash_old');
++		link_hash_cert($_[0], $_[1], '-subject_hash_old');
+ }
+ 
+ sub link_hash_crl_old {
+-		link_hash_crl($_[0], '-hash_old');
++		link_hash_crl($_[0], $_[1], '-hash_old');
+ }
+ 
+ 
+@@ -188,9 +191,10 @@ sub link_hash_crl_old {
+ 
+ sub link_hash_crl {
+ 		my $fname = $_[0];
+-		my $crlhash = $_[1] || "-hash";
+-		$fname =~ s/'/'\\''/g;
+-		my ($hash, $fprint) = `"$openssl" crl $crlhash -fingerprint -noout -in '$fname'`;
++		my $fullname = $_[1];
++		my $crlhash = $_[2] || "-hash";
++		$fullname =~ s/'/'\\''/g;
++		my ($hash, $fprint) = `"$openssl" crl $crlhash -fingerprint -noout -in '$fullname'`;
+ 		chomp $hash;
+ 		chomp $fprint;
+ 		$fprint =~ s/^.*=//;
+-- 
+1.9.1
+

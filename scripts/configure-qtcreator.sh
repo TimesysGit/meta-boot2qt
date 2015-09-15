@@ -29,7 +29,7 @@ ABI="arm-linux-generic-elf-32bit"
 
 printUsage ()
 {
-    echo "Usage: $0 <toolchain-environment-setup-file> [--remove]"
+    echo "Usage: $0 <toolchain-environment-setup-file> [--remove] [--sdktool <path>]"
 }
 
 while test -n "$1"; do
@@ -37,17 +37,19 @@ while test -n "$1"; do
     "--help" | "-h")
       printUsage
       exit 0
-      shift
       ;;
     "--remove")
       REMOVEONLY=1
+      ;;
+    "--sdktool")
       shift
+      SDKTOOL=$1
       ;;
     *)
       CONFIG=$1
-      shift
       ;;
   esac
+  shift
 done
 
 if [ ! -f "$CONFIG" ]; then
@@ -65,12 +67,13 @@ fi
 
 source $CONFIG
 
-if [ ! -d "${OECORE_NATIVE_SYSROOT}/mkspecs/${MKSPEC}" ]; then
-    echo Error: $CONFIG is invalid.
+MKSPECPATH=$(find ${OECORE_TARGET_SYSROOT} -name $(basename ${MKSPEC}))
+if [ ! -d "${MKSPECPATH}" ]; then
+    echo "Error: could not find mkspec ${MKSPEC} from the toolchain"
     exit 1
 fi
 
-MACHINE=$(grep '^MACHINE' ${OECORE_NATIVE_SYSROOT}/mkspecs/qdevice.pri | cut -d'=' -f2 | tr -d ' ')
+MACHINE=$(grep '^MACHINE' ${MKSPECPATH}/../../qdevice.pri | cut -d'=' -f2 | tr -d ' ')
 
 RELEASE=$(qmake -query QT_VERSION)
 

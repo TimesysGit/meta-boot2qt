@@ -65,4 +65,5 @@ create_sdk_files_append () {
     echo 'TargetSpec = devices/linux-oe-generic-g++' >> $qtconf
 }
 
-SDK_POST_INSTALL_COMMAND += "$SUDO_EXEC sed -i -e "s:$DEFAULT_INSTALL_DIR:$target_sdk_dir:g" $native_sysroot/mkspecs/qdevice.pri ;"
+SDK_POST_INSTALL_COMMAND += "$SUDO_EXEC sed -i -e "s:$DEFAULT_INSTALL_DIR:$target_sdk_dir:g" \
+    $target_sdk_dir/sysroots/@REAL_MULTIMACH_TARGET_SYS@/usr/lib/${QT_DIR_NAME}/mkspecs/qdevice.pri ;"

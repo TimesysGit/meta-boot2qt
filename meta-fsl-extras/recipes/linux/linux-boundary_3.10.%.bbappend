@@ -45,4 +45,6 @@ do_configure_prepend() {
     # enable uvcvideo module
     echo "CONFIG_MEDIA_USB_SUPPORT=y"       >> ${WORKDIR}/defconfig
     echo "CONFIG_USB_VIDEO_CLASS=m"         >> ${WORKDIR}/defconfig
+
+    echo "CONFIG_USB_ACM=m"                 >> ${WORKDIR}/defconfig
 }
