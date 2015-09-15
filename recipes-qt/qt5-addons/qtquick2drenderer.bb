@@ -30,8 +30,8 @@ SRC_URI = " \
     git://qt-gerrit.ci.local/QtRD-15810/scenegraph-raster.git;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtQuick2DRenderer/1.1/Src \
     "
 
-# v1.1
-SRCREV = "97c310f3a18a5aaebf8c102ceaba1f6a093faf6b"
+# v1.1.1
+SRCREV = "d7de74d6e608fbbd36fc9abad27fa82d095cb692"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"
