@@ -13,7 +13,7 @@ SRC_URI = "https://www.google.com/fonts/download?kit=3hvsV99qyKCBS55e5pvb3ltkqrI
 BB_STRICT_CHECKSUM = ""
 
 do_install() {
-    install -m 0644 -d ${D}${datadir}/fonts/truetype/opensans
+    install -m 0755 -d ${D}${datadir}/fonts/truetype/opensans
     install -m 0644 ${WORKDIR}/*.ttf ${D}${datadir}/fonts/truetype/opensans
 }
 

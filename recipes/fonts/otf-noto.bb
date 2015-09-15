@@ -16,7 +16,7 @@ SRC_URI[md5sum] = "dc40e8af0b0178451ccc301f1d41e726"
 SRC_URI[sha256sum] = "25143bb803ebb20fd17ffd1299012ee2f3a929182ff0700ab656c181872413a4"
 
 do_install() {
-    install -m 0644 -d ${D}${datadir}/fonts/otf/noto
+    install -m 0755 -d ${D}${datadir}/fonts/otf/noto
     install -m 0644 ${WORKDIR}/*.otf ${D}${datadir}/fonts/otf/noto
 }
 
