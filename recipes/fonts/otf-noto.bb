@@ -1,19 +1,18 @@
 SUMMARY = "Noto Sans CJK"
 SECTION = "fonts"
 HOMEPAGE = "http://www.google.com/get/noto"
-LICENSE = "Apache-2.0"
-# see https://code.google.com/p/noto/issues/detail?id=331
-LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
+LICENSE = "OFL-1.1"
+LIC_FILES_CHKSUM = "file://${WORKDIR}/LICENSE_CJK.txt;md5=55719faa0112708e946b820b24b14097"
 
 INHIBIT_DEFAULT_DEPS = "1"
 
 inherit allarch fontcache
 
 PV = "1.004"
-SRC_URI = "http://www.google.com/get/noto/pkgs/NotoSansCJKSC-hinted.zip"
+SRC_URI = "https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKSC-hinted.zip"
 
-SRC_URI[md5sum] = "dc40e8af0b0178451ccc301f1d41e726"
-SRC_URI[sha256sum] = "25143bb803ebb20fd17ffd1299012ee2f3a929182ff0700ab656c181872413a4"
+SRC_URI[md5sum] = "c0fa6153aa826ee96041ba4470a1f51f"
+SRC_URI[sha256sum] = "31459f6d8c36a1136bec3f8d720b2b637e4dded681b7bb610186c9986be25848"
 
 do_install() {
     install -m 0755 -d ${D}${datadir}/fonts/otf/noto
