@@ -26,6 +26,12 @@ SRC_URI += "\
     file://ARM-perf-wire-up-perf_regs-and-unwind-support-for-AR.patch \
     "
 
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+
+SRC_URI += " \
+        file://0001-Colibri-iMX6-set-1280x720-16-for-HDMI-by-default.patch \
+        "
+
 # kernel image files are not needed in the image
 RDEPENDS_kernel-base = ""
 
