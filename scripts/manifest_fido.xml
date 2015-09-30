@@ -46,7 +46,7 @@
            groups="notdefault,bbb"/>
   <project name="meta-toradex"
            remote="toradex"
-           revision="V2.4"
+           revision="V2.5"
            path="sources/meta-toradex"
            groups="notdefault,toradex"/>
   <project name="meta-tibidabo"

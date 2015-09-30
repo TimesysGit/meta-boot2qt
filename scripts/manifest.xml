@@ -12,21 +12,21 @@
 
   <project name="poky"
            remote="yocto"
-           revision="08d32590411568e7bf11612ac695a6e9c6df6286"
+           revision="57eb677f0efe9a4060c764e8e9dfe2440d4e5eb2"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="10d3c8f85280a0bf867a8e4f84bcda81c290d28e"
+           revision="214e1801d0efc38d3b6142bdc0d8e58ca593e34c"
            path="sources/meta-openembedded"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
-           revision="44a5115b6ece869cfb10714423e6956128dbaef8"
+           revision="f30b056c8f1af3f3122f94dbaa4698da5d620a41"
            path="sources/meta-fsl-arm"
            groups="notdefault,fsl,toradex,architech"/>
   <project name="meta-ti"
            remote="yocto"
-           revision="477f7b7f03dd7c803803101240a416e88cf49fcc"
+           revision="0a222c70845d19a2213ac36803361e8531768cca"
            path="sources/meta-ti"
            groups="notdefault,ti,bbb"/>
   <project name="meta-raspberrypi"
@@ -36,7 +36,7 @@
            groups="notdefault,rpi"/>
   <project name="meta-fsl-arm-extra"
            remote="freescale"
-           revision="436b86e3421736216412bdbb21cd9cb08c758c75"
+           revision="c0ff75e85bcbd616362c21e501dc6df187612cf9"
            path="sources/meta-fsl-arm-extra"
            groups="notdefault,fsl,toradex,architech"/>
   <project name="meta-beagleboard"
@@ -46,7 +46,7 @@
            groups="notdefault,bbb"/>
   <project name="meta-toradex"
            remote="toradex"
-           revision="a76e317a2ae638ed62ccf88636aa79d0ae368d78"
+           revision="eb0c16acb10257c60ddbfce8ad71448b2e987fb4"
            path="sources/meta-toradex"
            groups="notdefault,toradex"/>
   <project name="meta-tibidabo"
