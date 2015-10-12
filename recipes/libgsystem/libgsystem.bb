@@ -39,3 +39,5 @@ do_configure_prepend() {
     # We get a syntax error since we do not bundle gnome recipes that define this macro.
     sed -i '/GTK_DOC_CHECK/d' ${S}/configure.ac
 }
+
+BBCLASSEXTEND = "native nativesdk"
