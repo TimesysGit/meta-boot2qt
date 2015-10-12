@@ -27,7 +27,11 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5f30f0716dfdd0d91eb439ebec522ec2"
 
 inherit autotools pkgconfig
 
-SRC_URI = "git://github.com/GNOME/ostree.git;tag=v2015.7"
+SRC_URI = " \
+    git://github.com/GNOME/ostree.git;tag=v2015.9 \
+    file://0001-Don-t-require-boot-uEnv.txt-for-u-boot-support.patch \
+    "
+
 S = "${WORKDIR}/git"
 
 DEPENDS = "glib-2.0 e2fsprogs gpgme attr libsoup-2.4 libgsystem libassuan xz"
