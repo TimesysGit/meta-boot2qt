@@ -30,7 +30,7 @@ SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/emulator;branch=${BRANCH};protocol=ssh \
     "
 
-SRCREV = "1d001910d45349ae2a44fa01516baaa7ff4c9eda"
+SRCREV = "89ca944fae7106a55803ddce6fd84447685b61e5"
 BRANCH = "master"
 
 EXTRA_QMAKEVARS_PRE += "CONFIG+=force_independent"

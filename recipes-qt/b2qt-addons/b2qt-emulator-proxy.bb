@@ -31,7 +31,7 @@ SRC_URI = " \
     file://emulatorproxyd.sh \
     "
 
-SRCREV = "1d001910d45349ae2a44fa01516baaa7ff4c9eda"
+SRCREV = "89ca944fae7106a55803ddce6fd84447685b61e5"
 BRANCH = "master"
 
 S = "${WORKDIR}/git/src/helperlibs/proxy"

@@ -20,20 +20,6 @@
 ##
 #############################################################################
 
-DESCRIPTION = "Qt Quick 2D Rendender"
-LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://src/plugins/scenegraph/softwarecontext/softwarelayer.cpp;md5=d90663d6d3096fe0989549d52fec6554;beginline=1;endline=17"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-inherit qt5-module sdk-sources
-
-SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/scenegraph-raster.git;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtQuick2DRenderer/1.1/Src \
-    "
-
-# v1.1.1
-SRCREV = "d7de74d6e608fbbd36fc9abad27fa82d095cb692"
-BRANCH = "master"
-
-S = "${WORKDIR}/git"
-
-DEPENDS = "qtbase qtdeclarative"
+SRC_URI += "file://fix-gstvolume.patch"

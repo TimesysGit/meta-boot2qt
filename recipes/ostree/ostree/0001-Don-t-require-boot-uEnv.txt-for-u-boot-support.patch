@@ -1,0 +1,62 @@
+From ca0a0261be6397d5acb7a4fa2a492c5b554fb1fe Mon Sep 17 00:00:00 2001
+From: Gatis Paeglis <gatis.paeglis@theqtcompany.com>
+Date: Tue, 6 Oct 2015 23:43:25 +0200
+Subject: [PATCH] Don't require /boot/uEnv.txt for u-boot support
+
+The current code checks if /boot/uEnv.txt is a symlink to
+decice if sysroot requires u-boot support. Why this is bad:
+
+There are 2 ways to provide a custom env to u-boot from user space:
+
+1) A compiled binary that is sourced from u-boot.
+2) A text file (usually /uEnv.txt) that is imported into env from u-boot.
+
+The current OSTree u-boot integration code was designed with the 1st
+case in mind.
+
+Many bootscripts provided by an embedded device vendors expect
+to find uEnv.txt in the top level directory, it is often hardcoded
+when building u-boot and is difficult to change later on. Or in other
+cases it is stored in read-only memory so changing it would require
+re-flushing boot loader with a new env. So the issue here is that
+OSTree's and vendor uEnv.txt want to exist on the same path and OSTree
+would throw away any changes added to /uEnv.txt by user on the next
+upgrade/deploy.
+
+This patch "hides" away the OSTree's env file loader/uEnv.txt from users
+who are used to edditing uEnv.txt at the top level directory. Now to add
+OSTree support on such boards you can simply add a custom logic in uEnv.txt
+that loads ostree env from /loader/uEnv.txt
+
+This change is backward compatible with the previous ostree releases and
+solves the issue described in:
+
+https://bugzilla.gnome.org/show_bug.cgi?id=755787
+---
+ src/libostree/ostree-bootloader-uboot.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/libostree/ostree-bootloader-uboot.c b/src/libostree/ostree-bootloader-uboot.c
+index 4c0218f..f67e9bd 100644
+--- a/src/libostree/ostree-bootloader-uboot.c
++++ b/src/libostree/ostree-bootloader-uboot.c
+@@ -52,7 +52,7 @@ _ostree_bootloader_uboot_query (OstreeBootloader *bootloader,
+ {
+   OstreeBootloaderUboot *self = OSTREE_BOOTLOADER_UBOOT (bootloader);
+ 
+-  *out_is_active = g_file_query_file_type (self->config_path, G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL) == G_FILE_TYPE_SYMBOLIC_LINK;
++  *out_is_active = g_file_query_file_type (self->config_path, G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL) == G_FILE_TYPE_REGULAR;
+   return TRUE;
+ }
+ 
+@@ -177,6 +177,6 @@ _ostree_bootloader_uboot_new (OstreeSysroot *sysroot)
+ {
+   OstreeBootloaderUboot *self = g_object_new (OSTREE_TYPE_BOOTLOADER_UBOOT, NULL);
+   self->sysroot = g_object_ref (sysroot);
+-  self->config_path = g_file_resolve_relative_path (self->sysroot->path, "boot/uEnv.txt");
++  self->config_path = g_file_resolve_relative_path (self->sysroot->path, "boot/loader/uEnv.txt");
+   return self;
+ }
+-- 
+2.1.4
+

@@ -30,8 +30,8 @@ SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-utils \
     "
 
-SRCREV = "602034c3a71c53d050e67101e070185cbcf7ccee"
-BRANCH = "dev"
+SRCREV = "ae6f34543b8336ad5a202916ee42a2d2bd00bfe7"
+BRANCH = "5.5"
 
 S = "${WORKDIR}/git"
 

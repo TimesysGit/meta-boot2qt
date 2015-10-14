@@ -31,8 +31,8 @@ SRC_URI = " \
     file://appcontroller.conf \
     "
 
-SRCREV = "45d549fe274cd8f16578b2ff9a34af40fd9b98a9"
-BRANCH = "dev"
+SRCREV = "7ac47bee4c6bd55df8c0cad14ff11457fbf07158"
+BRANCH = "5.5"
 
 S = "${WORKDIR}/git"
 

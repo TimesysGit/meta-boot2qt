@@ -25,7 +25,7 @@ PR = "r0"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://${QT_LICENCE};md5=7bc9c54e450006250a60e96604c186c9"
 
-inherit populate_sdk populate_sdk_qt5 qmake5_paths
+inherit populate_sdk populate_sdk_qt5_base
 
 TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-qt5-toolchain-host"
 TOOLCHAIN_TARGET_TASK += "packagegroup-b2qt-embedded-qt5-toolchain-target"

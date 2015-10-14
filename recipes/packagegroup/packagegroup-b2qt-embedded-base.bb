@@ -60,6 +60,8 @@ RDEPENDS_${PN} = "\
         tzdata-europe \
         atk \
         libevent \
+        ostree \
+        dracut \
         ${@base_contains("DISTRO_FEATURES", "wayland", "wayland weston weston-examples", "", d)} \
         ${MACHINE_EXTRA_INSTALL} \
         "

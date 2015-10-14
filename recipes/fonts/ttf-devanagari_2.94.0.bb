@@ -14,8 +14,8 @@ SRC_URI[md5sum] = "57527ee536a18b443cf786d4b8fd5ec8"
 SRC_URI[sha256sum] = "a6618aeb1d25df46d3c22e528c38ea1d1147654e19904497a1e97f4684c55353"
 
 do_install() {
-    install -m 0644 -d ${D}${datadir}/fonts/truetype/lohit
-    install -m 0644 -d ${D}${sysconfdir}/fonts/conf.d/
+    install -m 0755 -d ${D}${datadir}/fonts/truetype/lohit
+    install -m 0755 -d ${D}${sysconfdir}/fonts/conf.d/
     install -m 0644 ${WORKDIR}/lohit-devanagari-ttf-${PV}/66-lohit-devanagari.conf ${D}${sysconfdir}/fonts/conf.d/
     install -m 0644 ${WORKDIR}/lohit-devanagari-ttf-${PV}/Lohit-Devanagari.ttf ${D}${datadir}/fonts/truetype/lohit
 }

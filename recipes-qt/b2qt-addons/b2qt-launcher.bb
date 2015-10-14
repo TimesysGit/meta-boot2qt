@@ -32,7 +32,7 @@ SRC_URI = " \
     "
 
 SRCREV = "e824e206f28eb20bcb6f1d9064990f5e927261f4"
-BRANCH = "dev"
+BRANCH = "5.5"
 
 S = "${WORKDIR}/git"
 
