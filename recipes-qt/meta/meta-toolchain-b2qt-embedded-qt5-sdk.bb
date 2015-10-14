@@ -34,6 +34,7 @@ SRC_URI = " \
     file://qmake.conf \
     file://qplatformdefs.h \
     "
+S = "${WORKDIR}"
 
 SDK_MKSPEC_DIR = "${SDK_OUTPUT}${SDKTARGETSYSROOT}${libdir}/${QT_DIR_NAME}/mkspecs"
 SDK_MKSPEC = "devices/linux-oe-generic-g++"

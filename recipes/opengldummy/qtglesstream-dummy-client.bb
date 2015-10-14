@@ -30,6 +30,8 @@ SOLIBMINOR = "0"
 
 require opengldummy.inc
 
+S = "${WORKDIR}"
+
 do_compile() {
     ${CC} -DQGS_BUILD_CLIENT_DLL -fPIC -shared -Wl,-soname,libQtGlesStreamClient.so.${SOLIBMAJOR} \
         -I${WORKDIR}/headers -o libQtGlesStreamClient.so.${PV} ${WORKDIR}/egl.cpp ${WORKDIR}/gles2.cpp
