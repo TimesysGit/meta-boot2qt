@@ -9,6 +9,7 @@
   <remote fetch="git://github.com/beagleboard" name="beagleboard"/>
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/architech-boards" name="architech"/>
+  <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
 
   <project name="poky"
            remote="yocto"
@@ -18,6 +19,10 @@
            remote="oe"
            revision="dizzy"
            path="sources/meta-openembedded"/>
+  <project name="meta-qt5"
+           remote="meta-qt5"
+           revision="master"
+           path="sources/meta-qt5"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
