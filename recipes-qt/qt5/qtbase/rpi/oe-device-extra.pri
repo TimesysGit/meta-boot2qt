@@ -6,4 +6,6 @@ QMAKE_LIBS_EGL          = -lEGL -lGLESv2
 QMAKE_CFLAGS           += $$RPI_CFLAGS
 QMAKE_CXXFLAGS         += $$RPI_CFLAGS
 
+QMAKE_PLATFORM         += boot2qt
+QT_QPA_DEFAULT_PLATFORM = eglfs
 EGLFS_DEVICE_INTEGRATION = eglfs_brcm
