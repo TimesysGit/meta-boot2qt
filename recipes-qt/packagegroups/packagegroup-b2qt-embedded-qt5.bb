@@ -42,9 +42,11 @@ RDEPENDS_${PN} += " \
     qtsensors \
     qtserialport \
     qtsvg \
+    qttools \
     ${@base_contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \
     ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
     qtwebsockets \
+    qtwebchannel \
     qtxmlpatterns \
     qtquickcontrols \
     "

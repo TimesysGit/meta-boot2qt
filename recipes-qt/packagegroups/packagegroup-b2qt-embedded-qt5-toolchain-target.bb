@@ -47,7 +47,6 @@ RDEPENDS_${PN} += " \
     qtsensors-dev \
     qtserialport-dev \
     qtsvg-dev \
-    qtsystems-dev \
     qttools-dev \
     qttools-staticdev \
     ${@base_contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \

@@ -27,7 +27,7 @@ LIC_FILES_CHKSUM = "file://src/plugins/scenegraph/softwarecontext/softwarelayer.
 inherit qt5-module sdk-sources
 
 SRC_URI = " \
-    git://qt-gerrit.ci.local/QtRD-15810/scenegraph-raster.git;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtQuick2DRenderer/1.1/Src \
+    git://codereview.qt-project.org/qt/tqtc-scenegraph-raster;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtQuick2DRenderer/1.1/Src \
     "
 
 # v1.1.1
