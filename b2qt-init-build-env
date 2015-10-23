@@ -111,6 +111,9 @@ get_groups() {
     raspberrypi|raspberrypi2)
       PROJECT_GROUPS="rpi"
     ;;
+    nuc)
+      PROJECT_GROUPS="nuc"
+    ;;
     emulator)
       PROJECT_GROUPS="emulator"
     ;;

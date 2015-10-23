@@ -51,7 +51,7 @@ RDEPENDS_${PN} += "\
     atk-dev \
     libevent-dev \
     ostree-dev \
-    ${@base_contains("DISTRO_FEATURES", "wayland", "libwayland-egl-mx6-dev libxkbcommon-dev libgbm-dev libdrm-dev", "", d)} \
+    ${@base_contains("DISTRO_FEATURES", "wayland", "libxkbcommon-dev libgbm-dev libdrm-dev", "", d)} \
     ${@base_contains("DISTRO_FEATURES", "bluetooth", "bluez4-dev", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     "

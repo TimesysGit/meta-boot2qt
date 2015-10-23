@@ -10,6 +10,7 @@
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/architech-boards" name="architech"/>
   <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
+  <remote fetch="git://git.yoctoproject.org" name="intel"/>
 
   <project name="poky"
            remote="yocto"
@@ -59,6 +60,11 @@
            revision="06c6b09e0776507e1230aa98b5ca10d9d3968286"
            path="sources/meta-tibidabo"
            groups="notdefault,architech"/>
+  <project name="meta-intel"
+           remote="intel"
+           revision="ead0a5c115e632015d8358f4f304ec8908732f5f"
+           path="sources/meta-intel"
+           groups="notdefault,nuc"/>
 
 </manifest>
 

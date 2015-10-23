@@ -67,6 +67,9 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     raspberrypi|raspberrypi2)
       LAYERSCONF="bblayers.conf.rpi.sample"
     ;;
+    nuc)
+      LAYERSCONF="bblayers.conf.nuc.sample"
+    ;;
     emulator)
       LAYERSCONF="bblayers.conf.emulator.sample"
     ;;
