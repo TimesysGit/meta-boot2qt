@@ -21,7 +21,7 @@
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="meta-qt5"
-           revision="master"
+           revision="jethro"
            path="sources/meta-qt5"/>
 
   <project name="meta-fsl-arm"
