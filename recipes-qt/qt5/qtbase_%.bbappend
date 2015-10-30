@@ -39,9 +39,7 @@ FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
     file://oe-device-extra.pri \
-    file://0001-qdoc-workaround-for-gcc-s-ICE.patch \
     "
-
 do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
     sed -i 's!load(qt_config)!!' ${S}/mkspecs/linux-oe-g++/qmake.conf
