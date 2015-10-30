@@ -33,6 +33,7 @@ MACHINE_EXTRA_INSTALL_QT_SDK ?= ""
 RDEPENDS_${PN} += " \
     ${MACHINE_EXTRA_INSTALL_QT_SDK} \
     packagegroup-b2qt-embedded-toolchain-target \
+    \
     qt3d-dev \
     qtbase-dev \
     qtbase-staticdev \
@@ -44,6 +45,7 @@ RDEPENDS_${PN} += " \
     qtimageformats-dev \
     qtlocation-dev \
     qtmultimedia-dev \
+    qtquickcontrols-dev \
     qtsensors-dev \
     qtserialport-dev \
     qtsvg-dev \
@@ -54,5 +56,9 @@ RDEPENDS_${PN} += " \
     qtwebsockets-dev \
     qtwebchannel-dev \
     qtxmlpatterns-dev \
-    qtquickcontrols-dev \
+    \
+    b2qt-utils-dev \
+    qtcharts-dev \
+    qtdatavisualization-dev \
+    qtvirtualkeyboard-dev \
     "
