@@ -24,7 +24,7 @@ DESCRIPTION = "Target packages for B2Qt embedded Qt5 SDK"
 LICENSE = "QtEnterprise"
 PR = "r0"
 
-inherit packagegroup
+inherit packagegroup qtquickcompiler
 
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
