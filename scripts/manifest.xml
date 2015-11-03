@@ -22,7 +22,7 @@
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="meta-qt5"
-           revision="51b4620392aa9041d8512549bfa554bea368c5ea"
+           revision="89038bffd224a0d43aa8627472374503b3023f61"
            path="sources/meta-qt5"/>
 
   <project name="meta-fsl-arm"

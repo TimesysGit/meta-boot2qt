@@ -22,7 +22,7 @@
 
 DESCRIPTION = "Qt Virtual Keyboard"
 LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://src/virtualkeyboard/plugin.cpp;md5=9e7c3707428a49f2fd857aa1538823b6;beginline=1;endline=17"
+LIC_FILES_CHKSUM = "file://src/virtualkeyboard/plugin.cpp;md5=e0b36905c697f1be9c35712f4aced6e0;beginline=1;endline=17"
 
 inherit qt5-module qtquickcompiler sdk-sources
 
@@ -31,7 +31,7 @@ SRC_URI = " \
     "
 
 # v1.3.1
-SRCREV = "567e2c1d3df5a841160b2c24a390f153b25ad368"
+SRCREV = "c2c362d9f313441351e5e7167e22b4fd1b7012a8"
 BRANCH = "1.3"
 
 S = "${WORKDIR}/git"
