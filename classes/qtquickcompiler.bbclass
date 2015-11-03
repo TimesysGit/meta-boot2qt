@@ -26,8 +26,10 @@ python __anonymous() {
         bb.note("TODO: QtQuickCompiler not yet available for external builds")
     else:
         pn = d.getVar("PN", True)
-        if pn.startswith("nativesdk-"):
+        if "toolchain-host" in pn:
             d.appendVar('RDEPENDS_' + pn, " nativesdk-qtquickcompiler-tools")
+        if "toolchain-target" in pn:
+            d.appendVar('RDEPENDS_' + pn, " qtquickcompiler-dev")
         else:
             d.appendVar('DEPENDS', " qtquickcompiler qtquickcompiler-native")
             d.appendVar('EXTRA_QMAKEVARS_PRE', " CONFIG+=qtquickcompiler CONFIG+=no_qtquickcompiler_depend")

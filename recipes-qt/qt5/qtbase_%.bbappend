@@ -44,13 +44,4 @@ SRC_URI += " \
 
 do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
-    sed -i 's!load(qt_config)!!' ${S}/mkspecs/linux-oe-g++/qmake.conf
-    cat >> ${S}/mkspecs/linux-oe-g++/qmake.conf <<EOF
-QMAKE_PLATFORM         += boot2qt
-QT_QPA_DEFAULT_PLATFORM = eglfs
-
-exists(../oe-device-extra.pri):include(../oe-device-extra.pri)
-
-load(qt_config)
-EOF
 }
