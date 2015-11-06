@@ -1,4 +1,4 @@
-require recipes-bsp/u-boot/u-boot.inc
+require u-boot.inc
 
 LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://Licenses/README;md5=025bf9f768cbcb1a165dbe1a110babfb"
@@ -11,7 +11,7 @@ PROVIDES += "u-boot"
 PV = "v2013.10"
 
 SRCREV = "079e214888279518ce061c71238a74a0c3db2c28"
-SRC_URI = "git://github.com/Freescale/u-boot-imx.git"
+SRC_URI = "git://github.com/Freescale/u-boot-imx.git;branch=patches-2013.10"
 
 S = "${WORKDIR}/git"
 
