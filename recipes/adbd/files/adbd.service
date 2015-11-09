@@ -1,0 +1,11 @@
+[Unit]
+Description=ADB Server Daemon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/adb-init start
+ExecStop=/usr/bin/adb-init stop
+
+[Install]
+WantedBy=multi-user.target

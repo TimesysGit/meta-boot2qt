@@ -26,6 +26,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/VirtualBox-${PV}/COPYING;md5=e197d5641bb35
 
 SRC_URI = "http://download.virtualbox.org/virtualbox/${PV}/VirtualBox-${PV}.tar.bz2 \
           file://mount-vboxsf.sh \
+          file://mount-vboxsf.service \
           "
 
 SRC_URI[md5sum] = "cc053340f88922a11ad9d4fab56557bd"
@@ -40,12 +41,18 @@ do_compile() {
 do_install() {
     install -m 0755 -d ${D}${bindir}/
     install -m 0755 mount.vboxsf ${D}${bindir}/
+    install -m 0755 ${WORKDIR}/mount-vboxsf.sh ${D}${bindir}/
 
     install -m 0755 -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${WORKDIR}/mount-vboxsf.sh ${D}${sysconfdir}/init.d/
+    ln -s ${bindir}/mount-vboxsf.sh ${D}${sysconfdir}/init.d/
+
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/mount-vboxsf.service ${D}${systemd_unitdir}/system/
 }
 
 INITSCRIPT_NAME = "mount-vboxsf.sh"
 INITSCRIPT_PARAMS = "defaults 33"
 
-inherit update-rc.d
+SYSTEMD_SERVICE_${PN} = "mount-vboxsf.service"
+
+inherit update-rc.d systemd

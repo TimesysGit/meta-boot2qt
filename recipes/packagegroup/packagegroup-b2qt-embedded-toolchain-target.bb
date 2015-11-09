@@ -41,7 +41,7 @@ RDEPENDS_${PN} += "\
     ${@base_contains("DISTRO_FEATURES", "gstreamer", "gstreamer1.0-dev gstreamer1.0-plugins-base-dev", "", d)} \
     icu-dev \
     libxslt-dev \
-    udev-dev \
+    ${@base_contains("DISTRO_FEATURES", "systemd", "systemd-dev", "udev-dev", d)} \
     tslib-dev \
     hunspell-dev \
     libcap-dev \

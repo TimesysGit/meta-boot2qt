@@ -1,0 +1,12 @@
+[Unit]
+Description=QtSimulator Shared Mount Point
+After=systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/mount-vboxsf.sh start
+ExecStop=/usr/bin/mount-vboxsf.sh stop
+
+[Install]
+WantedBy=multi-user.target

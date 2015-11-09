@@ -20,20 +20,7 @@
 ##
 #############################################################################
 
-DESCRIPTION = "Additional tools packagegroup for B2Qt embedded Linux image"
-LICENSE = "CLOSED"
-PR = "r0"
-
-inherit packagegroup
-
-RDEPENDS_${PN} = "\
-        ldd \
-        binutils \
-        binutils-symlinks \
-        i2c-tools \
-        perf \
-        htop \
-        ntp \
-        connman-client \
-        ${@base_contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
-        "
+do_install_append() {
+    # remove login from tty1
+    rm -f ${D}${sysconfdir}/systemd/system/getty.target.wants/getty@tty1.service
+}

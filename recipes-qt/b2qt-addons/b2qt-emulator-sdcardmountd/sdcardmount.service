@@ -1,0 +1,9 @@
+[Unit]
+Description=QtSimulator SD Card Mount Daemon
+After=systemd-user-sessions.service
+
+[Service]
+ExecStart=/usr/bin/sdcardmountd
+
+[Install]
+WantedBy=multi-user.target

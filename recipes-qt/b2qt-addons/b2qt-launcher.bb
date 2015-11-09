@@ -29,6 +29,8 @@ inherit qmake5 sdk-sources
 SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/launcher;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-launcher \
     file://b2qt-startup.sh \
+    file://qtlauncher.service \
+    file://b2qt.service \
     "
 
 SRCREV = "e824e206f28eb20bcb6f1d9064990f5e927261f4"
@@ -42,11 +44,15 @@ DEPENDS = "qtbase qtdeclarative \
 do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}/init.d
     install -m 0755 ${WORKDIR}/b2qt-startup.sh ${D}${sysconfdir}/init.d/
-}
 
-FILES_${PN} += "${sysdir}/init.d/b2qt-startup.h"
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/qtlauncher.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${WORKDIR}/b2qt.service ${D}${systemd_unitdir}/system/
+}
 
 INITSCRIPT_NAME = "b2qt-startup.sh"
 INITSCRIPT_PARAMS = "defaults 30"
 
-inherit update-rc.d
+SYSTEMD_SERVICE_${PN} = "qtlauncher.service b2qt.service"
+
+inherit update-rc.d systemd

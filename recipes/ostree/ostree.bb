@@ -25,7 +25,7 @@ SUMMARY = "Tool for managing bootable, immutable, versioned filesystem trees."
 LICENSE = "LGPL-2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5f30f0716dfdd0d91eb439ebec522ec2"
 
-inherit autotools pkgconfig
+inherit autotools pkgconfig systemd
 
 SRC_URI = " \
     git://github.com/GNOME/ostree.git;tag=v2015.9 \
@@ -35,6 +35,12 @@ SRC_URI = " \
 S = "${WORKDIR}/git"
 
 DEPENDS = "glib-2.0 e2fsprogs gpgme attr libsoup-2.4 libgsystem libassuan xz"
+
+PACKAGECONFIG ??= "${@base_contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
+PACKAGECONFIG[systemd] = "--with-systemdsystemunitdir=${systemd_unitdir}/system/,,,"
+
+SYSTEMD_SERVICE_${PN} = "ostree-prepare-root.service ostree-remount.service"
+FILES_${PN} += "${systemd_unitdir}/system/"
 
 EXTRA_OECONF = "--with-dracut --without-selinux --without-libarchive --with-grub2=no --enable-gtk-doc-html=no"
 

@@ -29,6 +29,7 @@ inherit qt5-module
 SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/emulator;branch=${BRANCH};protocol=ssh \
     file://emulatorproxyd.sh \
+    file://emulatorproxy.service \
     "
 
 SRCREV = "89ca944fae7106a55803ddce6fd84447685b61e5"
@@ -41,9 +42,14 @@ DEPENDS = "qtbase qtsimulator"
 do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}/init.d
     install -m 0755 ${WORKDIR}/emulatorproxyd.sh ${D}${sysconfdir}/init.d/
+
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/emulatorproxy.service ${D}${systemd_unitdir}/system/
 }
 
 INITSCRIPT_NAME = "emulatorproxyd.sh"
 INITSCRIPT_PARAMS = "defaults 97 10"
 
-inherit update-rc.d
+SYSTEMD_SERVICE_${PN} = "emulatorproxy.service"
+
+inherit update-rc.d systemd

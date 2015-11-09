@@ -38,6 +38,7 @@ SRC_URI = "git://android.googlesource.com/platform/system/core;protocol=https;br
            file://Makefile.adbd \
            file://adb-init \
            file://defaults \
+           file://adbd.service \
           "
 
 S = "${WORKDIR}/git"
@@ -57,15 +58,21 @@ do_compile() {
 do_install() {
     install -m 0755 -d ${D}${bindir}/
     install -m 0755 ${WORKDIR}/git/adb/adbd ${D}${bindir}/
+    install -m 0755 ${WORKDIR}/adb-init ${D}${bindir}/
 
     install -m 0755 -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${WORKDIR}/adb-init ${D}${sysconfdir}/init.d/
+    ln -s ${bindir}/adb-init ${D}${sysconfdir}/init.d/
+
+    install -m 0755 -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/adbd.service ${D}${systemd_unitdir}/system/
 
     install -m 0755 -d ${D}${sysconfdir}/default
-    install -m 0755 ${WORKDIR}/defaults ${D}${sysconfdir}/default/adbd
+    install -m 0644 ${WORKDIR}/defaults ${D}${sysconfdir}/default/adbd
 }
 
 INITSCRIPT_NAME = "adb-init"
 INITSCRIPT_PARAMS = "defaults 96"
 
-inherit update-rc.d
+SYSTEMD_SERVICE_${PN} = "adbd.service"
+
+inherit update-rc.d systemd
