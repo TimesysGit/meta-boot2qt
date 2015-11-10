@@ -62,6 +62,7 @@ RDEPENDS_${PN} = "\
         libevent \
         ostree \
         dracut \
+        connman \
         ${@base_contains("DISTRO_FEATURES", "wayland", "wayland weston weston-examples", "", d)} \
         ${MACHINE_EXTRA_INSTALL} \
         "

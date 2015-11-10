@@ -34,4 +34,5 @@ RDEPENDS_${PN} = "\
         perf \
         htop \
         ntp \
+        connman-client \
         "
