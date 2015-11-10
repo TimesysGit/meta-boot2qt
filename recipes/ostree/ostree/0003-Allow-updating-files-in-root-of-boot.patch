@@ -1,0 +1,104 @@
+From f5a1391e64d4b17ed05fb47f23d5d35affb9f1fd Mon Sep 17 00:00:00 2001
+From: Gatis Paeglis <gatis.paeglis@theqtcompany.com>
+Date: Thu, 5 Nov 2015 14:58:56 +0100
+Subject: [PATCH] Allow updating files in root of /boot
+
+It is common for u-boot based systems to search
+top level directory of the boot partiton for
+additional files that are required for booting.
+It can be difficult to change this search logic
+if it is hardcoded somewhere low in the stack or
+in u-boot env that is in read-only memory. To
+allow updating these files you need to add a
+symlink in your ostree sysroot:
+
+cd sysroot/boot
+ln -s loader/my-special-file my-special-file
+
+The bellow code will make sure that loader/my-special-file
+points to the correct target file version.
+
+This does not break the atomic property of update.
+---
+ src/libostree/ostree-bootloader-uboot.c | 65 +++++++++++++++++++++++++++++++++
+ 1 file changed, 65 insertions(+)
+
+diff --git a/src/libostree/ostree-bootloader-uboot.c b/src/libostree/ostree-bootloader-uboot.c
+index be1a40d..779c302 100644
+--- a/src/libostree/ostree-bootloader-uboot.c
++++ b/src/libostree/ostree-bootloader-uboot.c
+@@ -131,6 +131,71 @@ create_config_from_boot_loader_entries (OstreeBootloaderUboot     *self,
+         }
+     }
+ 
++  {
++       /* It is common for u-boot based systems to search top level directory of the boot
++        * partiton for additional files that are required for booting. It can be difficult
++        * to change this search logic if it is hardcoded somewhere low in the stack or in
++        * u-boot env that is in read-only memory. To allow updating these files you need to
++        * add a symlink in your ostree sysroot:
++        *
++        *    cd sysroot/boot
++        *    ln -s loader/my-special-file my-special-file
++        *
++        * The bellow code will make sure that loader/my-special-file points to the correct
++        * target file version.
++        *
++        */
++       g_autoptr(GFile) child = NULL;
++       int loader_fd;
++       g_autoptr(GFileEnumerator) dir_enum = NULL;
++       g_autoptr(GFile) real_boot = NULL;
++       g_autofree char *loader_path = NULL;
++       char buf[2048];
++
++       child = ot_gfile_resolve_path_printf (self->sysroot->path, "boot/loader.%d/", bootversion);
++       loader_path = g_file_get_path(child);
++       loader_fd = open (loader_path, O_RDONLY);
++       if (loader_fd == -1) {
++         perror("open");
++         goto out;
++       }
++
++       child = g_file_get_child (self->sysroot->path, "boot");
++       dir_enum = g_file_enumerate_children (child, OSTREE_GIO_FAST_QUERYINFO,
++                                             G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
++                                             NULL, error);
++
++       while (TRUE) {
++         const char *symlink_target, *name;
++         GFileInfo *file_info = NULL;
++
++         if (!gs_file_enumerator_iterate (dir_enum, &file_info, NULL, cancellable, error)) {
++           close(loader_fd);
++           goto out;
++         }
++
++         if (file_info == NULL)
++           break;
++
++         if (g_file_info_get_is_symlink(file_info)) {
++             symlink_target = g_file_info_get_symlink_target(file_info);
++             if (g_str_has_prefix(symlink_target, "loader/")) {
++                 name = g_file_info_get_name(file_info);
++                 if (g_strcmp0 (name, "uEnv.txt") == 0)
++                    continue;
++
++                 snprintf(buf, sizeof(buf), "%s/%s", loader_path, name);
++                 remove(buf);
++                 snprintf(buf, sizeof(buf), "..%s/%s", boot_path, name);
++                  if (symlinkat(buf, loader_fd, name) == -1)
++                    perror("symlinkat");
++             }
++         }
++       }
++
++       close(loader_fd);
++   }
++
+   ret = TRUE;
+ out:
+   return ret;
+-- 
+2.1.4
+
