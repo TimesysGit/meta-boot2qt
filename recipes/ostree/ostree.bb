@@ -51,5 +51,3 @@ do_install_append() {
     # this of course is a broken configure.ac logic.
     rm -rf ${D}${libdir}/dracut/
 }
-
-BBCLASSEXTEND = "native nativesdk"
