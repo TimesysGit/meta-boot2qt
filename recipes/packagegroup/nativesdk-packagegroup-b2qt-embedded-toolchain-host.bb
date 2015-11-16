@@ -33,3 +33,16 @@ RDEPENDS_${PN} = "\
     ${@base_contains("DISTRO_FEATURES", "wayland", "nativesdk-wayland", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
     "
+
+RDEPENDS_${PN}_append_mingw32 = "\
+    nativesdk-make \
+    nativesdk-libgcc \
+    nativesdk-libstdc++ \
+    "
+
+RDEPENDS_${PN}_remove_mingw32 = "\
+    nativesdk-wayland \
+    nativesdk-ostree \
+    nativesdk-python-modules \
+    nativesdk-python-misc \
+    "
