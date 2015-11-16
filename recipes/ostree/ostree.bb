@@ -35,6 +35,7 @@ SRC_URI = " \
 S = "${WORKDIR}/git"
 
 DEPENDS = "glib-2.0 e2fsprogs gpgme attr libsoup-2.4 libgsystem libassuan xz"
+RRECOMMENDS_${PN} += "gnupg"
 
 EXTRA_OECONF = "--with-dracut --without-selinux --without-libarchive --with-grub2=no --enable-gtk-doc-html=no"
 
