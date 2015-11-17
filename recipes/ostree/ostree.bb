@@ -41,7 +41,13 @@ S = "${WORKDIR}/git"
 DEPENDS = "glib-2.0 e2fsprogs gpgme attr libsoup-2.4 libgsystem libassuan xz"
 RRECOMMENDS_${PN} += "gnupg"
 
-EXTRA_OECONF = "--with-dracut --without-selinux --without-libarchive --with-grub2=no --enable-gtk-doc-html=no"
+EXTRA_OECONF = "--with-dracut \
+                --without-selinux \
+                --without-libarchive \
+                --with-grub2=no \
+                --enable-gtk-doc-html=no \
+                --with-soup \
+                --enable-libsoup-client-certs"
 
 do_configure_prepend() {
     cd ${S}
