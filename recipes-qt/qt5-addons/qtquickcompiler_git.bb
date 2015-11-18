@@ -30,9 +30,9 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/tqtc-qmlcompiler;branch=${BRANCH};protocol=ssh \
     "
 
-# v3.0.0
-SRCREV = "7e29e55c8315cc5e944505f13c24893d0f54efeb"
-BRANCH = "3.0"
+# v5.6.0
+SRCREV = "07aeee460cc170eef28c05ce13aa30408f558215"
+BRANCH = "5.6"
 
 S = "${WORKDIR}/git"
 

@@ -1,0 +1,25 @@
+From 49a04f4faa135fa6ef56fc35dfb9dfe55ff2a3c4 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@theqtcompany.com>
+Date: Wed, 18 Nov 2015 10:14:18 +0200
+Subject: [PATCH] Remove qgltf
+
+assimp does not compile for ARM because of GCC bug
+(https://gcc.gnu.org/bugzilla/show_bug.cgi?id=66964)
+
+Task-number: QTBUG-49153
+---
+ tools/tools.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/tools.pro b/tools/tools.pro
+index 055f412..c1eba7f 100644
+--- a/tools/tools.pro
++++ b/tools/tools.pro
+@@ -1,3 +1,3 @@
+ TEMPLATE = subdirs
+-SUBDIRS = qgltf
++#SUBDIRS = qgltf
+ qgltf.CONFIG += host_build
+-- 
+1.9.1
+
