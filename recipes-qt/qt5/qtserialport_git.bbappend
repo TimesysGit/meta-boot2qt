@@ -20,5 +20,4 @@
 ##
 #############################################################################
 
-# Needed by qtxmlpatterns
-EXTRA_QTLIB = "Network Sql"
+SRCREV = "13fa77f5cbbc7d5d717c3663512b904bba8c106c"

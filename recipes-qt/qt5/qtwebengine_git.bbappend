@@ -20,10 +20,5 @@
 ##
 #############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
-
-SRC_URI += " \
-    file://0001-Remove-qgltf.patch \
-    "
-
-SRCREV = "6e5c2360c0eda7efb60c9ecf9c88d463384aa53d"
+SRCREV_qtwebengine = "70a376d73718cc4ff8d96f6761b8c1896ca25c23"
+SRCREV_chromium = "ec5b3304fc266dfdec7666b8b73d57a3971ea35f"

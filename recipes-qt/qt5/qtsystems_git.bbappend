@@ -20,4 +20,7 @@
 ##
 #############################################################################
 
-PACKAGECONFIG += "bluez4"
+EXTRA_QMAKEVARS_PRE_emulator += "CONFIG+=simulator"
+DEPENDS_emulator += "qtsimulator"
+
+SRCREV = "37b614abbfb35d06a57e5b0824249c3abd5640e3"

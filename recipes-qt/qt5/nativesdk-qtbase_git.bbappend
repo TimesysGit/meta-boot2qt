@@ -20,10 +20,7 @@
 ##
 #############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+# Needed by qtxmlpatterns
+EXTRA_QTLIB = "Network Sql"
 
-SRC_URI += " \
-    file://0001-Remove-qgltf.patch \
-    "
-
-SRCREV = "6e5c2360c0eda7efb60c9ecf9c88d463384aa53d"
+SRCREV = "8ff36d48978cbdc848053338a7cec3d990da4ff2"

@@ -20,10 +20,28 @@
 ##
 #############################################################################
 
+PACKAGECONFIG_GL = "gles2"
+PACKAGECONFIG += " \
+    accessibility \
+    alsa \
+    cups \
+    fontconfig \
+    glib \
+    iconv \
+    icu \
+    linuxfb \
+    sql-sqlite \
+    tslib \
+    libinput \
+    "
+
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
-    file://0001-Remove-qgltf.patch \
+    file://oe-device-extra.pri \
     "
+do_configure_prepend() {
+    install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
+}
 
-SRCREV = "6e5c2360c0eda7efb60c9ecf9c88d463384aa53d"
+SRCREV = "8ff36d48978cbdc848053338a7cec3d990da4ff2"

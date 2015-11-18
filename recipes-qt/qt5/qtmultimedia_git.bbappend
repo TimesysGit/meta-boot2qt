@@ -20,10 +20,6 @@
 ##
 #############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+PACKAGECONFIG += "${@base_contains("DISTRO_FEATURES", "gstreamer010", "gstreamer010", "gstreamer", d)}"
 
-SRC_URI += " \
-    file://0001-Remove-qgltf.patch \
-    "
-
-SRCREV = "6e5c2360c0eda7efb60c9ecf9c88d463384aa53d"
+SRCREV = "da0b7aea9adae024d5ea885c7e7589de86ce80f8"

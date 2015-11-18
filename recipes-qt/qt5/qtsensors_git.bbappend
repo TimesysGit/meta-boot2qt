@@ -20,10 +20,7 @@
 ##
 #############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+EXTRA_QMAKEVARS_PRE_emulator += "SENSORS_PLUGINS=simulator"
+DEPENDS_emulator += "qtsimulator"
 
-SRC_URI += " \
-    file://0001-Remove-qgltf.patch \
-    "
-
-SRCREV = "6e5c2360c0eda7efb60c9ecf9c88d463384aa53d"
+SRCREV = "d8d4a5e9ac1251e82d1ec639bc3bff7e7f53c083"

@@ -20,26 +20,9 @@
 ##
 #############################################################################
 
-PACKAGECONFIG_GL = "gles2"
-PACKAGECONFIG += " \
-    accessibility \
-    alsa \
-    cups \
-    fontconfig \
-    glib \
-    iconv \
-    icu \
-    linuxfb \
-    sql-sqlite \
-    tslib \
-    libinput \
-    "
+PACKAGECONFIG += "gypsy"
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+EXTRA_QMAKEVARS_PRE_emulator += "CONFIG+=simulator"
+DEPENDS_emulator += "qtsimulator"
 
-SRC_URI += " \
-    file://oe-device-extra.pri \
-    "
-do_configure_prepend() {
-    install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
-}
+SRCREV = "83065c750b428c1c695821a4fdc02a259d392645"
