@@ -33,6 +33,7 @@ PACKAGECONFIG += " \
     sql-sqlite \
     tslib \
     libinput \
+    xkbcommon-evdev \
     "
 
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
