@@ -27,21 +27,11 @@ set -e
 RELEASE=5.6
 UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
 
-upload_image() {
-  cp tmp/deploy/images/${MACHINE}/${1} b2qt-embedded-qt5-image-${MACHINE}.img
-  gzip b2qt-embedded-qt5-image-${MACHINE}.img -f
-  scp b2qt-embedded-qt5-image-${MACHINE}.img.gz ${UPLOADPATH}/
-}
-
 if [ ${MACHINE} = "emulator" ]; then
   cp tmp/deploy/images/emulator/b2qt-embedded-image-emulator.hdd .
   gzip b2qt-embedded-image-emulator.hdd -f
   scp b2qt-embedded-image-emulator.hdd.gz ${UPLOADPATH}/
   scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-sdk-*.sh ${UPLOADPATH}/b2qt-glibc-x86_64-i586-toolchain-${MACHINE}.sh
-  cp tmp/deploy/images/emulator/b2qt-embedded-qt5-image-emulator.hdd .
-  gzip b2qt-embedded-qt5-image-emulator.hdd -f
-  scp b2qt-embedded-qt5-image-emulator.hdd.gz ${UPLOADPATH}/
-  scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-glibc-x86_64-i586-qt5-toolchain-${MACHINE}.sh
 elif [ ${MACHINE} = "imx6qsabresd" ]; then
   cp tmp/deploy/images/imx6qsabresd/b2qt-embedded-image-boot-imx6qsabresd.tar.gz .
   cp tmp/deploy/images/imx6dlsabresd/u-boot.imx u-boot-imx6dlsabresd.imx
@@ -52,20 +42,17 @@ elif [ ${MACHINE} = "imx6qsabresd" ]; then
   scp b2qt-embedded-image-boot-${MACHINE}.tar.gz ${UPLOADPATH}/
   scp tmp/deploy/images/${MACHINE}/b2qt-embedded-image-${MACHINE}.tar.gz ${UPLOADPATH}/
   scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-sdk-*.sh ${UPLOADPATH}/b2qt-glibc-x86_64-arm-toolchain-${MACHINE}.sh
-  scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.tar.gz ${UPLOADPATH}/
-  scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-glibc-x86_64-arm-qt5-toolchain-${MACHINE}.sh
-elif [ ${MACHINE} = "nuc" ]; then
-  scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-glibc-x86_64-arm-qt5-toolchain-${MACHINE}.sh
-  upload_image b2qt-embedded-qt5-image-${MACHINE}.hddimg
 else
   scp tmp/deploy/images/${MACHINE}/b2qt-embedded-image-*${MACHINE}.tar.gz ${UPLOADPATH}/
   scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-sdk-*.sh ${UPLOADPATH}/b2qt-glibc-x86_64-arm-toolchain-${MACHINE}.sh
-  scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.tar.gz ${UPLOADPATH}/
-  scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-glibc-x86_64-arm-qt5-toolchain-${MACHINE}.sh
 fi
 
-if [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.sdcard ]; then
-    upload_image b2qt-embedded-qt5-image-${MACHINE}.sdcard
+scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-x86_64-qt5-toolchain-${MACHINE}.sh
+
+if [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.hdd ]; then
+  scp tmp/deploy/images/emulator/b2qt-embedded-qt5-image-emulator.hdd ${UPLOADPATH}/
+elif [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.sdcard ]; then
+  scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.sdcard ${UPLOADPATH}/b2qt-embedded-qt5-image-${MACHINE}.img
 elif [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.rpi-sdimg ]; then
-    upload_image b2qt-embedded-qt5-image-${MACHINE}.rpi-sdimg
+  scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.rpi-sdimg ${UPLOADPATH}/b2qt-embedded-qt5-image-${MACHINE}.img
 fi
