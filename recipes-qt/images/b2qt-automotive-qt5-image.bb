@@ -20,7 +20,7 @@
 ##
 #############################################################################
 
-DESCRIPTION = "B2Qt embedded Qt5 image"
+DESCRIPTION = "B2Qt Automotive Qt5 image"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://${QT_LICENCE};md5=7bc9c54e450006250a60e96604c186c9"
 PR = "r0"
@@ -45,5 +45,5 @@ IMAGE_INSTALL += "\
     ${@base_contains("DISTRO_FEATURES", "gstreamer010", "packagegroup-b2qt-embedded-gstreamer010", "", d)} \
     ${@base_contains("DISTRO_FEATURES", "gstreamer", "packagegroup-b2qt-embedded-gstreamer", "", d)} \
     packagegroup-b2qt-qt5-modules \
-    packagegroup-b2qt-embedded-addons \
+    packagegroup-b2qt-automotive-addons \
     "

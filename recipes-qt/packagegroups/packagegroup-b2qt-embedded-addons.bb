@@ -20,7 +20,7 @@
 ##
 #############################################################################
 
-DESCRIPTION = "Qt5 modules"
+DESCRIPTION = "Device Creation specific Qt packages"
 LICENSE = "QtEnterprise"
 
 inherit packagegroup
@@ -28,25 +28,8 @@ inherit packagegroup
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 RDEPENDS_${PN} += " \
-    qt3d \
-    qtbase \
-    qtbase-fonts \
-    qtcanvas3d \
-    qtconnectivity \
-    qtdeclarative \
-    qtdeclarative-tools \
-    qtgraphicaleffects \
-    qtimageformats \
-    qtlocation \
-    qtmultimedia \
-    qtsensors \
-    qtserialport \
-    qtsvg \
-    qttools \
-    ${@base_contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \
-    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
-    qtwebsockets \
-    qtwebchannel \
-    qtxmlpatterns \
-    qtquickcontrols \
+    b2qt-appcontroller \
+    b2qt-utils \
+    b2qt-launcher \
+    b2qt-demos \
     "
