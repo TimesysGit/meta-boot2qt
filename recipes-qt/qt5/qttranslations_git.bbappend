@@ -21,3 +21,8 @@
 #############################################################################
 
 SRCREV = "2d9a8c83893be4abde136ec87fc3db220ce8a0a5"
+
+PACKAGES += "${PN}-qtwebengine"
+FILES_${PN}-qtwebengine = " \
+    ${OE_QMAKE_PATH_TRANSLATIONS}/qtwebengine_*.qm \
+"

@@ -46,8 +46,18 @@ RDEPENDS_${PN} += " \
     qtserialport \
     qtsvg \
     qttools \
+    qttranslations-qt \
+    qttranslations-qtbase \
+    qttranslations-qtdeclarative \
+    qttranslations-qtconnectivity \
+    qttranslations-qtlocation \
+    qttranslations-qtmultimedia \
+    qttranslations-qtquickcontrols \
+    qttranslations-qtserialport \
+    qttranslations-qtwebsockets \
+    qttranslations-qtxmlpatterns \
     ${@base_contains('DISTRO_FEATURES', 'wayland', 'qtwayland', '', d)} \
-    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)} \
+    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine qttranslations-qtwebengine', '', d)} \
     qtwebsockets \
     qtwebchannel \
     qtxmlpatterns \
