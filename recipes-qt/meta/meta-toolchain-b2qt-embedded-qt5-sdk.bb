@@ -64,7 +64,11 @@ create_sdk_files_append () {
     qtconf=${SDK_OUTPUT}/${SDKPATHNATIVE}${OE_QMAKE_PATH_HOST_BINS}/qt.conf
     echo 'HostSpec = linux-g++' >> $qtconf
     echo 'TargetSpec = devices/linux-oe-generic-g++' >> $qtconf
+
+    # change staging paths to target sdk paths, so they can be relocated at install time
+    sed -i -e 's:${STAGING_DIR_NATIVE}:${SDKPATHNATIVE}:g' ${SDK_MKSPEC_DIR}/*.pri
+    sed -i -e 's:${STAGING_DIR}/[^/]*:${SDKTARGETSYSROOT}:g' ${SDK_MKSPEC_DIR}/*.pri
 }
 
 SDK_POST_INSTALL_COMMAND += "$SUDO_EXEC sed -i -e "s:$DEFAULT_INSTALL_DIR:$target_sdk_dir:g" \
-    $target_sdk_dir/sysroots/@REAL_MULTIMACH_TARGET_SYS@/usr/lib/${QT_DIR_NAME}/mkspecs/qdevice.pri ;"
+    $target_sdk_dir/sysroots/@REAL_MULTIMACH_TARGET_SYS@/usr/lib/${QT_DIR_NAME}/mkspecs/*.pri ;"
