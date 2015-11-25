@@ -254,6 +254,19 @@ BB_DISKMON_DIRS = "\
 #file://.* http://someserver.tld/share/sstate/PATH;downloadfilename=PATH \n \
 #file://.* file:///some/local/dir/sstate/PATH"
 
+PREMIRRORS = "\
+ftp://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
+http://.*/.*  http://ci-files01-hki.ci.local/yocto/sources/ \n \
+https://.*/.* http://ci-files01-hki.ci.local/yocto/sources/ \n \
+bzr://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
+cvs://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
+git://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
+gitsm://.*/.* http://ci-files01-hki.ci.local/yocto/sources/ \n \
+hg://.*/.*    http://ci-files01-hki.ci.local/yocto/sources/ \n \
+osc://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
+p4://.*/.*    http://ci-files01-hki.ci.local/yocto/sources/ \n \
+svk://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
+svn://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n"
 
 #
 # Qemu configuration
