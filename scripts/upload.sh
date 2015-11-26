@@ -27,6 +27,14 @@ set -e
 RELEASE=5.6
 UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
 
+if [ ${AUTOMOTIVE} = "true" ]; then
+  scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-x86_64-automotive-toolchain-${MACHINE}.sh
+  if [ -e tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.sdcard ]; then
+    scp tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.sdcard ${UPLOADPATH}/b2qt-automotive-qt5-image-${MACHINE}.img
+  fi
+  exit 0
+fi
+
 if [ ${MACHINE} = "emulator" ]; then
   cp tmp/deploy/images/emulator/b2qt-embedded-image-emulator.hdd .
   gzip b2qt-embedded-image-emulator.hdd -f
