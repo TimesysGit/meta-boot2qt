@@ -114,6 +114,9 @@ get_groups() {
     nuc)
       PROJECT_GROUPS="nuc"
     ;;
+    nvidia-logan)
+      PROJECT_GROUPS="nvidia-logan"
+    ;;
     emulator)
       PROJECT_GROUPS="emulator"
     ;;

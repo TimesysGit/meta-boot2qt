@@ -70,6 +70,9 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     nuc)
       LAYERSCONF="bblayers.conf.nuc.sample"
     ;;
+    nvidia-logan)
+      LAYERSCONF="bblayers.conf.nvidia-logan.sample"
+    ;;
     emulator)
       LAYERSCONF="bblayers.conf.emulator.sample"
     ;;

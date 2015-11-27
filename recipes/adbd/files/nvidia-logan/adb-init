@@ -1,0 +1,46 @@
+#!/bin/sh
+
+DAEMON=/usr/bin/adbd
+
+. /etc/default/adbd
+
+case "$1" in
+start)
+    if [ "$USE_ETHERNET" = "no" ]; then
+        echo 0 > /sys/class/android_usb/android0/enable
+        sleep 1
+        echo ${SERIAL} > /sys/class/android_usb/android0/iSerial
+        echo ${VENDOR} > /sys/class/android_usb/android0/idVendor
+        echo ${PRODUCT} > /sys/class/android_usb/android0/idProduct
+        echo ffs > /sys/class/android_usb/android0/functions
+        echo adb >/sys/class/android_usb/android0/f_ffs/aliases
+        echo 1 > /sys/class/android_usb/android0/enable
+
+        if [ ! -d "/dev/usb-ffs" ]; then
+            mkdir /dev/usb-ffs
+            mkdir /dev/usb-ffs/adb
+        fi
+        mount -t functionfs adb /dev/usb-ffs/adb -o uid=2000,gid=2000
+    fi
+    start-stop-daemon --start --quiet --exec $DAEMON &
+    ;;
+stop)
+    start-stop-daemon --stop --quiet --exec $DAEMON
+    if [ "$USE_ETHERNET" = "no" ]; then
+        sleep 1
+        if mount | grep /dev/usb-ffs/adb > /dev/null; then
+            umount /dev/usb-ffs/adb
+        fi
+    fi
+    ;;
+restart)
+    start-stop-daemon --stop --quiet --exec $DAEMON
+    sleep 1
+    start-stop-daemon --start --quiet --exec $DAEMON &
+    ;;
+*)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+exit 0
+

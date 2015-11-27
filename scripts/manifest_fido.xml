@@ -12,6 +12,7 @@
   <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
   <remote fetch="git://git.yoctoproject.org" name="intel"/>
   <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
+  <remote fetch="git://git://playground.ci.local" name="playground"/>
 
   <project name="poky"
            remote="yocto"
@@ -66,6 +67,16 @@
            revision="fido"
            path="sources/meta-intel"
            groups="notdefault,nuc"/>
+  <project name="meta-tegra"
+           remote="playground"
+           revision="master"
+           path="sources/meta-tegra"
+           groups="notdefault,nvidia-logan"/>
+  <project name="jetson-tk1-pro"
+           remote="playground"
+           revision="master"
+           path="sources/jetson-tk1-pro"
+           groups="notdefault,nvidia-logan"/>
 
 </manifest>
 
