@@ -63,4 +63,6 @@ elif [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.sdcard
   scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.sdcard ${UPLOADPATH}/b2qt-embedded-qt5-image-${MACHINE}.img
 elif [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.rpi-sdimg ]; then
   scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.rpi-sdimg ${UPLOADPATH}/b2qt-embedded-qt5-image-${MACHINE}.img
+elif [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.hddimg ]; then
+  scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.hddimg ${UPLOADPATH}/b2qt-embedded-qt5-image-${MACHINE}.img
 fi
