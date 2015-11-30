@@ -29,7 +29,7 @@
            remote="yocto"
            revision="fido"
            path="sources/meta-fsl-arm"
-           groups="notdefault,fsl,toradex,architech"/>
+           groups="notdefault,fsl,toradex,architech,ti,bbb"/>
   <project name="meta-ti"
            remote="yocto"
            revision="fido"

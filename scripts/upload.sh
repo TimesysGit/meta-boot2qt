@@ -31,8 +31,8 @@ if [ ${AUTOMOTIVE} = "true" ]; then
   scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-x86_64-automotive-toolchain-${MACHINE}.sh
   if [ -e tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.hdd ]; then
     scp tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.hdd ${UPLOADPATH}/
-  elif [ -e tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.sdcard ]; then
-    scp tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.sdcard ${UPLOADPATH}/b2qt-automotive-qt5-image-${MACHINE}.img
+  elif [ -e tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.img ]; then
+    scp tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.img ${UPLOADPATH}/
   fi
   exit 0
 fi
@@ -61,10 +61,6 @@ scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-qt5-sdk-*.sh $
 
 if [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.hdd ]; then
   scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.hdd ${UPLOADPATH}/
-elif [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.sdcard ]; then
-  scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.sdcard ${UPLOADPATH}/b2qt-embedded-qt5-image-${MACHINE}.img
-elif [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.rpi-sdimg ]; then
-  scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.rpi-sdimg ${UPLOADPATH}/b2qt-embedded-qt5-image-${MACHINE}.img
-elif [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.hddimg ]; then
-  scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.hddimg ${UPLOADPATH}/b2qt-embedded-qt5-image-${MACHINE}.img
+elif [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.img ]; then
+  scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.img ${UPLOADPATH}/
 fi

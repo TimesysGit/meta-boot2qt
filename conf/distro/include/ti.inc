@@ -20,23 +20,11 @@
 ##
 #############################################################################
 
-IMAGE_ROOTFS_EXTRA_SPACE = "100000"
-SDCARD_ROOTFS = "${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.ext3"
-SDCARD_GENERATION_COMMAND_ti33x = "generate_imx_sdcard"
+BBMASK ?= " "
+BBMASK .= "|meta-fsl-arm/qt5-layer/recipes-qt/qt5"
 
-IMAGE_CMD_sdcard_append() {
-    parted -s ${SDCARD} set 1 boot on
+IMAGE_FSTYPES += "ext3 sdcard"
+IMAGE_CLASSES += "image_types_fsl"
 
-    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.rootfs.sdcard ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-}
-
-IMAGE_CMD_rpi-sdimg_append() {
-    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.rootfs.rpi-sdimg ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-}
-
-build_hddimg_append() {
-    rm -f ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-    ln -s ${IMAGE_NAME}.hddimg ${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.img
-}
+UBOOT_SUFFIX = "img"
+BOOT_SCRIPTS = "${BOOTFS_CONTENT}"
