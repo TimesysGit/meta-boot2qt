@@ -25,6 +25,8 @@ LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://${QT_LICENCE};md5=7bc9c54e450006250a60e96604c186c9"
 PR = "r0"
 
+DEPLOY_CONF_TYPE = "Boot2Qt"
+
 IMAGE_FEATURES += "\
         package-management \
         ssh-server-dropbear \

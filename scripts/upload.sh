@@ -33,6 +33,7 @@ if [ ${AUTOMOTIVE} = "true" ]; then
     scp tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.hdd ${UPLOADPATH}/
   elif [ -e tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.img ]; then
     scp tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.img ${UPLOADPATH}/
+    scp tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.conf ${UPLOADPATH}/
   fi
   exit 0
 fi
@@ -63,4 +64,5 @@ if [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.hdd ]; t
   scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.hdd ${UPLOADPATH}/
 elif [ -e tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.img ]; then
   scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.img ${UPLOADPATH}/
+  scp tmp/deploy/images/${MACHINE}/b2qt-embedded-qt5-image-${MACHINE}.conf ${UPLOADPATH}/
 fi
