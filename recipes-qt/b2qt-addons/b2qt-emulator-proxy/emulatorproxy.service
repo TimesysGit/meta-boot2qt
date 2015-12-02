@@ -1,9 +1,9 @@
 [Unit]
 Description=QtSimulator Proxy Daemon
 After=systemd-user-sessions.service
-Type=forking
 
 [Service]
+Type=forking
 ExecStart=/usr/bin/emulatorproxyd
 
 [Install]
