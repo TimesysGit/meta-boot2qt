@@ -30,4 +30,6 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 RDEPENDS_${PN} += " \
     qtivi-dev \
+    libarchive-dev \
+    qtapplicationmanager-dev \
     "

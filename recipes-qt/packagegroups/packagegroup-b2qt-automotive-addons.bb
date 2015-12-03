@@ -30,6 +30,8 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 RDEPENDS_${PN} += " \
     b2qt-appcontroller \
     qtivi \
+    neptune-ui \
+    neptune-ui-apps \
     ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebbrowser', '', d)} \
     gammaray \
     "
