@@ -20,5 +20,13 @@
 ##
 #############################################################################
 
-COMPATIBLE_MACHINE = "(qemux86|emulator)"
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://uvesafb.options.conf"
+
+do_install_append() {
+    if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
+        install -d ${D}${sysconfdir}/modprobe.d
+        install -m 0644 ${WORKDIR}/uvesafb.options.conf ${D}${sysconfdir}/modprobe.d/uvesafb.conf
+    fi
+}
