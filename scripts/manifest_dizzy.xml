@@ -10,13 +10,14 @@
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/architech-boards" name="architech"/>
   <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
+  <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
 
   <project name="poky"
            remote="yocto"
            revision="dizzy"
            path="sources/poky"/>
   <project name="meta-openembedded"
-           remote="oe"
+           remote="oe-mirror"
            revision="dizzy"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
