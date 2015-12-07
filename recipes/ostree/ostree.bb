@@ -45,7 +45,8 @@ PACKAGECONFIG ??= "${@base_contains('DISTRO_FEATURES', 'systemd', 'systemd', '',
 PACKAGECONFIG[systemd] = "--with-systemdsystemunitdir=${systemd_unitdir}/system/,,,"
 
 SYSTEMD_SERVICE_${PN} = "ostree-prepare-root.service ostree-remount.service"
-FILES_${PN} += "${systemd_unitdir}/system/"
+FILES_${PN} += "${systemd_unitdir}/system/ \
+                ${libdir}/dracut/"
 
 EXTRA_OECONF = "--with-dracut \
                 --without-selinux \
@@ -60,11 +61,4 @@ do_configure_prepend() {
     # Update submodules and workaround bugs.
     env NOCONFIGURE=1 ./autogen.sh
     cd -
-}
-
-do_install_append() {
-    # Silence installed-vs-shipped error message. We provide our own dracut module.
-    # The only way to force OSTree to build necessary binaries is to pass "--with-dracut",
-    # this of course is a broken configure.ac logic.
-    rm -rf ${D}${libdir}/dracut/
 }
