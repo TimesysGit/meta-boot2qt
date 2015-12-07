@@ -20,15 +20,22 @@
 ##
 #############################################################################
 
-DESCRIPTION = "Automotive specific Qt packages"
-LICENSE = "QtEnterprise"
+DESCRIPTION = "Qt Web Browser"
+LICENSE = "GPLv3"
+LIC_FILES_CHKSUM = "file://src/main.cpp;md5=e78c6c33aa5ec2464456b72daf61ef9c;beginline=1;endline=36"
 
-inherit packagegroup
+inherit qmake5 sdk-sources
 
-PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
-
-RDEPENDS_${PN} += " \
-    b2qt-appcontroller \
-    qtivi \
-    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebbrowser', '', d)} \
+SRC_URI = " \
+    git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Src/qtwebbrowser \
     "
+
+SRCREV = "2e18b419a7084b1e39bf8749855768a1002e34de"
+BRANCH = "dev"
+
+S = "${WORKDIR}/git"
+
+DEPENDS = "qtbase qtdeclarative qtwebengine"
+
+FILES_${PN} += "/data/user/qt/qtwebbrowser"
+FILES_${PN}-dbg += "/data/user/qt/qtwebbrowser/.debug"
