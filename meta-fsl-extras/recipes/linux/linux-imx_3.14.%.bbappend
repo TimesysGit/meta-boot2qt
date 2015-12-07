@@ -33,4 +33,6 @@ do_configure_prepend() {
     echo "CONFIG_USB_SERIAL_FTDI_SIO=m"     >> ${WORKDIR}/defconfig
     echo "CONFIG_USB_SERIAL_PL2303=m"       >> ${WORKDIR}/defconfig
     echo "CONFIG_USB_ACM=m"                 >> ${WORKDIR}/defconfig
+
+    echo "CONFIG_NAMESPACES=y"              >> ${WORKDIR}/defconfig
 }
