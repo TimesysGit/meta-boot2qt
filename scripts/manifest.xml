@@ -11,13 +11,14 @@
   <remote fetch="git://github.com/architech-boards" name="architech"/>
   <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
   <remote fetch="git://git.yoctoproject.org" name="intel"/>
+  <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
 
   <project name="poky"
            remote="yocto"
            revision="57eb677f0efe9a4060c764e8e9dfe2440d4e5eb2"
            path="sources/poky"/>
   <project name="meta-openembedded"
-           remote="oe"
+           remote="oe-mirror"
            revision="214e1801d0efc38d3b6142bdc0d8e58ca593e34c"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"

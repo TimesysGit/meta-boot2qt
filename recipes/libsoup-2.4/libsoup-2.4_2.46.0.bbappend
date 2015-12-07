@@ -1,6 +1,6 @@
 #############################################################################
 ##
-## Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
+## Copyright (C) 2015 Digia Plc and/or its subsidiary(-ies).
 ##
 ## This file is part of the Qt Enterprise Embedded Scripts of the Qt
 ## framework.
@@ -20,26 +20,9 @@
 ##
 #############################################################################
 
-DESCRIPTION = "Boot to Qt update framework"
-HOMEPAGE = "http://www.qt.io"
-SECTION = "devel"
-LICENSE = "CLOSED"
+# Remove this recipe when openembedded-core/meta/recipes-support/libsoup/
+# will be updated to 2.50.0 version or above.
+PV = "2.50.0"
 
-PV = "1.0.0"
-PR = "r0"
-SRCREV = "${PV}"
-
-inherit deploy
-
-do_deploy() {
-  install -d ${DEPLOYDIR}/update/
-  echo ${B2QT_PLATFORM} > ${DEPLOYDIR}/update/platform
-}
-
-addtask deploy after do_install before do_build
-
-do_compile[noexec] = "1"
-do_install[noexec] = "1"
-do_populate_sysroot[noexec] = "1"
-
-PACKAGE_ARCH = "${MACHINE_ARCH}"
+SRC_URI[md5sum] = "9a84d66e1b7ccd3bd340574b11eccc15"
+SRC_URI[sha256sum] = "1e01365ac4af3817187ea847f9d3588c27eee01fc519a5a7cb212bb78b0f667b"

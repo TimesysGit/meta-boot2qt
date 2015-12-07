@@ -30,7 +30,6 @@ RDEPENDS_${PN} = "\
     nativesdk-python-modules \
     nativesdk-python-misc \
     nativesdk-gperf \
-    nativesdk-ostree \
     ${@base_contains("DISTRO_FEATURES", "wayland", "nativesdk-wayland", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
     "
