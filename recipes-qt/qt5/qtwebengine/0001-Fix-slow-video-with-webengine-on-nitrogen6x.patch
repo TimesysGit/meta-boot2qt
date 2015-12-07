@@ -1,0 +1,45 @@
+From 4903971e1e4b58f03b0f636a1ab494bfbc5d76d4 Mon Sep 17 00:00:00 2001
+From: Michal Klocek <michal.klocek@theqtcompany.com>
+Date: Mon, 7 Dec 2015 15:48:32 +0200
+Subject: [PATCH] Fix slow video with webengine on nitrogen6x
+
+Disable texture_rg on nitrogen6x. Yocto
+image 1.8 has driver which reports opengl es 3.0
+support, however texture_rg does not
+work properly.
+---
+ src/3rdparty/chromium/gpu/command_buffer/service/feature_info.cc | 18 ------------------
+ 1 file changed, 18 deletions(-)
+
+diff --git a/src/3rdparty/chromium/gpu/command_buffer/service/feature_info.cc b/src/3rdparty/chromium/gpu/command_buffer/service/feature_info.cc
+index 0ce9980..8963d11 100644
+--- a/src/3rdparty/chromium/gpu/command_buffer/service/feature_info.cc
++++ b/src/3rdparty/chromium/gpu/command_buffer/service/feature_info.cc
+@@ -1014,24 +1014,6 @@ void FeatureInfo::InitializeFeatures() {
+     }
+   }
+ 
+-  if ((gl_version_info_->is_es3 || gl_version_info_->is_desktop_core_profile ||
+-       extensions.Contains("GL_EXT_texture_rg") ||
+-       extensions.Contains("GL_ARB_texture_rg")) &&
+-      IsGL_REDSupportedOnFBOs()) {
+-    feature_flags_.ext_texture_rg = true;
+-    AddExtensionString("GL_EXT_texture_rg");
+-
+-    validators_.texture_format.AddValue(GL_RED_EXT);
+-    validators_.texture_format.AddValue(GL_RG_EXT);
+-    validators_.texture_internal_format.AddValue(GL_RED_EXT);
+-    validators_.texture_internal_format.AddValue(GL_R8_EXT);
+-    validators_.texture_internal_format.AddValue(GL_RG_EXT);
+-    validators_.texture_internal_format.AddValue(GL_RG8_EXT);
+-    validators_.read_pixel_format.AddValue(GL_RED_EXT);
+-    validators_.read_pixel_format.AddValue(GL_RG_EXT);
+-    validators_.render_buffer_format.AddValue(GL_R8_EXT);
+-    validators_.render_buffer_format.AddValue(GL_RG8_EXT);
+-  }
+   UMA_HISTOGRAM_BOOLEAN("GPU.TextureRG", feature_flags_.ext_texture_rg);
+ 
+ #if !defined(OS_MACOSX)
+-- 
+1.9.1
+
