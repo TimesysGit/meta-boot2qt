@@ -28,7 +28,7 @@ RELEASE=5.6
 UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
 
 if [ ${AUTOMOTIVE} = "true" ]; then
-  scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-embedded-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-x86_64-automotive-toolchain-${MACHINE}.sh
+  scp tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-automotive-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-x86_64-automotive-toolchain-${MACHINE}.sh
   if [ -e tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.hdd ]; then
     scp tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.hdd ${UPLOADPATH}/
   elif [ -e tmp/deploy/images/${MACHINE}/b2qt-automotive-qt5-image-${MACHINE}.img ]; then

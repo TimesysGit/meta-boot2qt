@@ -20,9 +20,13 @@
 ##
 #############################################################################
 
-DESCRIPTION = "B2Qt embedded Qt5 SDK toolchain"
+DESCRIPTION = "Target packages for B2Qt Automotive Qt5 SDK"
+LICENSE = "QtEnterprise"
+PR = "r0"
 
-require b2qt-sdk.inc
+inherit packagegroup
 
-TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-qt5-toolchain-host"
-TOOLCHAIN_TARGET_TASK += "packagegroup-b2qt-embedded-qt5-toolchain-target"
+PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
+
+RDEPENDS_${PN} += " \
+    "
