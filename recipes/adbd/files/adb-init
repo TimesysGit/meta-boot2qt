@@ -11,7 +11,7 @@ fi
 case "$1" in
 start)
     if [ "$USE_ETHERNET" = "no" ]; then
-        modprobe g_ffs idVendor=${VENDOR} idProduct=${PRODUCT} iSerialNumber=${SERIAL}
+        modprobe g_ffs idVendor=${VENDOR} idProduct=${PRODUCT} iSerialNumber=${SERIAL:0:32}
         mkdir -p /dev/usb-ffs
         chmod 770 /dev/usb-ffs
         mkdir -p /dev/usb-ffs/adb
