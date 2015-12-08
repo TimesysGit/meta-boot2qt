@@ -31,4 +31,5 @@ RDEPENDS_${PN} += " \
     b2qt-appcontroller \
     qtivi \
     ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebbrowser', '', d)} \
+    gammaray \
     "
