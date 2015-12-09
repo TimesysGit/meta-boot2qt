@@ -6,6 +6,7 @@ After=network.target
 Type=forking
 ExecStart=/usr/bin/adb-init start
 ExecStop=/usr/bin/adb-init stop
+Environment=HOME=/home/root
 
 [Install]
 WantedBy=multi-user.target
