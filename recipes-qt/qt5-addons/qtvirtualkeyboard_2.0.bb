@@ -30,14 +30,14 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/tqtc-qtvirtualkeyboard;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtVirtualKeyboard/2.0/Src \
     "
 
-SRCREV = "296f52c04968a06200f256dfaf58c563bf193f10"
+SRCREV = "c34a3ef3c5283df834577577bb0becd48470aa55"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative qtsvg hunspell"
 
-EXTRA_QMAKEVARS_PRE += "CONFIG+=disable-desktop CONFIG+=pinyin CONFIG+=hangul CONFIG+=openwnn CONFIG+=tcime"
+EXTRA_QMAKEVARS_PRE += "CONFIG+=disable-desktop CONFIG+=lang-all"
 
 PACKAGES += "${PN}-dictionaries"
 RRECOMMENDS_${PN} += "${PN}-dictionaries"
