@@ -47,6 +47,7 @@ RDEPENDS_${PN} += " \
     qtmultimedia-dev \
     qtquickcontrols-dev \
     qtsensors-dev \
+    qtserialbus-dev \
     qtserialport-dev \
     qtsvg-dev \
     qttools-dev \
