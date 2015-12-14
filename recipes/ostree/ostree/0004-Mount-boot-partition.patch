@@ -1,0 +1,82 @@
+From 5e9ed74a20026e5c9043eaf8a224ce84cb9cd9f0 Mon Sep 17 00:00:00 2001
+From: Gatis Paeglis <gatis.paeglis@theqtcompany.com>
+Date: Mon, 7 Dec 2015 18:14:26 +0100
+Subject: [PATCH] Mount boot partition
+
+On b2qt reference images the boot partition always is
+the first partition on a device and rootfs is the second
+partition. We can get the root parition from a kernel
+command line and deduce the right boot partition from there.
+---
+ src/switchroot/ostree-prepare-root.c | 23 ++++++++++++++++++-----
+ 1 file changed, 18 insertions(+), 5 deletions(-)
+
+diff --git a/src/switchroot/ostree-prepare-root.c b/src/switchroot/ostree-prepare-root.c
+index 3de137b..2637dc3 100644
+--- a/src/switchroot/ostree-prepare-root.c
++++ b/src/switchroot/ostree-prepare-root.c
+@@ -45,7 +45,7 @@
+ #include "ostree-mount-util.h"
+ 
+ static char *
+-parse_ostree_cmdline (void)
++parse_kernel_cmdline (const char *arg)
+ {
+   FILE *f = fopen("/proc/cmdline", "r");
+   char *cmdline = NULL;
+@@ -75,9 +75,9 @@ parse_ostree_cmdline (void)
+       const char *next_nonspc = next;
+       while (next_nonspc && *next_nonspc == ' ')
+ 	next_nonspc += 1;
+-      if (strncmp (iter, "ostree=", strlen ("ostree=")) == 0)
++      if (strncmp (iter, arg, strlen (arg)) == 0)
+         {
+-	  const char *start = iter + strlen ("ostree=");
++   const char *start = iter + strlen (arg);
+ 	  if (next)
+ 	    ret = strndup (start, next - start);
+ 	  else
+@@ -114,10 +114,12 @@ main(int argc, char *argv[])
+   const char *readonly_bind_mounts[] = { "/usr", NULL };
+   const char *root_mountpoint = NULL;
+   char *ostree_target = NULL;
++  char *boot_partition = NULL;
+   char *deploy_path = NULL;
+   char srcpath[PATH_MAX];
+   char destpath[PATH_MAX];
+   char newroot[PATH_MAX];
++  char boot_mountpoint[PATH_MAX];
+   struct stat stbuf;
+   int i;
+ 
+@@ -129,7 +131,7 @@ main(int argc, char *argv[])
+ 
+   root_mountpoint = argv[1];
+ 
+-  ostree_target = parse_ostree_cmdline ();
++  ostree_target = parse_kernel_cmdline ("ostree=");
+   if (!ostree_target)
+     {
+       fprintf (stderr, "No OSTree target; expected ostree=/ostree/boot.N/...\n");
+@@ -246,6 +248,17 @@ main(int argc, char *argv[])
+       perrorv ("failed to MS_MOVE %s to %s", deploy_path, root_mountpoint);
+       exit (EXIT_FAILURE);
+     }
+-  
++
++  /* first partition always is the boot partition */
++  boot_partition = parse_kernel_cmdline ("root=");
++  boot_partition[strlen (boot_partition) - 1] = '1';
++  /* mount the real boot parition over the deployment's boot directory */
++  snprintf (boot_mountpoint, sizeof(boot_mountpoint), "%s/boot/", root_mountpoint);
++  if (mount (boot_partition, boot_mountpoint, "ext2", 0, NULL) < 0)
++    {
++       perrorv ("failed to mount boot parition %s to %s", boot_partition, boot_mountpoint);
++       exit (EXIT_FAILURE);
++    }
++
+   exit (EXIT_SUCCESS);
+ }
+-- 
+2.1.4
+
