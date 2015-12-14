@@ -50,4 +50,6 @@ if [ -e b2qt-${PROJECT}-qt5-image-${MACHINE}.7z ]; then
   rsync b2qt-${PROJECT}-qt5-image-${MACHINE}.7z ${UPLOADPATH}/
 fi
 
-rsync tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-x86_64-${PROJECT}-toolchain-${MACHINE}.sh
+if [ -e tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.sh ]; then
+  rsync tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.sh ${UPLOADPATH}/
+fi
