@@ -34,12 +34,20 @@ else
 fi
 
 if [ -e tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.hdd ]; then
-7z a -l b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
+  7z a -l b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
     $PWD/tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.hdd
 elif [ -e tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.img ]; then
-7z a -l b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
+  7z a -l b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
     $PWD/tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.img \
     $PWD/tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.conf
+elif [ ${MACHINE} == "nvidia-logan" ] && [ -e tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.tar.gz ]; then
+  7z a -l b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
+    $PWD/tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.tar.gz \
+    $PWD/tmp/deploy/images/${MACHINE}/zImage
 fi
-rsync b2qt-${PROJECT}-qt5-image-${MACHINE}.7z ${UPLOADPATH}/
+
+if [ -e b2qt-${PROJECT}-qt5-image-${MACHINE}.7z ]; then
+  rsync b2qt-${PROJECT}-qt5-image-${MACHINE}.7z ${UPLOADPATH}/
+fi
+
 rsync tmp/deploy/sdk/b2qt-glibc-x86_64-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-*.sh ${UPLOADPATH}/b2qt-x86_64-${PROJECT}-toolchain-${MACHINE}.sh
