@@ -30,7 +30,7 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/tqtc-qtvirtualkeyboard;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtVirtualKeyboard/2.0/Src \
     "
 
-SRCREV = "c34a3ef3c5283df834577577bb0becd48470aa55"
+SRCREV = "91273471991b8f1097780f8171f19e7efc622be5"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"

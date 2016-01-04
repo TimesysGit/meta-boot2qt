@@ -22,7 +22,7 @@
 
 DESCRIPTION = "Qt Data Visualization"
 LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://src/datavisualization/global/datavisualizationglobal_p.h;md5=5c8619ca9925b150dec6288f86c56471;beginline=1;endline=17"
+LIC_FILES_CHKSUM = "file://src/datavisualization/global/qdatavisualizationglobal.h;md5=80b80e41be7c22f5b90fc96163b7d1bf;beginline=1;endline=17"
 
 inherit qt5-module sdk-sources
 
@@ -30,8 +30,8 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/tqtc-qtdatavis3d;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtDataVisualization/1.2/Src \
     "
 
-# v1.2.1
-SRCREV = "5ba7f70d0d94de720d49b37b2d257b51b9afd026"
+# v1.2.2
+SRCREV = "25fa07daf70b8b00cd6832a9e180dfa517da4b8b"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"

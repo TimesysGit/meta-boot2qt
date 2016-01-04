@@ -22,7 +22,7 @@
 
 DESCRIPTION = "Qt Charts"
 LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://src/charts/qchart.cpp;md5=6e3e95df24951a6ec145dc5614d29cac;beginline=1;endline=17"
+LIC_FILES_CHKSUM = "file://src/charts/qchart.h;md5=a712f087e2146153f45db2e8eb1a3985;beginline=1;endline=17"
 
 inherit qt5-module qtquickcompiler sdk-sources
 
@@ -30,8 +30,8 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/tqtc-qtcharts;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/Charts/2.0/Src \
     "
 
-# v2.0.1
-SRCREV = "c6eddd6a7ac5a67f77f52eae3a074c85fbf525a9"
+# v2.1.0
+SRCREV = "a801e78fb8d1000bdcd0d47e24edffbf219650e8"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"

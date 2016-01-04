@@ -22,7 +22,7 @@
 
 DESCRIPTION = "Qt Quick Compiler"
 LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://compiler/qtquickcompiler.h;md5=553f8ee8d120874969caca3193ae686c;beginline=1;endline=6"
+LIC_FILES_CHKSUM = "file://compiler/qtquickcompiler.h;md5=02f6307ab0d6c4bd38a1540f16ea705d;beginline=1;endline=17"
 
 inherit qt5-module
 
@@ -31,7 +31,7 @@ SRC_URI = " \
     "
 
 # v5.6.0
-SRCREV = "07aeee460cc170eef28c05ce13aa30408f558215"
+SRCREV = "cd525cef2026cddb8d8c2a3b9532967dbb676460"
 BRANCH = "5.6"
 
 S = "${WORKDIR}/git"
