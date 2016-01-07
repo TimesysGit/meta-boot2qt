@@ -31,13 +31,14 @@ SRC_URI = " \
     file://neptune.service \
     "
 
-SRCREV = "3004865149e69aa29c364700dec2c460ebd083dc"
+SRCREV = "b3f10d156349727310ec30b27d01e639cce4f570"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative"
-RDEPENDS_${PN} = "qtapplicationmanager qtivi ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
+RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard \
+                  ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_configure_prepend() {
     echo "qml.path = /opt/neptune" >> ${S}/neptuneui.pro
