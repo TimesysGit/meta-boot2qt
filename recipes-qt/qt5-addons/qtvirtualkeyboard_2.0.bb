@@ -37,8 +37,13 @@ S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative qtsvg hunspell"
 
-EXTRA_QMAKEVARS_PRE += "CONFIG+=disable-desktop CONFIG+=lang-all"
+EXTRA_QMAKEVARS_PRE += "CONFIG+=disable-desktop CONFIG+=lang-all CONFIG+=lipi-toolkit"
 
 PACKAGES += "${PN}-dictionaries"
 RRECOMMENDS_${PN} += "${PN}-dictionaries"
 FILES_${PN}-dictionaries = "${OE_QMAKE_PATH_DATA}/qtvirtualkeyboard/*/*.dat"
+
+FILES_${PN} += "${OE_QMAKE_PATH_DATA}/qtvirtualkeyboard/lipi_toolkit"
+FILES_${PN}-dbg += "${OE_QMAKE_PATH_DATA}/qtvirtualkeyboard/lipi_toolkit/lib/.debug"
+INSANE_SKIP_${PN} += "libdir"
+INSANE_SKIP_${PN}-dbg += "libdir"
