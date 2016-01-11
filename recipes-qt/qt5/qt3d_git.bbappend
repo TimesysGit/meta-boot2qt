@@ -26,4 +26,4 @@ SRC_URI += " \
     file://0001-Remove-qgltf.patch \
     "
 
-SRCREV = "f6ff4023e42bec8cfe088f27c17f7d309f0a9003"
+SRCREV = "ab5dcff44a80884834c5e480e59a2424003c39f1"

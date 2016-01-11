@@ -22,4 +22,4 @@
 
 PACKAGECONFIG += "bluez4"
 
-SRCREV = "0a9d4e32de60f31dac43973037ae7c546fb8cd6a"
+SRCREV = "9d3e7e9c2edb38a6bca9bb6c1cdef02c0a329ec4"
