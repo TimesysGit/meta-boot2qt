@@ -49,3 +49,10 @@ SRCREV = "3880f41e683f02b905c8cbc3c578c3f3a0a1eb2e"
 
 # Temporarily here, until merged upstream
 PACKAGECONFIG[openssl] = "-openssl,-no-openssl,openssl,libssl"
+
+do_install_append() {
+    # Temporarily here, until merged upstream
+    sed -i -e 's|${STAGING_DIR_NATIVE}${prefix_native}|$$[QT_HOST_PREFIX]|g' \
+        -e 's|${STAGING_DIR_HOST}|$$[QT_SYSROOT]|g' \
+        ${D}/${OE_QMAKE_PATH_QT_ARCHDATA}/mkspecs/*.pri
+}
