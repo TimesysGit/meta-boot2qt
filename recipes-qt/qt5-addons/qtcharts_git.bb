@@ -24,16 +24,9 @@ DESCRIPTION = "Qt Charts"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://src/charts/qchart.h;md5=a712f087e2146153f45db2e8eb1a3985;beginline=1;endline=17"
 
-inherit qt5-module qtquickcompiler sdk-sources
+inherit qt5-module qtquickcompiler
+require recipes-qt/qt5/qt5-git.inc
 
-SRC_URI = " \
-    git://codereview.qt-project.org/qt/tqtc-qtcharts;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/Charts/2.0/Src \
-    "
-
-# v2.1.0
 SRCREV = "a801e78fb8d1000bdcd0d47e24edffbf219650e8"
-BRANCH = "master"
-
-S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative qtmultimedia"
