@@ -1,0 +1,27 @@
+From 3bb661da09e2a57ef452d388d69b8d01044136f1 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@theqtcompany.com>
+Date: Wed, 13 Jan 2016 09:26:33 +0200
+Subject: [PATCH] set CMA reserved size to 384MB
+
+Increased from 256MB (the default) to 384MB. Without this, HW-accelerated
+video decoding cannot work for high resolution videos.
+---
+ board/boundary/nitrogen6x/6x_bootscript-yocto-3.14.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/board/boundary/nitrogen6x/6x_bootscript-yocto-3.14.txt b/board/boundary/nitrogen6x/6x_bootscript-yocto-3.14.txt
+index 86242b5..da4ea05 100644
+--- a/board/boundary/nitrogen6x/6x_bootscript-yocto-3.14.txt
++++ b/board/boundary/nitrogen6x/6x_bootscript-yocto-3.14.txt
+@@ -92,7 +92,7 @@ if itest.s "x" == "x${cmd_xxx_present}" ; then
+ 	echo "!!!!!!!!!!!!!!!!"
+ fi
+ 
+-setenv bootargs "${bootargs} console=${console},115200 vmalloc=400M consoleblank=0 rootwait fixrtc"
++setenv bootargs "${bootargs} console=${console},115200 vmalloc=400M cma=384M consoleblank=0 rootwait fixrtc"
+ 
+ 
+ bpart=2
+-- 
+1.9.1
+

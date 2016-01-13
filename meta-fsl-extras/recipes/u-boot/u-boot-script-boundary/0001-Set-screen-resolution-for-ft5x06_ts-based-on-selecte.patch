@@ -1,0 +1,29 @@
+From 3fdf74d6934858d04d9e7df7cd24779bf7d9fdbb Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@theqtcompany.com>
+Date: Wed, 13 Jan 2016 08:55:41 +0200
+Subject: [PATCH] Set screen resolution for ft5x06_ts based on selected display
+
+---
+ board/boundary/nitrogen6x/6x_bootscript-yocto-3.14.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/board/boundary/nitrogen6x/6x_bootscript-yocto-3.14.txt b/board/boundary/nitrogen6x/6x_bootscript-yocto-3.14.txt
+index 7c11f4c..86242b5 100644
+--- a/board/boundary/nitrogen6x/6x_bootscript-yocto-3.14.txt
++++ b/board/boundary/nitrogen6x/6x_bootscript-yocto-3.14.txt
+@@ -105,6 +105,12 @@ else
+ 	setenv bootargs "${bootargs} root=/dev/mmcblk${disk}p${bpart}"
+ fi
+ 
++if test "hannstar" = "${fb_lvds}" || test "hannstar" = "${fb_lvds2}"  ; then
++    setenv bootargs ${bootargs} ft5x06_ts.screenres=1024,600
++elif test "hannstar7" = "${fb_lvds}" || test "hannstar7" = "${fb_lvds2}"  ; then
++    setenv bootargs ${bootargs} ft5x06_ts.screenres=1280,800
++fi
++
+ if itest.s "x" != "x${disable_giga}" ; then
+ 	setenv bootargs ${bootargs} fec.disable_giga=1
+ fi
+-- 
+1.9.1
+
