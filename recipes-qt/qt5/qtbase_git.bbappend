@@ -46,3 +46,6 @@ do_configure_prepend() {
 }
 
 SRCREV = "3880f41e683f02b905c8cbc3c578c3f3a0a1eb2e"
+
+# Temporarily here, until merged upstream
+PACKAGECONFIG[openssl] = "-openssl,-no-openssl,openssl,libssl"
