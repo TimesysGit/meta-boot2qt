@@ -40,6 +40,7 @@ RDEPENDS_${PN} += " \
     qtcanvas3d \
     qtconnectivity-dev \
     qtdeclarative-dev \
+    qtdeclarative-render2d-dev \
     qtdeclarative-staticdev \
     qtgraphicaleffects-dev \
     qtimageformats-dev \

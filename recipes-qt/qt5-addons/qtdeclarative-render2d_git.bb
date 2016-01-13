@@ -24,15 +24,9 @@ DESCRIPTION = "Qt Quick 2D Rendender"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://src/plugins/scenegraph/softwarecontext/softwarelayer.cpp;md5=1f253bc897054feebffbaf70ecd49af4;beginline=1;endline=17"
 
-inherit qt5-module sdk-sources
-
-SRC_URI = " \
-    git://codereview.qt-project.org/qt/tqtc-scenegraph-raster;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtQuick2DRenderer/1.1/Src \
-    "
+inherit qt5-module
+require recipes-qt/qt5/qt5-git.inc
 
 SRCREV = "849ee6c976ba3574b1856eb9d16c2bd740a6d2e3"
-BRANCH = "5.6"
-
-S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative"
