@@ -24,16 +24,10 @@ DESCRIPTION = "Qt Virtual Keyboard"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://src/virtualkeyboard/plugin.cpp;md5=8913d0b71519756d2e83db02b9629bbd;beginline=1;endline=17"
 
-inherit qt5-module qtquickcompiler sdk-sources
-
-SRC_URI = " \
-    git://codereview.qt-project.org/qt/tqtc-qtvirtualkeyboard;branch=${BRANCH};protocol=ssh;sdk-uri=EnterpriseAddOns/QtVirtualKeyboard/2.0/Src \
-    "
+inherit qt5-module qtquickcompiler
+require recipes-qt/qt5/qt5-git.inc
 
 SRCREV = "91273471991b8f1097780f8171f19e7efc622be5"
-BRANCH = "5.6"
-
-S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative qtsvg hunspell"
 
