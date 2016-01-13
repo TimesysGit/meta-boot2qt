@@ -253,6 +253,7 @@ BB_DISKMON_DIRS = "\
 #SSTATE_MIRRORS ?= "\
 #file://.* http://someserver.tld/share/sstate/PATH;downloadfilename=PATH \n \
 #file://.* file:///some/local/dir/sstate/PATH"
+SSTATE_MIRRORS ?= "file://.* http://ci-files01-hki.ci.local/yocto/sstate-cache/PATH"
 
 PREMIRRORS = "\
 ftp://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
