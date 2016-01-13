@@ -34,7 +34,7 @@ RDEPENDS_${PN} += " \
     qtcanvas3d \
     qtcharts \
     qtconnectivity \
-    qtdatavisualization \
+    qtdatavis3d \
     qtdeclarative \
     qtdeclarative-tools \
     qtgraphicaleffects \

@@ -60,6 +60,6 @@ RDEPENDS_${PN} += " \
     \
     b2qt-utils-dev \
     qtcharts-dev \
-    qtdatavisualization-dev \
+    qtdatavis3d-dev \
     qtvirtualkeyboard-dev \
     "
