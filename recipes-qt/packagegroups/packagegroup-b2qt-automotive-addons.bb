@@ -29,6 +29,7 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
 RDEPENDS_${PN} += " \
     b2qt-appcontroller \
+    b2qt-utils \
     qtivi \
     neptune-ui \
     neptune-ui-apps \
