@@ -27,14 +27,14 @@ LIC_FILES_CHKSUM = "file://src/main.cpp;md5=1fcdf6b49fbbf2bc9c831893cca1b279;beg
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/launcher;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-launcher \
+    git://codereview.qt-project.org/tqtc-boot2qt/launcher;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Boot2Qt/sources/b2qt-launcher \
     file://b2qt-startup.sh \
     file://qtlauncher.service \
     file://b2qt.service \
     "
 
-SRCREV = "e824e206f28eb20bcb6f1d9064990f5e927261f4"
-BRANCH = "5.5"
+SRCREV = "81c95946aec152090810da6218ef8d33963368a6"
+BRANCH = "dev"
 
 S = "${WORKDIR}/git"
 

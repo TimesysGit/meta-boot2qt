@@ -27,19 +27,28 @@ LIC_FILES_CHKSUM = "file://sensors/Accelbubble.qml;md5=1bf19846314f7b0fa81dc4db9
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/demos;branch=${BRANCH};protocol=ssh;name=demos;sdk-uri=5.5/Boot2Qt/sources/b2qt-demos \
-    git://code.qt.io/qt-labs/qt5-everywhere-demo.git;protocol=git;name=everywhere;destsuffix=qt5-everywhere-demo \
-    git://code.qt.io/qt/qtcanvas3d.git;branch=${QT_BRANCH};protocol=git;name=qtcanvas3d;destsuffix=qtcanvas3d \
-    git://code.qt.io/qt/qtquickcontrols.git;branch=${QT_BRANCH};protocol=git;name=qtquickcontrols;destsuffix=qtquickcontrols \
+    git://codereview.qt-project.org/tqtc-boot2qt/demos.git;branch=${BRANCH};protocol=ssh;name=demos;sdk-uri=5.6/Boot2Qt/sources/b2qt-demos \
+    ${QT_GIT}/qt-labs-qt5-everywhere-demo.git;protocol=git;name=everywhere;destsuffix=qt5-everywhere-demo \
+    ${QT_GIT}/qtcanvas3d.git;branch=${QT_BRANCH};name=qtcanvas3d;destsuffix=qtcanvas3d \
+    ${QT_GIT}/qtquickcontrols.git;branch=${QT_BRANCH};name=qtquickcontrols;destsuffix=qtquickcontrols \
+    git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser.git;branch=${BROWSER_BRANCH};protocol=ssh;name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser;sdk-uri=5.6/Boot2Qt/sources/b2qt-demos/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
+    https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt_video_720p.webm;name=video1 \
+    https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
     "
 
-BRANCH = "5.5"
-QT_BRANCH = "5.5"
-SRCREV_demos = "017d5d428688ca78220e073c393df27936545f14"
+BRANCH = "dev"
+BROWSER_BRANCH = "dev"
+QT_BRANCH = "5.6"
+SRCREV_demos = "d40942e1d31dc38c101217dc3a0bc18d88bf0c99"
 SRCREV_everywhere = "6178748a6ea34df40a8e3c9ce67137e33383bb0e"
-SRCREV_qtcanvas3d = "e372a67c1bbdf695f8e550950a3dbf3106389479"
-SRCREV_qtquickcontrols = "f770dbe9d38214a37e12adb591498dcd1ad0293e"
+SRCREV_qtcanvas3d = "bb1504c271e18a26ad6ac20d55485c167671b1c2"
+SRCREV_qtquickcontrols = "5a992a14da4334364d81ad8d9e0b270ad0bb370d"
+SRCREV_qtwebbrowser = "60a8ef724c11c35413d42ef1ccd118e9c4f6c3c9"
 
+SRC_URI[video1.md5sum] = "56de4dcfd5201952dce9af9c69fcec9b"
+SRC_URI[video1.sha256sum] = "809123419acac99353439e52c870e2e497dfa8f434ef0777e6c7303e6ad27f89"
+SRC_URI[video2.md5sum] = "e03422de1dba27189872e7d579e7da1b"
+SRC_URI[video2.sha256sum] = "651e0b4d2b3272dc10bfc9edba4f0c1a7084cd087c75e8a098f7ba3454c7e485"
 
 S = "${WORKDIR}/git/basicsuite"
 
@@ -51,13 +60,22 @@ do_install_append() {
     rm -rf ${D}/data/user/camera
     rm -rf ${D}/data/user/sensorexplorer
 
+    # we need all qml and content files
     cp -r ${S}/* ${D}/data/user/qt/
-    if [ -d ${S}/../images ]; then
-        cp -r ${S}/../images ${D}/data/
+
+    # but none of the source files
+    find ${D}/data/user/qt/ \( -name '*.cpp' -or -name '*.h' -or -name '*.pro' \) -delete
+    rm -rf ${D}/data/user/qt/qtwebbrowser/tqtc-qtwebbrowser/.git
+    rm -rf ${D}/data/user/qt/qtwebbrowser/tqtc-qtwebbrowser/mockups
+
+    if [ -d ${WORKDIR}/git/images ]; then
+        install -d 0755 ${D}/data/images
+        install -m 0644 ${WORKDIR}/git/images/* ${D}/data/images/
     fi
-    if [ -d ${S}/../videos ]; then
-        cp -r ${S}/../videos ${D}/data/
-    fi
+
+    install -d -m 0755 ${D}/data/videos
+    install -m 0644 ${WORKDIR}/Qt_video_720p.webm ${D}/data/videos
+    install -m 0644 ${WORKDIR}/Qt+World+Summit+2015+Recap.mp4 ${D}/data/videos
 
     cp -r ${WORKDIR}/qt5-everywhere-demo/QtDemo/qml ${D}/data/user/qt/qt5-everywhere/
 
@@ -107,6 +125,5 @@ FILES_${PN} += " \
     "
 
 FILES_${PN}-dbg += " \
-    /data/user/*/.debug/ \
-    /data/user/qt/*/*/.debug/ \
+    /data/user/qt/qmlplugins/*/.debug/ \
     "
