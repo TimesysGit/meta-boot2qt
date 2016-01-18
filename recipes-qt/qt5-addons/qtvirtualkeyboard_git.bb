@@ -31,7 +31,12 @@ SRCREV = "91273471991b8f1097780f8171f19e7efc622be5"
 
 DEPENDS = "qtbase qtdeclarative qtsvg hunspell"
 
-EXTRA_QMAKEVARS_PRE += "CONFIG+=disable-desktop CONFIG+=lang-all CONFIG+=lipi-toolkit"
+PACKAGECONFIG ?= "lipi-toolkit lang-all"
+PACKAGECONFIG[lipi-toolkit] = "CONFIG+=lipi-toolkit"
+PACKAGECONFIG[lang-all] = "CONFIG+=lang-all"
+
+EXTRA_QMAKEVARS_PRE += "${EXTRA_OECONF}"
+EXTRA_QMAKEVARS_PRE += "${@base_contains('DISTRO_FEATURES', 'x11', '', 'CONFIG+=disable-desktop', d)}"
 
 PACKAGES += "${PN}-dictionaries"
 RRECOMMENDS_${PN} += "${PN}-dictionaries"
