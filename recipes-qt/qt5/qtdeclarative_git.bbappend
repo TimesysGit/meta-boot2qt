@@ -21,7 +21,3 @@
 #############################################################################
 
 SRCREV = "a4b2fa94d28327b83c8a1ddce5741c29cb0a7e0c"
-
-FILES_${PN}-qmlplugins += " \
-    ${OE_QMAKE_PATH_QML}/*.qmltypes \
-    "
