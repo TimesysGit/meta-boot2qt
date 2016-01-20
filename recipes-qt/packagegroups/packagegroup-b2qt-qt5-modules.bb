@@ -43,6 +43,7 @@ RDEPENDS_${PN} += " \
     qtlocation \
     qtmultimedia \
     qtquickcontrols \
+    qtquickcontrols2 \
     qtsensors \
     qtserialbus \
     qtserialport \
