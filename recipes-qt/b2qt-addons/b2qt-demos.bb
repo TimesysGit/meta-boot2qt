@@ -28,7 +28,6 @@ inherit qmake5 sdk-sources
 
 SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/demos.git;branch=${BRANCH};protocol=ssh;name=demos;sdk-uri=5.6/Boot2Qt/sources/b2qt-demos \
-    ${QT_GIT}/qt-labs-qt5-everywhere-demo.git;protocol=git;name=everywhere;destsuffix=qt5-everywhere-demo \
     ${QT_GIT}/qtcanvas3d.git;branch=${QT_BRANCH};name=qtcanvas3d;destsuffix=qtcanvas3d \
     ${QT_GIT}/qtquickcontrols.git;branch=${QT_BRANCH};name=qtquickcontrols;destsuffix=qtquickcontrols \
     git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser.git;branch=${BROWSER_BRANCH};protocol=ssh;name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser;sdk-uri=5.6/Boot2Qt/sources/b2qt-demos/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
@@ -39,8 +38,7 @@ SRC_URI = " \
 BRANCH = "dev"
 BROWSER_BRANCH = "dev"
 QT_BRANCH = "5.6"
-SRCREV_demos = "d40942e1d31dc38c101217dc3a0bc18d88bf0c99"
-SRCREV_everywhere = "6178748a6ea34df40a8e3c9ce67137e33383bb0e"
+SRCREV_demos = "eb0d282260db6f03b299029c52a73d203cc16786"
 SRCREV_qtcanvas3d = "bb1504c271e18a26ad6ac20d55485c167671b1c2"
 SRCREV_qtquickcontrols = "5a992a14da4334364d81ad8d9e0b270ad0bb370d"
 SRCREV_qtwebbrowser = "60a8ef724c11c35413d42ef1ccd118e9c4f6c3c9"
@@ -76,12 +74,6 @@ do_install_append() {
     install -d -m 0755 ${D}/data/videos
     install -m 0644 ${WORKDIR}/Qt_video_720p.webm ${D}/data/videos
     install -m 0644 ${WORKDIR}/Qt+World+Summit+2015+Recap.mp4 ${D}/data/videos
-
-    cp -r ${WORKDIR}/qt5-everywhere-demo/QtDemo/qml ${D}/data/user/qt/qt5-everywhere/
-
-    # we can't have several top-level windows in b2qt, replace Window -> Rectangle
-    sed -i '/import QtQuick.Window/c\' ${D}/data/user/qt/qt5-everywhere/qml/QtDemo/main.qml
-    sed -i 's/Window /Rectangle /1' ${D}/data/user/qt/qt5-everywhere/qml/QtDemo/main.qml
 
     cp ${WORKDIR}/qtcanvas3d/examples/canvas3d/canvas3d/threejs/planets/*.qml  ${D}/data/user/qt/canvas3d-planets
     cp ${WORKDIR}/qtcanvas3d/examples/canvas3d/canvas3d/threejs/planets/*.js ${D}/data/user/qt/canvas3d-planets
