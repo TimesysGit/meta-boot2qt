@@ -1,0 +1,10 @@
+NUC_CFLAGS             = -m64
+QMAKE_LIBS_EGL         += -lEGL
+QMAKE_LIBS_OPENGL_ES2  += -lGLESv2 -lEGL
+QMAKE_CFLAGS           += $$NUC_CFLAGS
+QMAKE_CXXFLAGS         += $$NUC_CFLAGS
+
+QMAKE_PLATFORM         += boot2qt
+
+QT_QPA_DEFAULT_PLATFORM = eglfs
+EGLFS_DEVICE_INTEGRATION = eglfs_kms
