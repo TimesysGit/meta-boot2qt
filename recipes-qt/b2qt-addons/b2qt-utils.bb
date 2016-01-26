@@ -22,16 +22,16 @@
 
 DESCRIPTION = "Boot to Qt Utils module"
 LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://src/qconnectivity/main.cpp;md5=0b2892e6aca7d0750bbd7fe6b6b1c033;beginline=1;endline=17"
+LIC_FILES_CHKSUM = "file://src/wifi/qwifimanager.h;md5=0b2892e6aca7d0750bbd7fe6b6b1c033;beginline=1;endline=17"
 
 inherit qt5-module sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-utils \
+    git://codereview.qt-project.org/tqtc-boot2qt/utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Boot2Qt/sources/b2qt-utils \
     "
 
-SRCREV = "ae6f34543b8336ad5a202916ee42a2d2bd00bfe7"
-BRANCH = "5.5"
+SRCREV = "2b81f8dbc97b446b33fb67e3196a8726ed195008"
+BRANCH = "5.6"
 
 S = "${WORKDIR}/git"
 
