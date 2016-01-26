@@ -23,6 +23,6 @@ require recipes-qt/qt5/qtwayland-native_git.bb
 
 FILESEXTRAPATHS_append := "${COREBASE}/../meta-qt5/recipes-qt/qt5/qtwayland:"
 
-SRCREV = "22caa63a70245087e0fca51f2186597c232e2d21"
+SRCREV = "2adae188cb916d5a6ffbee65abf4ee8144de9ec2"
 PV = "5.7-wip+git${SRCPV}"
 QT_MODULE_BRANCH = "wip-compositor-api"

@@ -35,7 +35,7 @@ PACKAGECONFIG += " \
     xkbcommon-evdev \
     "
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
     file://oe-device-extra.pri \
@@ -44,7 +44,7 @@ do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 }
 
-SRCREV = "3880f41e683f02b905c8cbc3c578c3f3a0a1eb2e"
+SRCREV = "8c2b4266002736da499d169a0da187e5cdc5381a"
 
 # Temporarily here, until merged upstream
 PACKAGECONFIG[openssl] = "-openssl,-no-openssl,openssl,libssl"

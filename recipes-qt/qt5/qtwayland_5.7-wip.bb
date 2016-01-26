@@ -21,8 +21,9 @@
 
 require recipes-qt/qt5/qtwayland_git.bb
 
-SRCREV = "22caa63a70245087e0fca51f2186597c232e2d21"
+SRCREV = "2adae188cb916d5a6ffbee65abf4ee8144de9ec2"
 PV = "5.7-wip+git${SRCPV}"
 QT_MODULE_BRANCH = "wip-compositor-api"
+EXTRA_QMAKEVARS_PRE += "CONFIG+=explicitlib"
 
 SRC_URI_remove = "file://0001-examples-wayland-include-server-buffer-only-when-bui.patch"

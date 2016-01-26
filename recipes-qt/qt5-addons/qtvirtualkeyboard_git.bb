@@ -26,6 +26,7 @@ LIC_FILES_CHKSUM = "file://src/virtualkeyboard/plugin.cpp;md5=8913d0b71519756d2e
 inherit qt5-module qtquickcompiler
 require recipes-qt/qt5/qt5-git.inc
 
+QT_MODULE_BRANCH = "5.6"
 SRCREV = "91273471991b8f1097780f8171f19e7efc622be5"
 
 DEPENDS = "qtbase qtdeclarative qtsvg hunspell"

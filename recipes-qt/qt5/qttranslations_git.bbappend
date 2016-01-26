@@ -19,7 +19,7 @@
 ##
 ##############################################################################
 
-SRCREV = "2d9a8c83893be4abde136ec87fc3db220ce8a0a5"
+SRCREV = "41d212290c3822b8eef151785d89ac5f5b246bde"
 
 PACKAGES += "${PN}-qtwebengine"
 FILES_${PN}-qtwebengine = " \
