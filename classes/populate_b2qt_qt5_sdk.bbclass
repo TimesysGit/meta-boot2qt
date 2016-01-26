@@ -20,16 +20,7 @@
 ##
 #############################################################################
 
-LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://${QT_LICENCE};md5=7bc9c54e450006250a60e96604c186c9"
-
 inherit populate_b2qt_sdk populate_sdk_qt5_base
-
-SRC_URI = " \
-    file://qmake.conf \
-    file://qplatformdefs.h \
-    "
-S = "${WORKDIR}"
 
 SDK_MKSPEC_DIR = "${SDK_OUTPUT}${SDKTARGETSYSROOT}${libdir}/${QT_DIR_NAME}/mkspecs"
 SDK_MKSPEC = "devices/linux-oe-generic-g++"
@@ -37,10 +28,18 @@ SDK_DEVICE_PRI = "${SDK_MKSPEC_DIR}/qdevice.pri"
 SDK_DYNAMIC_FLAGS = "-O. -pipe -g"
 
 create_sdk_files_append () {
-    # Install the toolchain user's generic device mkspec
+    # Create the toolchain user's generic device mkspec
     install -d ${SDK_MKSPEC_DIR}/${SDK_MKSPEC}
-    install -m 0644 ${WORKDIR}/qmake.conf ${SDK_MKSPEC_DIR}/${SDK_MKSPEC}
-    install -m 0644 ${WORKDIR}/qplatformdefs.h ${SDK_MKSPEC_DIR}/${SDK_MKSPEC}
+    cat > ${SDK_MKSPEC_DIR}/${SDK_MKSPEC}/qmake.conf <<EOF
+include(../common/linux_device_pre.conf)
+exists(../../oe-device-extra.pri):include(../../oe-device-extra.pri)
+include(../common/linux_device_post.conf)
+load(qt_config)
+EOF
+
+    cat > ${SDK_MKSPEC_DIR}/${SDK_MKSPEC}/qplatformdefs.h <<EOF
+#include "../../linux-g++/qplatformdefs.h"
+EOF
 
     # Fill in the qdevice.pri file which will be used by the device mksspec
     static_cflags="${TARGET_CFLAGS}"
