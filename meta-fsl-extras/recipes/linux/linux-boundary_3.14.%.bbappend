@@ -20,5 +20,10 @@
 ##
 #############################################################################
 
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+SRC_URI += " \
+        file://0001-Add-support-for-koe-tx31d200vm0baa-display.patch \
+        "
+
 # kernel image files are not needed in the image
 RDEPENDS_kernel-base = ""

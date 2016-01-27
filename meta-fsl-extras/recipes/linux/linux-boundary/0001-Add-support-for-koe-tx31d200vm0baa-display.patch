@@ -1,0 +1,42 @@
+From 524e178f97a72e9dbc81486b1af44c5749bc698b Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@theqtcompany.com>
+Date: Wed, 27 Jan 2016 13:07:39 +0200
+Subject: [PATCH] Add support for koe tx31d200vm0baa display
+
+---
+ arch/arm/boot/dts/imx6qdl-nitrogen6x.dtsi | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/arch/arm/boot/dts/imx6qdl-nitrogen6x.dtsi b/arch/arm/boot/dts/imx6qdl-nitrogen6x.dtsi
+index 1a2a358..de01d23 100644
+--- a/arch/arm/boot/dts/imx6qdl-nitrogen6x.dtsi
++++ b/arch/arm/boot/dts/imx6qdl-nitrogen6x.dtsi
+@@ -393,6 +393,7 @@
+ 		mxcfb1 = &fb_lvds;
+ 		mxcfb2 = &fb_lcd;
+ 		t_lvds = &t_lvds;
++		koe = &koe;
+ 	};
+ 
+ 	clocks {
+@@ -955,6 +956,17 @@
+ 				hsync-len = <96>;
+ 				vsync-len = <2>;
+ 			};
++			koe: tx31d200vm0baa {
++				clock-frequency = <28000000>;
++				hactive = <1280>;
++				vactive = <480>;
++				hback-porch = <200>;
++				hfront-porch = <120>;
++				vback-porch = <30>;
++				vfront-porch = <20>;
++				hsync-len = <0>;
++				vsync-len = <0>;
++			};
+ 		};
+ 	};
+ };
+-- 
+1.9.1
+
