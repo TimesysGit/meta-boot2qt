@@ -24,14 +24,14 @@
            revision="214e1801d0efc38d3b6142bdc0d8e58ca593e34c"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
-           remote="meta-qt5"
-           revision="c7cd9cb4661dd1623368d39e66c716f2222d357b"
+           remote="qtyocto"
+           revision="53f534748a7f5427ade4f9a11f8b5f91798d8ed6"
            path="sources/meta-qt5"/>
 
   <project name="meta-mingw"
            remote="qtyocto"
            path="sources/meta-mingw"
-           revision="bf67d2df6f873cc480466ea7c0771d57942bc3e0"/>
+           revision="0cfd9b1a41b38a2f7c1cfcbc2abe046e3737ae31"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"

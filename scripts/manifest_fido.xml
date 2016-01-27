@@ -24,8 +24,8 @@
            revision="fido"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
-           remote="meta-qt5"
-           revision="master"
+           remote="qtyocto"
+           revision="master-mingw"
            path="sources/meta-qt5"/>
 
   <project name="meta-mingw"
