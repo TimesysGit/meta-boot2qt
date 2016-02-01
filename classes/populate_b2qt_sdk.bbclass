@@ -22,8 +22,6 @@
 
 inherit populate_sdk
 
-DEPENDS_sdkmingw32 += "gzip-native"
-
 POPULATE_SDK_POST_HOST_COMMAND_append_sdkmingw32 = " replace_host_symlink;"
 
 replace_host_symlink() {
@@ -41,6 +39,6 @@ fakeroot tar_sdk_sdkmingw32() {
         # Package it up
         mkdir -p ${SDK_DEPLOY}
         cd ${SDK_OUTPUT}/${SDKPATH}
-        zip -r ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.zip sysroots
+        7z a ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.7z sysroots
 }
 
