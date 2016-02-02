@@ -253,21 +253,21 @@ BB_DISKMON_DIRS = "\
 #SSTATE_MIRRORS ?= "\
 #file://.* http://someserver.tld/share/sstate/PATH;downloadfilename=PATH \n \
 #file://.* file:///some/local/dir/sstate/PATH"
-SSTATE_MIRRORS ?= "file://.* http://ci-files01-hki.ci.local/yocto/sstate-cache/PATH"
+SSTATE_MIRRORS ?= "file://.* http://yocto-cache.ci.local/sstate-cache/PATH"
 
 PREMIRRORS = "\
-ftp://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
-http://.*/.*  http://ci-files01-hki.ci.local/yocto/sources/ \n \
-https://.*/.* http://ci-files01-hki.ci.local/yocto/sources/ \n \
-bzr://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
-cvs://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
-git://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
-gitsm://.*/.* http://ci-files01-hki.ci.local/yocto/sources/ \n \
-hg://.*/.*    http://ci-files01-hki.ci.local/yocto/sources/ \n \
-osc://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
-p4://.*/.*    http://ci-files01-hki.ci.local/yocto/sources/ \n \
-svk://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n \
-svn://.*/.*   http://ci-files01-hki.ci.local/yocto/sources/ \n"
+ftp://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+http://.*/.*  http://yocto-cache.ci.local/sources/ \n \
+https://.*/.* http://yocto-cache.ci.local/sources/ \n \
+bzr://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+cvs://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+git://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+gitsm://.*/.* http://yocto-cache.ci.local/sources/ \n \
+hg://.*/.*    http://yocto-cache.ci.local/sources/ \n \
+osc://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+p4://.*/.*    http://yocto-cache.ci.local/sources/ \n \
+svk://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+svn://.*/.*   http://yocto-cache.ci.local/sources/ \n"
 
 #
 # Qemu configuration
