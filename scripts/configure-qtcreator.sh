@@ -23,30 +23,34 @@
 
 set -e
 
-MKSPEC="devices/linux-oe-generic-g++"
 ABI="arm-linux-generic-elf-32bit"
-### TBD: detect ABI
+CONFIG=""
 
 printUsage ()
 {
-    echo "Usage: $0 <toolchain-environment-setup-file> [--remove] [--sdktool <path>]"
+    echo "Usage: $0 --config <environment-setup-file> [--remove] [--qtcreator <path>] [--name <basename>]"
 }
 
 while test -n "$1"; do
   case "$1" in
-    "--help" | "-h")
-      printUsage
-      exit 0
-      ;;
     "--remove")
       REMOVEONLY=1
       ;;
-    "--sdktool")
+    "--qtcreator")
       shift
-      SDKTOOL=$1
+      QTCREATOR=$1
+      ;;
+    "--config")
+      shift
+      CONFIG=$1
+      ;;
+    "--name")
+      shift
+      NAME=$1
       ;;
     *)
-      CONFIG=$1
+      printUsage
+      exit 0
       ;;
   esac
   shift
@@ -57,16 +61,20 @@ if [ ! -f "$CONFIG" ]; then
    exit 1
 fi
 
-if [ -z "${SDKTOOL}" ]; then
-    SDKTOOL="${HOME}/Qt/Tools/QtCreator/bin/sdktool"
+if [ -z "${QTCREATOR}" ]; then
+    SDKTOOL="${HOME}/Qt/Tools/QtCreator/libexec/qtcreator/sdktool"
+else
+    SDKTOOL="${QTCREATOR}/libexec/qtcreator/sdktool"
 fi
 if [ ! -x ${SDKTOOL} ]; then
-    echo "Cannot find 'sdktool'"
+    echo "Cannot find 'sdktool' from QtCreator"
+    printUsage
     exit 1
 fi
 
 source $CONFIG
 
+MKSPEC="devices/linux-oe-generic-g++"
 MKSPECPATH=$(find ${OECORE_TARGET_SYSROOT} -name $(basename ${MKSPEC}))
 if [ ! -d "${MKSPECPATH}" ]; then
     echo "Error: could not find mkspec ${MKSPEC} from the toolchain"
@@ -77,37 +85,33 @@ MACHINE=$(grep '^MACHINE' ${MKSPECPATH}/../../qdevice.pri | cut -d'=' -f2 | tr -
 
 RELEASE=$(qmake -query QT_VERSION)
 
+NAME=${NAME:-"Custom Qt ${RELEASE} ${MACHINE}"}
 BASEID="byos.${RELEASE}.${MACHINE}"
-
-BASENAME="Custom Qt Embedded"
-TOOLCHAINNAME="GCC (${BASENAME} ${RELEASE} ${MACHINE})"
-QTNAME="${BASENAME} ${RELEASE} ${MACHINE}"
-KITNAME="${BASENAME} ${RELEASE} ${MACHINE} Kit"
 
 ${SDKTOOL} rmKit --id ${BASEID}.kit 2>/dev/null || true
 ${SDKTOOL} rmQt --id ${BASEID}.qt || true
 ${SDKTOOL} rmTC --id ProjectExplorer.ToolChain.Gcc:${BASEID}.tc || true
 
 if [ -n "${REMOVEONLY}" ]; then
-    echo "Kit removed: ${KITNAME}"
+    echo "Kit removed: ${NAME}"
     exit 0
 fi
 
 ${SDKTOOL} addTC \
     --id "ProjectExplorer.ToolChain.Gcc:${BASEID}.tc" \
-    --name "${TOOLCHAINNAME}" \
+    --name "GCC (${NAME})" \
     --path "$(type -p ${OE_QMAKE_CXX})" \
     --abi "${ABI}"
 
 ${SDKTOOL} addQt \
     --id "${BASEID}.qt" \
-    --name "${QTNAME}" \
+    --name "${NAME}" \
     --type "Boot2Qt.QtVersionType" \
     --qmake "$(type -p qmake)"
 
 ${SDKTOOL} addKit \
     --id "${BASEID}.kit" \
-    --name "${KITNAME}" \
+    --name "${NAME}" \
     --qt "${BASEID}.qt" \
     --debuggerengine "1" \
     --debugger "$(type -p ${GDB})" \
@@ -117,5 +121,4 @@ ${SDKTOOL} addKit \
     --icon ":/boot2qt/images/B2Qt_QtC_icon.png" \
     --mkspec "${MKSPEC}"
 
-echo "Configured Qt Creator with new kit:"
-echo "    ${KITNAME}"
+echo "Configured Qt Creator with new kit: ${NAME}"
