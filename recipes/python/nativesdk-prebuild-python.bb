@@ -42,6 +42,5 @@ do_install() {
 }
 
 sysroot_stage_dirs_append() {
-    install -d ${STAGING_BINDIR}
-    cp ${WORKDIR}/python/python27.dll -d ${STAGING_BINDIR}
+    sysroot_stage_dir $from${bindir} $to${bindir}
 }
