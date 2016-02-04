@@ -27,12 +27,6 @@ set -e
 RELEASE=5.6
 UPLOADPATH=QT@ci-files02-hki.ci.local:/srv/jenkins_data/enterprise/b2qt/yocto/${RELEASE}/
 
-if [ ${AUTOMOTIVE} = "true" ]; then
-  PROJECT=automotive
-else
-  PROJECT=embedded
-fi
-
 if [ -e tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.hdd ]; then
   7z a -l b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
     $PWD/tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.hdd
@@ -52,4 +46,7 @@ fi
 
 if [ -e tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.sh ]; then
   rsync tmp/deploy/sdk/b2qt-x86_64-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.sh ${UPLOADPATH}/
+fi
+if [ -e tmp/deploy/sdk/b2qt-i686-mingw32-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.7z ]; then
+  rsync tmp/deploy/sdk/b2qt-i686-mingw32-meta-toolchain-b2qt-${PROJECT}-qt5-sdk-${MACHINE}.7z ${UPLOADPATH}/
 fi
