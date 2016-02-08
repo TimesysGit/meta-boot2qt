@@ -24,7 +24,7 @@ DESCRIPTION = "Qt component for application lifecycle management"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://LICENSE.GPLv3;md5=311507adb75495acc0b61d69109485ce"
 
-inherit qt5-module sdk-sources
+inherit qmake5 sdk-sources
 
 SRC_URI = " \
     git://codereview.qt-project.org/qt/qtapplicationmanager;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Src/qtapplicationmanager \
@@ -56,3 +56,4 @@ FILES_${PN} += "\
     ${libdir}/appman \
     ${datadir}/dbus-1"
 FILES_${PN}-dbg += "${libdir}/appman/.debug"
+FILES_${PN}-dev += "${OE_QMAKE_PATH_LIBS}/*.prl"
