@@ -21,8 +21,22 @@
 
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
-SRC_URI += " \
+SRC_URI_append_class-target = " \
     file://0001-Remove-qgltf.patch \
     "
 
 SRCREV = "ab5dcff44a80884834c5e480e59a2424003c39f1"
+
+DEPENDS += "qt3d-native"
+
+SRC_URI += " \
+    file://0001-Allow-a-tools-only-build.patch \
+    "
+PACKAGECONFIG ??= ""
+PACKAGECONFIG_class-native ??= "tools-only"
+PACKAGECONFIG_class-nativesdk ??= "tools-only"
+PACKAGECONFIG[tools-only] = "CONFIG+=tools-only"
+
+EXTRA_QMAKEVARS_PRE += "${EXTRA_OECONF}"
+
+BBCLASSEXTEND += "native nativesdk"
