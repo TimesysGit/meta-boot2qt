@@ -19,12 +19,6 @@
 ##
 ##############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-SRC_URI += "\
-    file://ARM-perf-add-support-for-perf-registers-API.diff \
-    file://ARM-perf-wire-up-perf_regs-and-unwind-support-for-AR.patch \
-    "
-
 # kernel image files are not needed in the image
 RDEPENDS_kernel-base = ""
 
