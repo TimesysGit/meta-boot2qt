@@ -23,7 +23,7 @@ DESCRIPTION = "Proxy daemon for QtSimulator"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://proxy.h;md5=ba04e32af7257890758a149b0c14d11a;beginline=1;endline=17"
 
-inherit qt5-module
+inherit qmake5
 
 SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/emulator;branch=${BRANCH};protocol=ssh \
