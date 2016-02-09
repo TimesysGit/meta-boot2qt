@@ -75,7 +75,7 @@
            groups="notdefault,nuc"/>
   <project name="meta-tegra"
            remote="playground"
-           revision="85a0974d23ebb7b276f48a2604d107252b3b9064"
+           revision="3125d29a5c58a471b67104d1bff965df38eb3115"
            path="sources/meta-tegra"
            groups="notdefault,nvidia-logan"/>
   <project name="jetson-tk1-pro"
