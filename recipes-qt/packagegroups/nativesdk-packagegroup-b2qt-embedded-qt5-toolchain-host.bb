@@ -27,7 +27,7 @@ inherit nativesdk packagegroup qtquickcompiler
 
 RDEPENDS_${PN} += "\
     nativesdk-packagegroup-b2qt-embedded-toolchain-host \
-    nativesdk-qttools \
+    nativesdk-qttools-tools \
     nativesdk-qtbase-tools \
     nativesdk-qtbase-tools-staticdev \
     nativesdk-qtdeclarative-tools \
