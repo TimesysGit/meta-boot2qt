@@ -37,7 +37,6 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/meta-raspberrypi \
   ${BSPDIR}/sources/meta-toradex \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
-  ${BSPDIR}/sources/meta-qt5 \
   ${BSPDIR}/sources/meta-openembedded/meta-ruby \
   ${BSPDIR}/sources/meta-b2qt \
   ${BSPDIR}/sources/meta-b2qt/meta-ti-extras \
@@ -45,6 +44,7 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/meta-b2qt/meta-beagleboard-extras \
   ${BSPDIR}/sources/meta-b2qt/meta-toradex-extras \
   ${BSPDIR}/sources/meta-mingw \
+  ${BSPDIR}/sources/meta-qt5 \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
   ${BSPDIR}/sources/poky/meta \
