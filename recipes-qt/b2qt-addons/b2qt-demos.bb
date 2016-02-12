@@ -42,7 +42,7 @@ QT_BRANCH = "5.6"
 SRCREV_demos = "6175a1ca037552ab237c6418233d7135753cf48d"
 SRCREV_qtcanvas3d = "bb1504c271e18a26ad6ac20d55485c167671b1c2"
 SRCREV_qtquickcontrols = "5a992a14da4334364d81ad8d9e0b270ad0bb370d"
-SRCREV_qtwebbrowser = "60a8ef724c11c35413d42ef1ccd118e9c4f6c3c9"
+SRCREV_qtwebbrowser = "c86bb8a400f79be205025598310926df5d01c7bc"
 SRCREV_FORMAT = "demos_qtcanvas3d_qtquickcontrols_qtwebbrowser"
 
 SRC_URI[video1.md5sum] = "56de4dcfd5201952dce9af9c69fcec9b"
