@@ -19,17 +19,25 @@
 ##
 ##############################################################################
 
-DESCRIPTION = "Device Creation specific Qt packages"
+DESCRIPTION = "Boot to Qt Wayland Demo Compositor"
 LICENSE = "QtEnterprise"
+LIC_FILES_CHKSUM = "file://main.cpp;md5=56e7f80d726792929d5d089852de7cde;beginline=1;endline=39"
 
-inherit packagegroup
+inherit qmake5 sdk-sources
 
-PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
-
-RDEPENDS_${PN} += " \
-    b2qt-appcontroller \
-    b2qt-utils \
-    b2qt-launcher \
-    b2qt-demos \
-    democompositor \
+SRC_URI = " \
+    git://codereview.qt-project.org/tqtc-boot2qt/demos;branch=${BRANCH};protocol=ssh;sdk-uri=5.5/Boot2Qt/sources/b2qt-demos \
     "
+
+SRCREV = "b6217fb2bb7702324da2a9f3f45be4a60e6ffe6c"
+BRANCH = "5.6"
+
+S = "${WORKDIR}/git/wayland/democompositor/"
+
+DEPENDS = "qtbase qtwayland"
+RDEPENDS_${PN} = "qtwayland (>= 5.7)"
+
+do_install_append() {
+    install -d -m0775 ${D}/usr/bin
+    install -m0775 ${B}/democompositor ${D}/usr/bin
+}
