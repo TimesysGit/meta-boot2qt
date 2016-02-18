@@ -1,0 +1,37 @@
+From 734ccf82db363efddb960b1c4f7db4081f2fdd7c Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@theqtcompany.com>
+Date: Thu, 18 Feb 2016 12:49:01 +0200
+Subject: [PATCH] Use hdmi as primary display only if connected
+
+Test if HDMI display is connected before setting it as primary display.
+Otherwise set lvds as primary display. Test can be overridden by
+setting video_interfaces env.
+---
+ include/configs/mx6sabre_common.h | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/include/configs/mx6sabre_common.h b/include/configs/mx6sabre_common.h
+index a8746a4..485f232 100644
+--- a/include/configs/mx6sabre_common.h
++++ b/include/configs/mx6sabre_common.h
+@@ -163,8 +163,16 @@
+ 	"video_args_lcd=setenv video_args $video_args " \
+ 		"video=mxcfb${fb}:dev=lcd,CLAA-WVGA,if=RGB666\0" \
+ 	"fb=0\0" \
+-	"video_interfaces=hdmi lvds lcd\0" \
++	"video_interfaces=\0" \
+ 	"video_args_script=" \
++        "if test -z \"${video_interfaces}\"; then " \
++            "i2c dev 1; " \
++            "if i2c probe 0x50; then " \
++                  "setenv video_interfaces hdmi lvds lcd; " \
++            "else " \
++                  "setenv video_interfaces lvds hdmi lcd; " \
++            "fi; " \
++        "fi; " \
+ 		"for v in ${video_interfaces}; do " \
+ 			"run video_args_${v}; " \
+ 			"setexpr fb $fb + 1; " \
+-- 
+1.9.1
+
