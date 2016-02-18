@@ -27,7 +27,7 @@ inherit qt5-module qtquickcompiler
 require recipes-qt/qt5/qt5-git.inc
 
 QT_MODULE_BRANCH = "5.6"
-SRCREV = "91273471991b8f1097780f8171f19e7efc622be5"
+SRCREV = "214dc00d3e40fddba8acb2ea602aba705b1e3c81"
 
 DEPENDS = "qtbase qtdeclarative qtsvg hunspell"
 
