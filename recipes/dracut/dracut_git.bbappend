@@ -19,6 +19,10 @@
 ##
 ##############################################################################
 
+PV = "044+git${SRCREV}"
+SRCREV = "1bc3e733f96033a508841e97fe08da7a12851782"
+SRC_URI = "git://git.kernel.org/pub/scm/boot/dracut/dracut.git;protocol=http"
+
 # Upstream recipe mistakenly depends on systemd, we remove that dependency here.
 RDEPENDS_${PN}_remove = "systemd"
 REQUIRED_DISTRO_FEATURES_remove = "systemd"
