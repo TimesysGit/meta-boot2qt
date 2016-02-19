@@ -21,7 +21,7 @@
 
 DESCRIPTION = "Proxy daemon for QtSimulator"
 LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://proxy.h;md5=ba04e32af7257890758a149b0c14d11a;beginline=1;endline=17"
+LIC_FILES_CHKSUM = "file://proxy.h;md5=709ec9e3c40137fa6068a903c57acdc1;beginline=1;endline=17"
 
 inherit qmake5
 
@@ -31,7 +31,7 @@ SRC_URI = " \
     file://emulatorproxy.service \
     "
 
-SRCREV = "89ca944fae7106a55803ddce6fd84447685b61e5"
+SRCREV = "ab4a9f13831f44f3dcd375fa17ed7e102647febe"
 BRANCH = "master"
 
 S = "${WORKDIR}/git/src/helperlibs/proxy"
