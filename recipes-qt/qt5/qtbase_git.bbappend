@@ -44,7 +44,7 @@ do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 }
 
-SRCREV = "8c2b4266002736da499d169a0da187e5cdc5381a"
+SRCREV = "719623a11d57da6a56d069a5ca8161531a37776b"
 
 # Temporarily here, until merged upstream
 PACKAGECONFIG[openssl] = "-openssl,-no-openssl,openssl,libssl"

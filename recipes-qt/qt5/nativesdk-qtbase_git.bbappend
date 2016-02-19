@@ -24,4 +24,4 @@ EXTRA_QTLIB_append = " Network Sql"
 # Needed by qttools
 EXTRA_QTLIB_append = " Xml"
 
-SRCREV = "8c2b4266002736da499d169a0da187e5cdc5381a"
+SRCREV = "719623a11d57da6a56d069a5ca8161531a37776b"

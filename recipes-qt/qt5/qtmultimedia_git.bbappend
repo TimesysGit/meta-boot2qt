@@ -21,4 +21,4 @@
 
 PACKAGECONFIG += "${@base_contains("DISTRO_FEATURES", "gstreamer010", "gstreamer010", "gstreamer", d)}"
 
-SRCREV = "d633c02ce21b4b5aa9d9877c9424fcc0f363aa6b"
+SRCREV = "241444eab724ba0cb4fa142c5ccb02243b6f2dc2"
