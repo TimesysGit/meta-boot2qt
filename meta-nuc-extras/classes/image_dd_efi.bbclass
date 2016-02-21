@@ -19,26 +19,27 @@
 ##
 ##############################################################################
 
-DEPLOY_CONF_NAME = "Intel NUC"
+DESCRIPTION = "Extends image_dd class to boot via GRUB-EFI and initramfs."
+LICENSE = "CLOSED"
 
-DISTRO_FEATURES_DEFAULT += "wayland weston"
+inherit image_dd
 
-DISTRO_FEATURES_remove = "usbgadget"
+EXTRA_IMAGECMD_ext3 += "-L rootfs"
+IMAGE_DEPENDS_ext3 += "initramfs-basic:do_rootfs"
 
-IMAGE_CLASSES += "image_dd_efi"
-IMAGE_FSTYPES += "ext3 dd"
+IMAGE_CMD_ext3_prepend() {
 
-INITRAMFS_IMAGE = "initramfs-basic"
+    # https://www.kernel.org/doc/Documentation/x86/early-microcode.txt
+    microcode="${@bb.utils.contains('MACHINE_FEATURES', 'intel-ucode', '${DEPLOY_DIR_IMAGE}/microcode.cpio ', '', d)}"
+    cat ${microcode} ${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz > ${IMAGE_ROOTFS}/boot/initramfs
+    chmod 0644 ${IMAGE_ROOTFS}/boot/initramfs
+}
 
-SYSVINIT_ENABLED_GETTYS = "1"
+do_populate_boot() {
 
-MACHINE_EXTRA_INSTALL = "\
-        wayland \
-        mesa-megadriver \
-        grub-efi-config \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK = " \
-        mesa-dev \
-        "
+    mkdir -p ${WORKDIR}/EFI/BOOT/
+    # Path where EFI firmware searches for EFI executable
+    cp ${DEPLOY_DIR_IMAGE}/bootx64.efi ${WORKDIR}/EFI/BOOT/
+    mcopy -s -i ${WORKDIR}/boot.img ${WORKDIR}/EFI ::/EFI
+}
 

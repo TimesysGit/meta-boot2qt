@@ -19,26 +19,22 @@
 ##
 ##############################################################################
 
-DEPLOY_CONF_NAME = "Intel NUC"
+DESCRIPTION = "Basic initramfs image. Useful as a template for more advanced functionality."
+LICENSE = "CLOSED"
 
-DISTRO_FEATURES_DEFAULT += "wayland weston"
+# findfs from busybox fails to do its jobs, the full version from util-linux-findfs works fine
+PACKAGE_INSTALL = "init-basic busybox util-linux-findfs ${ROOTFS_BOOTSTRAP_INSTALL}"
 
-DISTRO_FEATURES_remove = "usbgadget"
+# Do not pollute the initramfs image with rootfs features
+IMAGE_FEATURES = ""
 
-IMAGE_CLASSES += "image_dd_efi"
-IMAGE_FSTYPES += "ext3 dd"
+export IMAGE_BASENAME = "initramfs-basic"
+IMAGE_LINGUAS = ""
 
-INITRAMFS_IMAGE = "initramfs-basic"
+IMAGE_FSTYPES = "cpio.gz"
+inherit core-image
 
-SYSVINIT_ENABLED_GETTYS = "1"
+IMAGE_ROOTFS_SIZE = "8192"
 
-MACHINE_EXTRA_INSTALL = "\
-        wayland \
-        mesa-megadriver \
-        grub-efi-config \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK = " \
-        mesa-dev \
-        "
+BAD_RECOMMENDATIONS += "busybox-syslog"
 

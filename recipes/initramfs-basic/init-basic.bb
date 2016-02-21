@@ -19,26 +19,16 @@
 ##
 ##############################################################################
 
-DEPLOY_CONF_NAME = "Intel NUC"
+SUMMARY = "Simple init script that mounts root filesystem by label."
+LICENSE = "CLOSED"
+SRC_URI = "file://init.sh"
 
-DISTRO_FEATURES_DEFAULT += "wayland weston"
+S = "${WORKDIR}"
 
-DISTRO_FEATURES_remove = "usbgadget"
+do_install () {
+    install -m 0755 ${WORKDIR}/init.sh ${D}/init
+}
 
-IMAGE_CLASSES += "image_dd_efi"
-IMAGE_FSTYPES += "ext3 dd"
+inherit allarch
 
-INITRAMFS_IMAGE = "initramfs-basic"
-
-SYSVINIT_ENABLED_GETTYS = "1"
-
-MACHINE_EXTRA_INSTALL = "\
-        wayland \
-        mesa-megadriver \
-        grub-efi-config \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK = " \
-        mesa-dev \
-        "
-
+FILES_${PN} += "/init"

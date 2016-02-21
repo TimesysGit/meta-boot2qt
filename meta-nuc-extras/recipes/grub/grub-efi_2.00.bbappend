@@ -19,26 +19,22 @@
 ##
 ##############################################################################
 
-DEPLOY_CONF_NAME = "Intel NUC"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += "file://grub.cfg"
 
-DISTRO_FEATURES_DEFAULT += "wayland weston"
+do_deploy_prepend() {
 
-DISTRO_FEATURES_remove = "usbgadget"
+cat > ${WORKDIR}/cfg <<EOF
+search.file /boot/grub2/grub.cfg root
+set prefix=/boot/grub2
+EOF
+}
 
-IMAGE_CLASSES += "image_dd_efi"
-IMAGE_FSTYPES += "ext3 dd"
+do_install_append() {
 
-INITRAMFS_IMAGE = "initramfs-basic"
+    install -d ${D}/boot/grub2/
+    install -m 644 ${WORKDIR}/grub.cfg ${D}/boot/grub2/
+}
 
-SYSVINIT_ENABLED_GETTYS = "1"
-
-MACHINE_EXTRA_INSTALL = "\
-        wayland \
-        mesa-megadriver \
-        grub-efi-config \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK = " \
-        mesa-dev \
-        "
-
+PACKAGES += "${PN}-config"
+FILES_${PN}-config = "/boot/grub2/"
