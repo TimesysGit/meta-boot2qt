@@ -26,17 +26,3 @@ SRC_URI_append_class-target = " \
     "
 
 SRCREV = "190795b1f884620ba8b31d3998ac97107d4f4eb7"
-
-DEPENDS += "qt3d-native"
-
-SRC_URI += " \
-    file://0001-Allow-a-tools-only-build.patch \
-    "
-PACKAGECONFIG ??= ""
-PACKAGECONFIG_class-native ??= "tools-only"
-PACKAGECONFIG_class-nativesdk ??= "tools-only"
-PACKAGECONFIG[tools-only] = "CONFIG+=tools-only"
-
-EXTRA_QMAKEVARS_PRE += "${EXTRA_OECONF}"
-
-BBCLASSEXTEND += "native nativesdk"

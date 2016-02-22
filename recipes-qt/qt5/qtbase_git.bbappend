@@ -47,12 +47,4 @@ do_configure_prepend() {
 SRCREV = "719623a11d57da6a56d069a5ca8161531a37776b"
 
 # Temporarily here, until merged upstream
-PACKAGECONFIG[openssl] = "-openssl,-no-openssl,openssl,libssl"
 PACKAGECONFIG[kms] = "-kms,-no-kms,drm virtual/egl"
-
-do_install_append() {
-    # Temporarily here, until merged upstream
-    sed -i -e 's|${STAGING_DIR_NATIVE}${prefix_native}|$$[QT_HOST_PREFIX]|g' \
-        -e 's|${STAGING_DIR_HOST}|$$[QT_SYSROOT]|g' \
-        ${D}/${OE_QMAKE_PATH_QT_ARCHDATA}/mkspecs/*.pri
-}

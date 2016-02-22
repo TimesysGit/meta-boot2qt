@@ -19,9 +19,4 @@
 ##
 ##############################################################################
 
-# Needed by qtxmlpatterns
-EXTRA_QTLIB_append = " Network Sql"
-# Needed by qttools
-EXTRA_QTLIB_append = " Xml"
-
 SRCREV = "719623a11d57da6a56d069a5ca8161531a37776b"
