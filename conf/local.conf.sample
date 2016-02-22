@@ -265,7 +265,6 @@ gitsm://.*/.* http://yocto-cache.ci.local/sources/ \n \
 hg://.*/.*    http://yocto-cache.ci.local/sources/ \n \
 osc://.*/.*   http://yocto-cache.ci.local/sources/ \n \
 p4://.*/.*    http://yocto-cache.ci.local/sources/ \n \
-svk://.*/.*   http://yocto-cache.ci.local/sources/ \n \
 svn://.*/.*   http://yocto-cache.ci.local/sources/ \n"
 
 #
