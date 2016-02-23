@@ -19,32 +19,8 @@
 ##
 ##############################################################################
 
-include conf/distro/include/imx6.inc
-
-DEPLOY_CONF_NAME = "Kontron SMARC-sAMX6i"
-
-KERNEL_IMAGETYPE = "uImage"
-
-BOOTFS_CONTENT = " "
-
-MACHINE_EXTRA_INSTALL = "\
-        libgal-mx6 \
-        libegl-mx6 \
-        libgles2-mx6 \
-        ${@base_contains("DISTRO_FEATURES", "gstreamer010", "gst-fsl-plugin", "", d)} \
-        ${@base_contains("DISTRO_FEATURES", "gstreamer", "gstreamer1.0-plugins-imx-meta", "", d)} \
-        kernel-devicetree \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK += " \
-        libgal-mx6 \
-        libegl-mx6 \
-        libegl-mx6-dev \
-        libgles2-mx6 \
-        libgles2-mx6-dev \
-        "
-
-KERNEL_MODULE_AUTOLOAD += "mxc_v4l2_capture"
-
-BBMASK ?= " "
-BBMASK .= "|meta-smx6/recipes-qt"
+do_configure_prepend() {
+    echo "CONFIG_NAMESPACES=y"              >> ${WORKDIR}/defconfig
+    echo "CONFIG_FHANDLE=y"                 >> ${WORKDIR}/defconfig
+    echo "CONFIG_CGROUPS=y"                 >> ${WORKDIR}/defconfig
+}

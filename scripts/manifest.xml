@@ -37,7 +37,7 @@
            remote="yocto"
            revision="c9f259a4bf8472dfa3ff75f1c3fcbe5e0ded7aaf"
            path="sources/meta-fsl-arm"
-           groups="notdefault,fsl,toradex,architech,ti,bbb"/>
+           groups="notdefault,fsl,toradex,architech,ti,bbb,smx6"/>
   <project name="meta-ti"
            remote="yocto"
            revision="0a222c70845d19a2213ac36803361e8531768cca"
@@ -52,7 +52,7 @@
            remote="freescale"
            revision="ad90ca98459f5de9483bb3ba5a81be0a67b078c3"
            path="sources/meta-fsl-arm-extra"
-           groups="notdefault,fsl,toradex,architech"/>
+           groups="notdefault,fsl,toradex,architech,smx6"/>
   <project name="meta-beagleboard"
            remote="beagleboard"
            revision="b5c709b2b6bd3bf236df923fa8f245a00fbb1b60"
@@ -73,6 +73,7 @@
            revision="ead0a5c115e632015d8358f4f304ec8908732f5f"
            path="sources/meta-intel"
            groups="notdefault,nuc"/>
+
   <project name="meta-tegra"
            remote="playground"
            revision="3125d29a5c58a471b67104d1bff965df38eb3115"
@@ -83,6 +84,11 @@
            revision="a376c795d5361fda4ea5f19feecc23ab7e753646"
            path="sources/jetson-tk1-pro"
            groups="notdefault,nvidia-logan"/>
+  <project name="meta-smx6"
+           remote="playground"
+           revision="c2f639ef4b2fd5809ab95fb330d28c2716aa290d"
+           path="sources/meta-smx6"
+           groups="notdefault,smx6"/>
 
 </manifest>
 

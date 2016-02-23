@@ -95,8 +95,11 @@ get_groups() {
     apalis-imx6|colibri-imx6|colibri-vf)
       PROJECT_GROUPS="toradex"
     ;;
-    imx53qsb|imx6qsabresd|imx6dlsabresd|nitrogen6x|smarc-samx6i)
+    imx53qsb|imx6qsabresd|imx6dlsabresd|nitrogen6x)
       PROJECT_GROUPS="fsl"
+    ;;
+    smarc-samx6i)
+      PROJECT_GROUPS="smx6"
     ;;
     tibidabo)
       PROJECT_GROUPS="architech"

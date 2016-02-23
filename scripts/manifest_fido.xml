@@ -73,6 +73,7 @@
            revision="fido"
            path="sources/meta-intel"
            groups="notdefault,nuc"/>
+
   <project name="meta-tegra"
            remote="playground"
            revision="master"
@@ -83,6 +84,10 @@
            revision="master"
            path="sources/jetson-tk1-pro"
            groups="notdefault,nvidia-logan"/>
-
+  <project name="meta-smx6"
+           remote="playground"
+           revision="fido"
+           path="sources/meta-smx6"
+           groups="notdefault,smx6"/>
 </manifest>
 
