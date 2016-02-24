@@ -32,6 +32,7 @@ SRC_URI = " \
     file://0002-u-boot-Merge-ostree-s-and-systems-uEnv.txt.patch \
     file://0003-Allow-updating-files-in-root-of-boot.patch \
     file://0004-Mount-boot-partition.patch \
+    file://0005-Do-not-use-grub2-mkconfig.patch \
     "
 
 SRCREV = "efdb4d8f443768e59529c299290bee8b1f8f93c3"
