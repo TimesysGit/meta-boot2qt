@@ -21,6 +21,5 @@
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += " \
-        file://0001-Update-default-args-for-apalis-imx6.patch \
-        file://0001-colibri-imx6-enable-sdboot-by-default.patch \
+        file://0001-colibri-vf-remove-console-from-tty1.patch \
         "

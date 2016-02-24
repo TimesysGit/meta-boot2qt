@@ -1,0 +1,25 @@
+From f480a948551b0e5592d93cb7a5dc1653de900909 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@theqtcompany.com>
+Date: Wed, 24 Feb 2016 16:01:33 +0200
+Subject: [PATCH] colibri vf: remove console from tty1
+
+---
+ include/configs/colibri_vf.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/colibri_vf.h b/include/configs/colibri_vf.h
+index b870812..0726fc5 100644
+--- a/include/configs/colibri_vf.h
++++ b/include/configs/colibri_vf.h
+@@ -202,7 +202,7 @@
+ 		"fatload ${interface} 0:1 ${loadaddr} flash_blk.img && " \
+ 		"source ${loadaddr}\0" \
+ 	"setup=setenv setupargs " \
+-		"console=tty1 console=${console}" \
++		"console=${console}" \
+ 		",${baudrate}n8 ${memargs} consoleblank=0\0" \
+ 	"setupdate=run setsdupdate || run setusbupdate || run setethupdate\0" \
+ 	"setusbupdate=usb start && setenv interface usb && " \
+-- 
+1.9.1
+
