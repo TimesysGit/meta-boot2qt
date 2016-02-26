@@ -31,5 +31,5 @@ RDEPENDS_${PN} += " \
     b2qt-utils \
     b2qt-launcher \
     b2qt-demos \
-    democompositor \
+    ${@base_contains("DISTRO_FEATURES", "wayland", "democompositor", "", d)} \
     "
