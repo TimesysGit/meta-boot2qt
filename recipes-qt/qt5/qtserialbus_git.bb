@@ -31,4 +31,5 @@ LIC_FILES_CHKSUM = " \
 
 DEPENDS += "qtbase qtserialport"
 
+QT_MODULE_BRANCH = "5.6.0"
 SRCREV = "eded6c6c20075628d526541dae94356d3d51965d"

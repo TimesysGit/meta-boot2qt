@@ -25,4 +25,5 @@ SRC_URI_append_class-target = " \
     file://0001-Remove-qgltf.patch \
     "
 
+QT_MODULE_BRANCH = "5.6.0"
 SRCREV = "190795b1f884620ba8b31d3998ac97107d4f4eb7"
