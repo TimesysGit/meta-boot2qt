@@ -29,7 +29,7 @@ SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Boot2Qt/sources/b2qt-utils \
     "
 
-SRCREV = "2b81f8dbc97b446b33fb67e3196a8726ed195008"
+SRCREV = "a34cacb1a239dff4033b6beffd811b35db7c339f"
 BRANCH = "5.6"
 
 S = "${WORKDIR}/git"
