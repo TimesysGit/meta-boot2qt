@@ -20,16 +20,23 @@
 ##############################################################################
 
 python __anonymous() {
+    provider = "qtquickcompiler"
+
     sdk_path = d.getVar('QT_SDK_PATH', True) or ""
     if len(sdk_path) != 0:
-        bb.note("TODO: QtQuickCompiler not yet available for external builds")
-    else:
-        pn = d.getVar("PN", True)
-        if "toolchain-host" in pn:
-            d.appendVar('RDEPENDS_' + pn, " nativesdk-qtquickcompiler-tools")
-        if "toolchain-target" in pn:
-            d.appendVar('RDEPENDS_' + pn, " qtquickcompiler-dev")
+        qtquickcompiler_path = d.getVar('B2QTBASE', True) + "/recipes-qt/qt5-addons/qtquickcompiler-sdk"
+        if not os.path.isdir(qtquickcompiler_path):
+            bb.note("QtQuickCompiler not available")
+            return
         else:
-            d.appendVar('DEPENDS', " qtquickcompiler qtquickcompiler-native")
-            d.appendVar('EXTRA_QMAKEVARS_PRE', " CONFIG+=qtquickcompiler CONFIG+=no_qtquickcompiler_depend")
+            provider = "qtquickcompiler-sdk"
+
+    pn = d.getVar("PN", True)
+    if "toolchain-host" in pn:
+        d.appendVar('RDEPENDS_' + pn, " nativesdk-%s-tools" % provider)
+    if "toolchain-target" in pn:
+        d.appendVar('RDEPENDS_' + pn, " %s-dev" % provider)
+    else:
+        d.appendVar('DEPENDS', " %s %s-native" % (provider, provider))
+        d.appendVar('EXTRA_QMAKEVARS_PRE', " CONFIG+=qtquickcompiler CONFIG+=no_qtquickcompiler_depend")
 }
