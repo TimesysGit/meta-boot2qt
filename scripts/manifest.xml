@@ -17,11 +17,11 @@
 
   <project name="poky"
            remote="yocto"
-           revision="57eb677f0efe9a4060c764e8e9dfe2440d4e5eb2"
+           revision="b1f23d1254682866236bfaeb843c0d8aa332efc2"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="214e1801d0efc38d3b6142bdc0d8e58ca593e34c"
+           revision="dc5634968b270dde250690609f0015f881db81f2"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
@@ -31,16 +31,16 @@
   <project name="meta-mingw"
            remote="qtyocto"
            path="sources/meta-mingw"
-           revision="0cfd9b1a41b38a2f7c1cfcbc2abe046e3737ae31"/>
+           revision="2844575c17f3875aa2ad0e83d600f52a1893390d"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
-           revision="c9f259a4bf8472dfa3ff75f1c3fcbe5e0ded7aaf"
+           revision="8d22b44716fa624ff87383c36d222d9e28d0b267"
            path="sources/meta-fsl-arm"
            groups="notdefault,fsl,toradex,architech,ti,bbb,smx6"/>
   <project name="meta-ti"
            remote="yocto"
-           revision="0a222c70845d19a2213ac36803361e8531768cca"
+           revision="0da13d5a37a9d40ad6e41fe5eeeb532fef795a7a"
            path="sources/meta-ti"
            groups="notdefault,ti,bbb"/>
   <project name="meta-raspberrypi"
@@ -50,7 +50,7 @@
            groups="notdefault,rpi"/>
   <project name="meta-fsl-arm-extra"
            remote="freescale"
-           revision="ad90ca98459f5de9483bb3ba5a81be0a67b078c3"
+           revision="8fdde39f732be9e1ee9505a04c579073114459e7"
            path="sources/meta-fsl-arm-extra"
            groups="notdefault,fsl,toradex,architech,smx6"/>
   <project name="meta-beagleboard"
@@ -70,7 +70,7 @@
            groups="notdefault,architech"/>
   <project name="meta-intel"
            remote="intel"
-           revision="ead0a5c115e632015d8358f4f304ec8908732f5f"
+           revision="4e87c59bdedaa8c3e44fc02fd23be726c4d1dfb9"
            path="sources/meta-intel"
            groups="notdefault,nuc"/>
 

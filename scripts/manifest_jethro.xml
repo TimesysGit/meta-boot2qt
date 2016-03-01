@@ -17,11 +17,11 @@
 
   <project name="poky"
            remote="yocto"
-           revision="fido"
+           revision="jethro"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="fido"
+           revision="jethro"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
@@ -31,16 +31,16 @@
   <project name="meta-mingw"
            remote="qtyocto"
            path="sources/meta-mingw"
-           revision="fido"/>
+           revision="jethro"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
-           revision="fido"
+           revision="jethro"
            path="sources/meta-fsl-arm"
            groups="notdefault,fsl,toradex,architech,ti,bbb"/>
   <project name="meta-ti"
            remote="yocto"
-           revision="fido"
+           revision="master"
            path="sources/meta-ti"
            groups="notdefault,ti,bbb"/>
   <project name="meta-raspberrypi"
@@ -50,7 +50,7 @@
            groups="notdefault,rpi"/>
   <project name="meta-fsl-arm-extra"
            remote="freescale"
-           revision="fido"
+           revision="jethro"
            path="sources/meta-fsl-arm-extra"
            groups="notdefault,fsl,toradex,architech"/>
   <project name="meta-beagleboard"
@@ -70,7 +70,7 @@
            groups="notdefault,architech"/>
   <project name="meta-intel"
            remote="intel"
-           revision="fido"
+           revision="jethro"
            path="sources/meta-intel"
            groups="notdefault,nuc"/>
 
