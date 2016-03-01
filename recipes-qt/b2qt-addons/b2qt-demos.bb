@@ -34,7 +34,7 @@ SRC_URI = " \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
     "
 
-PV = "1.0+git${SRCPV}"
+PV = "5.6+git${SRCPV}"
 
 BRANCH = "5.6"
 BROWSER_BRANCH = "dev"

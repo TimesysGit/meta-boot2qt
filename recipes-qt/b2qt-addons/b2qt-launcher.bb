@@ -34,6 +34,7 @@ SRC_URI = " \
 
 SRCREV = "f5aaf9297648b397ee8fecb0a494b4774e130422"
 BRANCH = "5.6"
+PV = "5.6+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 

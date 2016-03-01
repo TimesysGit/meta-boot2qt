@@ -31,6 +31,7 @@ SRC_URI = " \
 
 SRCREV = "b6217fb2bb7702324da2a9f3f45be4a60e6ffe6c"
 BRANCH = "5.6"
+PV = "5.6+git${SRCPV}"
 
 S = "${WORKDIR}/git/wayland/democompositor/"
 
