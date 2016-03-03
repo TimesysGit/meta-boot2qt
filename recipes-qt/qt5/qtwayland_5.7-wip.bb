@@ -21,7 +21,7 @@
 
 require recipes-qt/qt5/qtwayland_git.bb
 
-SRCREV = "600d845ff4a89982dd6a8c9fa0dd60b2bf861ff5"
+SRCREV = "0b9967d0f16652b0c77d454923bb7a1423792658"
 PV = "5.7-wip+git${SRCPV}"
 QT_MODULE_BRANCH = "wip-compositor-api"
 EXTRA_QMAKEVARS_PRE += "CONFIG+=explicitlib"
