@@ -45,7 +45,7 @@
            groups="notdefault,ti,bbb"/>
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="6314f668fa14473463bb777ffaf778333fea16eb"
+           revision="a42a1706de91ed03ae8798c7f9e70c30cebcf7de"
            path="sources/meta-raspberrypi"
            groups="notdefault,rpi"/>
   <project name="meta-fsl-arm-extra"
