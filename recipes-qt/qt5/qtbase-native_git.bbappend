@@ -21,3 +21,9 @@
 
 QT_MODULE_BRANCH = "5.6.0"
 SRCREV = "38944d662eda76ecc57cb1fd61da42775fa52f6f"
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/qtbase:"
+
+SRC_URI += "\
+    file://0001-Add-win32-g-oe-mkspec-that-uses-the-OE_-environment.patch \
+    "
