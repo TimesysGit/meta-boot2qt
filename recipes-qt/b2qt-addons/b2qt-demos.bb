@@ -39,7 +39,7 @@ PV = "5.6+git${SRCPV}"
 BRANCH = "5.6"
 BROWSER_BRANCH = "dev"
 QT_BRANCH = "5.6"
-SRCREV_demos = "7076d480edb69cc7d42594acbce00f3a563ed94c"
+SRCREV_demos = "cdaf26d23204a0a745885ab0db886388618d50db"
 SRCREV_qtcanvas3d = "5a17c4ca0552c9f4e6b5646f0cee2b21a55c3d18"
 SRCREV_qtquickcontrols = "fc9c57cf8b66bafbcaa6957bb22293047aa3d9df"
 SRCREV_qtwebbrowser = "c86bb8a400f79be205025598310926df5d01c7bc"
@@ -59,14 +59,14 @@ do_install_append() {
     # we only need plugins from the demos
     rm -rf ${D}/data/user/camera
     rm -rf ${D}/data/user/sensorexplorer
+    rm -rf ${D}/data/user/qtwebbrowser
 
     # we need all qml and content files
     cp -r ${S}/* ${D}/data/user/qt/
 
     # but none of the source files
     find ${D}/data/user/qt/ \( -name '*.cpp' -or -name '*.h' -or -name '*.pro' \) -delete
-    rm -rf ${D}/data/user/qt/qtwebbrowser/tqtc-qtwebbrowser/.git
-    rm -rf ${D}/data/user/qt/qtwebbrowser/tqtc-qtwebbrowser/mockups
+    rm -rf ${D}/data/user/qt/qtwebbrowser/tqtc-qtwebbrowser
 
     if [ -d ${WORKDIR}/git/images ]; then
         install -d 0755 ${D}/data/images
