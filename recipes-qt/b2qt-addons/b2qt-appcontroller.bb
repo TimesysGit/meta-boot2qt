@@ -30,7 +30,7 @@ SRC_URI = " \
     file://appcontroller.conf \
     "
 
-SRCREV = "af3ab8ec0213a40d90f3d58a8a65a944b0cd753e"
+SRCREV = "1e3c96e0e4f28a072c835775f7fdc310eb3b4f28"
 BRANCH = "5.6"
 PV = "5.6+git${SRCPV}"
 
