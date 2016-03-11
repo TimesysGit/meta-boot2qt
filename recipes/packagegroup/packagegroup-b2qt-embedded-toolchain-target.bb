@@ -24,6 +24,7 @@ PR = "r0"
 LICENSE = "CLOSED"
 
 inherit packagegroup
+inherit bluetooth
 
 RDEPENDS_${PN} += "\
     packagegroup-core-standalone-sdk-target \
@@ -51,6 +52,6 @@ RDEPENDS_${PN} += "\
     libevent-dev \
     ostree-dev \
     ${@base_contains("DISTRO_FEATURES", "wayland", "libxkbcommon-dev libgbm-dev libdrm-dev", "", d)} \
-    ${@base_contains("DISTRO_FEATURES", "bluetooth", "bluez4-dev", "", d)} \
+    ${@base_contains("DISTRO_FEATURES", "bluetooth", "${BLUEZ}-dev", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     "
