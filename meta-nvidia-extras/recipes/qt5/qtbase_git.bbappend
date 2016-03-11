@@ -19,14 +19,5 @@
 ##
 ##############################################################################
 
-# We have a conf and classes directory, append to BBPATH
-BBPATH .= ":${LAYERDIR}"
-
-# We have a recipes directory, add to BBFILES
-BBFILES += "${LAYERDIR}/recipes*/*/*.bb \
-            ${LAYERDIR}/recipes*/*/*.bbappend \
-"
-
-BBFILE_COLLECTIONS += "b2qt_nvidia-logan"
-BBFILE_PATTERN_b2qt_nvidia-logan := "^${LAYERDIR}/"
-BBFILE_PRIORITY_b2qt_nvidia-logan = "20"
+DEPENDS_nvidia-logan += "graphics-headers"
+PACKAGECONFIG_nvidia-logan += "kms"

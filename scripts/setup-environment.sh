@@ -72,8 +72,8 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     nuc)
       LAYERSCONF="bblayers.conf.nuc.sample"
     ;;
-    nvidia-logan)
-      LAYERSCONF="bblayers.conf.nvidia-logan.sample"
+    nvidia-logan|tegra-x1|tegra-t18x)
+      LAYERSCONF="bblayers.conf.nvidia.sample"
     ;;
     emulator)
       LAYERSCONF="bblayers.conf.emulator.sample"

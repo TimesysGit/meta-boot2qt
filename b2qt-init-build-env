@@ -119,6 +119,9 @@ get_groups() {
     nvidia-logan)
       PROJECT_GROUPS="nvidia-logan"
     ;;
+    tegra-x1|tegra-t18x)
+      PROJECT_GROUPS="nvidia-tegra"
+    ;;
     emulator)
       PROJECT_GROUPS="emulator"
     ;;

@@ -20,4 +20,4 @@
 ##############################################################################
 
 CXXFLAGS +=" -DWIN_INTERFACE_CUSTOM"
-
+COMPATIBLE_MACHINE_aarch64 = "(.*)"
