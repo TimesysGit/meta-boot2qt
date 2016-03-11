@@ -170,8 +170,9 @@ init() {
     ln -s $(readlink -f ${DIR}/../meta-qt5) sources/meta-qt5
   fi
 
-  cp ${DIR}/scripts/setup-environment.sh .
-
+  if [ ! -e "setup-environment.sh" ]; then
+    ln -s ${DIR}/scripts/setup-environment.sh setup-environment.sh
+  fi
 }
 
 get_repo
