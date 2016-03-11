@@ -29,7 +29,6 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 RDEPENDS_${PN} += " \
     qt3d \
     qtbase \
-    qtbase-fonts \
     qtcanvas3d \
     qtcharts \
     qtconnectivity \

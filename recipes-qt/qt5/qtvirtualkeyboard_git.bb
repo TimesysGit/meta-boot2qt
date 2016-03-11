@@ -20,13 +20,13 @@
 ##############################################################################
 
 DESCRIPTION = "Qt Virtual Keyboard"
-LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://src/virtualkeyboard/plugin.cpp;md5=8913d0b71519756d2e83db02b9629bbd;beginline=1;endline=17"
+LICENSE = "GPL-3.0"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qt5-module qtquickcompiler
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "4d480f8f0c1ca3308f4c3a423ad30d5d44e9c1bf"
+SRCREV = "84881cfc58a462189dfeff60c6d6f5717bc4b6b5"
 
 DEPENDS = "qtbase qtdeclarative qtsvg hunspell"
 

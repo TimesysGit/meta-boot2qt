@@ -36,7 +36,6 @@ PV = "5.6+git${SRCPV}"
 S = "${WORKDIR}/git/wayland/democompositor/"
 
 DEPENDS = "qtbase qtwayland"
-RDEPENDS_${PN} = "qtwayland (>= 5.7)"
 
 do_install_append() {
     install -d -m0775 ${D}/usr/bin

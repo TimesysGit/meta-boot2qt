@@ -19,10 +19,13 @@
 ##
 ##############################################################################
 
-require recipes-qt/qt5/qtwayland-native_git.bb
+DESCRIPTION = "Qt Data Visualization"
+LICENSE = "GPL-3.0"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
-FILESEXTRAPATHS_append := "${COREBASE}/../meta-qt5/recipes-qt/qt5/qtwayland:"
+inherit qt5-module
+require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "2adae188cb916d5a6ffbee65abf4ee8144de9ec2"
-PV = "5.7-wip+git${SRCPV}"
-QT_MODULE_BRANCH = "wip-compositor-api"
+SRCREV = "3fb7ce6a29ca69237c777cc65a3831768e938782"
+
+DEPENDS += "qtbase qtdeclarative qtmultimedia"

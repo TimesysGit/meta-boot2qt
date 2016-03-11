@@ -19,11 +19,13 @@
 ##
 ##############################################################################
 
-require recipes-qt/qt5/qtwayland_git.bb
+DESCRIPTION = "Qt Charts"
+LICENSE = "GPL-3.0"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
-SRCREV = "0b9967d0f16652b0c77d454923bb7a1423792658"
-PV = "5.7-wip+git${SRCPV}"
-QT_MODULE_BRANCH = "wip-compositor-api"
-EXTRA_QMAKEVARS_PRE += "CONFIG+=explicitlib"
+inherit qt5-module qtquickcompiler
+require recipes-qt/qt5/qt5-git.inc
 
-SRC_URI_remove = "file://0001-examples-wayland-include-server-buffer-only-when-bui.patch"
+SRCREV = "bbf52870f4e335c0d169907d4398a12cb41ca3a1"
+
+DEPENDS = "qtbase qtdeclarative qtmultimedia"
