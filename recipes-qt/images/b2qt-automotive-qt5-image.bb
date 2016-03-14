@@ -36,6 +36,7 @@ IMAGE_FEATURES += "\
 
 inherit core-image
 inherit bootfs-image
+inherit consistent_timestamps
 
 MACHINE_EXTRA_INSTALL_QT ?= ""
 
