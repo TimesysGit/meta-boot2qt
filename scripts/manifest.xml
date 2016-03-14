@@ -72,6 +72,11 @@
            revision="4e87c59bdedaa8c3e44fc02fd23be726c4d1dfb9"
            path="sources/meta-intel"
            groups="notdefault,external,intel"/>
+  <project name="meta-renesas"
+           remote="yocto"
+           revision="b7843bd6a2835e5199cab9ba196c5e67b15acaed"
+           path="sources/meta-renesas"
+           groups="notdefault,external,renesas"/>
 
   <project name="nvidia-layer"
            remote="playground"

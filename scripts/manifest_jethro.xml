@@ -72,6 +72,11 @@
            revision="jethro"
            path="sources/meta-intel"
            groups="notdefault,external,intel"/>
+  <project name="meta-renesas"
+           remote="yocto"
+           revision="master"
+           path="sources/meta-renesas"
+           groups="notdefault,external,renesas"/>
 
   <project name="nvidia-layer"
            remote="playground"

@@ -131,6 +131,9 @@ get_groups() {
     emulator)
       PROJECT_GROUPS="emulator"
     ;;
+    alt|gose|koelsch|lager|porter|silk|stout)
+      PROJECT_GROUPS="renesas"
+    ;;
     *)
       echo "Unknown device configuration, including all meta layers"
       PROJECT_GROUPS="external"

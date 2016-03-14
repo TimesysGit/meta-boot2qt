@@ -78,6 +78,9 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     tegra-x1|tegra-t18x)
       LAYERSCONF="bblayers.conf.nvidia-tegra.sample"
     ;;
+    alt|gose|koelsch|lager|porter|silk|stout)
+      LAYERSCONF="bblayers.conf.rcar-gen2.sample"
+    ;;
     emulator)
       LAYERSCONF="bblayers.conf.emulator.sample"
     ;;
