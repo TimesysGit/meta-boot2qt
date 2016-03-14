@@ -26,4 +26,4 @@ SRC_URI_append_class-target = " \
     "
 
 QT_MODULE_BRANCH = "5.6.0"
-SRCREV = "190795b1f884620ba8b31d3998ac97107d4f4eb7"
+SRCREV = "7a208d76ed96bb506899becfe680df06f95451c7"

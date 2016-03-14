@@ -20,7 +20,7 @@
 ##############################################################################
 
 QT_MODULE_BRANCH = "5.6.0"
-SRCREV = "38944d662eda76ecc57cb1fd61da42775fa52f6f"
+SRCREV = "d0cdc7ad1e2728caf363abf328b2ad81f2ed5a5b"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/qtbase:"
 
