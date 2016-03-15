@@ -23,3 +23,6 @@ inherit bluetooth
 
 DEPENDS_remove = "bluez4"
 DEPENDS_append := " ${BLUEZ}"
+DEPENDS += "libgudev"
+
+PNBLACKLIST[gypsy] = ""
