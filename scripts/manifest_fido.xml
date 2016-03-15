@@ -13,7 +13,7 @@
   <remote fetch="http://codereview.qt-project.org/yocto" name="qtyocto"/>
   <remote fetch="git://git.yoctoproject.org" name="intel"/>
   <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
-  <remote fetch="git://git://playground.ci.local" name="playground"/>
+  <remote fetch="git://playground.ci.local" name="playground"/>
 
   <project name="poky"
            remote="yocto"
@@ -45,7 +45,7 @@
            groups="notdefault,ti,bbb"/>
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="fido"
+           revision="master"
            path="sources/meta-raspberrypi"
            groups="notdefault,rpi"/>
   <project name="meta-fsl-arm-extra"
@@ -73,6 +73,7 @@
            revision="fido"
            path="sources/meta-intel"
            groups="notdefault,nuc"/>
+
   <project name="meta-tegra"
            remote="playground"
            revision="master"
@@ -83,6 +84,10 @@
            revision="master"
            path="sources/jetson-tk1-pro"
            groups="notdefault,nvidia-logan"/>
-
+  <project name="meta-smx6"
+           remote="playground"
+           revision="fido"
+           path="sources/meta-smx6"
+           groups="notdefault,smx6"/>
 </manifest>
 

@@ -51,8 +51,11 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     apalis-imx6|colibri-imx6|colibri-vf)
       LAYERSCONF="bblayers.conf.toradex.sample"
     ;;
-    imx53qsb|imx6qsabresd|imx6dlsabresd|nitrogen6x|smarc-samx6i)
+    imx53qsb|imx6qsabresd|imx6dlsabresd|nitrogen6x)
       LAYERSCONF="bblayers.conf.fsl.sample"
+    ;;
+    smarc-samx6i)
+      LAYERSCONF="bblayers.conf.smx6.sample"
     ;;
     tibidabo)
       LAYERSCONF="bblayers.conf.tibidabo.sample"

@@ -19,9 +19,14 @@
 ##
 ##############################################################################
 
-# Needed by qtxmlpatterns
-EXTRA_QTLIB_append = " Network Sql"
-# Needed by qttools
-EXTRA_QTLIB_append = " Xml"
+QT_MODULE_BRANCH = "5.6.0"
+SRCREV = "d0cdc7ad1e2728caf363abf328b2ad81f2ed5a5b"
 
-SRCREV = "719623a11d57da6a56d069a5ca8161531a37776b"
+FILESEXTRAPATHS_prepend := "${THISDIR}/qtbase:"
+
+SRC_URI += "\
+    file://0001-Add-win32-g-oe-mkspec-that-uses-the-OE_-environment.patch \
+    "
+
+fakeroot do_generate_qt_environment_file_mingw32() {
+}

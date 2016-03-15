@@ -23,7 +23,8 @@ inherit populate_sdk
 
 replace_sysroot_symlink() {
         SYMLINK_SYSROOT=$1
-        for SOURCE in `find ${SYMLINK_SYSROOT} -type l`
+        SEARCH_FOLDER=$2
+        for SOURCE in `find ${SEARCH_FOLDER} -type l`
         do
                 TARGET=`readlink -m "${SOURCE}"`
                 #check whether TARGET is inside the sysroot when not prepend the sysroot
@@ -31,6 +32,7 @@ replace_sysroot_symlink() {
                 rm "${SOURCE}"
                 if [ -d "${TARGET}" ]; then
                         cp -r "${TARGET}" "${SOURCE}"
+                        replace_sysroot_symlink ${SYMLINK_SYSROOT} ${SOURCE}
                 elif [ -f "${TARGET}" ]; then
                         cp "${TARGET}" "${SOURCE}"
                 elif [ -e "${TARGET}" ]; then
@@ -40,8 +42,8 @@ replace_sysroot_symlink() {
 }
 
 fakeroot tar_sdk_sdkmingw32() {
-        replace_sysroot_symlink ${SDK_OUTPUT}${SDKTARGETSYSROOT}
-        replace_sysroot_symlink ${SDK_OUTPUT}${SDKPATHNATIVE}
+        replace_sysroot_symlink ${SDK_OUTPUT}${SDKTARGETSYSROOT} ${SDK_OUTPUT}${SDKTARGETSYSROOT}
+        replace_sysroot_symlink ${SDK_OUTPUT}${SDKPATHNATIVE} ${SDK_OUTPUT}${SDKPATHNATIVE}
         # Package it up
         mkdir -p ${SDK_DEPLOY}
         cd ${SDK_OUTPUT}/${SDKPATH}

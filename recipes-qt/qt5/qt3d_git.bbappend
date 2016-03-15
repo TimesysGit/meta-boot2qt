@@ -25,18 +25,5 @@ SRC_URI_append_class-target = " \
     file://0001-Remove-qgltf.patch \
     "
 
-SRCREV = "190795b1f884620ba8b31d3998ac97107d4f4eb7"
-
-DEPENDS += "qt3d-native"
-
-SRC_URI += " \
-    file://0001-Allow-a-tools-only-build.patch \
-    "
-PACKAGECONFIG ??= ""
-PACKAGECONFIG_class-native ??= "tools-only"
-PACKAGECONFIG_class-nativesdk ??= "tools-only"
-PACKAGECONFIG[tools-only] = "CONFIG+=tools-only"
-
-EXTRA_QMAKEVARS_PRE += "${EXTRA_OECONF}"
-
-BBCLASSEXTEND += "native nativesdk"
+QT_MODULE_BRANCH = "5.6.0"
+SRCREV = "7a208d76ed96bb506899becfe680df06f95451c7"

@@ -24,15 +24,35 @@ SRC_URI += "file://drm-vivante-Add-00-sufix-in-returned-bus-Id.patch \
 RDEPENDS_kernel-base = ""
 
 do_configure_prepend() {
-    # FunctionFS for adb
-    echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
 
-    # Enable USB serial support
-    echo "CONFIG_USB_SERIAL=m"              >> ${WORKDIR}/defconfig
-    echo "CONFIG_USB_SERIAL_GENERIC=y"      >> ${WORKDIR}/defconfig
-    echo "CONFIG_USB_SERIAL_FTDI_SIO=m"     >> ${WORKDIR}/defconfig
-    echo "CONFIG_USB_SERIAL_PL2303=m"       >> ${WORKDIR}/defconfig
-    echo "CONFIG_USB_ACM=m"                 >> ${WORKDIR}/defconfig
+cat <<EOF >> ${WORKDIR}/defconfig
+
+# FunctionFS for adb
+CONFIG_USB_FUNCTIONFS=m
+
+# Enable USB serial support
+CONFIG_USB_SERIAL=m
+CONFIG_USB_SERIAL_GENERIC=y
+CONFIG_USB_SERIAL_FTDI_SIO=m
+CONFIG_USB_SERIAL_PL2303=m
+CONFIG_USB_ACM=m
+
+# Control group support
+CONFIG_CGROUPS=y
+
+# Open by fhandle syscalls
+CONFIG_FHANDLE=y
+CONFIG_EXPORTFS=y
+
+# Namespaces support
+CONFIG_NAMESPACES=y
+CONFIG_UTS_NS=y
+CONFIG_IPC_NS=y
+CONFIG_USER_NS=y
+CONFIG_PID_NS=y
+CONFIG_NET_NS=y
+
+EOF
 }
 
 # bbappend in meta-tibidabo still tries to use PRINC, set to -1 to prevent errors

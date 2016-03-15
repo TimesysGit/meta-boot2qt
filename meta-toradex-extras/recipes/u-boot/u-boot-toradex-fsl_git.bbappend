@@ -20,9 +20,7 @@
 ##############################################################################
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-SRC_URI_append_apalis-imx6 = " \
+SRC_URI += " \
         file://0001-Update-default-args-for-apalis-imx6.patch \
-        "
-SRC_URI_append_colibri-vf = " \
-        file://0001-colibri-vf-enable-sdboot-by-default.patch \
+        file://0001-colibri-imx6-enable-sdboot-by-default.patch \
         "

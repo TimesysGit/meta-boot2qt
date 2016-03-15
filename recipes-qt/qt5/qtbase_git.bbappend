@@ -39,20 +39,14 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
     file://oe-device-extra.pri \
+    file://0001-Add-win32-g-oe-mkspec-that-uses-the-OE_-environment.patch \
     "
 do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 }
 
-SRCREV = "719623a11d57da6a56d069a5ca8161531a37776b"
+QT_MODULE_BRANCH = "5.6.0"
+SRCREV = "d0cdc7ad1e2728caf363abf328b2ad81f2ed5a5b"
 
 # Temporarily here, until merged upstream
-PACKAGECONFIG[openssl] = "-openssl,-no-openssl,openssl,libssl"
 PACKAGECONFIG[kms] = "-kms,-no-kms,drm virtual/egl"
-
-do_install_append() {
-    # Temporarily here, until merged upstream
-    sed -i -e 's|${STAGING_DIR_NATIVE}${prefix_native}|$$[QT_HOST_PREFIX]|g' \
-        -e 's|${STAGING_DIR_HOST}|$$[QT_SYSROOT]|g' \
-        ${D}/${OE_QMAKE_PATH_QT_ARCHDATA}/mkspecs/*.pri
-}

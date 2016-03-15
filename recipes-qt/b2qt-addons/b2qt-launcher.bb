@@ -32,8 +32,9 @@ SRC_URI = " \
     file://b2qt.service \
     "
 
-SRCREV = "b92077ac6962c9f42f778facbdea4a81affb22c1"
+SRCREV = "f5aaf9297648b397ee8fecb0a494b4774e130422"
 BRANCH = "5.6"
+PV = "5.6+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 

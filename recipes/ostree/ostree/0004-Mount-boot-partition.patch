@@ -1,82 +1,60 @@
-From 5e9ed74a20026e5c9043eaf8a224ce84cb9cd9f0 Mon Sep 17 00:00:00 2001
+From 33642082578946fdc73ade8b78c05ba8d8521652 Mon Sep 17 00:00:00 2001
 From: Gatis Paeglis <gatis.paeglis@theqtcompany.com>
-Date: Mon, 7 Dec 2015 18:14:26 +0100
-Subject: [PATCH] Mount boot partition
+Date: Mon, 7 Mar 2016 15:17:34 +0100
+Subject: [PATCH] ostree: Mount boot partition from user space
 
-On b2qt reference images the boot partition always is
-the first partition on a device and rootfs is the second
-partition. We can get the root parition from a kernel
-command line and deduce the right boot partition from there.
+In the current approach we assumed that boot/
+
+- is on a separate boot partition
+- boot partition is right before rootfs partition
+- rootfs parition is provided as a *device node*
+- has "ext2" filesystem (mount shell cmd tries to
+  auto detect FS type, mount system call does not.)
+
+The new approch does not assume any of the above, and
+moves this logic from early user space (initramfs) to
+user space. Initramfs by design should be used only to
+prepare the rootfs, other tasks should be done later.
 ---
- src/switchroot/ostree-prepare-root.c | 23 ++++++++++++++++++-----
- 1 file changed, 18 insertions(+), 5 deletions(-)
+ src/switchroot/ostree-remount.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
 
-diff --git a/src/switchroot/ostree-prepare-root.c b/src/switchroot/ostree-prepare-root.c
-index 3de137b..2637dc3 100644
---- a/src/switchroot/ostree-prepare-root.c
-+++ b/src/switchroot/ostree-prepare-root.c
-@@ -45,7 +45,7 @@
- #include "ostree-mount-util.h"
- 
- static char *
--parse_ostree_cmdline (void)
-+parse_kernel_cmdline (const char *arg)
+diff --git a/src/switchroot/ostree-remount.c b/src/switchroot/ostree-remount.c
+index b8d3a96..33f2645 100644
+--- a/src/switchroot/ostree-remount.c
++++ b/src/switchroot/ostree-remount.c
+@@ -77,7 +77,7 @@ maybe_mount_tmpfs_on_var (void)
+ int
+ main(int argc, char *argv[])
  {
-   FILE *f = fopen("/proc/cmdline", "r");
-   char *cmdline = NULL;
-@@ -75,9 +75,9 @@ parse_ostree_cmdline (void)
-       const char *next_nonspc = next;
-       while (next_nonspc && *next_nonspc == ' ')
- 	next_nonspc += 1;
--      if (strncmp (iter, "ostree=", strlen ("ostree=")) == 0)
-+      if (strncmp (iter, arg, strlen (arg)) == 0)
-         {
--	  const char *start = iter + strlen ("ostree=");
-+   const char *start = iter + strlen (arg);
- 	  if (next)
- 	    ret = strndup (start, next - start);
- 	  else
-@@ -114,10 +114,12 @@ main(int argc, char *argv[])
-   const char *readonly_bind_mounts[] = { "/usr", NULL };
-   const char *root_mountpoint = NULL;
-   char *ostree_target = NULL;
-+  char *boot_partition = NULL;
-   char *deploy_path = NULL;
-   char srcpath[PATH_MAX];
-   char destpath[PATH_MAX];
-   char newroot[PATH_MAX];
-+  char boot_mountpoint[PATH_MAX];
+-  const char *remounts[] = { "/sysroot", "/etc", "/home", "/root", "/tmp", "/var", NULL };
++  const char *remounts[] = { "/sysroot", "/etc", "/home", "/root", "/tmp", "/var", "/boot", NULL };
    struct stat stbuf;
    int i;
  
-@@ -129,7 +131,7 @@ main(int argc, char *argv[])
+@@ -117,5 +117,22 @@ main(int argc, char *argv[])
  
-   root_mountpoint = argv[1];
+   maybe_mount_tmpfs_on_var ();
  
--  ostree_target = parse_ostree_cmdline ();
-+  ostree_target = parse_kernel_cmdline ("ostree=");
-   if (!ostree_target)
-     {
-       fprintf (stderr, "No OSTree target; expected ostree=/ostree/boot.N/...\n");
-@@ -246,6 +248,17 @@ main(int argc, char *argv[])
-       perrorv ("failed to MS_MOVE %s to %s", deploy_path, root_mountpoint);
-       exit (EXIT_FAILURE);
-     }
--  
-+
-+  /* first partition always is the boot partition */
-+  boot_partition = parse_kernel_cmdline ("root=");
-+  boot_partition[strlen (boot_partition) - 1] = '1';
-+  /* mount the real boot parition over the deployment's boot directory */
-+  snprintf (boot_mountpoint, sizeof(boot_mountpoint), "%s/boot/", root_mountpoint);
-+  if (mount (boot_partition, boot_mountpoint, "ext2", 0, NULL) < 0)
++  /* ostree-prepare-root mounts boot/ if it is on the same partition as root filesystem.
++   * If boot/ is not mounted, then it must be on a different partition. Try to mount
++   * filesystem where LABEL=boot-ostree.
++   */
++  if (!(lstat ("/boot/loader", &stbuf) == 0 && S_ISLNK (stbuf.st_mode)))
 +    {
-+       perrorv ("failed to mount boot parition %s to %s", boot_partition, boot_mountpoint);
-+       exit (EXIT_FAILURE);
++      /* mount the real boot parition over the deployment's boot directory */
++      const char *mount_cmd="mount LABEL=boot-ostree /boot";
++      FILE *fp = popen (mount_cmd, "w");
++      if (fp == NULL)
++        {
++          perrorv ("popen failed for: %s", mount_cmd);
++          exit (EXIT_FAILURE);
++        }
++      pclose (fp);
 +    }
 +
    exit (EXIT_SUCCESS);
  }
 -- 
-2.1.4
+2.7.0
 

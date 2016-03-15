@@ -1,0 +1,36 @@
+From 10ebeba59e6fd25352aa44ecd85913126ec45afe Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@theqtcompany.com>
+Date: Wed, 24 Feb 2016 15:39:52 +0200
+Subject: [PATCH] colibri imx6: enable sdboot by default
+
+remove console from tty1
+---
+ include/configs/colibri_imx6.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/colibri_imx6.h b/include/configs/colibri_imx6.h
+index c545334..eb0dfa9 100644
+--- a/include/configs/colibri_imx6.h
++++ b/include/configs/colibri_imx6.h
+@@ -242,7 +242,8 @@
+ 
+ #define FDT_FILE "imx6dl-colibri-eval-v3.dtb"
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+-	"bootcmd=run emmcboot ; echo ; echo emmcboot failed ; " \
++	"bootcmd=run sdboot ; echo ; echo sdboot failed ; " \
++        "run emmcboot ; echo ; echo emmcboot failed ; " \
+ 		"run nfsboot ; echo ; echo nfsboot failed ; " \
+ 		"usb start ;" \
+ 		"setenv stdout serial,vga ; setenv stdin serial,usbkbd\0" \
+@@ -261,7 +262,7 @@
+ 	"setsdupdate=setenv interface mmc; setenv drive 1; mmc rescan; " \
+ 		"load ${interface} ${drive}:1 ${kernel_addr_r} flash_blk.img\0" \
+ 	"setup=setenv setupargs fec_mac=${ethaddr} " \
+-		"consoleblank=0  no_console_suspend=1 console=tty1 " \
++		"consoleblank=0  no_console_suspend=1 " \
+ 		"console=${console},${baudrate}n8\0 " \
+ 	"setupdate=run setsdupdate || run setusbupdate || run setethupdate;" \
+ 		" source ${kernel_addr_r}\0" \
+-- 
+1.9.1
+

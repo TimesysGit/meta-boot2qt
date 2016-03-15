@@ -1,2 +1,2 @@
-setenv update_uboot 'fatload ${interface} 0:1 ${loadaddr} u-boot-nand.imx && nand erase.part u-boot && nand erase.part u-boot-env && nand write ${loadaddr} u-boot'
+setenv update_uboot 'fatload ${interface} 0:1 ${loadaddr} u-boot.imx && nand erase.part u-boot && nand erase.part u-boot-env && nand write ${loadaddr} u-boot'
 echo 'enter "run update_uboot" to update the uboot'

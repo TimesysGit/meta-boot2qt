@@ -19,9 +19,5 @@
 ##
 ##############################################################################
 
+QT_MODULE_BRANCH = "5.6.0"
 SRCREV = "41d212290c3822b8eef151785d89ac5f5b246bde"
-
-PACKAGES += "${PN}-qtwebengine"
-FILES_${PN}-qtwebengine = " \
-    ${OE_QMAKE_PATH_TRANSLATIONS}/qtwebengine_*.qm \
-"

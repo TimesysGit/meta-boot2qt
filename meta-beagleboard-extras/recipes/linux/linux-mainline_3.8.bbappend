@@ -31,3 +31,10 @@ SRC_URI += "\
 INSANE_SKIP_${PN} = "installed-vs-shipped"
 KERNEL_IMAGETYPE = "zImage"
 B = "${S}"
+
+do_configure_prepend() {
+    sed -e '/CONFIG_USB_FUNCTIONFS_ETH=/d' \
+        -e '/CONFIG_USB_FUNCTIONFS_RNDIS=/d' \
+        -i ${WORKDIR}/defconfig
+    echo "CONFIG_FHANDLE=y"  >> ${WORKDIR}/defconfig
+}

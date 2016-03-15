@@ -31,6 +31,7 @@ SRC_URI = " \
 
 SRCREV = "ab4a9f13831f44f3dcd375fa17ed7e102647febe"
 BRANCH = "master"
+PV = "1.0+git${SRCPV}"
 
 EXTRA_QMAKEVARS_PRE += "CONFIG+=force_independent"
 
