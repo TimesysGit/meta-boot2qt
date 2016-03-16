@@ -72,7 +72,7 @@
            remote="intel"
            revision="jethro"
            path="sources/meta-intel"
-           groups="notdefault,nuc"/>
+           groups="notdefault,intel"/>
 
   <project name="meta-tegra"
            remote="playground"

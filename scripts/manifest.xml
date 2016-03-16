@@ -72,7 +72,7 @@
            remote="intel"
            revision="4e87c59bdedaa8c3e44fc02fd23be726c4d1dfb9"
            path="sources/meta-intel"
-           groups="notdefault,nuc"/>
+           groups="notdefault,intel"/>
 
   <project name="meta-tegra"
            remote="playground"

@@ -31,14 +31,13 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/poky/meta \
   ${BSPDIR}/sources/poky/meta-yocto \
   ${BSPDIR}/sources/meta-intel \
-  ${BSPDIR}/sources/meta-intel/meta-nuc \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
   ${BSPDIR}/sources/meta-openembedded/meta-python \
   ${BSPDIR}/sources/meta-openembedded/meta-networking \
   ${BSPDIR}/sources/meta-openembedded/meta-initramfs \
   ${BSPDIR}/sources/meta-openembedded/meta-multimedia \
   ${BSPDIR}/sources/meta-b2qt \
-  ${BSPDIR}/sources/meta-b2qt/meta-nuc-extras \
+  ${BSPDIR}/sources/meta-b2qt/meta-intel-extras \
   ${BSPDIR}/sources/meta-mingw \
   ${BSPDIR}/sources/meta-qt5 \
   "

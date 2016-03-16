@@ -69,8 +69,8 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     raspberrypi|raspberrypi2|raspberrypi3)
       LAYERSCONF="bblayers.conf.rpi.sample"
     ;;
-    nuc)
-      LAYERSCONF="bblayers.conf.nuc.sample"
+    intel-corei7-64)
+      LAYERSCONF="bblayers.conf.intel.sample"
     ;;
     nvidia-logan|tegra-x1|tegra-t18x)
       LAYERSCONF="bblayers.conf.nvidia.sample"

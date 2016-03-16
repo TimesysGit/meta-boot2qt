@@ -113,8 +113,8 @@ get_groups() {
     raspberrypi|raspberrypi2|raspberrypi3)
       PROJECT_GROUPS="rpi"
     ;;
-    nuc)
-      PROJECT_GROUPS="nuc"
+    intel-corei7-64)
+      PROJECT_GROUPS="intel"
     ;;
     nvidia-logan)
       PROJECT_GROUPS="nvidia-logan"
