@@ -21,5 +21,4 @@
 
 PACKAGECONFIG += "${@base_contains("DISTRO_FEATURES", "gstreamer010", "gstreamer010", "gstreamer", d)}"
 
-QT_MODULE_BRANCH = "5.6.0"
 SRCREV = "9985224a89b830dc182b428f491b6187d6f0e1ba"
