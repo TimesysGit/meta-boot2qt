@@ -25,3 +25,7 @@ SRC_URI += "\
     "
 KERNEL_CONFIG_FRAGMENTS += "${WORKDIR}/usb-serial.cfg"
 KERNEL_DEVICETREE_b2qt = "am335x-evm.dtb am335x-evmsk.dtb am335x-bone.dtb am335x-boneblack.dtb"
+
+KERNEL_GIT_URI = "git://github.com/beagleboard/linux"
+BRANCH = "3.14"
+SRCREV = "b36a2d5ca4e2859c92fac09ccedf4e42d620dda7"

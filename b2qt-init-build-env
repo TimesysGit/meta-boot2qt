@@ -104,11 +104,8 @@ get_groups() {
     tibidabo)
       PROJECT_GROUPS="architech"
     ;;
-    beagleboard|am335x-evm)
+    beaglebone|beagleboard|am335x-evm)
       PROJECT_GROUPS="ti"
-    ;;
-    beaglebone)
-      PROJECT_GROUPS="bbb"
     ;;
     raspberrypi|raspberrypi2|raspberrypi3)
       PROJECT_GROUPS="rpi"

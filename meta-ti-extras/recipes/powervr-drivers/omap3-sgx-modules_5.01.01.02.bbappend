@@ -19,14 +19,5 @@
 ##
 ##############################################################################
 
-# We have a conf and classes directory, append to BBPATH
-BBPATH .= ":${LAYERDIR}"
-
-# We have a recipes directory, add to BBFILES
-BBFILES += "${LAYERDIR}/recipes*/*/*.bb \
-            ${LAYERDIR}/recipes*/*/*.bbappend \
-            "
-
-BBFILE_COLLECTIONS += "b2qt_bb"
-BBFILE_PATTERN_b2qt_bb := "^${LAYERDIR}/"
-BBFILE_PRIORITY_b2qt_bb = "20"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += "file://0001-Rename-omap_dss_device-output-to-src.patch"
