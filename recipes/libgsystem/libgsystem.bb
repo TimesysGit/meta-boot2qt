@@ -26,7 +26,9 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5f30f0716dfdd0d91eb439ebec522ec2"
 
 inherit autotools pkgconfig
 
-SRC_URI = "gitsm://github.com/GNOME/libgsystem.git;tag=v2015.2;protocol=git"
+SRC_URI = "gitsm://github.com/GNOME/libgsystem.git;protocol=git"
+SRCREV = "86c24c181ec6c3ec334a39145efc022c3e744929"
+
 S = "${WORKDIR}/git"
 
 DEPENDS = "glib-2.0 attr libcap"
