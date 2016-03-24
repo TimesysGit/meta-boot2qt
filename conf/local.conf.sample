@@ -252,21 +252,21 @@ BB_DISKMON_DIRS = "\
 #SSTATE_MIRRORS ?= "\
 #file://.* http://someserver.tld/share/sstate/PATH;downloadfilename=PATH \n \
 #file://.* file:///some/local/dir/sstate/PATH"
-SSTATE_MIRRORS ?= "file://.* http://yocto-cache.ci.local/sstate-caches/${DISTRO_CODENAME}/PATH"
+#SSTATE_MIRRORS ?= "file://.* http://yocto-cache.ci.local/sstate-caches/${DISTRO_CODENAME}/PATH"
 
-PREMIRRORS = "\
-ftp://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-http://.*/.*  http://yocto-cache.ci.local/sources/ \n \
-https://.*/.* http://yocto-cache.ci.local/sources/ \n \
-bzr://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-cvs://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-git://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-gitsm://.*/.* http://yocto-cache.ci.local/sources/ \n \
-hg://.*/.*    http://yocto-cache.ci.local/sources/ \n \
-osc://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-p4://.*/.*    http://yocto-cache.ci.local/sources/ \n \
-svk://.*/.*   http://yocto-cache.ci.local/sources/ \n \
-svn://.*/.*   http://yocto-cache.ci.local/sources/ \n"
+#PREMIRRORS = "\
+#ftp://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+#http://.*/.*  http://yocto-cache.ci.local/sources/ \n \
+#https://.*/.* http://yocto-cache.ci.local/sources/ \n \
+#bzr://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+#cvs://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+#git://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+#gitsm://.*/.* http://yocto-cache.ci.local/sources/ \n \
+#hg://.*/.*    http://yocto-cache.ci.local/sources/ \n \
+#osc://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+#p4://.*/.*    http://yocto-cache.ci.local/sources/ \n \
+#svk://.*/.*   http://yocto-cache.ci.local/sources/ \n \
+#svn://.*/.*   http://yocto-cache.ci.local/sources/ \n"
 
 #
 # Qemu configuration
