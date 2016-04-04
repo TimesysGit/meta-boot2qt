@@ -110,7 +110,7 @@ get_groups() {
     beaglebone)
       PROJECT_GROUPS="bbb"
     ;;
-    raspberrypi|raspberrypi2)
+    raspberrypi|raspberrypi2|raspberrypi3)
       PROJECT_GROUPS="rpi"
     ;;
     nuc)
