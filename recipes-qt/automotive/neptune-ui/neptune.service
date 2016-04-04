@@ -3,7 +3,7 @@ Description=Neptune
 After=systemd-user-sessions.service
 
 [Service]
-ExecStart=/usr/bin/appcontroller /usr/bin/appman -r -c /opt/am/config.yaml -c am-config.yaml --dbus none Main1280x800.qml
+ExecStart=/usr/bin/appcontroller /usr/bin/appman -r -c /opt/am/config.yaml -c am-config.yaml --dbus none Main.qml
 Restart=on-failure
 WorkingDirectory=/opt/neptune
 

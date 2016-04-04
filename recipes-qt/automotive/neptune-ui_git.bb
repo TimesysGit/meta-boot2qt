@@ -30,7 +30,7 @@ SRC_URI = " \
     file://neptune.service \
     "
 
-SRCREV = "b3f10d156349727310ec30b27d01e639cce4f570"
+SRCREV = "9b05221285ce2369e1e87e88c86970b943797294"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"
@@ -48,6 +48,7 @@ do_install_append() {
     install -m 0644 ${WORKDIR}/neptune.service ${D}${systemd_unitdir}/system/
 
     install -m 0644 ${S}/Main*.qml ${D}/opt/neptune
+    install -m 0644 ${S}/ClusterAndHUD.qml ${D}/opt/neptune
     install -m 0644 ${S}/am-config.yaml ${D}/opt/neptune
 }
 
