@@ -27,7 +27,6 @@
            remote="qtyocto"
            revision="e29477ac42b47f4fedd2cb4be27ec2e4aa70540c"
            path="sources/meta-qt5"/>
-
   <project name="meta-mingw"
            remote="qtyocto"
            path="sources/meta-mingw"
@@ -37,58 +36,58 @@
            remote="yocto"
            revision="c9f259a4bf8472dfa3ff75f1c3fcbe5e0ded7aaf"
            path="sources/meta-fsl-arm"
-           groups="notdefault,fsl,toradex,architech,ti,bbb,smx6"/>
+           groups="notdefault,external,fsl,toradex,architech,ti,bbb,smx6"/>
   <project name="meta-ti"
            remote="yocto"
            revision="0a222c70845d19a2213ac36803361e8531768cca"
            path="sources/meta-ti"
-           groups="notdefault,ti,bbb"/>
+           groups="notdefault,external,ti,bbb"/>
   <project name="meta-raspberrypi"
            remote="yocto"
            revision="a42a1706de91ed03ae8798c7f9e70c30cebcf7de"
            path="sources/meta-raspberrypi"
-           groups="notdefault,rpi"/>
+           groups="notdefault,external,rpi"/>
   <project name="meta-fsl-arm-extra"
            remote="freescale"
            revision="ad90ca98459f5de9483bb3ba5a81be0a67b078c3"
            path="sources/meta-fsl-arm-extra"
-           groups="notdefault,fsl,toradex,architech,smx6"/>
+           groups="notdefault,external,fsl,toradex,architech,smx6"/>
   <project name="meta-beagleboard"
            remote="beagleboard"
            revision="b5c709b2b6bd3bf236df923fa8f245a00fbb1b60"
            path="sources/meta-beagleboard"
-           groups="notdefault,bbb"/>
+           groups="notdefault,external,bbb"/>
   <project name="meta-toradex"
            remote="toradex"
            revision="eca5937408c75a997b160bd1b92e1496b07421cf"
            path="sources/meta-toradex"
-           groups="notdefault,toradex"/>
+           groups="notdefault,external,toradex"/>
   <project name="meta-tibidabo"
            remote="architech"
            revision="06c6b09e0776507e1230aa98b5ca10d9d3968286"
            path="sources/meta-tibidabo"
-           groups="notdefault,architech"/>
+           groups="notdefault,external,architech"/>
   <project name="meta-intel"
            remote="intel"
            revision="ead0a5c115e632015d8358f4f304ec8908732f5f"
            path="sources/meta-intel"
-           groups="notdefault,nuc"/>
+           groups="notdefault,external,nuc"/>
 
   <project name="meta-tegra"
            remote="playground"
            revision="3125d29a5c58a471b67104d1bff965df38eb3115"
            path="sources/meta-tegra"
-           groups="notdefault,nvidia-logan"/>
+           groups="notdefault,internal,nvidia-logan"/>
   <project name="jetson-tk1-pro"
            remote="playground"
            revision="a376c795d5361fda4ea5f19feecc23ab7e753646"
            path="sources/jetson-tk1-pro"
-           groups="notdefault,nvidia-logan"/>
+           groups="notdefault,internal,nvidia-logan"/>
   <project name="meta-smx6"
            remote="playground"
            revision="c2f639ef4b2fd5809ab95fb330d28c2716aa290d"
            path="sources/meta-smx6"
-           groups="notdefault,smx6"/>
+           groups="notdefault,internal,smx6"/>
 
 </manifest>
 

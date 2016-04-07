@@ -90,7 +90,10 @@ get_repo() {
 get_groups() {
   case ${DEVICE} in
     all)
-      PROJECT_GROUPS="all"
+      PROJECT_GROUPS="external"
+    ;;
+    internal)
+      PROJECT_GROUPS="external internal"
     ;;
     apalis-imx6|colibri-imx6|colibri-vf)
       PROJECT_GROUPS="toradex"
@@ -124,7 +127,7 @@ get_groups() {
     ;;
     *)
       echo "Unknown device configuration, including all meta layers"
-      PROJECT_GROUPS="all"
+      PROJECT_GROUPS="external"
     ;;
   esac
 
