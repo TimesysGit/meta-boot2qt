@@ -19,11 +19,32 @@
 ##
 ##############################################################################
 
-include conf/distro/include/raspberrypi.inc
+IMAGE_FSTYPES += "ext3 rpi-sdimg"
 
-DEPLOY_CONF_NAME = "Raspberry Pi"
+BOOTFS_CONTENT = "\
+    bcm2835-bootfiles/*: \
+    ${KERNEL_IMAGETYPE}:kernel.img \
+    "
 
-DISTRO_FEATURES_remove = "webengine"
+BOOTFS_DEPENDS = "bcm2835-bootfiles:do_deploy virtual/kernel:do_deploy"
 
-# additional memory for GPU
-GPU_MEM = "128"
+MACHINE_EXTRA_INSTALL_SDK = " \
+        userland-dev \
+        "
+
+MACHINE_EXTRA_INSTALL = "\
+        userland \
+        omxplayer \
+        "
+
+KERNEL_MODULE_AUTOLOAD += "snd-bcm2835 bcm2835-v4l2"
+KERNEL_MODULE_PROBECONF += "bcm2835-v4l2"
+module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
+
+# video camera support
+VIDEO_CAMERA = "1"
+
+RPI_FT5604 = "1"
+KERNEL_DEVICETREE += "overlays/rpi-ft5406-overlay.dtb"
+MACHINE_FEATURES += "pitft"
+
