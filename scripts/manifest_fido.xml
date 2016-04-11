@@ -77,17 +77,17 @@
            remote="playground"
            revision="master"
            path="sources/meta-tegra"
-           groups="notdefault,internal,nvidia-logan"/>
+           groups="notdefault,internal"/>
   <project name="jetson-tk1-pro"
            remote="playground"
            revision="master"
            path="sources/jetson-tk1-pro"
-           groups="notdefault,internal,nvidia-logan"/>
+           groups="notdefault,internal"/>
   <project name="meta-smx6"
            remote="playground"
            revision="fido"
            path="sources/meta-smx6"
-           groups="notdefault,internal,smx6"/>
+           groups="notdefault,internal"/>
 
 </manifest>
 

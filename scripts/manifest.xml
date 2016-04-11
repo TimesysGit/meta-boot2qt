@@ -77,17 +77,17 @@
            remote="playground"
            revision="3125d29a5c58a471b67104d1bff965df38eb3115"
            path="sources/meta-tegra"
-           groups="notdefault,internal,nvidia-logan"/>
+           groups="notdefault,internal"/>
   <project name="jetson-tk1-pro"
            remote="playground"
            revision="a376c795d5361fda4ea5f19feecc23ab7e753646"
            path="sources/jetson-tk1-pro"
-           groups="notdefault,internal,nvidia-logan"/>
+           groups="notdefault,internal"/>
   <project name="meta-smx6"
            remote="playground"
            revision="c2f639ef4b2fd5809ab95fb330d28c2716aa290d"
            path="sources/meta-smx6"
-           groups="notdefault,internal,smx6"/>
+           groups="notdefault,internal"/>
 
 </manifest>
 

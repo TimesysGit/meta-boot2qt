@@ -26,7 +26,10 @@ usage() {
    echo "Usage: $(basename $0) COMMAND [ARGS]"
    echo
    echo "Initialize build environment:"
-   echo "  $(basename $0) init --device <name> [--reference <mirror path>]"
+   echo "  $(basename $0) init --device <name> [--reference <mirror path>] [--internal]"
+   echo "    --device <name>: target device name or 'all'"
+   echo "    --reference <mirror path>: path to local mirror, initialized previously with '$(basename $0) mirror'"
+   echo "    --internal: fetch internal repositories, available only inside The Qt Company network."
    echo "Initialize local mirror:"
    echo "  $(basename $0) mirror"
    echo "List available devices:"
@@ -50,6 +53,9 @@ while test -n "$1"; do
     "--repo-url")
       shift
       REPO_URL="--repo-url $1"
+      ;;
+    "--internal")
+      INTERNAL="y"
       ;;
     *)
       if [ -n "$COMMAND" ]; then
@@ -92,9 +98,6 @@ get_groups() {
     all)
       PROJECT_GROUPS="external"
     ;;
-    internal)
-      PROJECT_GROUPS="external internal"
-    ;;
     apalis-imx6|colibri-imx6|colibri-vf)
       PROJECT_GROUPS="toradex"
     ;;
@@ -132,6 +135,9 @@ get_groups() {
   esac
 
   PROJECT_GROUPS="${PROJECT_GROUPS} default"
+  if [ "${INTERNAL}" = "y" ]; then
+    PROJECT_GROUPS="${PROJECT_GROUPS} internal"
+  fi
 }
 
 list_devices() {
