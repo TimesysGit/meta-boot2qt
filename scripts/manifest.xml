@@ -17,11 +17,11 @@
 
   <project name="poky"
            remote="yocto"
-           revision="57eb677f0efe9a4060c764e8e9dfe2440d4e5eb2"
+           revision="900d7d6b59c36b2bdbd1c85febec99e80ab54f95"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="214e1801d0efc38d3b6142bdc0d8e58ca593e34c"
+           revision="902964a4da26e46018d2a8d17dcdda1ac4627a39"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
