@@ -19,6 +19,12 @@
 ##
 ##############################################################################
 
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+SRC_URI += " \
+    file://0001-ARM-8158-1-LLVMLinux-use-static-inline-in-ARM-ftrace.patch \
+    file://0001-ARM-LLVMLinux-Change-extern-inline-to-static-inline-.patch \
+    "
+
 do_configure_prepend() {
     sed -e '/CONFIG_USB_FUNCTIONFS_ETH=/d' \
         -e '/CONFIG_USB_FUNCTIONFS_RNDIS=/d' \
