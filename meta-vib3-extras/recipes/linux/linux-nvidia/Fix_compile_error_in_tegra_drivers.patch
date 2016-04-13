@@ -1,0 +1,20 @@
+--- a/drivers/platform/tegra/tegra_cl_dvfs.c	2016-04-19 13:05:46.897056724 +0300
++++ b/drivers/platform/tegra/tegra_cl_dvfs.c	2016-04-19 12:55:28.053751626 +0300
+@@ -1021,7 +1021,7 @@
+ 
+ static void cl_dvfs_calibrate(struct tegra_cl_dvfs *cld)
+ {
+-	u32 val, data;
++	u32 val=0, data=0;
+ 	ktime_t now;
+ 	unsigned long rate;
+ 	unsigned long step = RATE_STEP(cld);
+@@ -3303,7 +3303,7 @@
+ 
+ static int monitor_get(void *data, u64 *val)
+ {
+-	u32 v, s;
++	u32 v=0, s=0;
+ 	unsigned long flags;
+ 	struct clk *c = (struct clk *)data;
+ 	struct tegra_cl_dvfs *cld = ((struct clk *)data)->u.dfll.cl_dvfs;

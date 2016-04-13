@@ -33,10 +33,11 @@ elif [ -e tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.img 
   7z a -l b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
     $PWD/tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.img \
     $PWD/tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.conf
-elif [ ${MACHINE} == "nvidia-logan" || ${MACHINE} == "tegra-x1" || ${MACHINE} == "tegra-t18x" ] && [ -e tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.tar.gz ]; then
+elif ([ ${MACHINE} = "nvidia-logan" ] || [ ${MACHINE} = "tegra-x1" ] || [ ${MACHINE} = "tegra-t18x" ]) \
+    && [ -e tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.tar.gz ]; then
   7z a -l b2qt-${PROJECT}-qt5-image-${MACHINE}.7z \
     $PWD/tmp/deploy/images/${MACHINE}/b2qt-${PROJECT}-qt5-image-${MACHINE}.tar.gz \
-    $PWD/tmp/deploy/images/${MACHINE}/zImage
+    $PWD/tmp/deploy/images/${MACHINE}/*Image
 fi
 
 if [ -e b2qt-${PROJECT}-qt5-image-${MACHINE}.7z ]; then

@@ -73,15 +73,20 @@
            path="sources/meta-intel"
            groups="notdefault,external,intel"/>
 
-  <project name="meta-tegra"
+  <project name="nvidia-layer"
            remote="playground"
            revision="master"
-           path="sources/meta-tegra"
+           path="sources/nvidia-layer"
            groups="notdefault,internal"/>
   <project name="jetson-tk1-pro"
            remote="playground"
            revision="master"
            path="sources/jetson-tk1-pro"
+           groups="notdefault,internal"/>
+  <project name="vibrante-t186"
+           remote="playground"
+           revision="master"
+           path="sources/vibrante-t186"
            groups="notdefault,internal"/>
   <project name="meta-smx6"
            remote="playground"

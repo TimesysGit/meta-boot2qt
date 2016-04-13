@@ -30,17 +30,18 @@ BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE', True)) + '/../..'
 BBLAYERS ?= " \
   ${BSPDIR}/sources/poky/meta \
   ${BSPDIR}/sources/poky/meta-yocto \
+  ${BSPDIR}/sources/nvidia-layer/meta-tegra \
+  ${BSPDIR}/sources/nvidia-layer/meta-vib4 \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
   ${BSPDIR}/sources/meta-openembedded/meta-python \
   ${BSPDIR}/sources/meta-openembedded/meta-networking \
   ${BSPDIR}/sources/meta-openembedded/meta-initramfs \
-  ${BSPDIR}/sources/meta-qt5 \
-  ${BSPDIR}/sources/meta-openembedded/meta-ruby \
-  ${BSPDIR}/sources/nvidia-layer/meta-tegra \
-  ${BSPDIR}/sources/nvidia-layer/meta-vib4 \
+  ${BSPDIR}/sources/meta-openembedded/meta-multimedia \
   ${BSPDIR}/sources/meta-b2qt \
-  ${BSPDIR}/sources/meta-b2qt/meta-nvidia-extras \
+  ${BSPDIR}/sources/meta-b2qt/meta-vib4-extras \
+  ${BSPDIR}/sources/meta-b2qt/meta-tegra-extras \
   ${BSPDIR}/sources/meta-mingw \
+  ${BSPDIR}/sources/meta-qt5 \
   "
 
 BBLAYERS_NON_REMOVABLE ?= " \
