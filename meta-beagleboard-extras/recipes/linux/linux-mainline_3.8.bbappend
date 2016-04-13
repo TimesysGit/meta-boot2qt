@@ -21,7 +21,20 @@
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "\
-    file://usb-serial.cfg \
+    file://0001-AM335x-Adding-SGX-DT-node.patch \
+    file://0002-AM33XX-Invoke-hwmod-deassert-for-SGX-graphics-device.patch \
+    file://0003-video-da8xx-fb-Add-API-to-register-wait-for-vsync-ca.patch \
+    file://ARM-perf-add-support-for-perf-registers-API.diff \
+    file://ARM-perf-wire-up-perf_regs-and-unwind-support-for-AR.patch \
     "
-KERNEL_CONFIG_FRAGMENTS += "${WORKDIR}/usb-serial.cfg"
-KERNEL_DEVICETREE_b2qt = "am335x-evm.dtb am335x-evmsk.dtb am335x-bone.dtb am335x-boneblack.dtb"
+
+INSANE_SKIP_${PN} = "installed-vs-shipped"
+KERNEL_IMAGETYPE = "zImage"
+B = "${S}"
+
+do_configure_prepend() {
+    sed -e '/CONFIG_USB_FUNCTIONFS_ETH=/d' \
+        -e '/CONFIG_USB_FUNCTIONFS_RNDIS=/d' \
+        -i ${WORKDIR}/defconfig
+    echo "CONFIG_FHANDLE=y"  >> ${WORKDIR}/defconfig
+}
