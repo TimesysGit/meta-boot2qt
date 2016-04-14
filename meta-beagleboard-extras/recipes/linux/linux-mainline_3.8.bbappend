@@ -26,6 +26,9 @@ SRC_URI += "\
     file://0003-video-da8xx-fb-Add-API-to-register-wait-for-vsync-ca.patch \
     file://ARM-perf-add-support-for-perf-registers-API.diff \
     file://ARM-perf-wire-up-perf_regs-and-unwind-support-for-AR.patch \
+    file://0001-ARM-8158-1-LLVMLinux-use-static-inline-in-ARM-ftrace.patch \
+    file://0001-kernel-add-support-for-gcc-5.patch \
+    file://0001-Change-extern-inline-to-static-inline.patch \
     "
 
 INSANE_SKIP_${PN} = "installed-vs-shipped"
@@ -37,4 +40,5 @@ do_configure_prepend() {
         -e '/CONFIG_USB_FUNCTIONFS_RNDIS=/d' \
         -i ${WORKDIR}/defconfig
     echo "CONFIG_FHANDLE=y"  >> ${WORKDIR}/defconfig
+    echo "CONFIG_MOUSE_PS2=n"  >> ${WORKDIR}/defconfig
 }
