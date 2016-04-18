@@ -34,7 +34,7 @@ while test -n "$1"; do
 done
 
 THIS_SCRIPT="setup-environment.sh"
-if [ "$(basename $0)" = "${THIS_SCRIPT}" ]; then
+if [ "$(basename -- $0)" = "${THIS_SCRIPT}" ]; then
     echo "Error: This script needs to be sourced. Please run as '. $0'"
     exit 1
 fi
