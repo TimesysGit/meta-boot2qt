@@ -20,17 +20,17 @@
 ##############################################################################
 
 DESCRIPTION = "Neptune IVI UI"
-LICENSE = "GPLv3"
-LIC_FILES_CHKSUM = "file://LICENSE.GPLv3;md5=024d61f4545fb889faa57982553ce094"
+LICENSE = "GPL-3.0"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=bc0cb4bfd3f72b3fe47b2b2d0d89762c"
 
 inherit qt5-module sdk-sources systemd
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/neptune-ui;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Src/neptune-ui \
+    git://codereview.qt-project.org/qt-apps/neptune-ui;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Src/neptune-ui \
     file://neptune.service \
     "
 
-SRCREV = "9b05221285ce2369e1e87e88c86970b943797294"
+SRCREV = "c405b322d773068521855e048f215c6ec59e965f"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"
@@ -48,7 +48,7 @@ do_install_append() {
     install -m 0644 ${WORKDIR}/neptune.service ${D}${systemd_unitdir}/system/
 
     install -m 0644 ${S}/Main*.qml ${D}/opt/neptune
-    install -m 0644 ${S}/ClusterAndHUD.qml ${D}/opt/neptune
+    install -m 0644 ${S}/MainWithCluster.qml ${D}/opt/neptune
     install -m 0644 ${S}/am-config.yaml ${D}/opt/neptune
 }
 
