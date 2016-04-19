@@ -19,7 +19,7 @@
 ##
 ##############################################################################
 
-inherit populate_b2qt_sdk populate_sdk_qt5_base
+inherit populate_b2qt_sdk populate_sdk_qt5_base abi-arch siteinfo
 
 SDK_MKSPEC_DIR = "${SDK_OUTPUT}${SDKTARGETSYSROOT}${libdir}/${QT_DIR_NAME}/mkspecs"
 SDK_MKSPEC = "devices/linux-oe-generic-g++"
@@ -65,7 +65,7 @@ create_qtcreator_configure_script () {
     # add qtcreator configuration script
     install -m 0755 ${B2QTBASE}/scripts/configure-qtcreator.sh ${SDK_OUTPUT}/${SDKPATH}
     sed -i -e '/^CONFIG=/c\CONFIG="${SDKPATH}/environment-setup-${REAL_MULTIMACH_TARGET_SYS}"' ${SDK_OUTPUT}/${SDKPATH}/configure-qtcreator.sh
-    sed -i -e '/^ABI=/c\ABI="${ARCH}-linux-generic-elf-${SITEINFO_BITS}bit"' ${SDK_OUTPUT}/${SDKPATH}/configure-qtcreator.sh
+    sed -i -e '/^ABI=/c\ABI="${ABI}-linux-generic-elf-${SITEINFO_BITS}bit"' ${SDK_OUTPUT}/${SDKPATH}/configure-qtcreator.sh
 }
 
 create_qtcreator_configure_script_mingw32 () {
