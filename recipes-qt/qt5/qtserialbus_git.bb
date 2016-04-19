@@ -31,4 +31,4 @@ LIC_FILES_CHKSUM = " \
 
 DEPENDS += "qtbase qtserialport"
 
-SRCREV = "ee4c1b91def347f8f16395585b46e20aebdb2f7b"
+SRCREV = "1675a0d726e5c07c275c0981cc3deb5ffbcc6afc"

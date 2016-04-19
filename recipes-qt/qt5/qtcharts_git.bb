@@ -26,6 +26,6 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 inherit qt5-module qtquickcompiler
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "bbf52870f4e335c0d169907d4398a12cb41ca3a1"
+SRCREV = "97bb01ce5d85ac94ed019f0abd7a08917ae4f80a"
 
 DEPENDS = "qtbase qtdeclarative qtmultimedia"
