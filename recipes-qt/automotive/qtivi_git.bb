@@ -20,17 +20,21 @@
 ##############################################################################
 
 DESCRIPTION = "Qt IVI"
-LICENSE = "LGPL-3.0"
-LIC_FILES_CHKSUM = "file://header.LGPL3-PELAGICORE;md5=0f5beb4df202cb6ef5cbc5296f3a3fa4"
+LICENSE = "GFDL-1.3 & BSD & The-Qt-Company-GPL-Exception-1.0 & (LGPL-3.0 | GPL-2.0+)"
+LIC_FILES_CHKSUM = "file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
+                    file://LICENSE.GPL2;md5=b234ee4d69f5fce4486a80fdaf4a4263 \
+                    file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504 \
+                    file://LICENSE.GPL3-EXCEPT;md5=763d8c535a234d9a3fb682c7ecb6c073 \
+                    file://LICENSE.LGPL3;md5=e6a600fd5e1d9cbde2d983680233ad02"
 
 inherit qt5-module sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt/tqtc-qtivi;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Src/qtivi \
+    git://codereview.qt-project.org/qt/tqtc-qtivi;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Src/qtivi \
     "
 
-SRCREV = "2d378320dc07b8b3ac9a9ce89b7f7a99caa72f8a"
-BRANCH = "master"
+SRCREV = "b850b82e70e9585097ceb2812002bb4a7ddba06f"
+BRANCH = "5.7"
 
 S = "${WORKDIR}/git"
 
