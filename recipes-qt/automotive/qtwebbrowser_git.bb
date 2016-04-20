@@ -20,21 +20,21 @@
 ##############################################################################
 
 DESCRIPTION = "Qt Web Browser"
-LICENSE = "GPLv3"
-LIC_FILES_CHKSUM = "file://src/main.cpp;md5=e78c6c33aa5ec2464456b72daf61ef9c;beginline=1;endline=36"
+LICENSE = "GPL-3.0"
+LIC_FILES_CHKSUM = "file://LICENSE.GPLv3;md5=a40e2bb02b1ac431f461afd03ff9d1d6"
 
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Src/qtwebbrowser \
+    git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Src/qtwebbrowser \
     "
 
-SRCREV = "2e18b419a7084b1e39bf8749855768a1002e34de"
+SRCREV = "7c570ee4297946f3ed70565a630d690070533cbd"
 BRANCH = "dev"
 
 S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative qtwebengine"
 
-FILES_${PN} += "/data/user/qt/qtwebbrowser"
-FILES_${PN}-dbg += "/data/user/qt/qtwebbrowser/.debug"
+FILES_${PN} += "/data/user/qt/qtwebbrowser-app"
+FILES_${PN}-dbg += "/data/user/qt/qtwebbrowser-app/.debug"
