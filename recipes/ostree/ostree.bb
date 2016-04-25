@@ -19,7 +19,7 @@
 ##
 ##############################################################################
 
-SUMMARY = "Tool for managing bootable, immutable, versioned filesystem trees."
+SUMMARY = "Shared library with a reference command line tool for managing bootable, immutable, versioned filesystem trees."
 
 LICENSE = "LGPL-2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5f30f0716dfdd0d91eb439ebec522ec2"
@@ -28,18 +28,21 @@ inherit autotools pkgconfig systemd
 
 SRC_URI = " \
     git://github.com/GNOME/ostree.git \
-    file://0001-Allow-updating-files-on-the-boot-partition.patch \
-    file://0002-u-boot-Merge-ostree-s-and-systems-uEnv.txt.patch \
-    file://0003-Allow-updating-files-in-root-of-boot.patch \
-    file://0004-Mount-boot-partition.patch \
-    file://0005-Do-not-use-grub2-mkconfig.patch \
+    file://Fix-enable_rofiles_fuse-no-build.patch \
+    file://Mount-boot-partition.patch \
+    file://Allow-updating-files-in-the-boot-directory.patch \
+    file://u-boot-Merge-ostree-s-and-systems-uEnv.txt.patch \
+    file://Create-firmware-convenience-symlinks.patch \
     "
 
-SRCREV = "efdb4d8f443768e59529c299290bee8b1f8f93c3"
+SRCREV = "v2016.5"
 
 S = "${WORKDIR}/git"
 
 DEPENDS = "glib-2.0 e2fsprogs gpgme attr libsoup-2.4 libgsystem libassuan xz"
+# Bash is needed by the shipped dracut module. This dracut module is used to generate initramfs image.
+# The production image do not require bash for proper working.
+RDEPENDS_${PN} += "bash"
 RRECOMMENDS_${PN} += "gnupg"
 
 PACKAGECONFIG ??= "${@base_contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
@@ -52,8 +55,10 @@ FILES_${PN} += "${systemd_unitdir}/system/ \
 EXTRA_OECONF = "--with-dracut \
                 --without-selinux \
                 --without-libarchive \
-                --with-grub2=no \
+                --with-builtin-grub2-mkconfig \
+                --enable-rofiles-fuse=no \
                 --enable-gtk-doc-html=no \
+                --enable-man=no \
                 --with-soup \
                 --enable-libsoup-client-certs"
 
