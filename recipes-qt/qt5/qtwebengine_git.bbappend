@@ -25,5 +25,5 @@ SRC_URI_append_mx6 = " \
     file://0001-Fix-slow-video-with-webengine-on-nitrogen6x.patch \
     "
 
-SRCREV_qtwebengine = "4ed08bb0a8195746c333dabbdb9da3400d174296"
-SRCREV_chromium = "0a385bb01d9cf060fae4c9d350ee98561654df96"
+SRCREV_qtwebengine = "a3318c84b022282a5a4a2babc51d1e3ca634e25b"
+SRCREV_chromium = "8252b18aa3efa52138e91f9756945afb142a1c8c"
