@@ -30,7 +30,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 inherit qt5-module sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt/tqtc-qtivi;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Src/qtivi \
+    git://codereview.qt-project.org/qt/qtivi;branch=${BRANCH};protocol=ssh \
     "
 
 SRCREV = "b850b82e70e9585097ceb2812002bb4a7ddba06f"
