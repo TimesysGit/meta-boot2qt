@@ -23,10 +23,10 @@ DESCRIPTION = "Neptune IVI UI"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://LICENSE.GPLv3;md5=024d61f4545fb889faa57982553ce094"
 
-inherit qt5-module sdk-sources systemd
+inherit qt5-module systemd
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/neptune-ui;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Src/neptune-ui \
+    git://codereview.qt-project.org/qt-apps/neptune-ui;branch=${BRANCH};protocol=ssh \
     file://neptune.service \
     "
 

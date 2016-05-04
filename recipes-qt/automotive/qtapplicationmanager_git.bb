@@ -23,14 +23,14 @@ DESCRIPTION = "Qt component for application lifecycle management"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://LICENSE.GPLv3;md5=311507adb75495acc0b61d69109485ce"
 
-inherit qmake5 sdk-sources
+inherit qmake5
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt/qtapplicationmanager;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Src/qtapplicationmanager \
+    git://codereview.qt-project.org/qt/qtapplicationmanager;branch=${BRANCH};protocol=ssh \
     "
 
 SRCREV = "b7578378b578788c2ae9c60708a2908d3b090c16"
-BRANCH = "master"
+BRANCH = "dev"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@base_contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
