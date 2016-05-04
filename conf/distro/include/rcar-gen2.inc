@@ -47,6 +47,9 @@
 #   $ bitbake b2qt-embedded-image
 #
 
+# internal copy of R-Car_Series_Evaluation_Software_Packages used for CI
+FILESEXTRAPATHS_append = "${BSPDIR}/sources/renesas-rcar-gen2/${PN}:"
+
 GLES_DRIVER = "sgx"
 GLES_DRIVER_r8a7790 = "rgx"
 

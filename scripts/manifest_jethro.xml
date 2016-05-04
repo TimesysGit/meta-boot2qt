@@ -98,6 +98,11 @@
            revision="fido"
            path="sources/meta-smx6"
            groups="notdefault,internal"/>
+  <project name="renesas-rcar-gen2"
+           remote="playground"
+           revision="master"
+           path="sources/renesas-rcar-gen2"
+           groups="notdefault,internal"/>
 
 </manifest>
 

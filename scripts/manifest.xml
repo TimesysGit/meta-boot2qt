@@ -98,6 +98,11 @@
            revision="c2f639ef4b2fd5809ab95fb330d28c2716aa290d"
            path="sources/meta-smx6"
            groups="notdefault,internal"/>
+  <project name="renesas-rcar-gen2"
+           remote="playground"
+           revision="93b2464ca1c6200a1bdf2afcabac0c2c7e9bdf6d"
+           path="sources/renesas-rcar-gen2"
+           groups="notdefault,internal"/>
 
 </manifest>
 
