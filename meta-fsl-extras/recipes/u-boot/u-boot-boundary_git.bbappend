@@ -22,4 +22,5 @@
 FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-Add-support-for-KOE-tx31d200vm0baa-display.patch \
+        file://0002-Add-recovery-support.patch \
         "
