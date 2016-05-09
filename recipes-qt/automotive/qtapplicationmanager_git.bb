@@ -26,7 +26,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=317fda864ac33d41406ff3938c3e78d1"
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt/qtapplicationmanager;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Src/qtapplicationmanager \
+    git://codereview.qt-project.org/qt/qtapplicationmanager;branch=${BRANCH};protocol=ssh \
     "
 
 SRCREV = "97530155847257102fe0a159c681857fb9eb1194"
