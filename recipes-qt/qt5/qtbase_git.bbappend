@@ -53,7 +53,7 @@ do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 }
 
-SRCREV = "c327fb79e1a50c825a945e97f2c66d07a1c6d225"
+SRCREV = "c5c7997fc22cf914f72179d813ad6a41506e0293"
 
 # Temporarily here, until merged upstream
 PACKAGECONFIG[kms] = "-kms,-no-kms,drm virtual/egl"

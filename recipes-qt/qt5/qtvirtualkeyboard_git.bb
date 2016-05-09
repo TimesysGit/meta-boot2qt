@@ -62,7 +62,7 @@ PACKAGECONFIG[lang-sv_SE] = "CONFIG+=lang-sv_SE"
 PACKAGECONFIG[lang-zh_CN] = "CONFIG+=lang-zh_CN"
 PACKAGECONFIG[lang-zh_TW] = "CONFIG+=lang-zh_TW"
 
-EXTRA_QMAKEVARS_PRE += "${EXTRA_OECONF}"
+EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 EXTRA_QMAKEVARS_PRE += "${@base_contains('DISTRO_FEATURES', 'x11', '', 'CONFIG+=disable-desktop', d)}"
 
 PACKAGES += "${PN}-dictionaries"
