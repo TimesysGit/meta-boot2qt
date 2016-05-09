@@ -34,6 +34,7 @@ BRANCH = "5.7"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@base_contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
+RDEPENDS_${PN} = "libcrypto"
 
 S = "${WORKDIR}/git"
 
