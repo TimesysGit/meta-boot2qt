@@ -26,13 +26,13 @@ LIC_FILES_CHKSUM = "file://main.cpp;md5=1fcdf6b49fbbf2bc9c831893cca1b279;beginli
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/appcontroller;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Boot2Qt/sources/b2qt-appcontroller/ \
+    git://codereview.qt-project.org/tqtc-boot2qt/appcontroller;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Boot2Qt/sources/b2qt-appcontroller/ \
     file://appcontroller.conf \
     "
 
 SRCREV = "1e3c96e0e4f28a072c835775f7fdc310eb3b4f28"
-BRANCH = "5.6"
-PV = "5.6+git${SRCPV}"
+BRANCH = "5.7"
+PV = "5.7+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 

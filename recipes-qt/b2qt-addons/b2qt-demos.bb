@@ -21,28 +21,28 @@
 
 DESCRIPTION = "Boot to Qt Demos"
 LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://about-b2qt/AboutBoot2Qt.qml;md5=1bf19846314f7b0fa81dc4db92338713;beginline=1;endline=40"
+LIC_FILES_CHKSUM = "file://about-b2qt/AboutBoot2Qt.qml;md5=b0a1a6eef4a172b0a8cb4dad9a167d91;beginline=1;endline=49"
 
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/demos.git;branch=${BRANCH};protocol=ssh;name=demos;sdk-uri=5.6/Boot2Qt/sources/b2qt-demos \
+    git://codereview.qt-project.org/tqtc-boot2qt/demos.git;branch=${BRANCH};protocol=ssh;name=demos;sdk-uri=5.7/Boot2Qt/sources/b2qt-demos \
     ${QT_GIT}/qtcanvas3d.git;branch=${QT_BRANCH};name=qtcanvas3d;destsuffix=qtcanvas3d \
     ${QT_GIT}/qtquickcontrols.git;branch=${QT_BRANCH};name=qtquickcontrols;destsuffix=qtquickcontrols \
-    git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser.git;branch=${BROWSER_BRANCH};protocol=ssh;name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser;sdk-uri=5.6/Boot2Qt/sources/b2qt-demos/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
+    git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser.git;branch=${BROWSER_BRANCH};protocol=ssh;name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser;sdk-uri=5.7/Boot2Qt/sources/b2qt-demos/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt_video_720p.webm;name=video1 \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
     "
 
-PV = "5.6+git${SRCPV}"
+PV = "5.7+git${SRCPV}"
 
-BRANCH = "5.6"
+BRANCH = "5.7"
 BROWSER_BRANCH = "dev"
-QT_BRANCH = "5.6"
-SRCREV_demos = "1e2d7ade9c4bb6bee6aca8f716844b4d66d6b033"
-SRCREV_qtcanvas3d = "5a17c4ca0552c9f4e6b5646f0cee2b21a55c3d18"
-SRCREV_qtquickcontrols = "fc9c57cf8b66bafbcaa6957bb22293047aa3d9df"
-SRCREV_qtwebbrowser = "c86bb8a400f79be205025598310926df5d01c7bc"
+QT_BRANCH = "5.7"
+SRCREV_demos = "307b6bec8b73f780a14b13f8dccf0f2cb79bc63c"
+SRCREV_qtcanvas3d = "32404e27101c5ec81b4ab965faf38263429bbc5a"
+SRCREV_qtquickcontrols = "2ee6ef43d681746d07c1175738184715ce0d84e4"
+SRCREV_qtwebbrowser = "7c570ee4297946f3ed70565a630d690070533cbd"
 SRCREV_FORMAT = "demos_qtcanvas3d_qtquickcontrols_qtwebbrowser"
 
 SRC_URI[video1.md5sum] = "56de4dcfd5201952dce9af9c69fcec9b"
