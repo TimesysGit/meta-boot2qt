@@ -56,7 +56,8 @@ GLES_DRIVER_r8a7790 = "rgx"
 DISTRO_FEATURES += "wayland bluetooth bluez5 h264avcenc_lib"
 MACHINE_FEATURES += "multimedia ${GLES_DRIVER}"
 
-IMAGE_FSTYPES += "ext3"
+IMAGE_FSTYPES += "ext3 sdcard"
+IMAGE_CLASSES += "image_types_fsl"
 
 PREFERRED_VERSION_gstreamer1.0-libav = "1.2.3"
 
@@ -121,4 +122,5 @@ ${BB_MULTIMEDIA_TEST_MODULE}\
 |dtv-module|ssp-module|scu-module\
 |gles-test-module\
 |poky/meta/recipes-graphics/mesa\
+|meta-fsl-arm/recipes-graphics/mesa\
 "

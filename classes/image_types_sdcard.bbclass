@@ -21,7 +21,7 @@
 
 IMAGE_ROOTFS_EXTRA_SPACE = "100000"
 SDCARD_ROOTFS = "${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.ext3"
-SDCARD_GENERATION_COMMAND_ti33x = "generate_imx_sdcard"
+SDCARD_GENERATION_COMMAND ?= "generate_imx_sdcard"
 
 IMAGE_CMD_sdcard_append() {
     parted -s ${SDCARD} set 1 boot on

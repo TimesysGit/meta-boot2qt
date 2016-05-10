@@ -36,7 +36,7 @@
            remote="yocto"
            revision="8d22b44716fa624ff87383c36d222d9e28d0b267"
            path="sources/meta-fsl-arm"
-           groups="notdefault,external,fsl,toradex,architech,ti,bbb,smx6"/>
+           groups="notdefault,external,fsl,toradex,architech,ti,bbb,smx6,renesas"/>
   <project name="meta-ti"
            remote="yocto"
            revision="0da13d5a37a9d40ad6e41fe5eeeb532fef795a7a"

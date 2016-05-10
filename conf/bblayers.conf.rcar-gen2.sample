@@ -32,6 +32,7 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/poky/meta \
   ${BSPDIR}/sources/poky/meta-yocto \
   ${BSPDIR}/sources/meta-b2qt/meta-renesas-extras \
+  ${BSPDIR}/sources/meta-fsl-arm \
   ${BSPDIR}/sources/meta-renesas \
   ${BSPDIR}/sources/meta-renesas/meta-rcar-gen2 \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
