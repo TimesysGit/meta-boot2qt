@@ -27,14 +27,42 @@
 ##
 ############################################################################
 
-OpenEmbedded/Yocto meta layer for Boot to Qt Software Stack
-==========================================================
+Meta layer for Boot to Qt Software Stack
+========================================
 
-This layer provides B2Qt for embedded Linux recipes for use with
-OpenEmbedded and Yocto.
+Boot to Qt (b2qt) is the reference distro used in Qt for Device Creation [1].
+It combines Poky, meta-qt5 and various BSP meta layers to provide an integrated
+solution for building device images and toolchains with the latest Qt version.
 
-scripts/manifest.xml shows the currectly used meta repositories and
-revisions.
+Currently used dependencies, meta repositories and their revisions are shown in
+scripts/manifest.xml
+
+[1] http://www.qt.io/qt-for-device-creation/
+
+Sources
+-------
+
+Git: git://code.qt.io/yocto/meta-b2qt
+Web: http://code.qt.io/cgit/yocto/meta-b2qt.git
+Gerrit: https://codereview.qt-project.org/#/admin/projects/yocto/meta-b2qt
+
+Contributing
+------------
+
+To contribute to this layer you should submit the patches for review using
+Qt Gerrit (https://codereview.qt-project.org).
+
+More information about Qt Gerrit and how to use it:
+https://wiki.qt.io/Gerrit_Introduction
+https://wiki.qt.io/Setting_up_Gerrit
+
+Layer maintainers
+-----------------
+
+Samuli Piippo <samuli.piippo@qt.io>
+
+Setting up build environment
+----------------------------
 
 To initialize build environment, use the b2qt-init-build-env script.
 
