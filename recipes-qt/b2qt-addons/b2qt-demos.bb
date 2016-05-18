@@ -49,7 +49,7 @@ BROWSER_BRANCH = "dev"
 QT_BRANCH = "5.7"
 SRCREV_demos = "307b6bec8b73f780a14b13f8dccf0f2cb79bc63c"
 SRCREV_qtcanvas3d = "32404e27101c5ec81b4ab965faf38263429bbc5a"
-SRCREV_qtquickcontrols = "2ee6ef43d681746d07c1175738184715ce0d84e4"
+SRCREV_qtquickcontrols = "c6713e212ef0b97c45d6466b73220567e94a05f1"
 SRCREV_qtwebbrowser = "7c570ee4297946f3ed70565a630d690070533cbd"
 SRCREV_FORMAT = "demos_qtcanvas3d_qtquickcontrols_qtwebbrowser"
 
@@ -95,18 +95,18 @@ do_install_append() {
     sed -i 's/qrc:\(\/\)\?//g' ${D}/data/user/qt/canvas3d-planets/*.qml
     sed -i 's/qrc:\(\/\)\?//g' ${D}/data/user/qt/canvas3d-planets/*.js
     sed -i 's/StyledSlider/Slider/g' ${D}/data/user/qt/canvas3d-planets/planets.qml
-    sed -i '39 i import QtQuick.Controls 1.2' ${D}/data/user/qt/canvas3d-planets/planets.qml
+    sed -i '/import QtCanvas3D/a import QtQuick.Controls 1.2' ${D}/data/user/qt/canvas3d-planets/planets.qml
 
     # Qt Quick Extras
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/dashboard/qml ${D}/data/user/qt/enterprise-dashboard/
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/dashboard/images ${D}/data/user/qt/enterprise-dashboard/
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/dashboard/qml ${D}/data/user/qt/enterprise-dashboard/
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/dashboard/images ${D}/data/user/qt/enterprise-dashboard/
 
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/gallery/qml ${D}/data/user/qt/enterprise-gallery/
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/gallery/images ${D}/data/user/qt/enterprise-gallery/
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/gallery/fonts ${D}/data/user/qt/enterprise-gallery/
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/gallery/qml ${D}/data/user/qt/enterprise-gallery/
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/gallery/images ${D}/data/user/qt/enterprise-gallery/
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/gallery/fonts ${D}/data/user/qt/enterprise-gallery/
 
-    cp -r ${WORKDIR}/qtquickcontrols/examples/quick/extras/flat/images ${D}/data/user/qt/enterprise-flat-controls/
-    cp ${WORKDIR}/qtquickcontrols/examples/quick/extras/flat/*.qml ${D}/data/user/qt/enterprise-flat-controls/
+    cp -r ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/flat/images ${D}/data/user/qt/enterprise-flat-controls/
+    cp ${WORKDIR}/qtquickcontrols/examples/quickcontrols/extras/flat/*.qml ${D}/data/user/qt/enterprise-flat-controls/
 
     sed -i '/import QtQuick.Window/c\' ${D}/data/user/qt/enterprise-dashboard/qml/dashboard.qml ${D}/data/user/qt/enterprise-gallery/qml/gallery.qml
     sed -i 's/Window /Rectangle /1' ${D}/data/user/qt/enterprise-dashboard/qml/dashboard.qml ${D}/data/user/qt/enterprise-gallery/qml/gallery.qml
