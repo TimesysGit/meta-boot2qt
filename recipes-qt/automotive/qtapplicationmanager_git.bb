@@ -52,6 +52,7 @@ EXTRA_QMAKEVARS_PRE += "\
     -config enable-ivi-logging \
     -config install-prefix=/usr \
     -config systemd-workaround \
+    -config hardware-id=neptune \
     "
 
 do_install_append() {
