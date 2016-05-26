@@ -29,21 +29,25 @@
 
 DESCRIPTION = "Boot to Qt Utils module"
 LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://src/wifi/qwifimanager.h;md5=0b2892e6aca7d0750bbd7fe6b6b1c033;beginline=1;endline=17"
+LIC_FILES_CHKSUM = "file://src/bluetoothsettings/bluetoothdevice.h;md5=f1bb87e7d92738d5c1cc8492a7c03e9a;beginline=1;endline=35"
 
 inherit qt5-module sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Boot2Qt/sources/b2qt-utils \
+    git://codereview.qt-project.org/tqtc-boot2qt/utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Boot2Qt/sources/b2qt-utils \
     "
 
-SRCREV = "a34cacb1a239dff4033b6beffd811b35db7c339f"
-BRANCH = "5.6"
-PV = "5.6+git${SRCPV}"
+SRCREV = "15ac9af2680d63321403f49eca03cdb192851bd3"
+BRANCH = "5.7"
+PV = "5.7+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "qtbase qtdeclarative wpa-supplicant"
+DEPENDS = "qtbase qtdeclarative wpa-supplicant qtconnectivity"
+
+do_install_append() {
+    rm -rf ${D}/opt
+}
 
 FILES_${PN}-examples-dbg = " \
     /data/user/qt/.debug/* \
