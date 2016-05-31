@@ -32,7 +32,13 @@ BBMASK .= "|meta-fsl-arm/qt5-layer/recipes-qt/qt5"
 
 IMAGE_FSTYPES += "ext3 sdcard"
 
-MACHINE_EXTRA_INSTALL_SDK = " \
-        ${@base_contains("DISTRO_FEATURES", "wayland", "libwayland-egl-mx6-dev", "", d)} \
-        "
+MACHINE_EXTRA_INSTALL += "\
+    libgal-mx6 \
+    ${@base_contains("DISTRO_FEATURES", "gstreamer010", "gst-fsl-plugin", "", d)} \
+    ${@base_contains("DISTRO_FEATURES", "gstreamer", "gstreamer1.0-plugins-imx-meta", "", d)} \
+    "
+
+MACHINE_EXTRA_INSTALL_SDK += " \
+    libgal-mx6 \
+    "
 

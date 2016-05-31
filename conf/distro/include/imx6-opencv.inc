@@ -27,23 +27,13 @@
 ##
 ############################################################################
 
-include conf/distro/include/imx6.inc
-include conf/distro/include/imx6-egl.inc
-
-DEPLOY_CONF_NAME = "ArchiTech Tibidabo"
-
-KERNEL_IMAGETYPE = "uImage"
-
-BOOTFS_CONTENT = "\
-    ${KERNEL_IMAGETYPE}:${KERNEL_IMAGETYPE} \
-    bootscript:bootscript \
+MACHINE_EXTRA_INSTALL += "\
+    libopencv-core \
+    libopencv-imgproc \
+    libopencv-objdetect \
     "
-BOOTFS_DEPENDS = "tibidabo-bootscript-sd:do_deploy virtual/kernel:do_deploy"
 
-# mx6 GPU libraries
-PREFERRED_PROVIDER_virtual/egl_mx6 = "gpu-viv-bin-mx6q"
-PREFERRED_PROVIDER_virtual/libgles1_mx6q = "gpu-viv-bin-mx6q"
-PREFERRED_PROVIDER_virtual/libgles2_mx6q = "gpu-viv-bin-mx6q"
-PREFERRED_PROVIDER_virtual/libgl_mx6q = "gpu-viv-bin-mx6q"
+MACHINE_EXTRA_INSTALL_SDK += " \
+    opencv-dev \
+    "
 
-KERNEL_MODULE_AUTOLOAD += "mxc_v4l2_capture"
