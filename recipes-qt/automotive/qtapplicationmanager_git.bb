@@ -47,7 +47,7 @@ RDEPENDS_${PN} = "libcrypto"
 S = "${WORKDIR}/git"
 
 EXTRA_QMAKEVARS_PRE += "\
-    -config force-singleprocess \
+    ${@base_contains("DISTRO_FEATURES", "wayland", "-config force-multiprocess", "-config force-singleprocess", d)} \
     -config enable-dummydata \
     -config enable-ivi-logging \
     -config install-prefix=/usr \
