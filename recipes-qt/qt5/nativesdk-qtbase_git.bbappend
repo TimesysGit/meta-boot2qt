@@ -27,7 +27,7 @@
 ##
 ############################################################################
 
-SRCREV = "e64b2234e829cc47872225debcf80d6c06db18f0"
+SRCREV = "5c2ff22ba117f295718c529198ab42ee4646d90c"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/qtbase:"
 

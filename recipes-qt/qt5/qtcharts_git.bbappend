@@ -27,13 +27,6 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Qt Charts"
-LICENSE = "GPL-3.0"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
+inherit qtquickcompiler
 
-inherit qt5-module qtquickcompiler
-require recipes-qt/qt5/qt5-git.inc
-
-SRCREV = "7bc9c012efbb987790742ee8905965344be55ea7"
-
-DEPENDS = "qtbase qtdeclarative qtmultimedia"
+SRCREV = "0464d42b101eaf60c62be751785009d09065f2cf"

@@ -27,13 +27,4 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Qt Data Visualization"
-LICENSE = "GPL-3.0"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
-
-inherit qt5-module
-require recipes-qt/qt5/qt5-git.inc
-
-SRCREV = "2f6074fde0ec050c77f881e0d2ce265fa93a0fcc"
-
-DEPENDS += "qtbase qtdeclarative qtmultimedia"
+SRCREV = "02af08a705ada1ca2dac839a026a816a8e70def5"

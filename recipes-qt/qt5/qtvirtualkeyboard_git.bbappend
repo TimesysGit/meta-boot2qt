@@ -27,18 +27,19 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Qt Virtual Keyboard"
-LICENSE = "GPL-3.0"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
+inherit qtquickcompiler
 
-inherit qt5-module qtquickcompiler
-require recipes-qt/qt5/qt5-git.inc
+SRCREV = "fd18b3e7b781680033b8dfed9476b0fc4a06dcc7"
 
-SRCREV = "0df8022f93001279d1ca9b76c0df8699bb9fe3fe"
+# To enabled Nuance T9 Write support, you need to provide the licensed components
+# and enable "t9write" in PACKAGECONFIG. This can be done in a separate .bbappend file.
+# for example:
+#T9WRITEPACKAGE = "${HOME}/Downloads/zzEval_QT_T9Write_Alpha_v750_20150916.zip"
+#SRC_URI += "file://${T9WRITEPACKAGE};subdir=git/src/virtualkeyboard/3rdparty/t9write"
+#PACKAGECONFIG = "t9write lang-all"
 
-DEPENDS = "qtbase qtdeclarative qtsvg hunspell"
-
-PACKAGECONFIG ?= "lipi-toolkit lang-all"
+PACKAGECONFIG ?= "lipi-toolkit lang-all hunspell"
+PACKAGECONFIG[hunspell] = ",CONFIG+=disable-hunspell,hunspell"
 PACKAGECONFIG[t9write] = "CONFIG+=t9write"
 PACKAGECONFIG[lipi-toolkit] = "CONFIG+=lipi-toolkit"
 PACKAGECONFIG[lang-all] = "CONFIG+=lang-all"

@@ -33,4 +33,4 @@ SRC_URI_append_class-target = " \
     file://0001-Remove-qgltf.patch \
     "
 
-SRCREV = "268a77db1f25aef6dc6e2642410942b2b4135680"
+SRCREV = "fb07d54eb4ea70faee73fb0a6fef2c672d5ba478"
