@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Qt component for application lifecycle management"
-LICENSE = "GPL-3.0"
+LICENSE = "(GFDL-1.3 & The-Qt-Company-GPL-Exception-1.0 & (LGPL-3.0 | GPL-2.0+)) | The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=317fda864ac33d41406ff3938c3e78d1"
 
 inherit qmake5 sdk-sources

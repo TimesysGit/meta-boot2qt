@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Neptune IVI UI"
-LICENSE = "GPL-3.0"
+LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=bc0cb4bfd3f72b3fe47b2b2d0d89762c"
 
 inherit qt5-module sdk-sources systemd
