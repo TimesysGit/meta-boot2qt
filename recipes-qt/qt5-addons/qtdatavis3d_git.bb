@@ -26,6 +26,6 @@ LIC_FILES_CHKSUM = "file://src/datavisualization/global/qdatavisualizationglobal
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "4f23f0f984ef2ee96d5baa3a74a465d6734381ba"
+SRCREV = "4d4a9609fab58da304e4c13b9a37531116a4fadb"
 
 DEPENDS += "qtbase qtdeclarative qtmultimedia"

@@ -26,6 +26,6 @@ LIC_FILES_CHKSUM = "file://src/charts/qchart.h;md5=a712f087e2146153f45db2e8eb1a3
 inherit qt5-module qtquickcompiler
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "f4ba2fb9840279f986bd11ab6860e6a3125d9599"
+SRCREV = "d137ae33ccf01882f80770919b1daa199dec7019"
 
 DEPENDS = "qtbase qtdeclarative qtmultimedia"
