@@ -34,11 +34,10 @@ LIC_FILES_CHKSUM = "file://compiler/qtquickcompiler.h;md5=02f6307ab0d6c4bd38a154
 inherit qt5-module
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt/tqtc-qmlcompiler;branch=${BRANCH};protocol=ssh \
+    git://codereview.qt-project.org/qt/tqtc-qmlcompiler;nobranch=1;protocol=ssh \
     "
 
-SRCREV = "ea222ff87942781d1091fdcd0385a0c842d21e15"
-BRANCH = "5.6"
+SRCREV = "973a3d4c78c4435c34f1967a737e8b358c88f16f"
 
 S = "${WORKDIR}/git"
 

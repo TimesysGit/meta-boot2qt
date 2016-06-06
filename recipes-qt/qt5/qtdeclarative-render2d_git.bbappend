@@ -27,14 +27,4 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Qt Quick 2D Rendender"
-LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://src/plugins/scenegraph/softwarecontext/softwarelayer.cpp;md5=1f253bc897054feebffbaf70ecd49af4;beginline=1;endline=17"
-
-inherit qt5-module
-require recipes-qt/qt5/qt5-git.inc
-
-QT_MODULE_BRANCH = "dev"
-SRCREV = "3a22766e8c4ea39836f197552e92b3cc78e77f62"
-
-DEPENDS = "qtbase qtdeclarative"
+SRCREV = "13a6c51f26128015c0a3c335bdae676b46df6ed6"
