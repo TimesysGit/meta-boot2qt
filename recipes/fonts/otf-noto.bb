@@ -31,17 +31,17 @@ SUMMARY = "Noto Sans CJK"
 SECTION = "fonts"
 HOMEPAGE = "http://www.google.com/get/noto"
 LICENSE = "OFL-1.1"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/LICENSE_CJK.txt;md5=55719faa0112708e946b820b24b14097"
+LIC_FILES_CHKSUM = "file://${WORKDIR}/LICENSE_OFL.txt;md5=55719faa0112708e946b820b24b14097"
 
 INHIBIT_DEFAULT_DEPS = "1"
 
 inherit allarch fontcache
 
 PV = "1.004"
-SRC_URI = "https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKSC-hinted.zip"
+SRC_URI = "https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKsc-hinted.zip"
 
-SRC_URI[md5sum] = "c0fa6153aa826ee96041ba4470a1f51f"
-SRC_URI[sha256sum] = "31459f6d8c36a1136bec3f8d720b2b637e4dded681b7bb610186c9986be25848"
+SRC_URI[md5sum] = "3a2e70a4cd1f4ca4b546146b8556dffb"
+SRC_URI[sha256sum] = "89646c86a48c1d5d25d435c31d673695bbd5751534004e9746f7d4aa71402a8f"
 
 S = "${WORKDIR}"
 
