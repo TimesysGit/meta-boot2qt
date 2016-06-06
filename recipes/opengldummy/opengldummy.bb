@@ -29,7 +29,8 @@
 
 DESCRIPTION = "OpenGL dummy library provides headers and a dummy library for EGL/GLES"
 SECTION = "devel"
-LICENSE = "CLOSED"
+LICENSE = "The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 
 PV = "1.0.0"
 

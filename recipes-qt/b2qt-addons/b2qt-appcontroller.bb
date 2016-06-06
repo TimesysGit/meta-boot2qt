@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Appcontroller"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=1fcdf6b49fbbf2bc9c831893cca1b279;beginline=1;endline=17"
 
 inherit qmake5 sdk-sources

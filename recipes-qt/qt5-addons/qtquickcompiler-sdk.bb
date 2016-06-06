@@ -28,8 +28,8 @@
 ############################################################################
 
 DESCRIPTION = "Qt Quick Compiler using prebuilt binaries from Qt SDK"
-LICENSE = "QtEnterprise"
-LIC_FILES_CHKSUM = "file://${QT_LICENCE};md5=7bc9c54e450006250a60e96604c186c9"
+LICENSE = "The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 
 inherit allarch qmake5_paths
 

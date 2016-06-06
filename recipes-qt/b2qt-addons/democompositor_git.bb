@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Wayland Demo Compositor"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=9fab217254862959183461343b99a1ab;beginline=1;endline=39"
 
 inherit qmake5 sdk-sources

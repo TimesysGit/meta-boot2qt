@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Host packages for B2Qt embedded Qt5 SDK"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 PR = "r0"
 
 inherit nativesdk packagegroup qtquickcompiler

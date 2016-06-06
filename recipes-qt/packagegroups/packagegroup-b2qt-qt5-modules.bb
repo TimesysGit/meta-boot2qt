@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Qt5 modules"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 
 inherit packagegroup
 

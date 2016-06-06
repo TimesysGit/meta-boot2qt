@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "SD-Card mount daemon for Emulator"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://sdcardmountd.h;md5=709ec9e3c40137fa6068a903c57acdc1;beginline=1;endline=17"
 
 inherit qmake5

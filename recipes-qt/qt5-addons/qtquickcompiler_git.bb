@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Qt Quick Compiler"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://compiler/qtquickcompiler.h;md5=02f6307ab0d6c4bd38a1540f16ea705d;beginline=1;endline=17"
 
 inherit qt5-module

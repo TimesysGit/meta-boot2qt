@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "QtGlesStream"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://qtglesstream.pro;md5=e95d9351d26ed899188e02d44133cae0"
 
 inherit qt5-module

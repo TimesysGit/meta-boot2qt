@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "QtSimulator"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://src/simulator/version.h;md5=ba04e32af7257890758a149b0c14d11a;beginline=1;endline=17"
 
 inherit qt5-module

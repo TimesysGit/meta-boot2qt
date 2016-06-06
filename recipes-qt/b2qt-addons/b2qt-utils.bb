@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Utils module"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://src/bluetoothsettings/bluetoothdevice.h;md5=f1bb87e7d92738d5c1cc8492a7c03e9a;beginline=1;endline=35"
 
 inherit qt5-module sdk-sources

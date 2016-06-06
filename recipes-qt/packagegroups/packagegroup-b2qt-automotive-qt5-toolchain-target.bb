@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Target packages for B2Qt Automotive Qt5 SDK"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 PR = "r0"
 
 inherit packagegroup

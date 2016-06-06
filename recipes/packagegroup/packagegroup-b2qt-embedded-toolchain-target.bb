@@ -29,7 +29,7 @@
 
 DESCRIPTION = "Target packages for B2Qt on embedded Linux SDK"
 PR = "r0"
-LICENSE = "CLOSED"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 
 inherit packagegroup
 inherit bluetooth

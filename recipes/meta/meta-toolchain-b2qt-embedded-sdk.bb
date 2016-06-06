@@ -29,7 +29,8 @@
 
 DESCRIPTION = "B2Qt on embedded Linux SDK toolchain"
 PR = "r0"
-LICENSE = "CLOSED"
+LICENSE = "The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 
 inherit populate_b2qt_sdk
 

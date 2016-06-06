@@ -28,7 +28,8 @@
 ############################################################################
 
 SUMMARY = "Simple init script that mounts root filesystem by label."
-LICENSE = "CLOSED"
+LICENSE = "The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 SRC_URI = "file://init.sh"
 
 S = "${WORKDIR}"

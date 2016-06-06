@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Demo Launcher"
-LICENSE = "QtEnterprise"
+LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://src/main.cpp;md5=9320b0d61b46bdd5f27afcc40a0ad77f;beginline=1;endline=17"
 
 inherit qmake5 sdk-sources

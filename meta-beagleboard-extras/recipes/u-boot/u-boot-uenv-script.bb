@@ -28,7 +28,8 @@
 ############################################################################
 
 DESCRIPTION = "U-Boot script to start up BeagleBone Black"
-LICENSE = "CLOSED"
+LICENSE = "The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 PR = "r0"
 
 COMPATIBLE_MACHINE = "(beaglebone)"
