@@ -68,6 +68,7 @@ RDEPENDS_${PN} += " \
     qtxmlpatterns-dev \
     \
     b2qt-utils-dev \
+    b2qt-ota-dev \
     qtcharts-dev \
     qtdatavis3d-dev \
     qtvirtualkeyboard-dev \

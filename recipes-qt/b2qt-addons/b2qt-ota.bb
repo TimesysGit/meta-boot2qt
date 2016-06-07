@@ -1,8 +1,3 @@
-############################################################################
-##
-## Copyright (C) 2016 The Qt Company Ltd.
-## Contact: https://www.qt.io/licensing/
-##
 ## This file is part of the Boot to Qt meta layer.
 ##
 ## $QT_BEGIN_LICENSE:GPL$
@@ -27,20 +22,22 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Automotive specific Qt packages"
+DESCRIPTION = "Qt OTA Update module"
 LICENSE = "The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://src/lib/qotaclient.h;md5=da66cc6e520f8151501c0f6c11480077;beginline=1;endline=28"
 
-inherit packagegroup
+inherit qt5-module
 
-PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
-
-RDEPENDS_${PN} += " \
-    b2qt-appcontroller \
-    b2qt-utils \
-    b2qt-ota \
-    qtivi \
-    neptune-ui \
-    neptune-ui-apps \
-    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebbrowser', '', d)} \
-    gammaray \
+SRC_URI = " \
+    git://codereview.qt-project.org/tqtc-boot2qt/ota;branch=${BRANCH};protocol=ssh \
     "
+
+SRCREV = "d8d81530692454e4e38f682f6a09049d27b8c1ad"
+BRANCH = "master"
+PV = "git${SRCPV}"
+
+S = "${WORKDIR}/git"
+
+DEPENDS = "qtbase qtdeclarative"
+RDEPENDS_${PN} = "ostree"
+
