@@ -29,7 +29,7 @@
 
 DESCRIPTION = "Boot to Qt Utils module"
 LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://src/bluetoothsettings/bluetoothdevice.h;md5=f1bb87e7d92738d5c1cc8492a7c03e9a;beginline=1;endline=35"
+LIC_FILES_CHKSUM = "file://src/bluetoothsettings/bluetoothdevice.h;md5=e874e50877caef134ceb6d8ad3e12c8e;beginline=1;endline=28"
 
 inherit qt5-module sdk-sources
 
@@ -49,12 +49,3 @@ do_install_append() {
     rm -rf ${D}/opt
 }
 
-FILES_${PN}-examples-dbg = " \
-    /data/user/qt/.debug/* \
-    /data/user/qt/wifi-cpp/.debug/* \
-    "
-
-FILES_${PN}-examples = " \
-    /data/user/qt/wifi-cpp/wifi-cpp \
-    /data/user/qt/wifi-qml \
-    "
