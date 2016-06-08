@@ -42,9 +42,9 @@ scripts/manifest.xml
 Sources
 -------
 
-Git: git://code.qt.io/yocto/meta-b2qt
-Web: http://code.qt.io/cgit/yocto/meta-b2qt.git
-Gerrit: https://codereview.qt-project.org/#/admin/projects/yocto/meta-b2qt
+Git: git://code.qt.io/yocto/meta-boot2qt
+Web: http://code.qt.io/cgit/yocto/meta-boot2qt.git
+Gerrit: https://codereview.qt-project.org/#/admin/projects/yocto/meta-boot2qt
 
 Contributing
 ------------

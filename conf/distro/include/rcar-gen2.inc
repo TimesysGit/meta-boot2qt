@@ -42,7 +42,7 @@
 #
 #   $ mkdir build && cd build
 #   $ export MACHINE=YourMachineHere
-#   $ ~/meta-b2qt/b2qt-init-build-env init --device $MACHINE
+#   $ ~/meta-boot2qt/b2qt-init-build-env init --device $MACHINE
 #   $ cd sources/meta-renesas
 #   $ ./meta-rcar-gen2/docs/sample/copyscript/copy_eva_sw_pkgs.sh ~/Downloads
 #

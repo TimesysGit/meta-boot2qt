@@ -36,10 +36,10 @@ BBFILES ?= ""
 BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE', True)) + '/../..')}"
 
 BBLAYERS ?= " \
-  ${BSPDIR}/sources/meta-b2qt \
+  ${BSPDIR}/sources/meta-boot2qt \
   ${BSPDIR}/sources/poky/meta \
   ${BSPDIR}/sources/poky/meta-yocto \
-  ${BSPDIR}/sources/meta-b2qt/meta-renesas-extras \
+  ${BSPDIR}/sources/meta-boot2qt/meta-renesas-extras \
   ${BSPDIR}/sources/meta-fsl-arm \
   ${BSPDIR}/sources/meta-renesas \
   ${BSPDIR}/sources/meta-renesas/meta-rcar-gen2 \
