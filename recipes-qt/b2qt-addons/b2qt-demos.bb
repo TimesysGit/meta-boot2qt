@@ -28,7 +28,7 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Demos"
-LICENSE = "The-Qt-Company-DCLA-2.1"
+LICENSE = "BSD | The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://about-b2qt/AboutBoot2Qt.qml;md5=b0a1a6eef4a172b0a8cb4dad9a167d91;beginline=1;endline=49"
 
 inherit qmake5 sdk-sources
@@ -47,7 +47,7 @@ PV = "5.7+git${SRCPV}"
 BRANCH = "5.7"
 BROWSER_BRANCH = "dev"
 QT_BRANCH = "5.7"
-SRCREV_demos = "8e2d3a072fda43c4ea04e646660aec15ec238214"
+SRCREV_demos = "a6d8f7ce79fb5c17e706f25daf4dda4d97b5323e"
 SRCREV_qtcanvas3d = "32404e27101c5ec81b4ab965faf38263429bbc5a"
 SRCREV_qtquickcontrols = "c6713e212ef0b97c45d6466b73220567e94a05f1"
 SRCREV_qtwebbrowser = "7c570ee4297946f3ed70565a630d690070533cbd"
