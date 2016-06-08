@@ -28,8 +28,8 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Utils module"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://src/bluetoothsettings/bluetoothdevice.h;md5=e874e50877caef134ceb6d8ad3e12c8e;beginline=1;endline=28"
+LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qt5-module sdk-sources
 
@@ -37,15 +37,10 @@ SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Boot2Qt/sources/b2qt-utils \
     "
 
-SRCREV = "15ac9af2680d63321403f49eca03cdb192851bd3"
+SRCREV = "dee9f0867ad66cb3a9848f2391ba450aa6f65f25"
 BRANCH = "5.7"
 PV = "5.7+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative wpa-supplicant qtconnectivity"
-
-do_install_append() {
-    rm -rf ${D}/opt
-}
-
