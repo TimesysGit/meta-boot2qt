@@ -174,8 +174,8 @@ init() {
   ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g "${PROJECT_GROUPS}" ${REFERENCE}
   ${REPO} sync
 
-  if [ ! -e "sources/meta-b2qt" ]; then
-    ln -s ${DIR} sources/meta-b2qt
+  if [ ! -e "sources/meta-boot2qt" ]; then
+    ln -s ${DIR} sources/meta-boot2qt
   fi
 
   if [ ! -e "sources/meta-qt5" ]  && [ -e "${DIR}/../meta-qt5" ]; then
