@@ -28,8 +28,8 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Demo Launcher"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://src/main.cpp;md5=9320b0d61b46bdd5f27afcc40a0ad77f;beginline=1;endline=17"
+LICENSE = "(BSD & GPL-3.0) | The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qmake5
 
@@ -40,7 +40,7 @@ SRC_URI = " \
     file://b2qt.service \
     "
 
-SRCREV = "1cf3f43163f38d9a00415b61777ecb71f989fe1a"
+SRCREV = "7ff96b74f8721dbaf50722561770815a4530b6a0"
 BRANCH = "5.7"
 PV = "5.7+git${SRCPV}"
 
