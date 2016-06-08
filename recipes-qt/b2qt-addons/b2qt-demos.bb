@@ -34,7 +34,7 @@ LIC_FILES_CHKSUM = "file://about-b2qt/AboutBoot2Qt.qml;md5=b0a1a6eef4a172b0a8cb4
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/demos.git;branch=${BRANCH};protocol=ssh;name=demos;sdk-uri=5.7/Boot2Qt/sources/b2qt-demos \
+    git://codereview.qt-project.org/qt-apps/boot2qt-demos.git;branch=${BRANCH};protocol=ssh;name=demos \
     ${QT_GIT}/qtcanvas3d.git;branch=${QT_BRANCH};name=qtcanvas3d;destsuffix=qtcanvas3d \
     ${QT_GIT}/qtquickcontrols.git;branch=${QT_BRANCH};name=qtquickcontrols;destsuffix=qtquickcontrols \
     git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser.git;branch=${BROWSER_BRANCH};protocol=ssh;name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser;sdk-uri=5.7/Boot2Qt/sources/b2qt-demos/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \

@@ -99,18 +99,18 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
   esac
 
   mkdir -p ${PWD}/${BUILDDIRECTORY}/conf
-  cp ${PWD}/sources/meta-b2qt/conf/${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
+  cp ${PWD}/sources/meta-boot2qt/conf/${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
 
   if [ ! -d ${PWD}/sources/meta-qt5 ]; then
     sed -i -e '/meta-qt5/d' ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
   fi
 
-  if [ ! -d ${PWD}/sources/meta-b2qt/.git ]; then
-    QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-b2qt/../../../../)
+  if [ ! -d ${PWD}/sources/meta-boot2qt/.git ]; then
+    QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-boot2qt/../../../../)
   fi
 fi
 
-export TEMPLATECONF="${PWD}/sources/meta-b2qt/conf"
+export TEMPLATECONF="${PWD}/sources/meta-boot2qt/conf"
 . sources/poky/oe-init-build-env ${BUILDDIRECTORY}
 
 # use sources from Qt SDK if that is available

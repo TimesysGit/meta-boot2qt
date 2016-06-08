@@ -13,7 +13,7 @@
   <remote fetch="http://codereview.qt-project.org/yocto" name="qtyocto"/>
   <remote fetch="git://git.yoctoproject.org" name="intel"/>
   <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
-  <remote fetch="git://playground.ci.local" name="playground"/>
+  <remote fetch="ssh://git@git.qt.io/boot2qt" name="playground"/>
 
   <project name="poky"
            remote="yocto"

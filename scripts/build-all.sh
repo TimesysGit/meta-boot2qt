@@ -48,7 +48,7 @@ for DIR in $(ls -d build-*); do
     bitbake b2qt-embedded-image meta-toolchain-b2qt-embedded-sdk
     if [ $? = 0 ]; then
         if [ -n "${UPLOAD}" ]; then
-            ../sources/meta-b2qt/scripts/upload.sh
+            ../sources/meta-boot2qt/scripts/upload.sh
         fi
     else
         echo "    build failed" >> ../build.log

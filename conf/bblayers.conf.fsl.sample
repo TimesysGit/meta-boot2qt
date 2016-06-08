@@ -45,8 +45,8 @@ BBLAYERS ?= " \
   ${BSPDIR}/sources/meta-openembedded/meta-networking \
   ${BSPDIR}/sources/meta-openembedded/meta-initramfs \
   ${BSPDIR}/sources/meta-openembedded/meta-multimedia \
-  ${BSPDIR}/sources/meta-b2qt \
-  ${BSPDIR}/sources/meta-b2qt/meta-fsl-extras \
+  ${BSPDIR}/sources/meta-boot2qt \
+  ${BSPDIR}/sources/meta-boot2qt/meta-fsl-extras \
   ${BSPDIR}/sources/meta-mingw \
   ${BSPDIR}/sources/meta-qt5 \
   "
