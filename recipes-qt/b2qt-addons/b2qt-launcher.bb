@@ -23,10 +23,10 @@ DESCRIPTION = "Boot to Qt Demo Launcher"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://src/main.cpp;md5=1fcdf6b49fbbf2bc9c831893cca1b279;beginline=1;endline=17"
 
-inherit qmake5 sdk-sources
+inherit qmake5
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/launcher;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Boot2Qt/sources/b2qt-launcher \
+    git://codereview.qt-project.org/qt-apps/boot2qt-launcher;branch=${BRANCH};protocol=ssh \
     file://b2qt-startup.sh \
     file://qtlauncher.service \
     file://b2qt.service \
