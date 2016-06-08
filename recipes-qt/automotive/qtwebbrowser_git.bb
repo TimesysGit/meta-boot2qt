@@ -37,7 +37,7 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Src/qtwebbrowser \
     "
 
-SRCREV = "7c570ee4297946f3ed70565a630d690070533cbd"
+SRCREV = "023733af5523a5ad84359926224fa106001215f4"
 BRANCH = "dev"
 
 S = "${WORKDIR}/git"
