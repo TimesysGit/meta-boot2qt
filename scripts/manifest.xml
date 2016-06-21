@@ -34,7 +34,7 @@
 
   <project name="meta-fsl-arm"
            remote="yocto"
-           revision="8d22b44716fa624ff87383c36d222d9e28d0b267"
+           revision="c9e576bdae8c481f5a836531c7865fe8b8a5a36f"
            path="sources/meta-fsl-arm"
            groups="notdefault,external,fsl,toradex,architech,ti,bbb,smx6,renesas"/>
   <project name="meta-ti"
@@ -49,7 +49,7 @@
            groups="notdefault,external,rpi"/>
   <project name="meta-fsl-arm-extra"
            remote="freescale"
-           revision="8fdde39f732be9e1ee9505a04c579073114459e7"
+           revision="dd074c47af53948041f6c5671e519fbf815b0980"
            path="sources/meta-fsl-arm-extra"
            groups="notdefault,external,fsl,toradex,architech,smx6"/>
   <project name="meta-beagleboard"
