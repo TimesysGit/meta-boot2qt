@@ -27,7 +27,18 @@
 ##
 ############################################################################
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += "file://0020-Revert-core-mount-add-dependencies-to-dynamically-mo.patch"
+
 do_install_append() {
     # remove login from tty1
     rm -f ${D}${sysconfdir}/systemd/system/getty.target.wants/getty@tty1.service
 }
+
+do_verify_patch_required() {
+    if [ -n "$(cat ${S}/NEWS | grep "CHANGES WITH 229")" ]; then
+        bbwarn "systemd: The 0020-Revert-core-mount-add-dependencies-to-dynamically-mo.patch patch is not required anymore."
+    fi
+}
+
+addtask do_verify_patch_required after do_fetch before do_configure
