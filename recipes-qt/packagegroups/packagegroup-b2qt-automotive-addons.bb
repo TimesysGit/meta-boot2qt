@@ -43,4 +43,5 @@ RDEPENDS_${PN} += " \
     neptune-ui-apps \
     ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebbrowser', '', d)} \
     gammaray \
+    qmllive-target \
     "

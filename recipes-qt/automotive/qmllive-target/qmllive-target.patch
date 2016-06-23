@@ -1,0 +1,19 @@
+diff --git a/runtime.pro b/runtime.pro
+index 73dd6d7..e569b23 100644
+--- a/runtime.pro
++++ b/runtime.pro
+@@ -1,5 +1,4 @@
+ TARGET = qmlliveruntime
+-DESTDIR = ../../bin
+ 
+ QT *= widgets quick
+ osx: CONFIG -= app_bundle
+@@ -14,6 +13,6 @@ include(../src.pri)
+ RESOURCES += \
+     qml.qrc
+ 
+-
+-
++target.path += /usr/bin
++INSTALLS += target
+ 
