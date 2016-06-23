@@ -34,7 +34,7 @@ LIC_FILES_CHKSUM = "file://main.cpp;md5=b0a1a6eef4a172b0a8cb4dad9a167d91;beginli
 inherit qmake5
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/boot2qt-demos.git;branch=${BRANCH};protocol=ssh \
+    git://codereview.qt-project.org/qt-apps/boot2qt-demos.git;branch=${BRANCH};protocol=http \
     "
 
 SRCREV = "a6d8f7ce79fb5c17e706f25daf4dda4d97b5323e"
