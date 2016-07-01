@@ -9,14 +9,14 @@ inherit cmake_qt5
 SRC_URI = "git://github.com/KDAB/GammaRay;branch=${BRANCH}"
 
 BRANCH = "master"
-SRCREV = "fc0b87dcff40276bc1e4ad6c86674363ca576617"
+SRCREV = "4e8ff158816f07ced45a2cc71cf4176b7c0656d2"
 PV = "master+git${SRCPV}"
 
 DEPENDS = "qtdeclarative qtlocation qtsvg qttools qtconnectivity qt3d"
 
 S = "${WORKDIR}/git"
 
-EXTRA_OECMAKE += " -DGAMMARAY_BUILD_UI=OFF"
+EXTRA_OECMAKE += " -DGAMMARAY_BUILD_UI=OFF -DGAMMARAY_CORE_ONLY_LAUNCHER=ON"
 
 FILES_${PN}-dev += " \
     /usr/lib/cmake/* \
