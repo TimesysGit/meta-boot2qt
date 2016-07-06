@@ -37,7 +37,7 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/qtapplicationmanager;branch=${BRANCH};protocol=ssh \
     "
 
-SRCREV = "50dd2eb1c4533e80a324bb4b47de6b5a843f6c48"
+SRCREV = "8a4b17fade4507860919fbbf9ea42f813a26be76"
 BRANCH = "5.7"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \

@@ -41,7 +41,7 @@ SRC_URI = " \
     git://codereview.qt-project.org/qt/qtivi;branch=${BRANCH};protocol=ssh \
     "
 
-SRCREV = "b850b82e70e9585097ceb2812002bb4a7ddba06f"
+SRCREV = "ccc1f3af652e4f2785d9ac60eeae521130740b1a"
 BRANCH = "5.7"
 
 S = "${WORKDIR}/git"

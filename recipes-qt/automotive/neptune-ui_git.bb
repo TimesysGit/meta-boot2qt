@@ -38,7 +38,7 @@ SRC_URI = " \
     file://neptune.service \
     "
 
-SRCREV = "5390df2602f9134175383c55031aa8786421d6f4"
+SRCREV = "3d36a7b8e53770c91db60cec9586ef572a2f2814"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"
