@@ -31,3 +31,6 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-colibri-vf-remove-console-from-tty1.patch \
         "
+do_compile_append () {
+  oe_runmake all
+}
