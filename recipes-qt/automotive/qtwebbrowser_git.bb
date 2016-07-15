@@ -34,7 +34,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPLv3;md5=a40e2bb02b1ac431f461afd03ff9d1d6"
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser;branch=${BRANCH};protocol=http;sdk-uri=5.7/Src/qtwebbrowser \
+    git://codereview.qt-project.org/qt-apps/qtwebbrowser;branch=${BRANCH};protocol=http;sdk-uri=5.7/Src/qtwebbrowser \
     "
 
 SRCREV = "023733af5523a5ad84359926224fa106001215f4"
