@@ -30,6 +30,12 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "file://grub.cfg"
 
+do_install[depends] += " \
+    virtual/kernel:do_deploy \
+    ${INITRAMFS_IMAGE}:do_rootfs \
+    ${@bb.utils.contains('MACHINE_FEATURES', 'intel-ucode', 'intel-microcode:do_deploy', '', d)} \
+"
+
 do_deploy_prepend() {
 
 cat > ${WORKDIR}/cfg <<EOF
@@ -42,7 +48,12 @@ do_install_append() {
 
     install -d ${D}/boot/grub2/
     install -m 644 ${WORKDIR}/grub.cfg ${D}/boot/grub2/
+
+    # https://www.kernel.org/doc/Documentation/x86/early-microcode.txt
+    microcode="${@bb.utils.contains('MACHINE_FEATURES', 'intel-ucode', '${DEPLOY_DIR_IMAGE}/microcode.cpio ', '', d)}"
+    cat ${microcode} ${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz > ${D}/boot/initramfs
+    chmod 0644 ${D}/boot/initramfs
 }
 
 PACKAGES += "${PN}-config"
-FILES_${PN}-config = "/boot/grub2/"
+FILES_${PN}-config = "/boot/grub2/ /boot/initramfs"

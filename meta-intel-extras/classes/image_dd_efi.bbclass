@@ -33,15 +33,6 @@ LICENSE = "CLOSED"
 inherit image_dd
 
 EXTRA_IMAGECMD_ext3 += "-L rootfs"
-IMAGE_DEPENDS_ext3 += "initramfs-basic:do_rootfs"
-
-IMAGE_CMD_ext3_prepend() {
-
-    # https://www.kernel.org/doc/Documentation/x86/early-microcode.txt
-    microcode="${@bb.utils.contains('MACHINE_FEATURES', 'intel-ucode', '${DEPLOY_DIR_IMAGE}/microcode.cpio ', '', d)}"
-    cat ${microcode} ${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}-${MACHINE}.cpio.gz > ${IMAGE_ROOTFS}/boot/initramfs
-    chmod 0644 ${IMAGE_ROOTFS}/boot/initramfs
-}
 
 do_populate_boot() {
 
