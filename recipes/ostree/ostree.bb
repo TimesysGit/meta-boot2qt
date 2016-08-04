@@ -35,19 +35,22 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=5f30f0716dfdd0d91eb439ebec522ec2"
 inherit autotools pkgconfig systemd
 
 SRC_URI = " \
-    git://github.com/GNOME/ostree.git \
-    file://Fix-enable_rofiles_fuse-no-build.patch \
+    git://github.com/ostreedev/ostree.git \
     file://Mount-boot-partition.patch \
+    file://ostree-prepare-root-enabler-for-simpler-kernel-arg.patch \
+    file://deploy-add-karg-none-argument.patch \
+    file://Support-for-booting-without-initramfs.patch \
     file://Allow-updating-files-in-the-boot-directory.patch \
+    file://u-boot-add-bootdir-to-the-generated-uEnv.txt.patch \
     file://u-boot-Merge-ostree-s-and-systems-uEnv.txt.patch \
     file://Create-firmware-convenience-symlinks.patch \
     "
 
-SRCREV = "v2016.5"
+SRCREV = "77af6844d8330b31d58080076afb31e08974ce09"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "glib-2.0 e2fsprogs gpgme attr libsoup-2.4 libgsystem libassuan xz"
+DEPENDS = "glib-2.0 e2fsprogs gpgme attr libsoup-2.4 libassuan xz"
 # Bash is needed by the shipped dracut module. This dracut module is used to generate initramfs image.
 # The production image do not require bash for proper working.
 RDEPENDS_${PN} += "bash"
@@ -68,6 +71,7 @@ EXTRA_OECONF = "--with-dracut \
                 --enable-gtk-doc-html=no \
                 --enable-man=no \
                 --with-soup \
+                --with-static-prepare-root \
                 --enable-libsoup-client-certs"
 
 do_configure_prepend() {
