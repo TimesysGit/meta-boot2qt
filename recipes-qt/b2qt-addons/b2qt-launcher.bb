@@ -34,7 +34,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 inherit qmake5
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/boot2qt-launcher;branch=${BRANCH};protocol=ssh \
+    git://codereview.qt-project.org/qt-apps/boot2qt-launcher;branch=${BRANCH};protocol=http \
     file://b2qt-startup.sh \
     file://qtlauncher.service \
     file://b2qt.service \

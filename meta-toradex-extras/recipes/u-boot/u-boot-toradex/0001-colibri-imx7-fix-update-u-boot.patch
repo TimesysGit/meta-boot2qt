@@ -1,0 +1,12 @@
+diff -Naur git.orig/include/configs/colibri_imx7.h git/include/configs/colibri_imx7.h
+--- git.orig/include/configs/colibri_imx7.h	2016-07-15 12:31:35.915934824 +0300
++++ git/include/configs/colibri_imx7.h	2016-07-15 12:32:40.867937388 +0300
+@@ -248,7 +248,7 @@
+ 		"${board}/flash_eth.img && source ${loadaddr}\0" \
+ 	"setsdupdate=mmc rescan && setenv interface mmc && " \
+ 		"fatload ${interface} 0:1 ${loadaddr} " \
+-		"${board}/flash_blk.img && source ${loadaddr}\0" \
++		"/flash_blk.img && source ${loadaddr}\0" \
+ 	"setup=setenv setupargs " \
+ 		"console=tty1 console=${console}" \
+ 		",${baudrate}n8 ${memargs} consoleblank=0 ${mtdparts}\0" \

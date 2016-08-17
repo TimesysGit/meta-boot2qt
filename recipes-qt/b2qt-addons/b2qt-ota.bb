@@ -29,7 +29,7 @@ LIC_FILES_CHKSUM = "file://src/lib/qotaclient.h;md5=da66cc6e520f8151501c0f6c1148
 inherit qt5-module
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/ota;branch=${BRANCH};protocol=ssh \
+    git://codereview.qt-project.org/qt/qtotaupdate;branch=${BRANCH};protocol=http \
     "
 
 SRCREV = "d8d81530692454e4e38f682f6a09049d27b8c1ad"
@@ -38,6 +38,5 @@ PV = "git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "qtbase qtdeclarative"
-RDEPENDS_${PN} = "ostree"
+DEPENDS = "qtbase qtdeclarative ostree"
 

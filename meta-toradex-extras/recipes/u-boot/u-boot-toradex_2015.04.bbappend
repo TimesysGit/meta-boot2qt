@@ -30,4 +30,13 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += " \
         file://0001-colibri-vf-remove-console-from-tty1.patch \
+        file://0002-colibri-vf-fix-mmc-boot.patch \
+        file://0001-colibri-imx7-fix-update-u-boot.patch \
         "
+
+do_compile_append () {
+  if [ "${MACHINE}" = "colibri-vf" ]; then
+    oe_runmake u-boot-nand.imx
+  fi
+
+}

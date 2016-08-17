@@ -27,6 +27,6 @@
 ##
 ############################################################################
 
-SRCREV = "b231d9f41903f8514a2d91844f4515055307af3a"
+SRCREV = "d39db072e40263314f505cdaa10e17f7358b9392"
 
 SRC_URI_remove = "file://0001-textobject.pro-use-DEPLOYMENT-only-for-wince-like-ot.patch"

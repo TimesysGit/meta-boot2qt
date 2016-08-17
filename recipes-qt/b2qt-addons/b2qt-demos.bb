@@ -34,10 +34,10 @@ LIC_FILES_CHKSUM = "file://about-b2qt/AboutBoot2Qt.qml;md5=b0a1a6eef4a172b0a8cb4
 inherit qmake5 sdk-sources
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/boot2qt-demos.git;branch=${BRANCH};protocol=ssh;name=demos \
+    git://codereview.qt-project.org/qt-apps/boot2qt-demos.git;branch=${BRANCH};protocol=http;name=demos \
     ${QT_GIT}/qtcanvas3d.git;branch=${QT_BRANCH};name=qtcanvas3d;destsuffix=qtcanvas3d \
     ${QT_GIT}/qtquickcontrols.git;branch=${QT_BRANCH};name=qtquickcontrols;destsuffix=qtquickcontrols \
-    git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser.git;branch=${BROWSER_BRANCH};protocol=ssh;name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser;sdk-uri=5.7/Boot2Qt/sources/b2qt-demos/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
+    git://codereview.qt-project.org/qt-apps/qtwebbrowser.git;branch=${BROWSER_BRANCH};protocol=http;name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser;sdk-uri=5.7/Boot2Qt/sources/b2qt-demos/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt_video_720p.webm;name=video1 \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
     "
@@ -47,7 +47,7 @@ PV = "5.7+git${SRCPV}"
 BRANCH = "5.7"
 BROWSER_BRANCH = "dev"
 QT_BRANCH = "5.7"
-SRCREV_demos = "a6d8f7ce79fb5c17e706f25daf4dda4d97b5323e"
+SRCREV_demos = "cd9f0c40f30226c7ce1c3259aea8ebca08acfbb8"
 SRCREV_qtcanvas3d = "32404e27101c5ec81b4ab965faf38263429bbc5a"
 SRCREV_qtquickcontrols = "c6713e212ef0b97c45d6466b73220567e94a05f1"
 SRCREV_qtwebbrowser = "7c570ee4297946f3ed70565a630d690070533cbd"

@@ -28,16 +28,16 @@
 ############################################################################
 
 DESCRIPTION = "Boot to Qt Wayland Demo Compositor"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://main.cpp;md5=9fab217254862959183461343b99a1ab;beginline=1;endline=39"
+LICENSE = "BSD | The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://main.cpp;md5=b0a1a6eef4a172b0a8cb4dad9a167d91;beginline=1;endline=49"
 
-inherit qmake5 sdk-sources
+inherit qmake5
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/demos;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Boot2Qt/sources/b2qt-demos \
+    git://codereview.qt-project.org/qt-apps/boot2qt-demos.git;branch=${BRANCH};protocol=http \
     "
 
-SRCREV = "307b6bec8b73f780a14b13f8dccf0f2cb79bc63c"
+SRCREV = "a6d8f7ce79fb5c17e706f25daf4dda4d97b5323e"
 BRANCH = "5.7"
 PV = "5.7+git${SRCPV}"
 

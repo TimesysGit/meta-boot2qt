@@ -34,11 +34,11 @@ LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=bc0cb4bfd3f72b3fe47b2b2d0d89762c"
 inherit qt5-module sdk-sources systemd
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/neptune-ui;branch=${BRANCH};protocol=ssh \
+    git://codereview.qt-project.org/qt-apps/neptune-ui;branch=${BRANCH};protocol=http \
     file://neptune.service \
     "
 
-SRCREV = "5390df2602f9134175383c55031aa8786421d6f4"
+SRCREV = "3d36a7b8e53770c91db60cec9586ef572a2f2814"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"

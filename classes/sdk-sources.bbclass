@@ -52,6 +52,7 @@ python do_fetch () {
 }
 
 python do_unpack () {
+    sdk_uds = [];
     src_uri = (d.getVar('SRC_URI', True) or "").split()
     if len(src_uri) == 0:
         return
@@ -64,17 +65,18 @@ python do_unpack () {
         for url in uris:
             ud = list(bb.fetch2.decodeurl(url))
             if ("sdk-uri" in ud[5]):
-                unpack_local_uri(ud, d)
+                sdk_uds.append(ud)
                 src_uri.remove(url)
 
-    if len(src_uri) == 0:
-        return
+    if len(src_uri) != 0:
+        try:
+            fetcher = bb.fetch2.Fetch(src_uri, d)
+            fetcher.unpack(rootdir)
+        except bb.fetch2.BBFetchException as e:
+            raise bb.build.FuncFailed(e)
 
-    try:
-        fetcher = bb.fetch2.Fetch(src_uri, d)
-        fetcher.unpack(rootdir)
-    except bb.fetch2.BBFetchException as e:
-        raise bb.build.FuncFailed(e)
+    for ud in sdk_uds:
+        unpack_local_uri(ud, d)
 }
 
 def unpack_local_uri(ud, d):

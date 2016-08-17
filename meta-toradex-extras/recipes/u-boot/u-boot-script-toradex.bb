@@ -73,4 +73,4 @@ do_install[noexec] = "1"
 do_populate_sysroot[noexec] = "1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-COMPATIBLE_MACHINE = "(apalis-imx6|colibri-vf|colibri-imx6)"
+COMPATIBLE_MACHINE = "(apalis-imx6|colibri-vf|colibri-imx6|colibri-imx7)"
