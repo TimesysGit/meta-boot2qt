@@ -22,4 +22,4 @@
 EXTRA_QMAKEVARS_PRE_emulator += "SENSORS_PLUGINS=simulator"
 DEPENDS_emulator += "qtsimulator"
 
-SRCREV = "b08c3e69e3e82014b0f16b1ff94e5edd31d5c2c6"
+SRCREV = "8b79fc4ee1c0510c13dc6f1494f37727e3f8c0cf"

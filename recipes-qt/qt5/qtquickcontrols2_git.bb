@@ -24,14 +24,14 @@ require recipes-qt/qt5/qt5-git.inc
 
 LICENSE = "GFDL-1.3 & (LGPL-3.0 | GPL-3.0)"
 LIC_FILES_CHKSUM = " \
-    file://LICENSE.LGPLv3;md5=8ba7f2099d17d636d5fcc8303bb17587 \
-    file://LICENSE.GPLv3;md5=40f9bf30e783ddc201497165dfb32afb \
+    file://LICENSE.LGPLv3;md5=a37e6cd7102174853307e03e6edc5f30 \
+    file://LICENSE.GPLv3;md5=88e2b9117e6be406b5ed6ee4ca99a705 \
     file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 "
 
 DEPENDS += "qtbase qtxmlpatterns qtdeclarative qtgraphicaleffects"
 
-SRCREV = "6ea6881ec8847dc99e05534769d6fe6198f56ead"
+SRCREV = "e93c73c0aa15cd973e008a04a70a7c69719ad244"
 
 FILES_${PN}-qmldesigner += " \
     ${OE_QMAKE_PATH_QML}/*/*/*/designer \

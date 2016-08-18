@@ -24,4 +24,4 @@ PACKAGECONFIG += "gypsy"
 EXTRA_QMAKEVARS_PRE_emulator += "CONFIG+=simulator"
 DEPENDS_emulator += "qtsimulator"
 
-SRCREV = "2bdeea286037e5ea0d8ba0d2ad59bdf1eaae1054"
+SRCREV = "fafc158427e9d54298ce5c3419c1d4b6ec3b946e"

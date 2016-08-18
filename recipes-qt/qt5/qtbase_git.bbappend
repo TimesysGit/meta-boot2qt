@@ -19,7 +19,7 @@
 ##
 ##############################################################################
 
-PACKAGECONFIG_GL = "gles2"
+PACKAGECONFIG_GL = "gles2 eglfs"
 PACKAGECONFIG += " \
     accessibility \
     alsa \
@@ -45,7 +45,7 @@ do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 }
 
-SRCREV = "540978288ea0f6ed0b166bb9207f427a4c825ab6"
+SRCREV = "17d68c4fc371c32bd58d0a94ac63f0170edaf29e"
 
 # Temporarily here, until merged upstream
 PACKAGECONFIG[kms] = "-kms,-no-kms,drm virtual/egl"
