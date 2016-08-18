@@ -273,6 +273,9 @@ INHERIT += "rm_work"
 INHERIT += "image-buildinfo"
 INHERIT += "internal-build"
 
+# Enables use of QtQuickCompiler if you have access to the gerrit project
+#ENABLE_QTQUICKCOMPILER = "1"
+
 ACCEPT_FSL_EULA = "1"
 LICENSE_FLAGS_WHITELIST = "commercial"
 
