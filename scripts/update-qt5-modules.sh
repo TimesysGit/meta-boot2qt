@@ -39,6 +39,9 @@ for S in $SHA1S; do
     elif [ "${PROJECT}" = "qtwebengine/src/3rdparty" ]; then
         sed -i -e "/^SRCREV_chromium/s/\".*\"/\"${SHA1}\"/" qtwebengine_git.bb*
         echo "qtwebengine (chromium) -> ${SHA1}"
+    elif [ "${PROJECT}" = "tqtc-qmlcompiler" ]; then
+        sed -i -e "/^SRCREV_chromium/s/\".*\"/\"${SHA1}\"/" qtquickcompiler_git.bb*
+        echo "qtquickcompiler -> ${SHA1}"
     elif [ "$(echo *${PROJECT}*_git.bb*)" != "*${PROJECT}*_git.bb*" ]; then
         sed -i -e "/^SRCREV/s/\".*\"/\"${SHA1}\"/" *${PROJECT}*_git.bb*
         echo "${PROJECT} -> ${SHA1}"
