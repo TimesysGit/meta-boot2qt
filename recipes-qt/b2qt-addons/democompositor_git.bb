@@ -32,14 +32,11 @@ LICENSE = "BSD | The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=b0a1a6eef4a172b0a8cb4dad9a167d91;beginline=1;endline=49"
 
 inherit qmake5
+require recipes-qt/qt5/qt5-git.inc
 
-SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/boot2qt-demos.git;branch=${BRANCH};protocol=http \
-    "
+QT_MODULE = "qt-apps-boot2qt-demos"
 
 SRCREV = "a6d8f7ce79fb5c17e706f25daf4dda4d97b5323e"
-BRANCH = "5.7"
-PV = "5.7+git${SRCPV}"
 
 S = "${WORKDIR}/git/wayland/democompositor/"
 
