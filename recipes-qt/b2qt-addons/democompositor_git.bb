@@ -23,15 +23,12 @@ DESCRIPTION = "Boot to Qt Wayland Demo Compositor"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=56e7f80d726792929d5d089852de7cde;beginline=1;endline=39"
 
-inherit qmake5 sdk-sources
+inherit qmake5
+require recipes-qt/qt5/qt5-git.inc
 
-SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/demos;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Boot2Qt/sources/b2qt-demos \
-    "
+QT_MODULE = "qt-apps-boot2qt-demos"
 
 SRCREV = "b6217fb2bb7702324da2a9f3f45be4a60e6ffe6c"
-BRANCH = "5.6"
-PV = "5.6+git${SRCPV}"
 
 S = "${WORKDIR}/git/wayland/democompositor/"
 

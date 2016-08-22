@@ -23,13 +23,13 @@ DESCRIPTION = "Boot to Qt Demos"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://about-b2qt/AboutBoot2Qt.qml;md5=1bf19846314f7b0fa81dc4db92338713;beginline=1;endline=40"
 
-inherit qmake5 sdk-sources
+inherit qmake5
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/boot2qt-demos.git;branch=${BRANCH};protocol=http;name=demos \
+    ${QT_GIT}/qt-apps-boot2qt-demos.git;branch=${BRANCH};name=demos \
     ${QT_GIT}/qtcanvas3d.git;branch=${QT_BRANCH};name=qtcanvas3d;destsuffix=qtcanvas3d \
     ${QT_GIT}/qtquickcontrols.git;branch=${QT_BRANCH};name=qtquickcontrols;destsuffix=qtquickcontrols \
-    git://codereview.qt-project.org/qt-apps/tqtc-qtwebbrowser.git;branch=${BROWSER_BRANCH};protocol=http;name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser;sdk-uri=5.6/Boot2Qt/sources/b2qt-demos/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
+    ${QT_GIT}/qt-apps-qtwebbrowser.git;branch=${BROWSER_BRANCH};name=qtwebbrowser;destsuffix=git/basicsuite/qtwebbrowser/tqtc-qtwebbrowser \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt_video_720p.webm;name=video1 \
     https://s3-eu-west-1.amazonaws.com/qt-files/examples/Videos/Qt+World+Summit+2015+Recap.mp4;name=video2 \
     "
