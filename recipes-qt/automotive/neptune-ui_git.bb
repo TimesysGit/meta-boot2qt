@@ -31,17 +31,17 @@ DESCRIPTION = "Neptune IVI UI"
 LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=bc0cb4bfd3f72b3fe47b2b2d0d89762c"
 
-inherit qt5-module sdk-sources systemd
+inherit qt5-module systemd
+require recipes-qt/qt5/qt5-git.inc
 
-SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/neptune-ui;branch=${BRANCH};protocol=http \
+QT_MODULE = "qt-apps-neptune-ui"
+QT_MODULE_BRANCH = "master"
+
+SRC_URI += " \
     file://neptune.service \
     "
 
 SRCREV = "3d36a7b8e53770c91db60cec9586ef572a2f2814"
-BRANCH = "master"
-
-S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative"
 RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard \

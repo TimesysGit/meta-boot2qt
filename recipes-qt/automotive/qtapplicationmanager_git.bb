@@ -31,20 +31,14 @@ DESCRIPTION = "Qt component for application lifecycle management"
 LICENSE = "(GFDL-1.3 & The-Qt-Company-GPL-Exception-1.0 & (LGPL-3.0 | GPL-2.0+)) | The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=317fda864ac33d41406ff3938c3e78d1"
 
-inherit qmake5 sdk-sources
-
-SRC_URI = " \
-    git://codereview.qt-project.org/qt/qtapplicationmanager;branch=${BRANCH};protocol=ssh \
-    "
+inherit qmake5
+require recipes-qt/qt5/qt5-git.inc
 
 SRCREV = "8a4b17fade4507860919fbbf9ea42f813a26be76"
-BRANCH = "5.7"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
            ${@base_contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
 RDEPENDS_${PN} = "libcrypto"
-
-S = "${WORKDIR}/git"
 
 EXTRA_QMAKEVARS_PRE += "\
     ${@base_contains("DISTRO_FEATURES", "wayland", "-config force-multiprocess", "-config force-singleprocess", d)} \

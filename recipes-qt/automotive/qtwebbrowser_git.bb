@@ -31,16 +31,13 @@ DESCRIPTION = "Qt Web Browser"
 LICENSE = "GPL-3.0"
 LIC_FILES_CHKSUM = "file://LICENSE.GPLv3;md5=a40e2bb02b1ac431f461afd03ff9d1d6"
 
-inherit qmake5 sdk-sources
+inherit qmake5
+require recipes-qt/qt5/qt5-git.inc
 
-SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/qtwebbrowser;branch=${BRANCH};protocol=http;sdk-uri=5.7/Src/qtwebbrowser \
-    "
+QT_MODULE = "qt-apps-qtwebbrowser"
+QT_MODULE_BRANCH = "dev"
 
 SRCREV = "023733af5523a5ad84359926224fa106001215f4"
-BRANCH = "dev"
-
-S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative qtwebengine"
 
