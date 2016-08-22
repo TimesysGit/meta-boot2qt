@@ -17,7 +17,7 @@
 
   <project name="poky"
            remote="yocto"
-           revision="900d7d6b59c36b2bdbd1c85febec99e80ab54f95"
+           revision="c9f0a99050ec0050f0dbcd55d0cd2ab18848113f"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
@@ -49,7 +49,7 @@
            groups="notdefault,external,rpi"/>
   <project name="meta-fsl-arm-extra"
            remote="freescale"
-           revision="ad90ca98459f5de9483bb3ba5a81be0a67b078c3"
+           revision="b292f6204912ace18e30b7683748a311c5dfa780"
            path="sources/meta-fsl-arm-extra"
            groups="notdefault,external,fsl,toradex,architech,smx6"/>
   <project name="meta-beagleboard"
@@ -69,7 +69,7 @@
            groups="notdefault,external,architech"/>
   <project name="meta-intel"
            remote="intel"
-           revision="ead0a5c115e632015d8358f4f304ec8908732f5f"
+           revision="29a1746ea844e1d99571cbf5533f0ff581191b16"
            path="sources/meta-intel"
            groups="notdefault,external,nuc"/>
 
