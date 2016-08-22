@@ -1,3 +1,8 @@
+############################################################################
+##
+## Copyright (C) 2016 The Qt Company Ltd.
+## Contact: https://www.qt.io/licensing/
+##
 ## This file is part of the Boot to Qt meta layer.
 ##
 ## $QT_BEGIN_LICENSE:GPL$
@@ -23,20 +28,15 @@
 ############################################################################
 
 DESCRIPTION = "Qt OTA Update module"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://src/lib/qotaclient.h;md5=da66cc6e520f8151501c0f6c11480077;beginline=1;endline=28"
+LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qt5-module
+require recipes-qt/qt5/qt5-git.inc
 
-SRC_URI = " \
-    git://codereview.qt-project.org/qt/qtotaupdate;branch=${BRANCH};protocol=http \
-    "
+QT_GIT = "git://github.com/qt"
+QT_MODULE_BRANCH = "master"
 
-SRCREV = "d8d81530692454e4e38f682f6a09049d27b8c1ad"
-BRANCH = "master"
-PV = "git${SRCPV}"
-
-S = "${WORKDIR}/git"
+SRCREV = "f48ab751dd43906d5b9492e3f124b94f189b9971"
 
 DEPENDS = "qtbase qtdeclarative ostree"
-

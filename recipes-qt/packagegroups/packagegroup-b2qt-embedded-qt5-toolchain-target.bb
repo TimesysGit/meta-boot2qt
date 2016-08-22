@@ -53,6 +53,7 @@ RDEPENDS_${PN} += " \
     qtimageformats-dev \
     qtlocation-dev \
     qtmultimedia-dev \
+    qtotaupdate-dev \
     qtquickcontrols-dev \
     qtquickcontrols2-dev \
     qtsensors-dev \
@@ -68,7 +69,6 @@ RDEPENDS_${PN} += " \
     qtxmlpatterns-dev \
     \
     b2qt-utils-dev \
-    b2qt-ota-dev \
     qtcharts-dev \
     qtdatavis3d-dev \
     qtvirtualkeyboard-dev \
