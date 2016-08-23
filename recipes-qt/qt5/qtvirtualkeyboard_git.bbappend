@@ -29,7 +29,7 @@
 
 inherit qtquickcompiler
 
-SRCREV = "5e45faaf050752b18037ea518cd0b6909a9cc3ed"
+SRCREV = "ad1da1a8c3be6ec804f3965b47d0762654f81731"
 
 # To enabled Nuance T9 Write support, you need to provide the licensed components
 # and enable "t9write" in PACKAGECONFIG. This can be done in a separate .bbappend file.
