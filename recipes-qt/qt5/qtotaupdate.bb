@@ -27,7 +27,16 @@
 ##
 ############################################################################
 
-include conf/distro/b2qt.conf
+DESCRIPTION = "Qt OTA Update module"
+LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
-PREFERRED_VERSION_qtwayland = "5.6%"
-PREFERRED_VERSION_qtwayland-native = "5.6%"
+inherit qt5-module
+require recipes-qt/qt5/qt5-git.inc
+
+QT_GIT = "git://github.com/qt"
+QT_MODULE_BRANCH = "master"
+
+SRCREV = "f48ab751dd43906d5b9492e3f124b94f189b9971"
+
+DEPENDS = "qtbase qtdeclarative ostree"

@@ -32,19 +32,17 @@ LICENSE = "(BSD & GPL-3.0) | The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qmake5
+require recipes-qt/qt5/qt5-git.inc
 
-SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/boot2qt-launcher;branch=${BRANCH};protocol=http \
+QT_MODULE = "qt-apps-boot2qt-launcher"
+
+SRC_URI += " \
     file://b2qt-startup.sh \
     file://qtlauncher.service \
     file://b2qt.service \
     "
 
 SRCREV = "7ff96b74f8721dbaf50722561770815a4530b6a0"
-BRANCH = "5.7"
-PV = "5.7+git${SRCPV}"
-
-S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative \
            ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"

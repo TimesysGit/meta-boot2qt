@@ -28,18 +28,18 @@
 ############################################################################
 
 python __anonymous() {
-    provider = "qtquickcompiler"
-
-    sdk_path = d.getVar('QT_SDK_PATH', True) or ""
-    if len(sdk_path) != 0:
-        qtquickcompiler_path = d.getVar('B2QTBASE', True) + "/recipes-qt/qt5-addons/qtquickcompiler-sdk"
-        if not os.path.isdir(qtquickcompiler_path):
-            bb.note("QtQuickCompiler not available")
-            return
-        else:
-            provider = "qtquickcompiler-sdk"
-
+    provider = ""
+    sdk_path = d.getVar('B2QTBASE', True) + "/recipes-qt/qt5-addons/qtquickcompiler-sdk"
     pn = d.getVar("PN", True)
+
+    if d.getVar('ENABLE_QTQUICKCOMPILER', True) == "1":
+        provider = "qtquickcompiler"
+    elif os.path.isdir(sdk_path):
+        provider = "qtquickcompiler-sdk"
+    else:
+        bb.note("qtquickcompiler not enabled for %s" % pn)
+        return
+
     if "toolchain-host" in pn:
         d.appendVar('RDEPENDS_' + pn, " nativesdk-%s-tools" % provider)
     if "toolchain-target" in pn:
