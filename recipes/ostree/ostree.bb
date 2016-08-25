@@ -72,6 +72,7 @@ EXTRA_OECONF = "--with-dracut \
                 --enable-man=no \
                 --with-soup \
                 --with-static-prepare-root \
+                --disable-otmpfile \
                 --enable-libsoup-client-certs"
 
 do_configure_prepend() {
