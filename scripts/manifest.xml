@@ -17,11 +17,11 @@
 
   <project name="poky"
            remote="yocto"
-           revision="40376446904ae3529be41737fed9a0b650ed167d"
+           revision="fc75bea445bb57e1e942b5049ee2b6e5245649ea"
            path="sources/poky"/>
   <project name="meta-openembedded"
            remote="oe-mirror"
-           revision="8ab04afbffb4bc5184cfe0655049de6f44269990"
+           revision="247b1267bbe95719cd4877d2d3cfbaf2a2f4865a"
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
@@ -30,26 +30,26 @@
   <project name="meta-mingw"
            remote="qtyocto"
            path="sources/meta-mingw"
-           revision="bf2d66bbb26afbf4c22744af925daa53f61d98e1"/>
+           revision="89d30d4eafdda0ad720b1e450a4483c52dd33df0"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
-           revision="c9e576bdae8c481f5a836531c7865fe8b8a5a36f"
+           revision="a6b95df4d7ab122f1e5b7632e2273b75f853af4b"
            path="sources/meta-fsl-arm"
            groups="notdefault,external,fsl,toradex,architech,ti,bbb,smx6,renesas"/>
   <project name="meta-ti"
            remote="yocto"
-           revision="0da13d5a37a9d40ad6e41fe5eeeb532fef795a7a"
+           revision="f807c7185321fb407e82c529ddff310dc037f727"
            path="sources/meta-ti"
            groups="notdefault,external,ti,bbb"/>
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="e82417d33b8147f65141ef937d56735d80ee7207"
+           revision="2745399f75d7564fcc586d0365ff73be47849d0e"
            path="sources/meta-raspberrypi"
            groups="notdefault,external,rpi"/>
   <project name="meta-fsl-arm-extra"
            remote="freescale"
-           revision="dd074c47af53948041f6c5671e519fbf815b0980"
+           revision="99649b72f60fda4a2cfb2333791fe0f92997fa9e"
            path="sources/meta-fsl-arm-extra"
            groups="notdefault,external,fsl,toradex,architech,smx6"/>
   <project name="meta-beagleboard"
@@ -69,12 +69,12 @@
            groups="notdefault,external,architech"/>
   <project name="meta-intel"
            remote="intel"
-           revision="4e87c59bdedaa8c3e44fc02fd23be726c4d1dfb9"
+           revision="b8c199201ffe026485a14e1fcfc398e2b3551512"
            path="sources/meta-intel"
            groups="notdefault,external,intel"/>
   <project name="meta-renesas"
            remote="yocto"
-           revision="b7843bd6a2835e5199cab9ba196c5e67b15acaed"
+           revision="d20e5bffb582c6bfabdadc22e903df86c8cfd66b"
            path="sources/meta-renesas"
            groups="notdefault,external,renesas"/>
 
