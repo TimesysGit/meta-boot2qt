@@ -117,18 +117,17 @@ MACHINE_EXTRA_INSTALL_append_lcb = " \
 "
 
 BB_MULTIMEDIA_TEST_MODULE = "\
-|fdpm-tp-user-module\
-|mmngr-tp-user-module\
-|mmngrbuf-tp-user-module\
-|s3ctl-tp-user-module\
-|vspm-tp-user-module\
-"
+    fdpm-tp-user-module \
+    mmngr-tp-user-module \
+    mmngrbuf-tp-user-module \
+    s3ctl-tp-user-module \
+    vspm-tp-user-module \
+    "
 
-BBMASK ?= " "
-BBMASK .= "\
-${BB_MULTIMEDIA_TEST_MODULE}\
-|dtv-module|ssp-module|scu-module\
-|gles-test-module\
-|poky/meta/recipes-graphics/mesa\
-|meta-fsl-arm/recipes-graphics/mesa\
-"
+BBMASK += "\
+    ${BB_MULTIMEDIA_TEST_MODULE} \
+    dtv-module ssp-module scu-module \
+    gles-test-module \
+    poky/meta/recipes-graphics/mesa \
+    meta-fsl-arm/recipes-graphics/mesa \
+    "

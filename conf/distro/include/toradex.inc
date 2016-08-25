@@ -27,5 +27,30 @@
 ##
 ############################################################################
 
-BBMASK ?= " "
-BBMASK .= "|meta-toradex/recipes-mozilla|meta-toradex/recipes-browser|meta-toradex/recipes-lxde|meta-toradex/recipes-connectivity|meta-toradex/recipes-gnome|meta-toradex/recipes/trdx-config|meta-toradex/recipes-multimedia/webm|meta-toradex/recipes-qt|meta-toradex/recipes-core/psplash|meta-toradex/recipes-support/florence|meta-toradex/recipes-core/systemd|meta-toradex/recipes-efl|meta-toradex/recipes-core/dropbear|meta-toradex/recipes-support/icu|meta-toradex/recipes-support/i2c-tools|meta-toradex/recipes-benchmark|meta-toradex/recipes-core/udev|meta-toradex/recipes-support/gnutls|meta-toradex/recipes-graphics/gpu-viv-bin-mx6q|meta-toradex/recipes-multimedia/gstreamer|meta-toradex/recipes-fsl/packagegroups|meta-toradex/recipes-core/glibc|meta-toradex/recipes-sato/webkit|meta-toradex/recipes-bsp/binary-drivers/cudatoolkit6.5|meta-toradex/recipes-bsp/binary-drivers/opencv4tegra"
+BBMASK += "\
+    meta-toradex/recipes-mozilla \
+    meta-toradex/recipes-browser \
+    meta-toradex/recipes-lxde \
+    meta-toradex/recipes-connectivity \
+    meta-toradex/recipes-gnome \
+    meta-toradex/recipes/trdx-config \
+    meta-toradex/recipes-multimedia/webm \
+    meta-toradex/recipes-qt \
+    meta-toradex/recipes-core/psplash \
+    meta-toradex/recipes-support/florence \
+    meta-toradex/recipes-core/systemd \
+    meta-toradex/recipes-efl \
+    meta-toradex/recipes-core/dropbear \
+    meta-toradex/recipes-support/icu \
+    meta-toradex/recipes-support/i2c-tools \
+    meta-toradex/recipes-benchmark \
+    meta-toradex/recipes-core/udev \
+    meta-toradex/recipes-support/gnutls \
+    meta-toradex/recipes-graphics/gpu-viv-bin-mx6q \
+    meta-toradex/recipes-multimedia/gstreamer \
+    meta-toradex/recipes-fsl/packagegroups \
+    meta-toradex/recipes-core/glibc \
+    meta-toradex/recipes-sato/webkit \
+    meta-toradex/recipes-bsp/binary-drivers/cudatoolkit6.5 \
+    meta-toradex/recipes-bsp/binary-drivers/opencv4tegra \
+    "
