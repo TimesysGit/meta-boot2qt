@@ -30,7 +30,7 @@
 # kernel image files are not needed in the image
 RDEPENDS_kernel-base = ""
 
-do_configure_prepend() {
+do_preconfigure_prepend() {
     # FunctionFS for adb
     echo "CONFIG_USB_FUNCTIONFS=m"  >> ${WORKDIR}/defconfig
 
