@@ -74,7 +74,7 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     beaglebone)
       LAYERSCONF="bblayers.conf.bbb.sample"
     ;;
-    raspberrypi|raspberrypi2|raspberrypi3)
+    raspberrypi0|raspberrypi|raspberrypi2|raspberrypi3)
       LAYERSCONF="bblayers.conf.rpi.sample"
     ;;
     intel-corei7-64)

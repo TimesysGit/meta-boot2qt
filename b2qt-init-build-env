@@ -124,7 +124,7 @@ get_groups() {
     beaglebone)
       PROJECT_GROUPS="bbb"
     ;;
-    raspberrypi|raspberrypi2|raspberrypi3)
+    raspberrypi0|raspberrypi|raspberrypi2|raspberrypi3)
       PROJECT_GROUPS="rpi"
     ;;
     intel-corei7-64)
