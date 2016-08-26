@@ -34,3 +34,7 @@ SRC_URI += " \
 
 # kernel image files are not needed in the image
 RDEPENDS_kernel-base = ""
+
+do_configure_prepend() {
+    echo "CONFIG_HID_MULTITOUCH=m"              >> ${WORKDIR}/defconfig
+}
