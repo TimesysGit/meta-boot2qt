@@ -67,7 +67,6 @@ RDEPENDS_${PN} = "\
         tzdata-europe \
         atk \
         libevent \
-        ostree \
         dracut \
         connman \
         ${@base_contains("DISTRO_FEATURES", "wayland", "wayland weston weston-examples", "", d)} \

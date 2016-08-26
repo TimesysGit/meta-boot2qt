@@ -48,7 +48,6 @@ RDEPENDS_${PN} += " \
     qtimageformats \
     qtlocation \
     qtmultimedia \
-    qtotaupdate \
     qtquickcontrols \
     qtquickcontrols2 \
     qtsensors \
