@@ -42,11 +42,10 @@ SRC_URI = " \
     file://Support-for-booting-without-initramfs.patch \
     file://Allow-updating-files-in-the-boot-directory.patch \
     file://u-boot-add-bootdir-to-the-generated-uEnv.txt.patch \
-    file://u-boot-Merge-ostree-s-and-systems-uEnv.txt.patch \
     file://Create-firmware-convenience-symlinks.patch \
     "
 
-SRCREV = "77af6844d8330b31d58080076afb31e08974ce09"
+SRCREV = "8ece4d6d51bdbe3e41ab318259276bb83e553aa0"
 
 S = "${WORKDIR}/git"
 
