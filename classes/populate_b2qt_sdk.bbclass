@@ -38,10 +38,7 @@ replace_sysroot_symlink() {
                 #check whether TARGET is inside the sysroot when not prepend the sysroot
                 TARGET=`echo ${TARGET} | grep "^${SYMLINK_SYSROOT}" || echo ${SYMLINK_SYSROOT}${TARGET}`
                 rm "${SOURCE}"
-                if [ -d "${TARGET}" ]; then
-                        cp -r "${TARGET}" "${SOURCE}"
-                        replace_sysroot_symlink ${SYMLINK_SYSROOT} ${SOURCE}
-                elif [ -f "${TARGET}" ]; then
+                if [ -f "${TARGET}" ]; then
                         cp "${TARGET}" "${SOURCE}"
                 elif [ -e "${TARGET}" ]; then
                         touch "${SOURCE}"
