@@ -27,18 +27,13 @@
 ##
 ############################################################################
 
-# need to define the dependency and the ROOTFS for directdisk
-do_bootdirectdisk[depends] += "${PN}:do_rootfs"
-ROOTFS ?= "${DEPLOY_DIR_IMAGE}/${IMAGE_BASENAME}-${MACHINE}.ext3"
-
-SYSLINUX_ROOT = "root=/dev/hda2 "
-SYSLINUX_PROMPT = "0"
-SYSLINUX_TIMEOUT = "1"
-SYSLINUX_LABELS = "boot"
-LABELS_append = " ${SYSLINUX_LABELS} "
+VM_ROOTFS_TYPE = "ext3"
+ROOT_VM = "root=/dev/hda2"
+LABELS_VM = "boot"
+AUTO_SYSLINUXMENU = "0"
 SYSLINUX_DEFAULT_CONSOLE = "console=ttyS0,115200"
 
-inherit image_types boot-directdisk
+inherit image_types image-vm
 
 create_hdd_image () {
     cd ${DEPLOY_DIR_IMAGE}
