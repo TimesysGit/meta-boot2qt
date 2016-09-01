@@ -7,7 +7,6 @@
   <remote fetch="git://git.openembedded.org" name="oe"/>
   <remote fetch="git://github.com/Freescale" name="freescale"/>
   <remote fetch="git://github.com/beagleboard" name="beagleboard"/>
-  <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/architech-boards" name="architech"/>
   <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
   <remote fetch="http://codereview.qt-project.org/yocto" name="qtyocto"/>
@@ -36,7 +35,7 @@
            remote="yocto"
            revision="a6b95df4d7ab122f1e5b7632e2273b75f853af4b"
            path="sources/meta-fsl-arm"
-           groups="notdefault,external,fsl,toradex,architech,ti,bbb,smx6,renesas"/>
+           groups="notdefault,external,fsl,architech,ti,bbb,smx6,renesas"/>
   <project name="meta-ti"
            remote="yocto"
            revision="f807c7185321fb407e82c529ddff310dc037f727"
@@ -51,17 +50,12 @@
            remote="freescale"
            revision="99649b72f60fda4a2cfb2333791fe0f92997fa9e"
            path="sources/meta-fsl-arm-extra"
-           groups="notdefault,external,fsl,toradex,architech,smx6"/>
+           groups="notdefault,external,fsl,architech,smx6"/>
   <project name="meta-beagleboard"
            remote="beagleboard"
            revision="b5c709b2b6bd3bf236df923fa8f245a00fbb1b60"
            path="sources/meta-beagleboard"
            groups="notdefault,external,bbb"/>
-  <project name="meta-toradex"
-           remote="toradex"
-           revision="485643678b2d39d37b1cc9d1aa2200bb934b08de"
-           path="sources/meta-toradex"
-           groups="notdefault,external,toradex"/>
   <project name="meta-tibidabo"
            remote="architech"
            revision="06c6b09e0776507e1230aa98b5ca10d9d3968286"

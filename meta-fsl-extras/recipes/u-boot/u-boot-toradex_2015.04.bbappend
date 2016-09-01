@@ -27,14 +27,17 @@
 ##
 ############################################################################
 
-# We have a conf and classes directory, append to BBPATH
-BBPATH .= ":${LAYERDIR}"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI += " \
+        file://0001-colibri-vf-remove-console-from-tty1.patch \
+        file://0002-colibri-vf-fix-mmc-boot.patch \
+        file://0001-Update-default-args-for-apalis-imx6.patch \
+        file://0001-colibri-imx7-fix-update-u-boot.patch \
+        "
 
-# We have a recipes directory, add to BBFILES
-BBFILES += "${LAYERDIR}/recipes*/*/*.bb \
-            ${LAYERDIR}/recipes*/*/*.bbappend \
-            "
+do_compile_append () {
+  if [ "${MACHINE}" = "colibri-vf" ]; then
+    oe_runmake u-boot-nand.imx
+  fi
 
-BBFILE_COLLECTIONS += "b2qt_toradex"
-BBFILE_PATTERN_b2qt_toradex := "^${LAYERDIR}/"
-BBFILE_PRIORITY_b2qt_toradex = "20"
+}

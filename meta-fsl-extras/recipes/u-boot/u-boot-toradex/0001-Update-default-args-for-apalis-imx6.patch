@@ -1,19 +1,18 @@
-From 94531a3ecaea073316b9e4c341085ce5e277bd9f Mon Sep 17 00:00:00 2001
+From 4569a8b4997340aae34365f2f896b842f8cc114b Mon Sep 17 00:00:00 2001
 From: Samuli Piippo <samuli.piippo@digia.com>
 Date: Mon, 27 Oct 2014 14:53:25 +0200
 Subject: [PATCH] Update default args for apalis imx6
 
-Boot from sd card by default, disable kernel logs from tty1, and
-disable cursor blinking.
+Boot from sd card by default
 ---
- include/configs/apalis_imx6.h | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
+ include/configs/apalis_imx6.h | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/include/configs/apalis_imx6.h b/include/configs/apalis_imx6.h
-index e7d0d20..a1d425d 100644
+index 3ea4a5c..53d9a0c 100644
 --- a/include/configs/apalis_imx6.h
 +++ b/include/configs/apalis_imx6.h
-@@ -251,14 +251,14 @@
+@@ -252,14 +252,14 @@
  		"&& setenv dtbparam \" - ${fdt_addr_r}\" && true\0"
  
  #define SD_BOOTCMD						\
@@ -33,7 +32,7 @@ index e7d0d20..a1d425d 100644
  		"${fdt_file} && setenv dtbparam \" - ${fdt_addr_r}\" && true\0"
  
  #define USB_BOOTCMD \
-@@ -278,7 +278,8 @@
+@@ -279,7 +279,8 @@
  #define FDT_FILE "imx6q-apalis_v1_0-eval.dtb"
  #endif
  #define CONFIG_EXTRA_ENV_SETTINGS \
@@ -43,15 +42,6 @@ index e7d0d20..a1d425d 100644
  		"run nfsboot ; echo ; echo nfsboot failed ; " \
  		"usb start ;" \
  		"setenv stdout serial,vga ; setenv stdin serial,usbkbd\0" \
-@@ -299,7 +300,7 @@
- 		"|| setenv drive 2; load ${interface} ${drive}:1 " \
- 		"${kernel_addr_r} flash_blk.img\0" \
- 	"setup=setenv setupargs fec_mac=${ethaddr} " \
--		"consoleblank=0  no_console_suspend=1 console=tty1 " \
-+		"consoleblank=0  no_console_suspend=1 vt.global_cursor_default=0 " \
- 		"console=${console},${baudrate}n8\0 " \
- 	"setupdate=run setsdupdate || run setusbupdate || run setethupdate;" \
- 		" source ${kernel_addr_r}\0" \
 -- 
 1.9.1
 
