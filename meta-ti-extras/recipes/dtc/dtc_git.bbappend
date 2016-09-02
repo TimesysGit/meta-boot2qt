@@ -27,23 +27,13 @@
 ##
 ############################################################################
 
-include conf/distro/include/ti.inc
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
-DEPLOY_CONF_NAME = "BeagleBone Black"
+SRCREV = "d71d25d76012896521f937bf0c69f27b1a37cdc2"
 
-BOOTFS_CONTENT = "\
-    u-boot-${MACHINE}.img:u-boot.img \
-    MLO-${MACHINE}:MLO \
+SRC_URI += " \
+    file://0001-fdtdump-Add-live-tree-dump-capability.patch \
+    file://0002-DTBO-magic-and-dtbo-format-options.patch \
+    file://0003-dtc-Plugin-and-fixup-support.patch \
+    file://0004-plugin-Transparently-support-old-style-syntax.patch \
     "
-BOOTFS_DEPENDS = "u-boot:do_deploy"
-
-DISTRO_FEATURES_remove = "webengine"
-
-MACHINE_EXTRA_INSTALL += "\
-        bb-org-overlays \
-        "
-
-MACHINE_EXTRA_INSTALL_SDK += "\
-        "
-
-ADB_PRODUCTID = "0xD002"

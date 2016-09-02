@@ -27,23 +27,27 @@
 ##
 ############################################################################
 
-include conf/distro/include/ti.inc
+DESCRIPTION = "Device Tree Overlays for bb.org boards"
+HOMEPAGE = "https://github.com/beagleboard/bb.org-overlays"
+SECTION = "kernel"
+LICENSE = "GPLv2"
 
-DEPLOY_CONF_NAME = "BeagleBone Black"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
-BOOTFS_CONTENT = "\
-    u-boot-${MACHINE}.img:u-boot.img \
-    MLO-${MACHINE}:MLO \
-    "
-BOOTFS_DEPENDS = "u-boot:do_deploy"
+DEPENDS += "dtc-native"
 
-DISTRO_FEATURES_remove = "webengine"
+SRC_URI = "git://github.com/beagleboard/bb.org-overlays"
+SRCREV = "c34e3ee970befc511c57e7a42791e588e029b226"
 
-MACHINE_EXTRA_INSTALL += "\
-        bb-org-overlays \
-        "
+COMPATIBLE_MACHINE = "(beaglebone)"
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-MACHINE_EXTRA_INSTALL_SDK += "\
-        "
+S = "${WORKDIR}/git"
 
-ADB_PRODUCTID = "0xD002"
+export DTC = "dtc"
+
+do_install() {
+    DESTDIR="${D}" oe_runmake install
+}
+
+FILES_${PN} += "/lib/firmware"

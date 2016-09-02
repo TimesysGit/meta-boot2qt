@@ -32,3 +32,9 @@ SRC_URI += "\
     file://usb-serial.cfg \
     "
 KERNEL_CONFIG_FRAGMENTS += "${WORKDIR}/usb-serial.cfg"
+
+KERNEL_GIT_URI_beaglebone = "git://github.com/beagleboard/linux;nobranch=1"
+BRANCH_beaglebone = "4.4"
+SRCREV_beaglebone = "dbe8c873f443cb8ac52e95790d0c958b81d7eddf"
+PV_beaglebone = "4.4.19+git${SRCPV}"
+DEPENDS_beaglebone += "lzop-native"

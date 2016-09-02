@@ -1,0 +1,61 @@
+From f7da040f2bed614fd55a4901d71fafb916863e8a Mon Sep 17 00:00:00 2001
+From: Pantelis Antoniou <pantelis.antoniou@konsulko.com>
+Date: Wed, 20 Apr 2016 20:36:35 +0300
+Subject: [PATCH] plugin: Transparently support old style syntax
+
+The old style syntax for plugins is still out in the wild.
+This patch transparently support it.
+
+Signed-off-by: Pantelis Antoniou <pantelis.antoniou@konsulko.com>
+---
+ dtc-parser.y | 19 ++++++++++++++++---
+ 1 file changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/dtc-parser.y b/dtc-parser.y
+index 2890c1c..4a67baf 100644
+--- a/dtc-parser.y
++++ b/dtc-parser.y
+@@ -77,6 +77,7 @@ extern unsigned int the_versionflags;
+ %type <data> propdataprefix
+ %type <flags> versioninfo
+ %type <flags> plugindecl
++%type <flags> oldplugindecl
+ %type <re> memreserve
+ %type <re> memreserves
+ %type <array> arrayprefix
+@@ -107,10 +108,10 @@ extern unsigned int the_versionflags;
+ %%
+ 
+ sourcefile:
+-	  versioninfo ';' memreserves devicetree
++	  versioninfo ';' oldplugindecl memreserves devicetree
+ 		{
+-			the_boot_info = build_boot_info($1, $3, $4,
+-							guess_boot_cpuid($4));
++			the_boot_info = build_boot_info($1 | $3, $4, $5,
++							guess_boot_cpuid($5));
+ 		}
+ 	;
+ 
+@@ -134,6 +135,18 @@ plugindecl:
+ 		}
+ 	;
+ 
++oldplugindecl:
++	DT_PLUGIN ';'
++		{
++			the_versionflags |= VF_PLUGIN;
++			$$ = VF_PLUGIN;
++		}
++	| /* empty */
++		{
++			$$ = 0;
++		}
++	;
++
+ memreserves:
+ 	  /* empty */
+ 		{
+-- 
+1.9.1
+
