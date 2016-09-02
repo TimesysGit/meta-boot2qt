@@ -6,7 +6,6 @@
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
   <remote fetch="git://git.openembedded.org" name="oe"/>
   <remote fetch="git://github.com/Freescale" name="freescale"/>
-  <remote fetch="git://github.com/beagleboard" name="beagleboard"/>
   <remote fetch="git://github.com/architech-boards" name="architech"/>
   <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
   <remote fetch="http://codereview.qt-project.org/yocto" name="qtyocto"/>
@@ -35,12 +34,12 @@
            remote="yocto"
            revision="a6b95df4d7ab122f1e5b7632e2273b75f853af4b"
            path="sources/meta-fsl-arm"
-           groups="notdefault,external,fsl,architech,ti,bbb,smx6,renesas"/>
+           groups="notdefault,external,fsl,architech,ti,smx6,renesas"/>
   <project name="meta-ti"
            remote="yocto"
            revision="f807c7185321fb407e82c529ddff310dc037f727"
            path="sources/meta-ti"
-           groups="notdefault,external,ti,bbb"/>
+           groups="notdefault,external,ti"/>
   <project name="meta-raspberrypi"
            remote="yocto"
            revision="2745399f75d7564fcc586d0365ff73be47849d0e"
@@ -51,11 +50,6 @@
            revision="99649b72f60fda4a2cfb2333791fe0f92997fa9e"
            path="sources/meta-fsl-arm-extra"
            groups="notdefault,external,fsl,architech,smx6"/>
-  <project name="meta-beagleboard"
-           remote="beagleboard"
-           revision="b5c709b2b6bd3bf236df923fa8f245a00fbb1b60"
-           path="sources/meta-beagleboard"
-           groups="notdefault,external,bbb"/>
   <project name="meta-tibidabo"
            remote="architech"
            revision="06c6b09e0776507e1230aa98b5ca10d9d3968286"

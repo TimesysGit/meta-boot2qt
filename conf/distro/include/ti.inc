@@ -34,3 +34,16 @@ IMAGE_CLASSES += "image_types_fsl"
 
 UBOOT_SUFFIX = "img"
 BOOT_SCRIPTS = "${BOOTFS_CONTENT}"
+
+PREFERRED_PROVIDER_virtual/egl = "ti-sgx-ddk-um"
+PREFERRED_PROVIDER_virtual/libgles1 = "ti-sgx-ddk-um"
+PREFERRED_PROVIDER_virtual/libgles2 = "ti-sgx-ddk-um"
+
+MACHINE_EXTRA_INSTALL += "\
+    ti-sgx-ddk-km \
+    ti-sgx-ddk-um \
+    "
+
+MACHINE_EXTRA_INSTALL_SDK += "\
+    ti-sgx-ddk-um-dev \
+    "

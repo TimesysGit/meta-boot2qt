@@ -38,17 +38,12 @@ BSPDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE', True)) + '/../..'
 BBLAYERS ?= " \
   ${BSPDIR}/sources/poky/meta \
   ${BSPDIR}/sources/poky/meta-poky \
-  ${BSPDIR}/sources/meta-fsl-arm \
-  ${BSPDIR}/sources/meta-fsl-arm-extra \
-  ${BSPDIR}/sources/meta-beagleboard/common-bsp \
-  ${BSPDIR}/sources/meta-ti \
-  ${BSPDIR}/sources/meta-raspberrypi \
   ${BSPDIR}/sources/meta-openembedded/meta-oe \
+  ${BSPDIR}/sources/meta-openembedded/meta-python \
+  ${BSPDIR}/sources/meta-openembedded/meta-networking \
+  ${BSPDIR}/sources/meta-openembedded/meta-initramfs \
   ${BSPDIR}/sources/meta-openembedded/meta-multimedia \
   ${BSPDIR}/sources/meta-boot2qt \
-  ${BSPDIR}/sources/meta-boot2qt/meta-ti-extras \
-  ${BSPDIR}/sources/meta-boot2qt/meta-fsl-extras \
-  ${BSPDIR}/sources/meta-boot2qt/meta-beagleboard-extras \
   ${BSPDIR}/sources/meta-mingw \
   ${BSPDIR}/sources/meta-qt5 \
   "

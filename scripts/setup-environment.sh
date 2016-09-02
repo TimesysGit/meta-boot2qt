@@ -68,11 +68,8 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     tibidabo)
       LAYERSCONF="bblayers.conf.tibidabo.sample"
     ;;
-    beagleboard|am335x-evm)
+    beagleboard|beaglebone|am335x-evm)
       LAYERSCONF="bblayers.conf.ti.sample"
-    ;;
-    beaglebone)
-      LAYERSCONF="bblayers.conf.bbb.sample"
     ;;
     raspberrypi0|raspberrypi|raspberrypi2|raspberrypi3)
       LAYERSCONF="bblayers.conf.rpi.sample"
