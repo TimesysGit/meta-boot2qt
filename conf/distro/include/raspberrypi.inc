@@ -53,6 +53,4 @@ module_conf_bcm2835-v4l2 = "options bcm2835-v4l2 gst_v4l2src_is_broken=1"
 VIDEO_CAMERA = "1"
 
 RPI_FT5604 = "1"
-KERNEL_DEVICETREE += "overlays/rpi-ft5406-overlay.dtb"
 MACHINE_FEATURES += "pitft"
-
