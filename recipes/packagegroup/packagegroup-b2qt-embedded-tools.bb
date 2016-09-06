@@ -43,5 +43,6 @@ RDEPENDS_${PN} = "\
         ntp \
         connman-client \
         iproute2 \
+        rsync \
         ${@base_contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
         "
