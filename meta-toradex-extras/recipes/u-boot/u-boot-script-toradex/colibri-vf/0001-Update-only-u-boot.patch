@@ -1,0 +1,62 @@
+From 2b11117dcc616843a6dce1a5e97fcecefa7e3f4b Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Wed, 14 Sep 2016 10:22:27 +0300
+Subject: [PATCH] Update only u-boot
+
+---
+ flash_blk.scr   | 6 +++---
+ flash_eth.scr   | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/flash_blk.scr b/flash_blk.scr
+index 401c47a..8fa5af9 100644
+--- a/flash_blk.scr
++++ b/flash_blk.scr
+@@ -11,7 +11,7 @@ setenv update_kernel 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/zImage
+ setenv update_fdt 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/${soc}-colibri-${fdt_board}.dtb && ubi write ${loadaddr} dtb ${filesize}'
+ setenv update_rootfs 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
+ 
+-setenv update_new 'run update_uboot; run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs; reset'
++setenv update_new 'run update_uboot; reset'
+ 
+ # Upgrade part 1, write new U-Boot, but with old ECC format still...
+ # Store config block temporarly in memory at kernel_addr_r.
+@@ -19,10 +19,10 @@ setenv upgrade_part1 'run update_uboot && nand read ${kernel_addr_r} 0x800 0x20
+ setenv upgrade_part1_msg 'Successfully updated U-Boot, NAND upgrade required. Enter "reset", interrupt boot process and enter "run setupdate; run upgrade_part2" to complete upgrade.'
+ 
+ # Upgrade part 2, use new ECC format for the whole device...
+-setenv upgrade_part2 'run create_bcb && nand write ${kernel_addr_r} 0x800 0x20 && run update_uboot && nand erase.part ubi && run update_rootfs && echo ${upgrade_part2_msg}'
++setenv upgrade_part2 'run create_bcb && nand write ${kernel_addr_r} 0x800 0x20 && run update_uboot && echo ${upgrade_part2_msg}'
+ setenv upgrade_part2_msg 'Successfully upgraded module, enter "reset" to restart the module.'
+ 
+ # fsl_nfc indicates old NAND format (24-bit ECC), start migration process
+ setenv update 'mtdparts default && if test "${mtdids}" = "nand0=fsl_nfc"; then; run upgrade_part1; else run update_new; fi'
+ 
+-echo 'enter "run update" to update the entire module'
++echo 'enter "run update" to update the uboot'
+diff --git a/flash_eth.scr b/flash_eth.scr
+index 15aab1c..aa98b3a 100644
+--- a/flash_eth.scr
++++ b/flash_eth.scr
+@@ -11,7 +11,7 @@ setenv update_kernel 'tftpboot ${loadaddr} ${board_name}/zImage && ubi write ${l
+ setenv update_fdt 'tftpboot ${loadaddr} ${board_name}/${soc}-colibri-${fdt_board}.dtb && ubi write ${loadaddr} dtb ${filesize}'
+ setenv update_rootfs 'tftpboot ${loadaddr} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
+ 
+-setenv update_new 'run update_uboot; run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs; reset'
++setenv update_new 'run update_uboot; reset'
+ 
+ # Upgrade part 1, write new U-Boot, but with old ECC format still...
+ # Store config block temporarly in memory at kernel_addr_r.
+@@ -19,10 +19,10 @@ setenv upgrade_part1 'run update_uboot && nand read ${kernel_addr_r} 0x800 0x20
+ setenv upgrade_part1_msg 'Successfully updated U-Boot, NAND upgrade required. Enter "reset", interrupt boot process and enter "run setupdate; run upgrade_part2" to complete upgrade.'
+ 
+ # Upgrade part 2, use new ECC format for the whole device...
+-setenv upgrade_part2 'run create_bcb && nand write ${kernel_addr_r} 0x800 0x20 && run update_uboot && nand erase.part ubi && run update_rootfs && echo ${upgrade_part2_msg}'
++setenv upgrade_part2 'run create_bcb && nand write ${kernel_addr_r} 0x800 0x20 && run update_uboot && echo ${upgrade_part2_msg}'
+ setenv upgrade_part2_msg 'Successfully upgraded module, enter "reset" to restart the module.'
+ 
+ # fsl_nfc indicates old NAND format (24-bit ECC), start migration process
+ setenv update 'mtdparts default && if test "${mtdids}" = "nand0=fsl_nfc"; then; run upgrade_part1; else run update_new; fi'
+ 
+-echo 'enter "run update" to update the entire module'
++echo 'enter "run update" to update the uboot'

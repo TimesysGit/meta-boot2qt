@@ -1,0 +1,36 @@
+From c02da9f92f6ffaee65f428e1978bd3ff379a2612 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Wed, 14 Sep 2016 10:19:28 +0300
+Subject: [PATCH] Update only u-boot
+
+---
+ flash_blk.scr   | 4 ++--
+ flash_eth.scr   | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/flash_blk.scr b/flash_blk.scr
+index cc4cf38..b63366a 100644
+--- a/flash_blk.scr
++++ b/flash_blk.scr
+@@ -14,6 +14,6 @@ setenv update_rootfs 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/ubifs.i
+ 
+ setenv upgrade_alpha1_msg 'Updated U-Boot, please reset the board and use "run setupdate && run update" again.'
+ setenv prepare_alpha1_uboot 'if test "${soc}" = "mx7"; then run update_uboot && echo ${upgrade_alpha1_msg} && reset; fi'
+-setenv update 'mtdparts default && run prepare_alpha1_uboot; run update_uboot && run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs && reset'
++setenv update 'mtdparts default && run update_uboot && reset'
+ 
+-echo 'enter "run update" to update the entire module'
++echo 'enter "run update" to update the uboot'
+diff --git a/flash_eth.scr b/flash_eth.scr
+index 01be124..13025de 100644
+--- a/flash_eth.scr
++++ b/flash_eth.scr
+@@ -14,6 +14,6 @@ setenv update_rootfs 'tftpboot ${loadaddr} ${board_name}/ubifs.img && ubi write
+ 
+ setenv upgrade_alpha1_msg 'Updated U-Boot, please reset the board and use "run setupdate && run update" again.'
+ setenv prepare_alpha1_uboot 'if test "${soc}" = "mx7"; then run update_uboot && echo ${upgrade_alpha1_msg} && reset; fi'
+-setenv update 'mtdparts default && run prepare_alpha1_uboot; run update_uboot && run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs && reset'
++setenv update 'mtdparts default && run update_uboot && reset'
+ 
+-echo 'enter "run update" to update the entire module'
++echo 'enter "run update" to update the uboot'
