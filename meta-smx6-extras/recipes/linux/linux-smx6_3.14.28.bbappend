@@ -31,6 +31,7 @@ FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 SRC_URI += " \
     file://0001-ARM-8158-1-LLVMLinux-use-static-inline-in-ARM-ftrace.patch \
     file://0001-ARM-LLVMLinux-Change-extern-inline-to-static-inline-.patch \
+    file://0001-arm-Export-cache-flush-management-symbols-when-MULTI.patch \
     "
 
 do_configure_prepend() {
