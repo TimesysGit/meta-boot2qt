@@ -1,0 +1,5 @@
+[Match]
+Type=gadget
+
+[Network]
+LinkLocalAddressing=yes

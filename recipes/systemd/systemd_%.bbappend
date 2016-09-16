@@ -28,11 +28,19 @@
 ############################################################################
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-SRC_URI += "file://0020-Revert-core-mount-add-dependencies-to-dynamically-mo.patch"
+SRC_URI += " \
+    file://0020-Revert-core-mount-add-dependencies-to-dynamically-mo.patch \
+    file://usb-rndis.network \
+"
+
+PACKAGECONFIG_append = " networkd"
 
 do_install_append() {
     # remove login from tty1
     rm -f ${D}${sysconfdir}/systemd/system/getty.target.wants/getty@tty1.service
+    # set up link-local IPs for USB network interface
+    install -d ${D}${prefix}/lib/systemd/network/
+    install -m 0644 ${WORKDIR}/usb-rndis.network ${D}${prefix}/lib/systemd/network/
 }
 
 do_verify_patch_required() {
