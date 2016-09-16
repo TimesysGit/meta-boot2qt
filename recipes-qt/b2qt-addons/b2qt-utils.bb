@@ -23,17 +23,14 @@ DESCRIPTION = "Boot to Qt Utils module"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://src/wifi/qwifimanager.h;md5=0b2892e6aca7d0750bbd7fe6b6b1c033;beginline=1;endline=17"
 
-inherit qt5-module sdk-sources
+inherit qt5-module
+require recipes-qt/qt5/qt5-git.inc
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Boot2Qt/sources/b2qt-utils \
+    git://codereview.qt-project.org/qt/qtdeviceutilities;branch=${QT_MODULE_BRANCH};protocol=http \
     "
 
 SRCREV = "a34cacb1a239dff4033b6beffd811b35db7c339f"
-BRANCH = "5.6"
-PV = "5.6+git${SRCPV}"
-
-S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase qtdeclarative wpa-supplicant"
 

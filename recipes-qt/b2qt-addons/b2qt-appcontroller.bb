@@ -23,18 +23,15 @@ DESCRIPTION = "Boot to Qt Appcontroller"
 LICENSE = "QtEnterprise"
 LIC_FILES_CHKSUM = "file://main.cpp;md5=1fcdf6b49fbbf2bc9c831893cca1b279;beginline=1;endline=17"
 
-inherit qmake5 sdk-sources
+inherit qmake5
+require recipes-qt/qt5/qt5-git.inc
 
 SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/appcontroller;branch=${BRANCH};protocol=ssh;sdk-uri=5.6/Boot2Qt/sources/b2qt-appcontroller/ \
+    git://codereview.qt-project.org/qt-apps/boot2qt-appcontroller;branch=${QT_MODULE_BRANCH};protocol=http \
     file://appcontroller.conf \
     "
 
 SRCREV = "1e3c96e0e4f28a072c835775f7fdc310eb3b4f28"
-BRANCH = "5.6"
-PV = "5.6+git${SRCPV}"
-
-S = "${WORKDIR}/git"
 
 DEPENDS = "qtbase"
 
