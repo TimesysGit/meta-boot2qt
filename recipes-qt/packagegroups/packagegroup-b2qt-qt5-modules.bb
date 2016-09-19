@@ -42,7 +42,6 @@ RDEPENDS_${PN} += " \
     qtconnectivity \
     qtdatavis3d \
     qtdeclarative \
-    qtdeclarative-render2d \
     qtdeclarative-tools \
     qtdeviceutilities \
     qtgraphicaleffects \

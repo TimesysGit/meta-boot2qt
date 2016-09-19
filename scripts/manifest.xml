@@ -9,6 +9,7 @@
   <remote fetch="git://github.com/architech-boards" name="architech"/>
   <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
   <remote fetch="git://code.qt.io/yocto" name="qtyocto"/>
+  <remote fetch="ssh://codereview.qt-project.org/yocto" name="gerrit"/>
   <remote fetch="git://git.yoctoproject.org" name="intel"/>
   <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
   <remote fetch="ssh://git@git.qt.io/boot2qt" name="playground"/>
@@ -23,7 +24,7 @@
            path="sources/meta-openembedded"/>
   <project name="meta-qt5"
            remote="qtyocto"
-           revision="c82a99ecbeff88ff8a1f6eaa272a352e97992ab1"
+           revision="9195d9dc805fd3132023ff33bc77ace1f3f7e40f"
            path="sources/meta-qt5"/>
   <project name="meta-mingw"
            remote="qtyocto"

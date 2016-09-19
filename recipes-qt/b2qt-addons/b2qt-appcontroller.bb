@@ -35,7 +35,7 @@ inherit qmake5
 require recipes-qt/qt5/qt5-git.inc
 
 SRC_URI = " \
-    git://codereview.qt-project.org/qt-apps/boot2qt-appcontroller;branch=${QT_MODULE_BRANCH};protocol=http \
+    git://codereview.qt-project.org/qt-apps/boot2qt-appcontroller;${QT_MODULE_BRANCH_PARAM};protocol=http \
     file://appcontroller.conf \
     "
 

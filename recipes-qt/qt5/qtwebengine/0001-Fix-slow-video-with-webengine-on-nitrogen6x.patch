@@ -12,10 +12,10 @@ work properly.
  1 file changed, 18 deletions(-)
 
 diff --git a/src/3rdparty/chromium/gpu/command_buffer/service/feature_info.cc b/src/3rdparty/chromium/gpu/command_buffer/service/feature_info.cc
-index 0ce9980..8963d11 100644
+index 58aa147..4ab682a 100644
 --- a/src/3rdparty/chromium/gpu/command_buffer/service/feature_info.cc
 +++ b/src/3rdparty/chromium/gpu/command_buffer/service/feature_info.cc
-@@ -1014,24 +1014,6 @@ void FeatureInfo::InitializeFeatures() {
+@@ -1258,26 +1258,6 @@ void FeatureInfo::InitializeFeatures() {
      }
    }
  
@@ -36,10 +36,12 @@ index 0ce9980..8963d11 100644
 -    validators_.read_pixel_format.AddValue(GL_RG_EXT);
 -    validators_.render_buffer_format.AddValue(GL_R8_EXT);
 -    validators_.render_buffer_format.AddValue(GL_RG8_EXT);
+-    validators_.texture_unsized_internal_format.AddValue(GL_RED_EXT);
+-    validators_.texture_unsized_internal_format.AddValue(GL_RG_EXT);
 -  }
    UMA_HISTOGRAM_BOOLEAN("GPU.TextureRG", feature_flags_.ext_texture_rg);
  
- #if !defined(OS_MACOSX)
+   bool has_opengl_dual_source_blending =
 -- 
 1.9.1
 

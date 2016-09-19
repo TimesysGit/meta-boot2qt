@@ -29,4 +29,4 @@
 
 inherit qtquickcompiler
 
-SRCREV = "c121fb4ad00bc9617a011e040ef5ed695610a504"
+SRCREV = "6e224c11080feef2c6d7857d061a92e320e50899"

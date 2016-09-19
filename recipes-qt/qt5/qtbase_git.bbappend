@@ -33,6 +33,7 @@ PACKAGECONFIG += " \
     alsa \
     cups \
     fontconfig \
+    freetype \
     glib \
     iconv \
     icu \
@@ -53,7 +54,4 @@ do_configure_prepend() {
     install -m 0644 ${WORKDIR}/oe-device-extra.pri ${S}/mkspecs
 }
 
-SRCREV = "dbfd7f304c4d91096e104ec2383d92a37502d836"
-
-# Temporarily here, until merged upstream
-PACKAGECONFIG[kms] = "-kms,-no-kms,drm virtual/egl"
+SRCREV = "e395e79145ff861b2dd87e404d229d769a19ab7e"

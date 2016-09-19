@@ -27,16 +27,4 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
-
-LIC_FILES_CHKSUM = " \
-    file://LICENSE.LGPLv3;md5=8211fde12cc8a4e2477602f5953f5b71 \
-    file://LICENSE.GPLv3;md5=88e2b9117e6be406b5ed6ee4ca99a705 \
-    file://LICENSE.GPL;md5=c96076271561b0e3785dad260634eaa8 \
-"
-
-SRC_URI_append_class-target = " \
-    file://0001-Remove-qgltf.patch \
-    "
-
-SRCREV = "db3baec236841f9390e9450772838cb7ba878069"
+SRCREV = "52121396c55e6100316f006c87b4fdaa8b5a0719"

@@ -29,7 +29,7 @@
 
 DESCRIPTION = "Virtual input plugin for QtSimulator"
 LICENSE = "The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://qvinput.h;md5=709ec9e3c40137fa6068a903c57acdc1;beginline=1;endline=17"
+LIC_FILES_CHKSUM = "file://qvinput.h;md5=f25c7436dbc72d4719a5684b28dbcf4b;beginline=1;endline=17"
 
 inherit qt5-module
 
@@ -37,7 +37,7 @@ SRC_URI = " \
     git://codereview.qt-project.org/tqtc-boot2qt/emulator;branch=${BRANCH};protocol=ssh \
     "
 
-SRCREV = "ab4a9f13831f44f3dcd375fa17ed7e102647febe"
+SRCREV = "011e1c40716c8323f247e927de6640653d6811c4"
 BRANCH = "master"
 PV = "1.0+git${SRCPV}"
 

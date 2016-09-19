@@ -1,0 +1,26 @@
+From 9081e0d5e9432fcb0f1526ecb3788c64d6c731cb Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Tue, 27 Sep 2016 14:13:07 +0300
+Subject: [PATCH] Disable angle for embedded linux
+
+Angle has now hard dependency to mesa (libdrm/gbm).
+
+Change-Id: Ie1e2ef56692f5e311bb2011a15dba9de1bb8de2f
+---
+ src/core/config/embedded_linux.pri | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/core/config/embedded_linux.pri b/src/core/config/embedded_linux.pri
+index 844877e..7a909f1 100644
+--- a/src/core/config/embedded_linux.pri
++++ b/src/core/config/embedded_linux.pri
+@@ -39,5 +39,6 @@ GYP_CONFIG += \
+     use_x11=0 \
+     v8_use_snapshot=false \
+     want_separate_host_toolset=1 \
++    angle_enable_gl=0 \
+ 
+ WEBENGINE_CONFIG *= reduce_binary_size
+-- 
+1.9.1
+

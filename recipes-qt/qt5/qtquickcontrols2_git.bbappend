@@ -27,10 +27,4 @@
 ##
 ############################################################################
 
-LIC_FILES_CHKSUM = " \
-    file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
-    file://LICENSE.LGPLv3;md5=a37e6cd7102174853307e03e6edc5f30 \
-    file://LICENSE.GPLv3;md5=88e2b9117e6be406b5ed6ee4ca99a705 \
-"
-
-SRCREV = "b63d182dc2ab737a814bdee06f20907bec9c26eb"
+SRCREV = "c5a44092c8b73c540862c4a160c31487a8518992"
