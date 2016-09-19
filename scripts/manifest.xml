@@ -85,7 +85,7 @@
            groups="notdefault,internal"/>
   <project name="meta-smx6"
            remote="playground"
-           revision="c2f639ef4b2fd5809ab95fb330d28c2716aa290d"
+           revision="2c09deaa156df5ec8613806d6f659bc1fa89e123"
            path="sources/meta-smx6"
            groups="notdefault,internal"/>
 
