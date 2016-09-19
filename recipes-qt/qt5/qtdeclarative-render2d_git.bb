@@ -26,6 +26,6 @@ LIC_FILES_CHKSUM = "file://src/plugins/scenegraph/softwarecontext/softwarelayer.
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
 
-SRCREV = "ab6739631dd87ffa480e79b33ea14aa97a66bc9e"
+SRCREV = "d09edf104dd05b472d3004484cc9bd47befb0a3d"
 
 DEPENDS = "qtbase qtdeclarative"
