@@ -28,7 +28,7 @@
   <project name="meta-mingw"
            remote="qtyocto"
            path="sources/meta-mingw"
-           revision="89d30d4eafdda0ad720b1e450a4483c52dd33df0"/>
+           revision="70e42fd678d494bf11a12cb57eff820142543159"/>
 
   <project name="meta-fsl-arm"
            remote="yocto"
