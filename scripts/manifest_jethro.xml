@@ -10,7 +10,7 @@
   <remote fetch="git://git.toradex.com" name="toradex"/>
   <remote fetch="git://github.com/architech-boards" name="architech"/>
   <remote fetch="git://github.com/meta-qt5" name="meta-qt5"/>
-  <remote fetch="http://codereview.qt-project.org/yocto" name="qtyocto"/>
+  <remote fetch="git://code.qt.io/yocto" name="qtyocto"/>
   <remote fetch="git://git.yoctoproject.org" name="intel"/>
   <remote fetch="git://github.com/openembedded" name="oe-mirror"/>
   <remote fetch="ssh://git@git.qt.io/boot2qt" name="playground"/>
