@@ -27,12 +27,17 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Boot to Qt Utils module"
+DESCRIPTION = "Qt Device Utilities"
 LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit qt5-module
 require recipes-qt/qt5/qt5-git.inc
+
+PACKAGECONFIG ??= ""
+PACKAGECONFIG[wpasupplicant] = "CONFIG+=wpasupplicant,,wpa-supplicant"
+
+EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
 
 SRC_URI = " \
     git://codereview.qt-project.org/qt/qtdeviceutilities;branch=${QT_MODULE_BRANCH};protocol=http \
@@ -40,4 +45,4 @@ SRC_URI = " \
 
 SRCREV = "d0d70c3311b3dc3f0e4c11147a4b31e4da0ff56c"
 
-DEPENDS = "qtbase qtdeclarative wpa-supplicant qtconnectivity"
+DEPENDS = "qtbase qtdeclarative qtconnectivity"
