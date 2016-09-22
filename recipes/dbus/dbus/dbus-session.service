@@ -1,0 +1,13 @@
+[Unit]
+Description=D-BUS Session Message Bus.
+After=dbus.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/dbus-session.init start
+ExecStop=/usr/bin/dbus-session.init stop
+Environment=HOME=/home/root
+
+[Install]
+WantedBy=multi-user.target
+
