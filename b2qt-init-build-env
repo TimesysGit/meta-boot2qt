@@ -162,7 +162,7 @@ mirror() {
   mkdir -p .repo/manifests
   cp ${DIR}/scripts/manifest.xml .repo/manifests/
   MANIFEST="manifest.xml"
-  ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g all --mirror
+  ${REPO} init ${REPO_URL} -u ${PWD}/.repo/repo -b default -m ${MANIFEST} -g external --mirror
   ${REPO} sync
 }
 

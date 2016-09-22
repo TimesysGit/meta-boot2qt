@@ -58,6 +58,12 @@
 # internal copy of R-Car_Series_Evaluation_Software_Packages used for CI
 FILESEXTRAPATHS_append = "${BSPDIR}/sources/renesas-rcar-gen2/${PN}:"
 
+KERNEL_MODULE_AUTOLOAD += " \
+    phy-rcar-gen2-usb \
+    hid_multitouch \
+    renesas_usbhs \
+"
+
 GLES_DRIVER = "sgx"
 GLES_DRIVER_r8a7790 = "rgx"
 

@@ -1,0 +1,19 @@
+setenv create_bcb 'nand erase.part mx7-bcb && writebcb 80000 200000'
+setenv update_configblock 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/configblock.bin && nand write ${loadaddr} 0x800 ${filesize} && nand write ${loadaddr} 0x20800 ${filesize}'
+
+# Migrate to UBI volume based boot schema
+setenv prepare_kernel_fdt 'ubi create kernel 0x800000 static && ubi create dtb 0x20000 static'
+setenv prepare_m4firmware 'ubi create m4firmware 0xe0000 static'
+setenv prepare_rootfs 'ubi create rootfs 0 dynamic'
+setenv prepare_ubi 'ubi part ubi && if ubi check rootfs; then if ubi check kernel; then else ubi remove rootfs && run prepare_kernel_fdt && run prepare_m4firmware && run prepare_rootfs; fi; else run prepare_kernel_fdt && run prepare_m4firmware && run prepare_rootfs; fi'
+
+setenv update_uboot 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/u-boot-nand.imx && nand erase.part u-boot && nand erase.part u-boot-env && writeboot ${loadaddr} 80000 200000 $filesize'
+setenv update_kernel 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/zImage && ubi write ${loadaddr} kernel ${filesize}'
+setenv update_fdt 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/${soc}-colibri-${fdt_board}.dtb && ubi write ${loadaddr} dtb ${filesize}'
+setenv update_rootfs 'fatload ${interface} 0:1 ${loadaddr} ${board_name}/ubifs.img && ubi write ${loadaddr} rootfs ${filesize}'
+
+setenv upgrade_alpha1_msg 'Updated U-Boot, please reset the board and use "run setupdate && run update" again.'
+setenv prepare_alpha1_uboot 'if test "${soc}" = "mx7"; then run update_uboot && echo ${upgrade_alpha1_msg} && reset; fi'
+setenv update 'mtdparts default && run prepare_alpha1_uboot; run update_uboot && run prepare_ubi && run update_kernel && run update_fdt && run update_rootfs && reset'
+
+echo 'enter "run update" to update the entire module'

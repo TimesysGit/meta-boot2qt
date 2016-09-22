@@ -31,11 +31,15 @@ LICENSE = "The-Qt-Company-DCLA-2.1"
 LIC_FILES_CHKSUM = "file://${QT_LICENSE};md5=80e06902b5f0e94ad0a78ee4f7fcb74b"
 DEPENDS = "u-boot-mkimage-native"
 
-PV = "v2.3"
+PV = "v2.6"
 
 SRC_URI = " \
-    file://flash_mmc.scr \
+    file://fwd_mmc.scr \
+    file://fwd_blk.scr \
+    file://fwd_eth.scr \
     file://flash_blk.scr \
+    file://flash_eth.scr \
+    file://0001-Update-only-u-boot.patch \
     "
 
 S = "${WORKDIR}"
@@ -43,27 +47,20 @@ S = "${WORKDIR}"
 inherit deploy
 
 do_mkimage () {
-    uboot-mkimage -A arm -O linux -T script -C none -a 0 -e 0 \
-                  -n "update script" -d ${WORKDIR}/flash_mmc.scr \
-                  flash_mmc.img
-
-    uboot-mkimage -A arm -O linux -T script -C none -a 0 -e 0 \
-                  -n "update script" -d ${WORKDIR}/flash_blk.scr \
-                  flash_blk.img
+    for scr in ${WORKDIR}/*.scr; do
+        uboot-mkimage -A arm -O linux -T script -C none -a 0 -e 0 \
+                  -n "update script" -d ${scr} \
+                  $(basename ${scr} .scr).img
+    done
 }
 
 addtask mkimage after do_compile before do_install
 
 do_deploy () {
-    install -d ${DEPLOYDIR}
-    install ${S}/flash_mmc.img ${DEPLOYDIR}/flash_mmc-${MACHINE}-${PV}-${PR}.img
-    install ${S}/flash_blk.img ${DEPLOYDIR}/flash_blk-${MACHINE}-${PV}-${PR}.img
-
-    cd ${DEPLOYDIR}
-    rm -f flash_mmc-${MACHINE}.img
-    ln -sf flash_mmc-${MACHINE}-${PV}-${PR}.img flash_mmc-${MACHINE}.img
-    rm -f flash_blk-${MACHINE}.img
-    ln -sf flash_blk-${MACHINE}-${PV}-${PR}.img flash_blk-${MACHINE}.img
+    install -d ${DEPLOYDIR}/${MACHINE}
+    install -m 0644 -t ${DEPLOYDIR} ${S}/*.img
+    ln -s ../flash_blk.img ${DEPLOYDIR}/${MACHINE}/
+    ln -s ../flash_eth.img ${DEPLOYDIR}/${MACHINE}/
 }
 
 addtask deploy after do_install before do_build

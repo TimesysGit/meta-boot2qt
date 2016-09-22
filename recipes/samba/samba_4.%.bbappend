@@ -27,20 +27,5 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Boot to Qt Utils module"
-LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
-LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
+DEPENDS += "perl"
 
-inherit qt5-module sdk-sources
-
-SRC_URI = " \
-    git://codereview.qt-project.org/tqtc-boot2qt/utils;branch=${BRANCH};protocol=ssh;sdk-uri=5.7/Boot2Qt/sources/b2qt-utils \
-    "
-
-SRCREV = "d0d70c3311b3dc3f0e4c11147a4b31e4da0ff56c"
-BRANCH = "5.7"
-PV = "5.7+git${SRCPV}"
-
-S = "${WORKDIR}/git"
-
-DEPENDS = "qtbase qtdeclarative wpa-supplicant qtconnectivity"

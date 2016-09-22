@@ -27,22 +27,22 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Additional tools packagegroup for B2Qt embedded Linux image"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-PR = "r0"
+DESCRIPTION = "Qt Device Utilities"
+LICENSE = "GPL-3.0 | The-Qt-Company-DCLA-2.1"
+LIC_FILES_CHKSUM = "file://LICENSE.GPL3;md5=d32239bcb673463ab874e80d47fae504"
 
-inherit packagegroup
+inherit qt5-module
+require recipes-qt/qt5/qt5-git.inc
 
-RDEPENDS_${PN} = "\
-        ldd \
-        binutils \
-        binutils-symlinks \
-        i2c-tools \
-        perf \
-        htop \
-        ntp \
-        connman-client \
-        iproute2 \
-        rsync \
-        ${@base_contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
-        "
+PACKAGECONFIG ??= ""
+PACKAGECONFIG[wpasupplicant] = "CONFIG+=wpasupplicant,,wpa-supplicant"
+
+EXTRA_QMAKEVARS_PRE += "${PACKAGECONFIG_CONFARGS}"
+
+SRC_URI = " \
+    git://codereview.qt-project.org/qt/qtdeviceutilities;branch=${QT_MODULE_BRANCH};protocol=http \
+    "
+
+SRCREV = "d0d70c3311b3dc3f0e4c11147a4b31e4da0ff56c"
+
+DEPENDS = "qtbase qtdeclarative qtconnectivity"

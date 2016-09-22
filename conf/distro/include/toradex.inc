@@ -27,22 +27,13 @@
 ##
 ############################################################################
 
-DESCRIPTION = "Additional tools packagegroup for B2Qt embedded Linux image"
-LICENSE = "The-Qt-Company-DCLA-2.1"
-PR = "r0"
+PREFERRED_PROVIDER_u-boot = "u-boot-toradex"
 
-inherit packagegroup
-
-RDEPENDS_${PN} = "\
-        ldd \
-        binutils \
-        binutils-symlinks \
-        i2c-tools \
-        perf \
-        htop \
-        ntp \
-        connman-client \
-        iproute2 \
-        rsync \
-        ${@base_contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
-        "
+MACHINEDIR = "${@d.getVar('MACHINE', True).replace('-','_')}"
+BOOT_SCRIPTS += " \
+    fwd_blk.img:flash_blk.img \
+    fwd_eth.img:flash_eth.img \
+    fwd_mmc.img:flash_mmc.img \
+    ${MACHINE}:${MACHINEDIR} \
+    u-boot-${MACHINE}.imx:${MACHINEDIR}/u-boot.imx \
+    "

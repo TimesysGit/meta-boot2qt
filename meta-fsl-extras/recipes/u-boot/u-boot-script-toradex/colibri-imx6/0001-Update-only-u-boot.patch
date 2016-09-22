@@ -1,0 +1,52 @@
+From 40445299edb425159c30609e1ab7172801535a43 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Wed, 14 Sep 2016 10:17:02 +0300
+Subject: [PATCH] Update only u-boot
+
+---
+ flash_blk.scr | 6 +++---
+ flash_eth.scr | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/flash_blk.scr b/flash_blk.scr
+index a60a7a5..23c5b72 100644
+--- a/flash_blk.scr
++++ b/flash_blk.scr
+@@ -29,13 +29,13 @@ setenv update_2 'load ${interface} ${drive}:1 ${loadaddr} ${board_name}/boot.vfa
+ #do it in chunks of 64M to fit into DDR RAM of the smallest module
+ setenv update_3 'setenv filesize 4000000; setenv filepos 0; setenv blkstart a000; while test ${filesize} -eq "4000000"; do run cp_file_chunk; run set_nextpos; done; true'
+ 
+-setenv echo_migrate echo "successfully updated U-Boot, power-cycle and enter \"run setupdate\; run migrate\" to complete update"
++setenv echo_migrate echo "successfully updated U-Boot"
+ setenv migrate 'run migrate_configblock; run update_latest; reset'
+ setenv update_v2.4b1 'run check_configblock || run migrate_configblock; run migrate_uboot_old && run echo_migrate'
+ setenv update_v2.5b3 'run check_configblock || run migrate_configblock; run migrate_uboot && run echo_migrate'
+ 
+ setenv update_latest 'run update_uboot; run update_1; run update_2; run update_kernel; run update_fdt; run update_3'
+-setenv update_new 'updt_fuse -n && run update_latest && reset; run update_v2.5b3'
++setenv update_new 'updt_fuse -n && run update_uboot && reset; run update_v2.5b3'
+ setenv update 'mmc bootbus 0 2 0 1 && run update_new && exit; run update_v2.4b1'
+ 
+-echo 'enter "run update" to update the entire module'
++echo 'enter "run update" to update the uboot'
+diff --git a/flash_eth.scr b/flash_eth.scr
+index a3906b2..14f4104 100644
+--- a/flash_eth.scr
++++ b/flash_eth.scr
+@@ -30,13 +30,13 @@ setenv update_2 'tftpboot ${loadaddr} ${board_name}/boot.vfat && run set_blkcnt
+ #split -a 2 -b `expr 64 \* 1024 \* 1024` --numeric-suffixes=10 root.ext3 root.ext3-
+ setenv update_3 'setenv filesize 4000000; setenv filenum 10; setenv blkstart a000; while test ${filesize} -eq "4000000"; do run cp_file_chunk; run set_nextnum; done; true'
+ 
+-setenv echo_migrate echo "successfully updated U-Boot, power-cycle and enter \"run setupdate\; run migrate\" to complete update"
++setenv echo_migrate echo "successfully updated U-Boot"
+ setenv migrate 'run migrate_configblock; run update_latest; reset'
+ setenv update_v2.4b1 'run check_configblock || run migrate_configblock; run migrate_uboot_old && run echo_migrate'
+ setenv update_v2.5b3 'run check_configblock || run migrate_configblock; run migrate_uboot && run echo_migrate'
+ 
+ setenv update_latest 'run update_uboot; run update_1; run update_2; run update_kernel; run update_fdt; run update_3'
+-setenv update_new 'updt_fuse -n && run update_latest && reset; run update_v2.5b3'
++setenv update_new 'updt_fuse -n && run update_uboot && reset; run update_v2.5b3'
+ setenv update 'mmc bootbus 0 2 0 1 && run update_new && exit; run update_v2.4b1'
+ 
+-echo 'enter "run update" to update the entire module'
++echo 'enter "run update" to update the uboot'

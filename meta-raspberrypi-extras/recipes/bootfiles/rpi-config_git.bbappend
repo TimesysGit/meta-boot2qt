@@ -28,8 +28,8 @@
 ############################################################################
 
 do_deploy_append() {
-    if [ "${RPI_FT5604}" = "1" ]; then
-        echo "# Enable rpi-ft5604 touch" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+    if [ "${RPI_FT5406}" = "1" ]; then
+        echo "# Enable rpi-ft5406 touch" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
         echo "dtoverlay=rpi-ft5406" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
     fi
 }

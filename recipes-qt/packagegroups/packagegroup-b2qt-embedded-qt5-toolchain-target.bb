@@ -44,11 +44,14 @@ RDEPENDS_${PN} += " \
     qt3d-dev \
     qtbase-dev \
     qtbase-staticdev \
-    qtcanvas3d \
+    qtcanvas3d-dev \
+    qtcharts-dev \
     qtconnectivity-dev \
+    qtdatavis3d-dev \
     qtdeclarative-dev \
     qtdeclarative-render2d-dev \
     qtdeclarative-staticdev \
+    qtdeviceutilities-dev \
     qtgraphicaleffects-dev \
     qtimageformats-dev \
     qtlocation-dev \
@@ -61,14 +64,10 @@ RDEPENDS_${PN} += " \
     qtsvg-dev \
     qttools-dev \
     qttools-staticdev \
+    qtvirtualkeyboard-dev \
     ${@base_contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
     ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine-dev', '', d)} \
     qtwebsockets-dev \
     qtwebchannel-dev \
     qtxmlpatterns-dev \
-    \
-    b2qt-utils-dev \
-    qtcharts-dev \
-    qtdatavis3d-dev \
-    qtvirtualkeyboard-dev \
     "

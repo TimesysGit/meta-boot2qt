@@ -1,0 +1,6 @@
+#the update.sh script renames this. fwd_eth.scr -> ../flash_eth.img
+test -z "${board_name}" && test "${soc}" = "vf500" && setenv board_name colibri_vf
+test -z "${board_name}" && test "${soc}" = "vf610" && setenv board_name colibri_vf
+
+test -n ${board_name} || echo "board_name env not set!" && exit
+tftpboot ${loadaddr} "${board_name}/flash_eth.img" && source ${loadaddr}
