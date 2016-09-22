@@ -44,6 +44,7 @@ RDEPENDS_${PN} += " \
     qtdeclarative \
     qtdeclarative-render2d \
     qtdeclarative-tools \
+    qtdeviceutilities \
     qtgraphicaleffects \
     qtimageformats \
     qtlocation \
