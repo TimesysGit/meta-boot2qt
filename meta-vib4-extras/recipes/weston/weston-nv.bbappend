@@ -27,40 +27,6 @@
 ##
 ############################################################################
 
-TARGET_CFLAGS += " -DWIN_INTERFACE_CUSTOM"
-
-DEFAULTTUNE = "cortexa15hf-neon"
-
-KERN_DIR ?= '${@os.path.normpath("${TOPDIR}/../sources/jetson-tk1-pro/vibrante-vcm30t124-linux")}'
-PLATFORM_TOPDIR ?= '${@os.path.normpath("${TOPDIR}/../sources/jetson-tk1-pro/vibrante-vcm30t124-linux")}'
-NVLAYER_DIR ?= "${TOPDIR}/../sources/nvidia-layer"
-
-MACHINE_EXTRA_INSTALL = "\
-        libegl \
-        libgles2 \
-        tegra-firmware-gk20a \
-        graphics-fw \
-        libdrm-nv \
-"
-
-MACHINE_EXTRA_INSTALL_SDK = "\
-        libegl-dev \
-        libgles2-dev \
-        graphics-headers-dev \
-        libdrm-nv-dev \
-"
-
-PREFERRED_PROVIDER_libdrm ?= "libdrm-nv"
-PREFERRED_PROVIDER_drm ?= "libdrm-nv"
-
-BBMASK += "\
-    meta-vib3/recipes-kernel/linux-libc-headers \
-    meta-vib3/recipes-devtools/binutils \
-    meta-vib3/recipes-core/eglibc \
-    meta-vib3/recipes-core/systemd \
-    meta-vib3/recipes-connectivity \
-    meta-vib3/recipes-multimedia/pulseaudio \
-    meta-vib3/recipes-core/meta \
-    meta-vib3/recipes-core/packagegroups \
-    meta-vib3/recipes-devtools/gcc \
-    "
+do_install_prepend() {
+    mv ${WORKDIR}/prebuilt/* ${WORKDIR}/
+}

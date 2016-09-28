@@ -1,4 +1,3 @@
-
 ############################################################################
 ##
 ## Copyright (C) 2016 The Qt Company Ltd.
@@ -27,6 +26,11 @@
 ## $QT_END_LICENSE$
 ##
 ############################################################################
+
+do_unpack_append() {
+    rm -rf ${STAGING_KERNEL_DIR}
+    ln -s ${S} ${STAGING_KERNEL_DIR}
+}
 
 do_kernel_defconfig_prepend () {
 }

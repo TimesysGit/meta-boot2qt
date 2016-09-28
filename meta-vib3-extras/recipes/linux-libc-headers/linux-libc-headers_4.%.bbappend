@@ -7,3 +7,8 @@ SRC_URI = "file://${KERN_DIR}/linux.tar.bz2"
 # Extracting linux.tar.bz2 creates directories
 # <top>/vibrante-oss-src/kernel
 S = "${WORKDIR}/vibrante-oss-src/kernel"
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/../linux/linux-nvidia:"
+SRC_URI += "\
+    file://0001-Btrfs-add-ioctl-to-wait-for-qgroup-rescan-completion.patch \
+    "
