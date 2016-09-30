@@ -27,14 +27,10 @@
 ##
 ############################################################################
 
-# We have a conf and classes directory, append to BBPATH
-BBPATH .= ":${LAYERDIR}"
+FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
+S = "${WORKDIR}/${LNX_TOPDIR}/samples/wayland/weston"
 
-# We have a recipes directory, add to BBFILES
-BBFILES += "${LAYERDIR}/recipes*/*/*.bb \
-            ${LAYERDIR}/recipes*/*/*.bbappend \
-"
-
-BBFILE_COLLECTIONS += "b2qt_vib3"
-BBFILE_PATTERN_b2qt_vib3 := "^${LAYERDIR}/"
-BBFILE_PRIORITY_b2qt_vib3 = "20"
+do_install_prepend() {
+    mkdir -p ${WORKDIR}/${LNX_TOPDIR}/samples/weston/tools
+    cp ${WORKDIR}/${LNX_TOPDIR}/samples/wayland/weston/tools/weston.ini ${WORKDIR}/${LNX_TOPDIR}/samples/weston/tools/weston.ini
+}

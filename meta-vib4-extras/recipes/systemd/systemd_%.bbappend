@@ -27,4 +27,4 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI_remove = "file://0001-Disable-LTO-in-LDFLAGS-and-CFLAGS.patch"

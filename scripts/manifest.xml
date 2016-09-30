@@ -69,17 +69,12 @@
 
   <project name="nvidia-layer"
            remote="playground"
-           revision="38c9b1d76037ff39b9e0cbd679b3e04b36c86ed7"
+           revision="7c95fabf8d71617130f71464207dd55c3079facd"
            path="sources/nvidia-layer"
-           groups="notdefault,internal"/>
-  <project name="jetson-tk1-pro"
-           remote="playground"
-           revision="a376c795d5361fda4ea5f19feecc23ab7e753646"
-           path="sources/jetson-tk1-pro"
            groups="notdefault,internal"/>
   <project name="vibrante-t186"
            remote="playground"
-           revision="edc10bf3f4b17333021f85e9ad32f85838e2c33f"
+           revision="e947e8f412b41ef673714e752a4065dc2f4fb04e"
            path="sources/vibrante-t186"
            groups="notdefault,internal"/>
   <project name="meta-smx6"

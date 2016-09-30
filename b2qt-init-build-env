@@ -127,9 +127,6 @@ get_groups() {
     intel-corei7-64)
       PROJECT_GROUPS="intel"
     ;;
-    nvidia-logan)
-      PROJECT_GROUPS="nvidia-logan"
-    ;;
     tegra-x1|tegra-t18x)
       PROJECT_GROUPS="nvidia-tegra"
     ;;
