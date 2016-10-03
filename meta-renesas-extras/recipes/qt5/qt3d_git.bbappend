@@ -27,9 +27,8 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
 
-SRC_URI += " \
-    file://b2qt.cfg \
-    file://0001-Btrfs-add-ioctl-to-wait-for-qgroup-rescan-completion.patch \
+SRC_URI_append_class-target = " \
+    file://0001-Remove-qgltf.patch \
     "

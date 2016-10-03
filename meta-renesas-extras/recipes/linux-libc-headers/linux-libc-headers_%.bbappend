@@ -28,3 +28,9 @@
 ############################################################################
 
 COMPATIBLE_MACHINE = ""
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/../linux/linux-renesas:"
+
+SRC_URI += " \
+    file://0001-Btrfs-add-ioctl-to-wait-for-qgroup-rescan-completion.patch \
+    "

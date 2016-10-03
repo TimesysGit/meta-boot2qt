@@ -136,4 +136,5 @@ BBMASK += "\
     gles-test-module \
     poky/meta/recipes-graphics/mesa \
     meta-fsl-arm/recipes-graphics/mesa \
+    meta-rcar-gen2/recipes-devtools/file \
     "
