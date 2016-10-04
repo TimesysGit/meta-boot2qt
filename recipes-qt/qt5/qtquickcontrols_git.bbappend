@@ -38,4 +38,4 @@ LIC_FILES_CHKSUM = " \
     file://LICENSE.FDL;md5=6d9f2a9af4c8b8c3c769f6cc1b6aaf7e \
 "
 
-SRCREV = "22fab1502f562bccb3c16dde0288aa867e3b094a"
+SRCREV = "abe319c9cb811832bb4c9c95290564dfa7b3603a"
