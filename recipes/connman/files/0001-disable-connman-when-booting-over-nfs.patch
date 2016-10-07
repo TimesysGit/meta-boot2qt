@@ -1,0 +1,21 @@
+From ccc6013f1e55b67981fb336aba657aea1520aeda Mon Sep 17 00:00:00 2001
+From: Mikko Gronoff <mikko.gronoff@qt.io>
+Date: Tue, 20 Sep 2016 11:02:50 +0300
+Subject: [PATCH] Disable connman when booting over NFS
+
+---
+ src/connman.service.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/connman.service.in b/src/connman.service.in
+index 8f7f342..8470f91 100644
+--- a/src/connman.service.in
++++ b/src/connman.service.in
+@@ -3,6 +3,7 @@ Description=Connection service
+ After=dbus.service network-pre.target
+ Before=network.target remote-fs-pre.target
+ Wants=network.target remote-fs-pre.target
++ConditionKernelCommandLine=!root=/dev/nfs
+ 
+ [Service]
+ Type=dbus
