@@ -106,7 +106,7 @@ RENESAS_WORKAROUNGS = " \
     libdrm-tests \
 "
 
-MACHINE_EXTRA_INSTALL = " \
+MACHINE_EXTRA_INSTALL += " \
     kernel-devicetree \
     libdrm-kms \
     libegl \
