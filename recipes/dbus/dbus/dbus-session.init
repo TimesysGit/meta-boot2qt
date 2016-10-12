@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          dbus
 # Required-Start:    $remote_fs $syslog
@@ -17,13 +17,16 @@
 # set -e
 
 # Source function library.
-. /etc/init.d/functions
+#. /etc/init.d/functions
 
 DAEMON=@bindir@/dbus-launch
 NAME=dbus-session
 ADDRESSFILE=/var/run/dbus/session_bus_address
 UUIDDIR=/var/lib/dbus
 DESC="session message bus"
+APPCONTROLLERPATH="/tmp/b2qt/appcontroller.conf.d"
+APPCONTROLLERADDRESSFILE="session_bus_address"
+
 
 test -x $DAEMON || exit 0
 
@@ -38,12 +41,18 @@ if [ -e $ADDRESSFILE ]; then
   . $ADDRESSFILE
 fi
 
+if [ ! -d $APPCONTROLLERPATH ]; then
+mkdir -p $APPCONTROLLERPATH
+fi
+
 test "$ENABLED" != "0" || exit 0
 
 start_it_up()
 {
   echo -n "Starting $DESC: "
   $DAEMON --auto-syntax > $ADDRESSFILE
+  ADDR=`cat $ADDRESSFILE|grep -i DBUS_SESSION_BUS_ADDRESS=`
+  echo "env=${ADDR%?}" |tr -d \' > ${APPCONTROLLERPATH}/${APPCONTROLLERADDRESSFILE}
   echo "$NAME."
 }
 

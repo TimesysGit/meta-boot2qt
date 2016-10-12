@@ -1,0 +1,21 @@
+From df70770f33280a915abb413678088a078d82341a Mon Sep 17 00:00:00 2001
+From: Mikko Gronoff <mikko.gronoff@qt.io>
+Date: Tue, 20 Sep 2016 11:02:50 +0300
+Subject: [PATCH] Disable connman when booting over NFS
+
+---
+ src/connman.service.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/connman.service.in b/src/connman.service.in
+index 09dfec9..4132cf7 100644
+--- a/src/connman.service.in
++++ b/src/connman.service.in
+@@ -6,6 +6,7 @@ RequiresMountsFor=@localstatedir@/lib/connman
+ After=dbus.service network-pre.target systemd-sysusers.service
+ Before=network.target multi-user.target shutdown.target
+ Wants=network.target
++ConditionKernelCommandLine=!root=/dev/nfs
+ 
+ [Service]
+ Type=dbus
