@@ -27,4 +27,23 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+
+SRC_URI += " \
+    file://wayland-client.pc \
+    file://wayland-cursor.pc \
+    file://wayland-egl.pc \
+    file://wayland-server.pc \
+    file://${PLATFORM_TOPDIR}/include/wayland-egl-core.h \
+    "
+
+FILES_${PN} += "${libdir}/pkgconfig"
+
+WAYLAND_PACKAGES += "wayland-dev"
+
+do_install_append() {
+    install -d ${D}${libdir}/pkgconfig
+    install -m 0776 ${WORKDIR}/*.pc ${D}${libdir}/pkgconfig
+    install -d ${D}${includedir}
+    install -m 0775 ${PLATFORM_TOPDIR}/include/wayland-egl-core.h ${D}${includedir}
+}

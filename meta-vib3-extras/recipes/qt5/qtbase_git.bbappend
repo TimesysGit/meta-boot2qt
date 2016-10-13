@@ -27,4 +27,5 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+DEPENDS += "graphics-headers"
+PACKAGECONFIG += "kms"

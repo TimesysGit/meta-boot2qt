@@ -1,0 +1,11 @@
+--- a/drivers/platform/tegra/tegra12_clocks.c	2016-04-19 13:51:34.912235128 +0300
++++ b/drivers/platform/tegra/tegra12_clocks.c	2016-04-19 13:51:55.739478254 +0300
+@@ -1331,7 +1331,7 @@
+  */
+ static void tegra12_cpu_clk_init(struct clk *c)
+ {
+-	c->state = (!is_lp_cluster() == (c->u.cpu.mode == MODE_G))? ON : OFF;
++	c->state = ((!is_lp_cluster()) == (c->u.cpu.mode == MODE_G))? ON : OFF;
+ }
+ 
+ static int tegra12_cpu_clk_enable(struct clk *c)

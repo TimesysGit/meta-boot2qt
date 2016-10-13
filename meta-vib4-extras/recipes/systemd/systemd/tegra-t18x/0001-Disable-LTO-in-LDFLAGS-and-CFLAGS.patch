@@ -1,0 +1,18 @@
+diff --git a/configure.ac b/configure.ac
+index 97a29d6..b0e4060 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -208,10 +208,6 @@ AS_CASE([$CC], [*clang*],
+                -Wno-gnu-variable-sized-type-not-at-end \
+         ])])
+ 
+-AS_CASE([$CFLAGS], [*-O[[12345sz\ ]]*],
+-        [CC_CHECK_FLAGS_APPEND([with_cflags], [CFLAGS], [\
+-               -flto -ffat-lto-objects])],
+-        [AC_MSG_RESULT([skipping -flto, optimization not enabled])])
+ AC_SUBST([OUR_CFLAGS], "$with_cflags $sanitizer_cflags")
+ 
+ AS_CASE([$CFLAGS], [*-O[[12345\ ]]*],
+-- 
+2.5.0
+

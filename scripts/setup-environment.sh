@@ -77,6 +77,9 @@ if [ ! -f ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf ]; then
     intel-corei7-64)
       LAYERSCONF="bblayers.conf.intel.sample"
     ;;
+    nvidia-logan)
+      LAYERSCONF="bblayers.conf.nvidia-logan.sample"
+    ;;
     tegra-x1|tegra-t18x)
       LAYERSCONF="bblayers.conf.nvidia-tegra.sample"
     ;;

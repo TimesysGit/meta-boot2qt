@@ -27,4 +27,14 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS_append := "${THISDIR}/${PN}:"
+
+SRC_URI += " file://libdrm.pc"
+SRC_URI_remove_nvidia-logan = "file://${PLATFORM_TOPDIR}/include/drm_fourcc.h"
+
+do_install_append() {
+    install -d ${D}/usr/lib/pkgconfig
+    install -m 0776 ${WORKDIR}/libdrm.pc ${D}/usr/lib/pkgconfig/libdrm.pc
+}
+
+PACKAGES += "${PN}-dev"

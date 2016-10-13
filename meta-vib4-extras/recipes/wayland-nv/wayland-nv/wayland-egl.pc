@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: wayland-egl
+Description: wayland-egl library
+Version: 9.1.6
+Libs: -L${libdir} -lwayland-egl
+Cflags: -I${includedir}
+

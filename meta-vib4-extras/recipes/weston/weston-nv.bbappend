@@ -27,4 +27,6 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+do_install_prepend() {
+    mv ${WORKDIR}/prebuilt/* ${WORKDIR}/
+}

@@ -27,4 +27,8 @@
 ##
 ############################################################################
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+SRC_URI_remove = " \
+    file://${PLATFORM_TOPDIR}/lib-target/NETB_img.bin \
+    file://${PLATFORM_TOPDIR}/lib-target/nvhost_msenc031.fw \
+    file://${PLATFORM_TOPDIR}/lib-target/vic03_ucode.bin \
+"
