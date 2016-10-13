@@ -36,7 +36,7 @@ require recipes-qt/qt5/qt5-git.inc
 
 QT_MODULE = "qt-apps-boot2qt-demos"
 
-SRCREV = "a6d8f7ce79fb5c17e706f25daf4dda4d97b5323e"
+SRCREV = "b9585b440819e1444b20f30435f81c46801158c5"
 
 S = "${WORKDIR}/git/wayland/democompositor/"
 
