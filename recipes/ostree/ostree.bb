@@ -36,14 +36,13 @@ inherit autotools gobject-introspection pkgconfig systemd
 
 SRC_URI = " \
     git://github.com/GNOME/ostree.git \
-    file://Fix-enable_rofiles_fuse-no-build.patch \
     file://Mount-boot-partition.patch \
     file://Allow-updating-files-in-the-boot-directory.patch \
     file://u-boot-Merge-ostree-s-and-systems-uEnv.txt.patch \
     file://Create-firmware-convenience-symlinks.patch \
     "
 
-SRCREV = "v2016.5"
+SRCREV = "v2016.6"
 
 S = "${WORKDIR}/git"
 
@@ -68,7 +67,11 @@ EXTRA_OECONF = "--with-dracut \
                 --enable-gtk-doc-html=no \
                 --enable-man=no \
                 --with-soup \
-                --enable-libsoup-client-certs"
+                --enable-libsoup-client-certs \
+                --enable-always-build-tests=no \
+                --disable-glibtest \
+                --enable-installed-tests=no \
+"
 
 do_configure_prepend() {
     cd ${S}
