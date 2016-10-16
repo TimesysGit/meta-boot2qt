@@ -32,7 +32,7 @@ SUMMARY = "Shared library with a reference command line tool for managing bootab
 LICENSE = "LGPL-2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=5f30f0716dfdd0d91eb439ebec522ec2"
 
-inherit autotools pkgconfig systemd
+inherit autotools gobject-introspection pkgconfig systemd
 
 SRC_URI = " \
     git://github.com/GNOME/ostree.git \
