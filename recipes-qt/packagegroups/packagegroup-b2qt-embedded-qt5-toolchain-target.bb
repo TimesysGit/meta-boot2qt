@@ -66,8 +66,8 @@ RDEPENDS_${PN} += " \
     qttools-dev \
     qttools-staticdev \
     qtvirtualkeyboard-dev \
-    ${@base_contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
-    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine-dev', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'qtwayland-dev', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine-dev', '', d)} \
     qtwebsockets-dev \
     qtwebchannel-dev \
     qtxmlpatterns-dev \

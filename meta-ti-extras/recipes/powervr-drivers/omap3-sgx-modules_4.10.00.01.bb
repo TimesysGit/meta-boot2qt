@@ -24,7 +24,7 @@ BINFILE_HARDFP = "Graphics_SDK_setuplinux_${SGXPV}_hardfp_minimal_demos.bin"
 MD5SUM_HARDFP = "15a3ccb66e98580e474fc112565f66b6"
 SHA256SUM_HARDFP = "4d94d5a1869b228ce12027783fc5425c92e9b66685c501247889f1f167e66c9d"
 
-BINFILE = "${@base_contains('TUNE_FEATURES', 'callconvention-hard', '${BINFILE_HARDFP}', '${BINFILE_SOFTFP}', d)}"
+BINFILE = "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '${BINFILE_HARDFP}', '${BINFILE_SOFTFP}', d)}"
 
 SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gfxsdk/${SGXPV}/exports/${BINFILE} \
     file://Change-for-interfacing-with-SGX-DT-node.patch \
@@ -32,8 +32,8 @@ SRC_URI = "http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/gf
     file://0001-Graphics-SDK-04.10.00.01-AM335x-sgx-irq-change.patch \
     "
 
-SRC_URI[md5sum] := "${@base_contains('TUNE_FEATURES', 'callconvention-hard', '${MD5SUM_HARDFP}', '${MD5SUM_SOFTFP}', d)}"
-SRC_URI[sha256sum] := "${@base_contains('TUNE_FEATURES', 'callconvention-hard', '${SHA256SUM_HARDFP}', '${SHA256SUM_SOFTFP}', d)}"
+SRC_URI[md5sum] := "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '${MD5SUM_HARDFP}', '${MD5SUM_SOFTFP}', d)}"
+SRC_URI[sha256sum] := "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '${SHA256SUM_HARDFP}', '${SHA256SUM_SOFTFP}', d)}"
 
 TI_BIN_UNPK_WDEXT="/Graphics_SDK_${SGXPV}"
 S = "${WORKDIR}${TI_BIN_UNPK_WDEXT}/GFX_Linux_KM"

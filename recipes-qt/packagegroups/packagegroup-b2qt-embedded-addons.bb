@@ -38,5 +38,5 @@ RDEPENDS_${PN} += " \
     b2qt-appcontroller \
     b2qt-launcher \
     b2qt-demos \
-    ${@base_contains("DISTRO_FEATURES", "wayland", "democompositor", "", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "democompositor", "", d)} \
     "

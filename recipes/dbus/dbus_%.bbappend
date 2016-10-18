@@ -52,12 +52,12 @@ FILES_${PN}-session-init = " \
 do_install_append_class-target() {
     sed 's:@bindir@:${bindir}:' < ${WORKDIR}/dbus-session.init >${WORKDIR}/dbus-session.init
 
-    if ${@base_contains('DISTRO_FEATURES', 'sysvinit', 'true', 'false', d)}; then
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'sysvinit', 'true', 'false', d)}; then
         install -d ${D}${sysconfdir}/init.d
         install -m 0755 ${WORKDIR}/dbus-session.init ${D}${sysconfdir}/init.d/dbus-session
     fi
 
-    if ${@base_contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
+    if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         install -m 0755 -d ${D}${bindir}/
         install -m 0755 ${WORKDIR}/dbus-session.init ${D}${bindir}/
 

@@ -45,11 +45,11 @@ RDEPENDS_${PN} += "\
     dbus-dev \
     freetype-dev \
     fontconfig-dev \
-    ${@base_contains("DISTRO_FEATURES", "gstreamer010", "gstreamer-dev gst-plugins-base-dev", "", d)} \
-    ${@base_contains("DISTRO_FEATURES", "gstreamer", "gstreamer1.0-dev gstreamer1.0-plugins-base-dev", "", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer010", "gstreamer-dev gst-plugins-base-dev", "", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer", "gstreamer1.0-dev gstreamer1.0-plugins-base-dev", "", d)} \
     icu-dev \
     libxslt-dev \
-    ${@base_contains("DISTRO_FEATURES", "systemd", "systemd-dev", "udev-dev", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "systemd-dev", "udev-dev", d)} \
     tslib-dev \
     hunspell-dev \
     libcap-dev \
@@ -59,7 +59,7 @@ RDEPENDS_${PN} += "\
     atk-dev \
     libevent-dev \
     ostree-dev \
-    ${@base_contains("DISTRO_FEATURES", "wayland", "libxkbcommon-dev libgbm-dev libdrm-dev", "", d)} \
-    ${@base_contains("DISTRO_FEATURES", "bluetooth", "${BLUEZ}-dev", "", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "libxkbcommon-dev libgbm-dev libdrm-dev", "", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "bluetooth", "${BLUEZ}-dev", "", d)} \
     ${MACHINE_EXTRA_INSTALL_SDK} \
     "

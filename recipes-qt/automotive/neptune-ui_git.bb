@@ -45,7 +45,7 @@ SRCREV = "3d36a7b8e53770c91db60cec9586ef572a2f2814"
 
 DEPENDS = "qtbase qtdeclarative"
 RDEPENDS_${PN} = "qtapplicationmanager qtivi qtvirtualkeyboard \
-                  ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
+                  ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_configure_prepend() {
     echo "qml.path = /opt/neptune" >> ${S}/neptuneui.pro

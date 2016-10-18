@@ -34,8 +34,8 @@ IMAGE_FSTYPES += "ext3 sdcard"
 
 MACHINE_EXTRA_INSTALL += "\
     libgal-mx6 \
-    ${@base_contains("DISTRO_FEATURES", "gstreamer010", "gst-fsl-plugin", "", d)} \
-    ${@base_contains("DISTRO_FEATURES", "gstreamer", "gstreamer1.0-plugins-imx-meta", "", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer010", "gst-fsl-plugin", "", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "gstreamer", "gstreamer1.0-plugins-imx-meta", "", d)} \
     "
 
 MACHINE_EXTRA_INSTALL_SDK += " \

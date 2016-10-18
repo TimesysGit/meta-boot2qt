@@ -39,7 +39,7 @@ RDEPENDS_${PN} += " \
     qtivi \
     neptune-ui \
     neptune-ui-apps \
-    ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebbrowser', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebbrowser', '', d)} \
     gammaray \
     qmllive-target \
     "

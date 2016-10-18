@@ -113,13 +113,13 @@ MACHINE_EXTRA_INSTALL = " \
     gles-kernel-module \
     gles-user-module \
     ${RENESAS_WORKAROUNGS} \
-    ${@base_contains("MACHINE_FEATURES", "multimedia", "${MULTIMEDIA_PACKAGES}", "", d)} \
+    ${@bb.utils.contains("MACHINE_FEATURES", "multimedia", "${MULTIMEDIA_PACKAGES}", "", d)} \
 "
 
 MACHINE_EXTRA_INSTALL_append_lcb = " \
     can-utils \
     libsocketcan \
-    ${@base_contains("MACHINE_FEATURES", "multimedia", "packagegroup-lcb-oss-codecs", "", d)} \
+    ${@bb.utils.contains("MACHINE_FEATURES", "multimedia", "packagegroup-lcb-oss-codecs", "", d)} \
 "
 
 BB_MULTIMEDIA_TEST_MODULE = "\

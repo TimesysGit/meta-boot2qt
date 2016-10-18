@@ -52,7 +52,7 @@ DEPENDS = "glib-2.0 e2fsprogs gpgme attr libsoup-2.4 libgsystem libassuan xz sys
 RDEPENDS_${PN} += "bash"
 RRECOMMENDS_${PN} += "gnupg"
 
-PACKAGECONFIG ??= "${@base_contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
+PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}"
 PACKAGECONFIG[systemd] = "--with-systemdsystemunitdir=${systemd_unitdir}/system/,,,"
 
 SYSTEMD_SERVICE_${PN} = "ostree-prepare-root.service ostree-remount.service"

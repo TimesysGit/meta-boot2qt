@@ -37,11 +37,11 @@ require recipes-qt/qt5/qt5-git.inc
 SRCREV = "8a4b17fade4507860919fbbf9ea42f813a26be76"
 
 DEPENDS = "qtbase qtdeclarative libyaml libarchive \
-           ${@base_contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
+           ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "qtwayland", "", d)}"
 RDEPENDS_${PN} = "libcrypto"
 
 EXTRA_QMAKEVARS_PRE += "\
-    ${@base_contains("DISTRO_FEATURES", "wayland", "-config force-multiprocess", "-config force-singleprocess", d)} \
+    ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "-config force-multiprocess", "-config force-singleprocess", d)} \
     -config enable-dummydata \
     -config enable-ivi-logging \
     -config install-prefix=/usr \

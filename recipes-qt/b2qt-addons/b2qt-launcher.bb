@@ -45,7 +45,7 @@ SRC_URI += " \
 SRCREV = "7ff96b74f8721dbaf50722561770815a4530b6a0"
 
 DEPENDS = "qtbase qtdeclarative \
-           ${@base_contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
+           ${@bb.utils.contains('DISTRO_FEATURES', 'webengine', 'qtwebengine', '', d)}"
 
 do_install_append() {
     install -m 0755 -d ${D}${sysconfdir}/init.d

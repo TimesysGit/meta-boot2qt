@@ -70,6 +70,6 @@ RDEPENDS_${PN} = "\
         ostree \
         dracut \
         connman \
-        ${@base_contains("DISTRO_FEATURES", "wayland", "wayland weston weston-examples", "", d)} \
+        ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "wayland weston weston-examples", "", d)} \
         ${MACHINE_EXTRA_INSTALL} \
         "
